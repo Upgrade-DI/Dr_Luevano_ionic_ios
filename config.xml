@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<widget xmlns = "https://www.w3.org/ns/widgets"
 	xmlns:gap= "https://phonegap.com/ns/1.0"
-	id        = "com.renew.app"
-	android-versionCode="3"
-	version   = "1.0.3">
+	id        = "com.armoniaesttica.app"
+	android-versionCode="1"
+	version   = "1.0.0">
 	<!-- id        = "com.renew.app"-->
  
 	<name>Dr. Luevano</name>
@@ -18,9 +18,9 @@
     	<resource-file src="GoogleService-Info.plist" />
 	</platform>-->
 
-	<platform name="android">
+	<!-- <platform name="android">
 		<resource-file src="app/google-services.json" target="app/google-services.json" />
-	</platform> 
+	</platform>  -->
 	
 	<preference name='phonegap-version' value='cli-9.0.0' />
 
