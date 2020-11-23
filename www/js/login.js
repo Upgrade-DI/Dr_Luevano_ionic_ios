@@ -39,7 +39,7 @@ var phpValidate = rootPath+'_sudiv3/ar_engine/login_validate_ios.php';
 		 var cookiePass = $.cookie("pass_pat");
 		 (debugMode) ? console.log(cookiePass) : '';
 
-		 modal.hide();
+		 
 		/*
 		   setTimeout(function() {
 			 modal.hide();
