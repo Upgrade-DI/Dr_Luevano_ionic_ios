@@ -39,7 +39,8 @@ var phpValidate = rootPath+'_sudiv3/ar_engine/login_validate_ios.php';
 		 var cookiePass = $.cookie("pass_pat");
 		 (debugMode) ? console.log(cookiePass) : '';
 
-		
+		 modal.hide();
+		/*
 		   setTimeout(function() {
 			 modal.hide();
 		   }, 2000);
@@ -48,6 +49,7 @@ var phpValidate = rootPath+'_sudiv3/ar_engine/login_validate_ios.php';
 			 window.location.replace(url);
 			 //document.querySelector('#myNavigator').resetToPage("home.html");
 		   }, 500);
+		   */
 	}
 
 	//Si se da click en # do_logout, se realiza la siguiente acción.
