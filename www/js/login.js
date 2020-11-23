@@ -6,9 +6,8 @@ var debugMode = true;
 var serverSource = 'remote'; // <-- Fuente del proyecto
 //var serverSource = 'local'; // <-- Fuente del proyecto
 
-
 var rootPath = (serverSource === 'local') ? './' : 'https://armoniaestetica.com/';
-var phpValidate = rootPath+'_sudiv3/ar_engine/login_validate.php';
+var phpValidate = rootPath+'_sudiv3/ar_engine/login_validate_ios.php';
 
 // Touch or Click Definimos si se usará click o Touch según disponibilidad // touchstart
 	var clickHandler = ('ontouchstart' in document.documentElement ? "touchend" : "click");
@@ -20,9 +19,26 @@ var phpValidate = rootPath+'_sudiv3/ar_engine/login_validate.php';
 // Function - GET ACCESS
 	//Si se otorga el acceso, se realiza la siguiente acción:
 	
-	function getLoginAcess() {
+	function getLoginAcess(userCompanyData) {
 		// Aquí va la acción a seguir (eje. Reload Location)
 		// Aquí va la acción a seguir (eje. Reload Location)
+			
+		var id_pat = userCompanyData[0] ;    //id del paciente
+		var mail_pat = userCompanyData[1];	 //mail del paciente
+		var pass_pat = userCompanyData[2];	 //pass del paciente
+
+		 $.cookie("id_pat", id_pat, { expires : 30 });
+		 var cookieId = $.cookie("id_pat");
+		 (debugMode) ? console.log(cookieId) : '';
+
+		 $.cookie("mail_pat", mail_pat, { expires : 30 });
+		 var cookieMail = $.cookie("mail_pat");
+		 (debugMode) ? console.log(cookieMail) : '';
+
+		 $.cookie("pass_pat", pass_pat, { expires : 30 });
+		 var cookiePass = $.cookie("pass_pat");
+		 (debugMode) ? console.log(cookiePass) : '';
+
 		
 		   setTimeout(function() {
 			 modal.hide();
@@ -247,7 +263,8 @@ $(document).on('submit','#login_form',function(){
 							if(response !== 'unsuccessful'){
 								var session_response = $.parseJSON(response);
 								
-								getLoginAcess();
+								// getLoginAcess();
+								getLoginAcess(session_response);
 								
 								// Reestablecemos el login
 								$inputs.prop("disabled", false);

@@ -924,6 +924,12 @@ var the_client = null;
 var token_sent = 0;
 var the_token = null;
 
+//variables del paciente
+  var global_id = null;
+  var global_mail = null;  
+  var global_pass = null;
+
+
 
     $(document).ready(function() {
         var myNavigator = document.querySelector('ons-navigator');
@@ -1184,14 +1190,24 @@ picPath = 'https://armoniaestetica.com/_sudiv3/';
 
 function getPatient(){
 
+         global_id =  $.cookie("id_pat");
+         global_mail = $.cookie("mail_pat");
+         global_pass = $.cookie("pass_pat");
+
+
+        (appDebug) ? console.log(global_prefig): '';
+        (appDebug) ?  console.log(global_mail): '';
+        (appDebug) ?  console.log(global_pass): '';
+
+
     console.log('entrando a funcion de getPatient');
     $.ajax({
         // dataType: 'json',
             async: true,
-            url: rootPath+'_sudiv3/ar_engine/patient.php', //ruta a donde se enviaran los datos
+            url: rootPath+'_sudiv3/ar_engine/patient_ios.php', //ruta a donde se enviaran los datos
             type: 'POST', //por que metodo se enviaran las variables
             // data: { getPat : true, the_patient : global_user_id},
-            data: { getPat : true},
+            data: { getPat : true, patid : global_id },
             }).done(function(data){
             console.log(data);
             
