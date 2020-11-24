@@ -77,6 +77,18 @@ function validate_phpSession() {
 
 	(debugMode) ? console.log("revisando sesion...") : '';
 	
+		
+		 var cookieId = $.cookie("id_pat");
+		 (debugMode) ? console.log(cookieId) : '';
+
+	
+		 var cookieMail = $.cookie("mail_pat");
+		 (debugMode) ? console.log(cookieMail) : '';
+
+		 var cookiePass = $.cookie("pass_pat");
+		 (debugMode) ? console.log(cookiePass) : '';
+
+/*
 	var request = $.ajax({
 		url: phpValidate+'?method=validate_session',
 		type: "post"
@@ -101,7 +113,7 @@ function validate_phpSession() {
 		);
 		$('#page_login').css('opacity', '1');
 	});
-	
+	*/
 }
 
 
