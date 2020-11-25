@@ -19,7 +19,7 @@
     <preference name="SplashScreenDelay" value="1200" />
     <preference name="FadeSplashScreenDuration" value="200" />
     <preference name="target-device" value="handset" />
-    <preference name="deployment-target" value="12.0" />
+    <preference name="deployment-target" value="11.0" />
     <preference name="exit-on-suspend" value="false" />
     <preference name="detect-data-types" value="true" />
     <preference name="prerendered-icon" value="false" />
