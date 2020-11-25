@@ -51,5 +51,24 @@
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>CDVLaunchScreen</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>de</string>
+		<string>nl</string>
+		<string>fr</string>
+		<string>it</string>
+		<string>pt-BR</string>
+	</array>
+	<key>NSCalendarsUsageDescription</key>
+	<string/>
+	<key>NSContactsUsageDescription</key>
+	<string/>
+	<key>NSCameraUsageDescription</key>
+	<string>The camera is used to scan QR codes.</string>
+	<key>Pushwoosh_LOG_LEVEL</key>
+	<string>DEBUG</string>
+	<key>Pushwoosh_ALERT_TYPE</key>
+	<string>BANNER</string>
 </dict>
 </plist>

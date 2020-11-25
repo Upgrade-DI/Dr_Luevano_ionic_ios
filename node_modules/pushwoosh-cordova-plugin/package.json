@@ -1,0 +1,57 @@
+{
+  "_from": "pushwoosh-cordova-plugin@~7.18.11",
+  "_id": "pushwoosh-cordova-plugin@7.18.11",
+  "_inBundle": false,
+  "_integrity": "sha512-MlcPEyHswrTn/VnaBty8bu6OT/6yBFiqy+0HB5VWJ4XoS4jWSi8ogSnXFy2P6YPaBwFz/ghg8dQ6+UUPcf0tIA==",
+  "_location": "/pushwoosh-cordova-plugin",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "pushwoosh-cordova-plugin@~7.18.11",
+    "name": "pushwoosh-cordova-plugin",
+    "escapedName": "pushwoosh-cordova-plugin",
+    "rawSpec": "~7.18.11",
+    "saveSpec": null,
+    "fetchSpec": "~7.18.11"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/pushwoosh-cordova-plugin/-/pushwoosh-cordova-plugin-7.18.11.tgz",
+  "_shasum": "07d59fea4ecf02cf055add6cf709b271e6ce44d0",
+  "_spec": "pushwoosh-cordova-plugin@~7.18.11",
+  "_where": "/Users/selene/Upgrade DI Dropbox/Upgrade Diseño Interactivo/Apps/Desarrollo-apps/estetica_app/Dr_Luevano_ionic_ios",
+  "author": {
+    "name": "Pushwoosh"
+  },
+  "bugs": {
+    "url": "https://github.com/Pushwoosh/pushwoosh-phonegap-3.0-plugin/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "pushwoosh-cordova-plugin",
+    "platforms": [
+      "android",
+      "ios",
+      "wp8"
+    ]
+  },
+  "deprecated": false,
+  "description": "\n    This plugin allows you to send and receive push notifications. Powered by Pushwoosh (www.pushwoosh.com).\n    ",
+  "homepage": "https://github.com/Pushwoosh/pushwoosh-phonegap-3.0-plugin#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-wp8"
+  ],
+  "license": "MIT",
+  "name": "pushwoosh-cordova-plugin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pushwoosh/pushwoosh-phonegap-3.0-plugin.git"
+  },
+  "version": "7.18.11"
+}
