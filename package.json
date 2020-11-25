@@ -1,7 +1,7 @@
 {
-  "name": "com.renew.app",
+  "name": "com.armoniaesttica.app",
   "version": "1.0.0",
-  "description": "DEVELOP VERSION OF SANFRANCISCOCCC APP",
+  "description": "DEVELOP VERSION OF DR LUEVANO APP",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
