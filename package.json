@@ -7,5 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Upgrade DI",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cordova-ios": "^5.1.1"
+  }
 }

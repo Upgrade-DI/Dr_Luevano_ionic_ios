@@ -1,162 +1,120 @@
-<?xml version="1.0" encoding="UTF-8"?>
-	<widget xmlns = "https://www.w3.org/ns/widgets"
-	xmlns:gap= "https://phonegap.com/ns/1.0"
-	id        = "com.armoniaesttica.app"
-	android-versionCode="1"
-	version   = "1.0.0">
-	<!-- id        = "com.renew.app"-->
-    
-	<name>Dr. Luevano</name>
-	<description>
-	
-	</description> 
-	<author href="upgrade.com.mx" email="info@upgrade.com.mx">
+<?xml version='1.0' encoding='utf-8'?>
+<widget android-versionCode="1" id="com.armoniaesttica.app" version="1.0.0" xmlns="https://www.w3.org/ns/widgets" xmlns:gap="https://phonegap.com/ns/1.0">
+    <name>Dr. Luevano</name>
+    <description>
+    </description>
+    <author email="info@upgrade.com.mx" href="upgrade.com.mx">
 	Upgrade Diseño Interactivo
 	</author>
-
-	<platform name="ios">
-    	<resource-file src="app/GoogleService-Info.plist" />
-	</platform>
-
-	<!-- <platform name="android">
-		<resource-file src="app/google-services.json" target="app/google-services.json" />
-	</platform>  -->
-	
-	<preference name='phonegap-version' value='cli-9.0.0' />
-
-	
-
-	<preference name="orientation" value="portrait" />
-	<preference name="fullscreen" value="false" />
-	<preference name="webviewbounce" value="false" />
-	<preference name="Disallowsscroll" value="true"/>
-	<preference name="disallowOverscroll" value="true" />
-
-	<preference name="ShowSplashScreenSpinner" value="false" />
-	<preference name="SplashScreenDelay" value="1200" />
-	<preference name="FadeSplashScreenDuration" value="200"/>
-
-	<!-- iOS -->
-	<preference name="target-device" value="handset"/>
-	<preference name="deployment-target" value="13.0"/>
-	<preference name="exit-on-suspend" value="false" />
-	<preference name="detect-data-types" value="true" />
-	<preference name="prerendered-icon" value="false" />
-
-
-	<preference name="StatusBarOverlaysWebView" value="false" />
-	<preference name="StatusBarBackgroundColor" value="#000000" />
-	<preference name="StatusBarStyle" value="lightcontent" />
-	<preference name="KeepRunning" value="true"/>
-	<feature name="StatusBar">
-	<param name="ios-package" value="CDVStatusBar" onload="true" />
-	</feature>
-
-	<!-- Android -->
-	<platform name="android">
-	<preference name="android-installLocation" value="auto"/>
-	<preference name="android-targetSdkVersion" value="29" />
-	</platform>
-
-	<!-- icons and splash -->
-	<platform name="ios">
-	<icon src="resources/ios/icon/29x29.png" width="29" height="29"/>
-	<icon src="resources/ios/icon/40x40.png" width="40" height="40"/>
-	<icon src="resources/ios/icon/50x50.png" width="50" height="50"/>
-	<icon src="resources/ios/icon/57x57.png" width="57" height="57"/>
-	<icon src="resources/ios/icon/58x58.png" width="58" height="58"/>
-	<icon src="resources/ios/icon/60x60.png" width="60" height="60"/>
-	<icon src="resources/ios/icon/72x72.png" width="72" height="72"/>
-	<icon src="resources/ios/icon/76x76.png" width="76" height="76"/>
-	<icon src="resources/ios/icon/80x80.png" width="80" height="80"/>
-	<icon src="resources/ios/icon/87x87.png" width="87" height="87"/>
-	<icon src="resources/ios/icon/114x114.png" width="114" height="114"/>
-	<icon src="resources/ios/icon/100x100.png" width="100" height="100"/>
-	<icon src="resources/ios/icon/180x180.png" width="180" height="180"/>
-	<icon src="resources/ios/icon/144x144.png" width="144" height="144"/>
-	<icon src="resources/ios/icon/120x120.png" width="120" height="120"/>
-	<icon src="resources/ios/icon/152x152.png" width="152" height="152"/>
-	</platform>
-
-	<platform name="android">
-	<icon src="resources/android/icon/drawable-hdpi-icon.png" density="hdpi"/>
-	<icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
-	<icon src="resources/android/icon/drawable-mdpi-icon.png" density="mdpi"/>
-	<icon src="resources/android/icon/drawable-xhdpi-icon.png" density="xhdpi"/>
-	<icon src="resources/android/icon/drawable-xxhdpi-icon.png" density="xxhdpi"/>
-	<icon src="resources/android/icon/drawable-xxxhdpi-icon.png" density="xxxhdpi"/> 
-	</platform>
-
-	<platform name="ios">
-	<splash src="resources/ios/splash/Default@2x~universal~anyany.png" />
-	</platform>
-
-	<platform name="android">
-	<splash src="resources/android/splash/drawable-land-hdpi-screen.png" density="hdpi"/>
-	<splash src="resources/android/splash/drawable-land-ldpi-screen.png" density="mdpi"/>
-	<splash src="resources/android/splash/drawable-land-mdpi-screen.png" density="ldpi"/>
-	<splash src="resources/android/splash/drawable-land-xhdpi-screen.png" density="xhdpi"/>
-	<splash src="resources/android/splash/drawable-land-xxhdpi-screen.png" density="xxhdpi"/>
-	<splash src="resources/android/splash/drawable-land-xxxhdpi-screen.png" density="xxxhdpi"/>
-
-	<splash src="resources/android/splash/drawable-port-hdpi-screen.png" density="hdpi"/>
-	<splash src="resources/android/splash/drawable-port-mdpi-screen.png" density="mdpi"/>
-	<splash src="resources/android/splash/drawable-port-ldpi-screen.png" density="ldpi"/>
-	<splash src="resources/android/splash/drawable-port-xhdpi-screen.png" density="xhdpi"/>
-	<splash src="resources/android/splash/drawable-port-xxhdpi-screen.png" density="xxhdpi"/>
-	<splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="xxxhdpi"/>
-	</platform>
-
-	<preference name="permissions" value="none"/>
-
-	<plugin name="cordova-plugin-camera" spec="~4.1.0" source="npm"/>
-	<plugin name="cordova-plugin-device" spec="~2.0.3" source="npm"/>
-	<plugin name="cordova-plugin-dialogs" spec="~2.0.2" source="npm"/>
-	<plugin name="cordova-plugin-geolocation" spec="~4.0.2" source="npm"/>
-	<plugin name="cordova-plugin-inappbrowser" spec="~4.0.0" source="npm"/>
-	<plugin name="cordova-plugin-network-information" spec="~2.0.2" source="npm"/>
-	<plugin name="cordova-plugin-splashscreen" spec="~6.0.0" />
-	<plugin name="cordova-plugin-statusbar" spec="~2.4.3" />
-	<plugin name="cordova-plugin-calendar" spec="~5.1.5" />
-	<plugin name="cordova-plugin-qrscanner-dual" spec="~3.0.8" />
-	
-	<plugin name="cordova-plugin-test-framework" spec="~1.1.6" source="npm"/>
-    <plugin name="cordova-plugin-vibration" spec="~2.1.1" source="npm"/>
+    <platform name="ios">
+        <resource-file src="app/GoogleService-Info.plist" />
+    </platform>
+    <preference name="phonegap-version" value="cli-9.0.0" />
+    <preference name="orientation" value="portrait" />
+    <preference name="fullscreen" value="false" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="Disallowsscroll" value="true" />
+    <preference name="disallowOverscroll" value="true" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="SplashScreenDelay" value="1200" />
+    <preference name="FadeSplashScreenDuration" value="200" />
+    <preference name="target-device" value="handset" />
+    <preference name="deployment-target" value="13.0" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="prerendered-icon" value="false" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <preference name="KeepRunning" value="true" />
+    <feature name="StatusBar">
+        <param name="ios-package" onload="true" value="CDVStatusBar" />
+    </feature>
+    <platform name="android">
+        <preference name="android-installLocation" value="auto" />
+        <preference name="android-targetSdkVersion" value="29" />
+    </platform>
+    <platform name="ios">
+        <icon height="40" src="resources/ios/icon/40x40.png" width="40" />
+        <icon height="50" src="resources/ios/icon/50x50.png" width="50" />
+        <icon height="57" src="resources/ios/icon/57x57.png" width="57" />
+        <icon height="58" src="resources/ios/icon/58x58.png" width="58" />
+        <icon height="60" src="resources/ios/icon/60x60.png" width="60" />
+        <icon height="72" src="resources/ios/icon/72x72.png" width="72" />
+        <icon height="76" src="resources/ios/icon/76x76.png" width="76" />
+        <icon height="80" src="resources/ios/icon/80x80.png" width="80" />
+        <icon height="87" src="resources/ios/icon/87x87.png" width="87" />
+        <icon height="114" src="resources/ios/icon/114x114.png" width="114" />
+        <icon height="100" src="resources/ios/icon/100x100.png" width="100" />
+        <icon height="180" src="resources/ios/icon/180x180.png" width="180" />
+        <icon height="144" src="resources/ios/icon/144x144.png" width="144" />
+        <icon height="120" src="resources/ios/icon/120x120.png" width="120" />
+        <icon height="152" src="resources/ios/icon/152x152.png" width="152" />
+    </platform>
+    <platform name="android">
+        <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />
+        <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
+        <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
+        <icon density="xhdpi" src="resources/android/icon/drawable-xhdpi-icon.png" />
+        <icon density="xxhdpi" src="resources/android/icon/drawable-xxhdpi-icon.png" />
+        <icon density="xxxhdpi" src="resources/android/icon/drawable-xxxhdpi-icon.png" />
+    </platform>
+    <platform name="ios">
+        <splash src="resources/ios/splash/Default@2x~universal~anyany.png" />
+    </platform>
+    <platform name="android">
+        <splash density="hdpi" src="resources/android/splash/drawable-land-hdpi-screen.png" />
+        <splash density="mdpi" src="resources/android/splash/drawable-land-ldpi-screen.png" />
+        <splash density="ldpi" src="resources/android/splash/drawable-land-mdpi-screen.png" />
+        <splash density="xhdpi" src="resources/android/splash/drawable-land-xhdpi-screen.png" />
+        <splash density="xxhdpi" src="resources/android/splash/drawable-land-xxhdpi-screen.png" />
+        <splash density="xxxhdpi" src="resources/android/splash/drawable-land-xxxhdpi-screen.png" />
+        <splash density="hdpi" src="resources/android/splash/drawable-port-hdpi-screen.png" />
+        <splash density="mdpi" src="resources/android/splash/drawable-port-mdpi-screen.png" />
+        <splash density="ldpi" src="resources/android/splash/drawable-port-ldpi-screen.png" />
+        <splash density="xhdpi" src="resources/android/splash/drawable-port-xhdpi-screen.png" />
+        <splash density="xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
+        <splash density="xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
+    </platform>
+    <preference name="permissions" value="none" />
+    <plugin name="cordova-plugin-camera" source="npm" spec="~4.1.0" />
+    <plugin name="cordova-plugin-device" source="npm" spec="~2.0.3" />
+    <plugin name="cordova-plugin-dialogs" source="npm" spec="~2.0.2" />
+    <plugin name="cordova-plugin-geolocation" source="npm" spec="~4.0.2" />
+    <plugin name="cordova-plugin-inappbrowser" source="npm" spec="~4.0.0" />
+    <plugin name="cordova-plugin-network-information" source="npm" spec="~2.0.2" />
+    <plugin name="cordova-plugin-splashscreen" spec="~6.0.0" />
+    <plugin name="cordova-plugin-statusbar" spec="~2.4.3" />
+    <plugin name="cordova-plugin-calendar" spec="~5.1.5" />
+    <plugin name="cordova-plugin-qrscanner-dual" spec="~3.0.8" />
+    <plugin name="cordova-plugin-test-framework" source="npm" spec="~1.1.6" />
+    <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.1" />
     <engine name="cordova-browser" spec="~6.0.0" />
-    <engine name="ios" spec="~4.1.1" />
     <engine name="android" spec="~5.1.1" />
-	<!-- <content src="home.html" /> -->
-	
-	<content src="index.html" />
-	<plugin name="cordova-plugin-whitelist" spec="~1.3.4" source="npm"/> 
-	
-
-	<gap:plugin name="pushwoosh-pgb-plugin" source="npm" />
-
-	<plugin name="pushwoosh-cordova-plugin" spec="~7.18.11">
+    <engine name="ios" spec="~5.1.1" />
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.3.4" />
+    <gap:plugin name="pushwoosh-pgb-plugin" source="npm" />
+    <plugin name="pushwoosh-cordova-plugin" spec="~7.18.11">
         <variable name="LOG_LEVEL" value="DEBUG" />
         <variable name="IOS_FOREGROUND_ALERT_TYPE" value="BANNER" />
         <variable name="ANDROID_FOREGROUND_PUSH" value="false" />
-     </plugin>
-       
-
-
-	<access origin="*" subdomains="true"/>
-	<access origin="*.pushwoosh.com"/> 
-	<access origin="whatsapp:*" launch-external="yes" />
-	<allow-intent href="http://*/*"/> 
-	<allow-intent href="https://*/*"/>
-	<allow-intent href="tel:*"/>
-	<allow-intent href="sms:*"/>
-	<allow-intent href="whatsapp:*"/>
-	<allow-intent href="mailto:*"/>
-	<allow-intent href="geo:*"/>
-	<platform name="android">
-	<allow-intent href="market:*"/>
-	</platform>
-	<platform name="ios">
-	<allow-intent href="itms:*"/>
-	<allow-intent href="itms-apps:*"/>
-	</platform>
-
+    </plugin>
+    <access origin="*" subdomains="true" />
+    <access origin="*.pushwoosh.com" />
+    <access launch-external="yes" origin="whatsapp:*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="whatsapp:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
 </widget>
