@@ -41,9 +41,9 @@ var phpValidate = rootPath+'_sudiv3/ar_engine/login_validate_ios.php';
 
 
 		
-		   setTimeout(function() {
-			 modal.hide();
-		   }, 2000);
+		  //  setTimeout(function() {
+			 // // modal.hide();
+		  //  }, 2000);
 		   setTimeout(function() {
 			 var url = "home.html";
 			 window.location.replace(url);
@@ -74,8 +74,8 @@ var phpValidate = rootPath+'_sudiv3/ar_engine/login_validate_ios.php';
 // V A L I D A T E   S E S S I O N
 	// validamos si existe una sesión de usuario.
 function validate_phpSession() {
-		var modal = document.querySelector('ons-modal');
-		modal.show();
+		// var modal = document.querySelector('ons-modal');
+		// modal.show();
 		(debugMode) ? console.log("revisando sesion...") : '';
 		
 		 var cookieIdAutologin = $.cookie("id_pat");
@@ -93,7 +93,7 @@ function validate_phpSession() {
 
 		 if ( cookieIdAutologin == '' || cookieIdAutologin == null || cookieIdAutologin ==  'null' || cookieIdAutologin == undefined || cookieIdAutologin == 'undefined') {
 		 	console.log('No hay sesión activa');
-		 	modal.hide();
+		 	// modal.hide();
 		 }else{
 		 	console.log('Sí hay unasesión activa');
 			getLoginAcess($sessionData);
@@ -149,7 +149,7 @@ $(document).on('submit','#login_form',function(){
 	"use strict";
 	
 	//Tipo: typeOfSubmit = 0) Login 1) Solicitud de cambio de password 2)Establecer nuevo password
-	var modal = document.querySelector('ons-modal');
+	// var modal = document.querySelector('ons-modal');
 	var typeOfSubmit = 0;
 			
 			// Si se requiere el campo
@@ -186,7 +186,7 @@ $(document).on('submit','#login_form',function(){
 				var login_btn_text = $('#submit_login').html();
 				
 				// animation PENDING
-				modal.show();
+				// modal.show();
 				
 				(debugMode) ? console.log('serializedData: ' + serializedData) : '';
 				// Disparamos la solicitud (request) 
@@ -271,7 +271,7 @@ $(document).on('submit','#login_form',function(){
 							}else {
 								// Mostramos el mensaje de error
 								//showMsgError($('.error_login'),'Acceso denegado','#F00');
-								modal.hide();
+								// modal.hide();
 								ons.notification.toast({message: 'Datos incorrectos', timeout: 1000});		
 								
 								// Reestablecemos el login
