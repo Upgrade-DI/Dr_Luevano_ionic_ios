@@ -75,33 +75,29 @@ var phpValidate = rootPath+'_sudiv3/ar_engine/login_validate_ios.php';
 	// validamos si existe una sesión de usuario.
 function validate_phpSession() {
 
+
 	(debugMode) ? console.log("revisando sesion...") : '';
-	
-	var request = $.ajax({
-		url: phpValidate+'?method=validate_session',
-		type: "post"
-	});
-	// En conexión exitosa
-	request.done(function (response, textStatus, jqXHR){
-		if(response != 'unsuccessful'){
-			var session_response = $.parseJSON(response);
-			console.log(session_response); 
-			getLoginAcess();
-		}else{
-			console.log('No hay sesión activa');
+		
+		 var cookieIdAutologin = $.cookie("id_pat");
+		 (debugMode) ? console.log(cookieIdAutologin) : '';
+		
+		 var cookieMailAutologin = $.cookie("mail_pat");
+		 (debugMode) ? console.log(cookieMailAutologin) : '';
+
+		 var cookiePassAutologin = $.cookie("pass_pat");
+		 (debugMode) ? console.log(cookiePassAutologin) : '';
+
+		 $sessionData = new Array($loginUserid,$loginUsername,$password);
+		// $sessionData = ["","",""];
+
+		 if (cookieIdAutologin != '' &&  cookieMailAutologin != '' cookiePassAutologin &&!= '' ) {
+
+		 		getLoginAcess($sessionData,);
+		 }else{
+		 	console.log('No hay sesión activa');
 			$('#page_login').css('opacity', '1');
-		}
-	});
-	
-	// Si falla la conexión
-	request.fail(function (jqXHR, textStatus, errorThrown){
-		console.error(
-			"Han ocurrido los siguientes errores: "+
-			textStatus, errorThrown
-		);
-		$('#page_login').css('opacity', '1');
-	});
-	
+		 }
+	 		
 }
 
 
@@ -502,6 +498,13 @@ $(document).on(clickHandler,'#do_logout',function(){ "use strict"; if(!touchmove
 
 function do_logout(){
 	"use strict";
+ 		Cookies.remove('id_pat');
+
+ 		Cookies.remove('mail_pat');
+
+ 		Cookies.remove('pass_pat');
+
+
 	// [A] solicitamos la baja de la sessión
 	var request = $.ajax({
 		url: phpValidate,
