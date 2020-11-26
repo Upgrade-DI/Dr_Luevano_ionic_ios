@@ -86,16 +86,16 @@ function validate_phpSession() {
 		 var cookiePassAutologin = $.cookie("pass_pat");
 		 (debugMode) ? console.log(cookiePassAutologin) : '';
 
-		 $sessionData = new Array($loginUserid,$loginUsername,$password);
+		 $sessionData = new Array(cookieIdAutologin,cookieMailAutologin,cookiePassAutologin);
 		 (debugMode) ? console.log($sessionData) : '';
-		 
-		 // if ( $.cookie("id_pat") != '' ) {
 
-		 // 		getLoginAcess($sessionData,);
-		 // }else{
-		 // 	console.log('No hay sesión activa');
+		 if ( $.cookie("id_pat") != '' ) {
+
+		 		getLoginAcess($sessionData);
+		 }else{
+		 	console.log('No hay sesión activa');
 			// $('#page_principal').css('opacity', '1');
-		 // }
+		 }
 	 		
 }
 
