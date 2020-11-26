@@ -91,8 +91,8 @@ function validate_phpSession() {
 		
 		 (debugMode) ? console.log($sessionData) : '';
 
-		 if ( $.cookie("id_pat") != '' | null | 'null' | undefined | 'undefined') {
-		 	console.log('if entro');
+		 if ( $.cookie("id_pat") == '' || $.cookie("id_pat") == null || $.cookie("id_pat") ==  'null' || $.cookie("id_pat") == undefined || $.cookie("id_pat") == 'undefined') {
+		   console.log('if entro');
 		   setTimeout(function() {
 			 modal.hide();
 		   }, 2000);
@@ -513,18 +513,10 @@ $(document).on(clickHandler,'#do_logout',function(){ "use strict"; if(!touchmove
 function do_logout(){
 	"use strict";
 
-
-	$.cookie("id_pat", null, { path: '/' });
-	$.cookie("mail_pat", null, { path: '/' });
-	$.cookie("pass_pat", null, { path: '/' });
+	 	 $.cookie("id_pat", '', { expires : -7 });
+		 $.cookie("mail_pat", '', { expires : -7 });
+		 $.cookie("pass_pat", '', { expires : -7 });
 	
- 		// Cookies.remove('id_pat');
-
- 		// Cookies.remove('mail_pat');
-
- 		// Cookies.remove('pass_pat');
-
-
 	// [A] solicitamos la baja de la sessión
 	var request = $.ajax({
 		url: phpValidate,
