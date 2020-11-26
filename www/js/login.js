@@ -91,60 +91,15 @@ function validate_phpSession() {
 		
 		 (debugMode) ? console.log($sessionData) : '';
 
-/*
-
-		var request = $.ajax({
-		url: phpValidate+'?method=validate_session',
-		type: "post"
-		});
-		// En conexión exitosa
-		request.done(function (response, textStatus, jqXHR){
-			if(response != 'unsuccessful'){
-				var session_response = $.parseJSON(response);
-				console.log(session_response); 
-				getLoginAcess();
-			}else{
-				console.log('No hay sesión activa');
-				$('#page_login').css('opacity', '1');
-			}
-		});
-		
-		// Si falla la conexión
-		request.fail(function (jqXHR, textStatus, errorThrown){
-			console.error(
-				"Han ocurrido los siguientes errores: "+
-				textStatus, errorThrown
-			);
-			$('#page_login').css('opacity', '1');
-		});
-
-*/
-
-
 		 if ( cookieIdAutologin == '' || cookieIdAutologin == null || cookieIdAutologin ==  'null' || cookieIdAutologin == undefined || cookieIdAutologin == 'undefined') {
-		   console.log('if entro');
-		   setTimeout(function() {
-			 modal.hide();
-		   }, 2000);
-		   setTimeout(function() {
-			 // var url = "home.html";
-			 // window.location.replace(url);
-			 //document.querySelector('#myNavigator').resetToPage("home.html");
-		   }, 500);
-
-
-		 }else{
-
-		 	console.log('if no entro');
-
 		 	console.log('No hay sesión activa');
 		 	modal.hide();
-			// $('#page_principal').css('opacity', '1');
-		 }
-	 		
+		 }else{
+		 	console.log('Sí hay unasesión activa');
+			getLoginAcess($sessionData);
+		}
+
 }
-
-
 /* FIN DE CONFIGURABLE */
 
 var init_status = false; // <-- Indica si se ha iniciado sesión.
