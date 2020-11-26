@@ -92,7 +92,7 @@ function validate_phpSession() {
 		 (debugMode) ? console.log($sessionData) : '';
 
 		 if ( $.cookie("id_pat") != '' | null | 'null' | undefined | 'undefined') {
-
+		 	console.log('if entro');
 		   setTimeout(function() {
 			 modal.hide();
 		   }, 2000);
@@ -104,6 +104,9 @@ function validate_phpSession() {
 
 
 		 }else{
+
+		 	console.log('if no entro');
+
 		 	console.log('No hay sesión activa');
 		 	modal.hide();
 			// $('#page_principal').css('opacity', '1');
@@ -509,11 +512,17 @@ $(document).on(clickHandler,'#do_logout',function(){ "use strict"; if(!touchmove
 
 function do_logout(){
 	"use strict";
- 		Cookies.remove('id_pat');
 
- 		Cookies.remove('mail_pat');
 
- 		Cookies.remove('pass_pat');
+	$.cookie("id_pat", null, { path: '/' });
+	$.cookie("mail_pat", null, { path: '/' });
+	$.cookie("pass_pat", null, { path: '/' });
+	
+ 		// Cookies.remove('id_pat');
+
+ 		// Cookies.remove('mail_pat');
+
+ 		// Cookies.remove('pass_pat');
 
 
 	// [A] solicitamos la baja de la sessión
