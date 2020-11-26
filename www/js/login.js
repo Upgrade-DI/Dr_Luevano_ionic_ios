@@ -74,7 +74,8 @@ var phpValidate = rootPath+'_sudiv3/ar_engine/login_validate_ios.php';
 // V A L I D A T E   S E S S I O N
 	// validamos si existe una sesión de usuario.
 function validate_phpSession() {
-
+		var modal = document.querySelector('ons-modal');
+		modal.show();
 		(debugMode) ? console.log("revisando sesion...") : '';
 		
 		 var cookieIdAutologin = $.cookie("id_pat");
@@ -87,13 +88,24 @@ function validate_phpSession() {
 		 (debugMode) ? console.log(cookiePassAutologin) : '';
 
 		 $sessionData = new Array(cookieIdAutologin,cookieMailAutologin,cookiePassAutologin);
+		
 		 (debugMode) ? console.log($sessionData) : '';
 
-		 if ( $.cookie("id_pat") != '' ) {
+		 if ( $.cookie("id_pat") != '' | null | 'null' | undefined | 'undefined') {
 
-		 		getLoginAcess($sessionData);
+		   setTimeout(function() {
+			 modal.hide();
+		   }, 2000);
+		   setTimeout(function() {
+			 // var url = "home.html";
+			 // window.location.replace(url);
+			 //document.querySelector('#myNavigator').resetToPage("home.html");
+		   }, 500);
+
+
 		 }else{
 		 	console.log('No hay sesión activa');
+		 	modal.hide();
 			// $('#page_principal').css('opacity', '1');
 		 }
 	 		
