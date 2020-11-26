@@ -121,7 +121,7 @@ function validate_phpSession() {
 */
 
 
-		 if ( cookieIdAutologin == '' || $.cookie("id_pat") == null || $.cookie("id_pat") ==  'null' || $.cookie("id_pat") == undefined || $.cookie("id_pat") == 'undefined') {
+		 if ( cookieIdAutologin == '' || cookieIdAutologin == null || cookieIdAutologin ==  'null' || cookieIdAutologin == undefined || cookieIdAutologin == 'undefined') {
 		   console.log('if entro');
 		   setTimeout(function() {
 			 modal.hide();
