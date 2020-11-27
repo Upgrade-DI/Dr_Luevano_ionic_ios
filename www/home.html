@@ -601,6 +601,7 @@
     </template>
 
 
+
 <!-- #  Q U I Z     EA  # -->
     <template id="quiz_ea.html">
         <ons-page id="quiz_ea" style="background: linear-gradient(to bottom, #F8FBFF 0%,#F4F9FC 100%);">
@@ -626,7 +627,7 @@
                     
                     <form id="quiz_ea_form" name="quiz_ea_form" action="#" autocomplete="off" method="POST" style="margin: 0px 22px;">
 
-                        <p style="padding-bottom: 15px;">En Armonia estética tenemos el compromiso de mejorar constantemente, por lo que nos ayudará saber tú opinión acerca de nosotros</p>
+                        <p style="padding-bottom: 15px;">En Armonia estética tenemos el compromiso de mejorar constantemente, por lo que nos ayudará saber tu opinión acerca de nosotros</p>
                         
                         <p style="padding-bottom: 5px;     font-size: 0.8em;">0 = Malo   1 = Regular   2 = Bueno   3 = Excelente</p>
 
@@ -651,7 +652,7 @@
                        
                         <input type="range" class="range_ae" value="0" step="1" min="0" max="3" oninput="three.value=quiz3.value" id="quiz3" name="quiz_3"></input>
 
-                        <p>Servicio de ayudante en quirofano</p>
+                        <p>Servicio de ayudante en quirófano</p>
                         
                         <output class="range_nps_box-ae" id="four" name="four" for="quiz4">0</output>
                         
@@ -669,7 +670,7 @@
                         
                         <input type="range" class="range_ae" value="0" step="1" min="0" max="2" oninput="six.value=quiz6.value" id="quiz6" name="quiz_6"></input>
 
-                        <p>¿Cómo podemos mejorar su experiencia en Armonía Estética?</p>
+                        <p>¿Cómo podemos mejorar tu experiencia en Armonía Estética?</p>
                         <textarea class="gray-s " id="quiz7" name="quiz_7" rows="5" cols="90"a></textarea>
 
 
@@ -728,7 +729,7 @@
                         <output class="range_nps_box" id="two_r" name="two_r" for="r_quiz2">0</output>
                         <input class="range_renew"  value="0" step="1" min="0" max="3" oninput="two_r.value=r_quiz2.value" id="r_quiz2" name="quiz_2" type="range"></input>
 
-                        <p>Limpieza de la clinica:</p>
+                        <p>Limpieza de la clínica:</p>
                         
                         <output class="range_nps_box" id="three_r" name="three_r" for="r_quiz3">0</output>
                         <input class="range_renew"  value="0" step="1" min="0" max="3" oninput="three_r.value=r_quiz3.value" id="r_quiz3" name="quiz_3" type="range"></input>
@@ -755,7 +756,7 @@
 
                         <!-- <ons-switch name="quiz_6" checked></ons-switch>  -->
 
-                        <p>Cómo podemos mejorar su experiencia en Renew Laser</p>
+                        <p>Cómo podemos mejorar tu experiencia en Renew Laser</p>
                         <textarea class="gray-s " id="r_quiz7" name="quiz_7" rows="5" cols="90"></textarea>
 
 
@@ -1725,6 +1726,7 @@ function getBinnacle(){
 
 
 
+    
 // Funcion Home Renew
 function getHomer(){
     console.log('entrando a funcion de getHomer');
@@ -1734,9 +1736,9 @@ function getHomer(){
     $.ajax({
         dataType: 'json',
         async: true,
-            url: rootPath+'_sudiv3/ar_engine/home_r_ios.php', //ruta a donde se enviaran los datos
+            url: rootPath+'_sudiv3/ar_engine/home_r.php', //ruta a donde se enviaran los datos
             type: 'POST', //por que metodo se enviaran las variables
-            data: { getHomer : true, patid : global_id},
+            data: { getHomer : true },
             success: function(data){
                 // console.log(data);
             $("#contain-home-r").html('');
@@ -1822,14 +1824,14 @@ function getHomer(){
                                                 '</div>'+
 
                                                 '<h3 class="tittle purple">Próxima cita</h3>'+
-                                                        '<span class="subtitle ">Recuerda que tu próxima de revisión de cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' será el '+ data.arrayHomer[0].arrayR[m].rend_date+' está como: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.'+
+                                                        '<span class="subtitle ">Recuerda que tu próxima cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' será el '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.'+
 
                                                 '<div style="text-align: center; padding-top: 15px;" id="confirm_renew">'+
-                                                    '<span class="subtitle" style="color: rgb(125, 181, 254);">¿Confirmas que podrás asistir a la cita?</span>'+
+                                                    '<span class="subtitle" style="color: #856d7e;">¿Confirmas que podrás asistir a la cita?</span>'+
                                                         '<div style="display: flex; justify-content: center; padding-top: 10px;padding-bottom: 10px;">'+
-                                                            '<button class="status-no" onclick="dateconfirmrno('+data.arrayHomer[0].arrayR[m].ren_rend_id+');">No podré</button>'+
+                                                            '<button class="status-no" onclick="dateconfirmrno('+data.arrayHomer[0].arrayR[m].ren_rend_id+');">No asistiré</button>'+
 
-                                                            '<button class="status-yes" onclick="dateconfirmr('+data.arrayHomer[0].arrayR[m].ren_rend_id+');">Sí</button>'+
+                                                            '<button class="status-yes" onclick="dateconfirmr('+data.arrayHomer[0].arrayR[m].ren_rend_id+');">Sí asistiré</button>'+
                                                             '<div style="padding: 10px"></div>'+
                                                         '</div>'+
                                                 '</div>'+ 
@@ -1839,8 +1841,8 @@ function getHomer(){
 
                       
                               
-                                  return false;
-                                  break;
+                                  // return false;
+                                  // break;
 
 
                         //confirmada          Tu cita está como
@@ -1857,7 +1859,7 @@ function getHomer(){
                                                 '</div>'+
 
                                                 '<h3 class="tittle purple">Próxima cita</h3>'+
-                                                        '<span class="subtitle ">Tu próxima cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el '+ data.arrayHomer[0].arrayR[m].rend_date+' está como: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Te esperamos!</span>'+
+                                                        '<span class="subtitle ">Tu próxima cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Te esperamos!</span>'+
                                                         
                                                         '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
                                                             employee+
@@ -1865,8 +1867,8 @@ function getHomer(){
                                             '</div>';
                                              $("#contain-home-r").append(Prox_rend);
 
-                                  return false;
-                                  break;
+                                  // return false;
+                                  // break;
 
                         //asistencia        ¡Gracias por asistir!
                                   case '2':
@@ -1881,8 +1883,8 @@ function getHomer(){
                                                     '<h5 class="status-new" style= "background-color:'+arrayStatusColor[data.arrayHomer[0].arrayR[m].rend_status]+'; color:'+arrayStatusName[data.arrayHomer[0].arrayR[m].rend_status]+';"  data-status="'+data.arrayHomer[0].arrayR[m].rend_status+'";> '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+' </h5>'+
                                                 '</div>'+
 
-                                                '<h3 class="tittle purple">Tu cita</h3>'+
-                                                        '<span class="subtitle ">Tu cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' del '+ data.arrayHomer[0].arrayR[m].rend_date+' está como: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Gracias por asistir!</span>'+
+                                                '<h3 class="tittle purple">Cita Asistida</h3>'+
+                                                        '<span class="subtitle ">Tu cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' del '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Gracias por asistir!</span>'+
                                                         
                                                         '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
                                                             employee+
@@ -1891,8 +1893,8 @@ function getHomer(){
 
                                           $("#contain-home-r").append(Prox_rend);
 
-                                  return false;
-                                  break;
+                                  // return false;
+                                  // break;
 
 
                         //inasistencia                 ¡Te invitamos a agendar de nuevo!
@@ -1909,8 +1911,8 @@ function getHomer(){
                                                     '<h5 class="status-new" style= "background-color:'+arrayStatusColor[data.arrayHomer[0].arrayR[m].rend_status]+'; color:'+arrayStatusName[data.arrayHomer[0].arrayR[m].rend_status] +';"  data-status="'+data.arrayHomer[0].arrayR[m].rend_status+'";> '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+' </h5>'+
                                                 '</div>'+
 
-                                                '<h3 class="tittle purple">Próxima cita</h3>'+
-                                                        '<span class="subtitle ">Tu próxima cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el '+ data.arrayHomer[0].arrayR[m].rend_date+' está como: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Te invitamos a agendar de nuevo!</span>'+
+                                                '<h3 class="tittle purple">Cita inasistencia</h3>'+
+                                                        '<span class="subtitle ">Tu cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Te invitamos a agendar de nuevo!</span>'+
                                                         
                                                         '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
                                                             employee+
@@ -1918,8 +1920,8 @@ function getHomer(){
                                             '</div>';
                                              $("#contain-home-r").append(Prox_rend);
 
-                                  return false;
-                                  break;
+                                  // return false;
+                                  // break;
 
                         //reprogramada
                                   case '4':
@@ -1935,17 +1937,17 @@ function getHomer(){
                                                     '<h5 class="status-new" style= "background-color:'+arrayStatusColor[data.arrayHomer[0].arrayR[m].rend_status]+'; color:'+arrayStatusName[data.arrayHomer[0].arrayR[m].rend_status] +';"  data-status="'+data.arrayHomer[0].arrayR[m].rend_status+'";> '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+' </h5>'+
                                                 '</div>'+
 
-                                                '<h3 class="tittle purple">Próxima cita</h3>'+
-                                                        '<span class="subtitle ">Tu próxima cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el '+ data.arrayHomer[0].arrayR[m].rend_date+' está como: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Te esperamos!</span>'+
+                                                '<h3 class="tittle purple">Cita reprogramada</h3>'+
+                                                        '<span class="subtitle ">Tu próxima cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Te esperamos!</span>'+
                                                         
                                                         '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
                                                             employee+
                                                         '</div>'+
                                             '</div>';
-                                             $("#contain-home-r").append(Prox_rend);
+                                            $("#contain-home-r").append(Prox_rend);
 
-                                  return false;
-                                  break;
+                                  // return false;
+                                  // break;
 
                         //cancelada
                                   case '5':
@@ -1961,7 +1963,7 @@ function getHomer(){
                                                 '</div>'+
 
                                                 '<h3 class="tittle purple">Cita cancelada</h3>'+
-                                                        '<span class="subtitle ">Tu cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el '+ data.arrayHomer[0].arrayR[m].rend_date+' ha sido cancelada'+'.</span><br><span class="subtitle ">¡Te invitamos a agendar de nuevo!</span>'+
+                                                        '<span class="subtitle ">Tu cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el '+ data.arrayHomer[0].arrayR[m].rend_date+' ha sido cancelada'+'.</span><br><span class="subtitle ">¡Te invitamos a reagendar de nuevo!</span>'+
                                                         
                                                         '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
                                                             employee+
@@ -1969,14 +1971,14 @@ function getHomer(){
                                             '</div>';
                                              $("#contain-home-r").append(Prox_rend);
 
-                                  return false;
-                                  break;
+                                  
 
 
                                   } //cierre de switch
 
 
-
+                                  return false;
+                                  break;
 
 
 
@@ -2165,10 +2167,10 @@ function getHomeae(){
     $.ajax({
         dataType: 'json',
         async: true,
-            url: rootPath+'_sudiv3/ar_engine/home_ae_ios.php', //ruta a donde se enviaran los datos
+            url: rootPath+'_sudiv3/ar_engine/home_ae.php', //ruta a donde se enviaran los datos
             type: 'POST', //por que metodo se enviaran las variables
             // data: { getHomeae : true},
-            data: { getHomeae : true, patid : global_id},
+            data: { getHomeae : true},
             success: function(data){
             $("#contain-home-ae").html('');
             $("#contain-home-ae").html("");
@@ -2254,8 +2256,8 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                                 '<div style="text-align: center; padding-top: 15px;" id="confirm_ae">'+
                                     '<span class="subtitle" style="color: #4b3348; font-size: 1.1em;">¿Confirmas que podrás asistir a la cita?</span>'+
                                         '<div style="display: flex; justify-content: center; padding-top: 10px;padding-bottom: 10px;">'+
-                                            '<button class="status-no" onclick="dateconfirmaeno('+data.arrayHomeae[b].arrayNextcons[i].Cons_id+');">No podré</button>'+
-                                            '<button class="status-yes" onclick="dateconfirmae('+data.arrayHomeae[b].arrayNextcons[i].Cons_id+');">Sí</button>'+
+                                            '<button class="status-no" onclick="dateconfirmaeno('+data.arrayHomeae[b].arrayNextcons[i].Cons_id+');">No asistiré</button>'+
+                                            '<button class="status-yes" onclick="dateconfirmae('+data.arrayHomeae[b].arrayNextcons[i].Cons_id+');">Sí asistiré</button>'+
                                         '</div>'+
                                 '</div>'+
 
@@ -2285,7 +2287,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                                 '</div>'+
                                                 
                                 '<h3 class="tittle purple"></h3>'+
-                                '<span class="subtitle ">Recuerda que tu próxima de revisión de cita, será el '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+
+                                '<span class="subtitle ">Recuerda que tu próxima cita, será el '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+
                                 '</span>'+
 
                                  employee_ea+
@@ -2384,8 +2386,8 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                                 '</div>'+
                                                 
                                 '<h3 class="tittle purple"></h3>'+
-                                '<span class="subtitle ">Tu cita ha sido programada para el día  '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+
-                                '</span>'+
+                                '<span class="subtitle ">Tu cita del día  '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+
+                                ' ha sido cancelada </span>'+
 
                                 employee_ea+
                                 
@@ -2527,6 +2529,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
 } //cierre de function
 
 /////////////////////////////////////////  
+
 
 function getProducts(){
     console.log('entrando a funcion de getProducts');
