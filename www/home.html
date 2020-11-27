@@ -1736,7 +1736,7 @@ function getHomer(){
     $.ajax({
         dataType: 'json',
         async: true,
-            url: rootPath+'_sudiv3/ar_engine/home_r.php', //ruta a donde se enviaran los datos
+            url: rootPath+'_sudiv3/ar_engine/home_r_ios.php', //ruta a donde se enviaran los datos
             type: 'POST', //por que metodo se enviaran las variables
             data: { getHomer : true , patid : global_id },
             success: function(data){
@@ -2167,7 +2167,7 @@ function getHomeae(){
     $.ajax({
         dataType: 'json',
         async: true,
-            url: rootPath+'_sudiv3/ar_engine/home_ae.php', //ruta a donde se enviaran los datos
+            url: rootPath+'_sudiv3/ar_engine/home_ae_ios.php', //ruta a donde se enviaran los datos
             type: 'POST', //por que metodo se enviaran las variables
             // data: { getHomeae : true},
             data: { getHomeae : true , patid : global_id},
