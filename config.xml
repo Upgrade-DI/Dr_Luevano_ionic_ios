@@ -15,7 +15,7 @@
 	</author>
 
 	<platform name="ios">
-    	<resource-file src="app/GoogleService-Info.plist" />
+    	<resource-file src="app/GoogleService-Info.plist" target="app/GoogleService-Info.plist"/>
 	</platform>
 
 	<!-- <platform name="android">
@@ -69,6 +69,8 @@
         <icon height="144" src="resources/ios/icon/144x144.png" width="144" />
         <icon height="120" src="resources/ios/icon/120x120.png" width="120" />
         <icon height="152" src="resources/ios/icon/152x152.png" width="152" />
+
+        <icon  src="resources/ios/icon/1024x1024.png" width="1024" height="1024"/>
     </platform>
 
 	
