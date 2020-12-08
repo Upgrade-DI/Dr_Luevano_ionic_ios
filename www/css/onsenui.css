@@ -91,7 +91,7 @@ ons-bottom-toolbar {
 }
 
 .page[status-bar-fill] > .page__content {
-  top: 20px;
+  top: 0px;
 }
 
 .page[status-bar-fill] > .toolbar {
