@@ -32,6 +32,7 @@ html, body{ margin:0px; padding:0px;
 .page__content {
   top: 0;
 }
+
 .transparent-body {
   background: none transparent !important;
   opacity: 0 !important;
