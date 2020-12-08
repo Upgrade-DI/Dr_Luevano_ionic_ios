@@ -29,6 +29,9 @@ html, body{ margin:0px; padding:0px;
       overflow: auto !important;
       height: 100% !important; }
 
+.page__content {
+  top: 0;
+}
 .transparent-body {
   background: none transparent !important;
   opacity: 0 !important;
