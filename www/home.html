@@ -933,7 +933,7 @@
 var the_client = null;  
 var token_sent = 0;
 var the_token = null;
-var appDebug = true;
+var appDebug = false;
 
 
 //variables del paciente
@@ -1776,6 +1776,7 @@ function getHomer(){
 
                                 for (var m = 0; m < data.arrayHomer[0].arrayR.length; m++) {
                                     
+                                    $("#contain-home-r").html('');
                                        // $status-rend = '<h5 class="status-new" style="">Confirmada</h5>';
                                  //  if (data.arrayHomer[0].arrayR[m] === null){
                                     
@@ -1809,13 +1810,14 @@ function getHomer(){
                                     
                 /* END DIV EMPLEADO*/
                         //switch de cita 
+
                                   switch(data.arrayHomer[0].arrayR[m].rend_status){
                         
                         //si la cita está como:
                         //en espera           CONFIRMAR CITA SI NO
                                   case '0':
 
-                    var Prox_rend = 
+                                  var Prox_rend = 
                                         '<!-- BOX 1 -->'+
                                             '<div class="box-emergent-r bg-white">'+
                                                 '<div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
@@ -1840,12 +1842,9 @@ function getHomer(){
                                                 '</div>'+ 
                                             '</div>';
 
-                            // $("#contain-home-r").append(Prox_rend);
-
-                      
-                              
-                                  // return false;
-                                  // break;
+                                    $("#contain-home-r").append(Prox_rend);
+                                    return false;
+                                    break;
 
 
                         //confirmada          Tu cita está como
@@ -1868,10 +1867,10 @@ function getHomer(){
                                                             employee+
                                                         '</div>'+
                                             '</div>';
-                                           //  $("#contain-home-r").append(Prox_rend);
-
-                                  // return false;
-                                  // break;
+                                          
+                                    $("#contain-home-r").append(Prox_rend);
+                                    return false;
+                                    break;
 
                         //asistencia        ¡Gracias por asistir!
                                   case '2':
@@ -1894,10 +1893,10 @@ function getHomer(){
                                                         '</div>'+
                                             '</div>';
 
-                                          //$("#contain-home-r").append(Prox_rend);
-
-                                  // return false;
-                                  // break;
+                                          
+                                  $("#contain-home-r").append(Prox_rend);
+                                   return false;
+                                    break;
 
 
                         //inasistencia                 ¡Te invitamos a agendar de nuevo!
@@ -1921,10 +1920,11 @@ function getHomer(){
                                                             employee+
                                                         '</div>'+
                                             '</div>';
-                                            // $("#contain-home-r").append(Prox_rend);
+                                        
 
-                                  // return false;
-                                  // break;
+                                    $("#contain-home-r").append(Prox_rend);
+                                    return false;
+                                    break;
 
                         //reprogramada
                                   case '4':
@@ -1947,10 +1947,10 @@ function getHomer(){
                                                             employee+
                                                         '</div>'+
                                             '</div>';
-                                            //$("#contain-home-r").append(Prox_rend);
-
-                                  // return false;
-                                  // break;
+                                           
+                                    $("#contain-home-r").append(Prox_rend);
+                                    return false;
+                                    break;
 
                         //cancelada
                                   case '5':
@@ -1970,21 +1970,14 @@ function getHomer(){
                                                         
                                             '</div>';
                                     
-
-                                    
+                                    $("#contain-home-r").append(Prox_rend);
+                                    return false;
+                                    break;
 
                                   
-
+                                    
 
                                   } //cierre de switch
-
-                                  $("#contain-home-r").append(Prox_rend);
-
-                                  return false;
-                                  break;
-
-
-
 
                                } //cierre del for arrayR
 /*   E N D     C I T A S       P R O X I M A S*/
