@@ -113,7 +113,7 @@
           QRScanner.scan(
           function(err, result){
             if(err) {
-              console.log('scan error:', result);
+              (appDebug) ? console.log('scan error:', result): '';
             } else {
            
            $("#do_logout").attr('disabled');
@@ -127,7 +127,8 @@
 
 
 
-           console.log('txt: ', result);
+           
+           (appDebug) ? console.log('txt: ', result): '';
            
            var var_Qr = result.split(';');
 
@@ -136,13 +137,13 @@
            var quiz = var_Qr[var_Qr.length -1];
 
             //var_Qr[0]; id cita
-           console.log("date_id: " + date_id); 
+           (appDebug) ? console.log("date_id: " + date_id): '';
 
             //var_Qr[1]; system 0: Renew     1:AE
-           console.log("system_rae: " + system_rae); 
+           (appDebug) ? console.log("system_rae: " + system_rae): '';
 
            //var_Qr[2]; si se le muestra la ENCUESTA 0:true o 1:false (Sólo para renew 1 y 3 aparecerá en true. Armonia todas true)
-           console.log("quiz: " + quiz); 
+           (appDebug) ? console.log("quiz: " + quiz): '';
 
            ons.notification.toast({message: 'el códígo ha sido escaneado', timeout: 1500});
 
@@ -1013,7 +1014,7 @@ var appDebug = false;
                     myNavigator.pushPage(this_page_load, options);
 
                 var prescription = $(this).data("prescription");
-                console.log(prescription);
+                (appDebug) ? console.log(prescription): '';
 
     $.ajax({
         dataType: 'json',
@@ -1023,7 +1024,7 @@ var appDebug = false;
             data: { getPreDetail : true, prescription:prescription},
             success: function(data){
             
-            console.log(data);
+            (appDebug) ? console.log(data): '';
 
             
             $(".box-emergent-account-presdetail").append('<span class="purple" id="presdetail">'+data.arrayRecipesDetail[0].rec_date+'</span><div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
@@ -1170,7 +1171,7 @@ picPath = 'https://armoniaestetica.com/_sudiv3/';
         // @function - Upload Token Device  
             // Función que carga ID del dispositivo 
         function uploadToken(type=null){
-            console.log("cargando token...");           
+            (appDebug) ? console.log("cargando token..."): '';          
             // AJAX - Load Records
             $.ajax({
                 
@@ -1185,7 +1186,7 @@ picPath = 'https://armoniaestetica.com/_sudiv3/';
                 data: {the_patient : the_patient, token : the_token}
                 }).done(function(data){
                 
-                    console.log('resultado: ' + data);
+                    (appDebug) ? console.log('resultado: ' + data): '';
                     //ons.notification.toast({message: data, timeout: 5500});
 
                     token_sent = 1;
@@ -1212,7 +1213,7 @@ function getPatient(){
         (appDebug) ?  console.log(global_pass): '';
 
 
-    console.log('entrando a funcion de getPatient');
+    (appDebug) ? console.log('entrando a funcion de getPatient'): '';
     $.ajax({
         // dataType: 'json',
             async: true,
@@ -1221,7 +1222,8 @@ function getPatient(){
             // data: { getPat : true, the_patient : global_user_id},
             data: { getPat : true, patid : global_id },
             }).done(function(data){
-            console.log(data);
+          
+            (appDebug) ? console.log(data): '';
             
             //count_userData_try = count_userData_try + 1;    
          
@@ -1235,11 +1237,12 @@ function getPatient(){
                 // urlAE = 'https://armoniaestetica.com/_sudiv3/';
                 urlRenew ='https://armoniaestetica.com/sudi_renew/';
 
-                console.log('user id ' + data.patient[0].pat_id);
-                console.log('user mail ' + data.patient[0].pat_mail);
-                console.log('user name ' + data.patient[0].pat_name);
-                console.log('user client ' + data.patient[0].pat_system);
-                console.log('user PHOTO ' + data.patient[0].pat_photo);
+                (appDebug) ? console.log('user id ' + data.patient[0].pat_id): '';
+                (appDebug) ? console.log('user mail ' + data.patient[0].pat_mail): '';
+                (appDebug) ? console.log('user name ' + data.patient[0].pat_name): '';
+                (appDebug) ? console.log('user client ' + data.patient[0].pat_system): '';
+                (appDebug) ? console.log('user PHOTO ' + data.patient[0].pat_photo): '';
+
                 
                     //Igualar variables
                     the_patient = data.patient[0].pat_id;
@@ -1252,7 +1255,9 @@ function getPatient(){
                     }, 500);
 
                     }else{
-                        console.log('Token no enviado: '+token_sent);
+                        
+                        (appDebug) ? console.log('Token no enviado: '+token_sent): '';
+
                     }
 //END TOKEN
 
@@ -1446,13 +1451,15 @@ function getPatient(){
        
         $(document).on('submit','#quiz_ea_form',function(){
         "use strict";
-                console.log("Enviando");
+              
+                (appDebug) ? console.log("Enviando"): '';
             
 
                 // Definimos el tipo de formulario
                 var aeQuizPath = rootPath+'_sudiv3/ar_engine/ae_quiz.php';
                 
-                console.log(aeQuizPath);                     
+               
+                (appDebug) ? console.log(aeQuizPath): '';                    
                 // Variable que contiene la solicitud
                 var request;
 
@@ -1465,7 +1472,7 @@ function getPatient(){
                 // Serializamos la información del Formulario
                 var serializedData = $form.serialize();
                 
-                console.log(serializedData);
+                (appDebug) ? console.log(serializedData): '';
             
                 // Disparamos la solicitud (request) 
                 request = $.ajax({
@@ -1514,13 +1521,13 @@ function getPatient(){
        
         $(document).on('submit','#quiz_r_form',function(){
         "use strict";
-                console.log("Enviando");
+                
+                (appDebug) ? console.log("Enviando"): '';
             
-
                 // Definimos el tipo de formulario
                 var rQuizPath = rootPath+'_sudiv3/ar_engine/re_quiz.php';
                 
-                console.log(rQuizPath);                     
+                (appDebug) ? console.log(rQuizPath): '';                    
                 // Variable que contiene la solicitud
                 var request;
 
@@ -1532,8 +1539,8 @@ function getPatient(){
             
                 // Serializamos la información del Formulario
                 var serializedData = $form.serialize();
-                
-                console.log(serializedData);
+
+                (appDebug) ? console.log(serializedData): '';
             
                 // Disparamos la solicitud (request) 
                 request = $.ajax({
@@ -1545,7 +1552,8 @@ function getPatient(){
                 
                 // Conexión exitosa
                 request.done(function (response, textStatus, jqXHR){                   
-                    console.log(response);
+                    
+                    (appDebug) ? console.log(response): '';
                     if(response != 'fail'){
                         window.document.querySelector('#account-rae').classList.remove('transparent-body');
                         $('#space_account').removeClass('qr-invisibility');
@@ -1732,7 +1740,7 @@ function getBinnacle(){
     
 // Funcion Home Renew
 function getHomer(){
-    console.log('entrando a funcion de getHomer');
+    (appDebug) ? console.log('entrando a funcion de getHomer'): '';
    // $("#contain-home-ae").html('');
     $("#contain-home-r").html('');
     
@@ -1747,7 +1755,8 @@ function getHomer(){
             $("#contain-home-r").html('');
             $("#contain-home-r").html("");
     
-     console.log(data);
+   
+        (appDebug) ? console.log(data): '';
         if(data.arrayHomer[0].arrayR.length == 0 && data.arrayHomer[0].arrayS.length == 0 && data.arrayHomer[0].arrayP.length == 0){
 
               var NoDataR = '<h4 style="margin-top: 50px; padding-left: 15px; color: #4b3348;"> Por el momento no cuentas con información</h4>';
@@ -2157,7 +2166,8 @@ function getHomer(){
 ///////////////////////
 // Falta traerme las sesiones realizadas/total y los cuadros. Verificar error por qué te trae tantos días y dato de incluye correctamente
 function getHomeae(){
-    console.log('entrando a funcion de getHomeae');
+   
+    (appDebug) ? console.log('entrando a funcion de getHomeae'): '';
      $("#contain-home-ae").html('');
      //$("#contain-home-ae").empty();
 
@@ -2172,14 +2182,12 @@ function getHomeae(){
             success: function(data){
             $("#contain-home-ae").html('');
             $("#contain-home-ae").html("");
-            
-
-                // console.log(data);
-            console.log(data);
+          
+            (appDebug) ? console.log(data): '';
            
-            console.log(data.arrayHomeae[0].arrayNextcons.length);
-            console.log(data.arrayHomeae[0].arrayNextcons);
-
+        
+            (appDebug) ? console.log(data.arrayHomeae[0].arrayNextcons.length): '';
+            (appDebug) ? console.log(data.arrayHomeae[0].arrayNextcons): '';
 
              if ( data.arrayHomeae[0].arrayNextcons.length == 0 && data.arrayHomeae[0].arrayExams.length == 0 && data.arrayHomeae[0].arrayExams.length == 0 && data.arrayHomeae[0].arrayPayae.length == 0){ 
 
@@ -2528,7 +2536,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
 
 
 function getProducts(){
-    console.log('entrando a funcion de getProducts');
+    (appDebug) ? console.log('entrando a funcion de getProducts'): '';
 
     $.ajax({
         dataType: 'json',
@@ -2538,7 +2546,7 @@ function getProducts(){
             data: { getProducts : true },
             success: function(data){
                
-            console.log('data products ' +data);
+            (appDebug) ? console.log(data): '';
 
             for (var i = 0; i < data.arrayProducts.length; i++) {
 
@@ -2616,7 +2624,7 @@ function getServices(){
 
 
 function getPrescriptions(){
-    console.log('entrando a funcion de getPrescriptions');
+    (appDebug) ? console.log('entrando a funcion de getPrescriptions'): '';
 
     $.ajax({
         dataType: 'json',
@@ -2626,7 +2634,7 @@ function getPrescriptions(){
             data: { getPrescriptions : true, patid : global_id},
             success: function(data){
                
-            console.log('data prescriptions ' +data);
+            (appDebug) ? console.log(data): '';
             if (data.arrayRecipes.length == 0){ 
             var NoData = '<h4 style="margin-top: 50px; padding-left: 15px; color: #002130;"> Por el momento no cuentas con información</h4>';
 
@@ -2666,7 +2674,7 @@ function getPrescriptions(){
 
 /* function gethistory RAE */
 function getHistoryae(){ 
-    console.log('entrando a funcion de getHistoryae');
+    (appDebug) ? console.log('entrando a funcion de getHistoryae'): '';
 
     $.ajax({
         dataType: 'json',
@@ -2676,7 +2684,8 @@ function getHistoryae(){
             data: { getHistoryae : true, patid : global_id },
             success: function(data){
             // $("#contain-payment-history").html("");
-            console.log(data);
+         
+            (appDebug) ? console.log(data): '';
             if (data == 0){ 
               
                     
@@ -2718,7 +2727,7 @@ function getHistoryae(){
 /*Fuction gethistory renew*/
 // Falta traerme las sesiones realizadas/total y los cuadros. Verificar error por qué te trae tantos días y dato de incluye correctamente
 function getHistoryrenew(){
-    console.log('entrando a funcion de getHistoryrenew');
+    (appDebug) ? console.log('entrando a funcion de getHistoryrenew'): '';
 
     $.ajax({
         dataType: 'json',
@@ -2727,8 +2736,8 @@ function getHistoryrenew(){
             type: 'POST', //por que metodo se enviaran las variables
             data: { getHistoryrenew : true, patid : global_id},
             success: function(data){
-                // console.log(data);
-            console.log(data);
+            
+            (appDebug) ? console.log(data): '';
 
         // $("#contain-payment-history").html("");
             if (data == 0){ 
