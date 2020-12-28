@@ -1605,9 +1605,9 @@ function getBinnacle(){
     $.ajax({
         dataType: 'json',
         async: true,
-            url: rootPath+'_sudiv3/ar_engine/binnacle.php', //ruta a donde se enviaran los datos
+            url: rootPath+'_sudiv3/ar_engine/binnacle_ios.php', //ruta a donde se enviaran los datos
             type: 'POST', //por que metodo se enviaran las variables
-            data: { getBin : true },
+            data: { getBin : true , patid : global_id },
             success: function(data){
                 // console.log(data);
      // console.log(data);
@@ -1745,9 +1745,9 @@ function getHomer(){
     $.ajax({
         dataType: 'json',
         async: true,
-            url: rootPath+'_sudiv3/ar_engine/home_r.php', //ruta a donde se enviaran los datos
+            url: rootPath+'_sudiv3/ar_engine/home_r_ios.php', //ruta a donde se enviaran los datos
             type: 'POST', //por que metodo se enviaran las variables
-            data: { getHomer : true },
+            data: { getHomer : true,  patid : global_id  },
             success: function(data){
                 // console.log(data);
             $("#contain-home-r").html('');
@@ -2190,10 +2190,10 @@ function getHomeae(){
     $.ajax({
         dataType: 'json',
         async: true,
-            url: rootPath+'_sudiv3/ar_engine/home_ae.php', //ruta a donde se enviaran los datos
+            url: rootPath+'_sudiv3/ar_engine/home_ae_ios.php', //ruta a donde se enviaran los datos
             type: 'POST', //por que metodo se enviaran las variables
             // data: { getHomeae : true},
-            data: { getHomeae : true},
+            data: { getHomeae : true,  patid : global_id },
             success: function(data){
             $("#contain-home-ae").html('');
             $("#contain-home-ae").html("");
@@ -2647,9 +2647,9 @@ function getPrescriptions(){
     $.ajax({
         dataType: 'json',
         async: true,
-            url: rootPath+'_sudiv3/ar_engine/prescriptions.php', //ruta a donde se enviaran los datos
+            url: rootPath+'_sudiv3/ar_engine/prescriptions_ios.php', //ruta a donde se enviaran los datos
             type: 'POST', //por que metodo se enviaran las variables
-            data: { getPrescriptions : true},
+            data: { getPrescriptions : true,  patid : global_id },
             success: function(data){
                
             console.log('data prescriptions ' +data);
@@ -2697,9 +2697,9 @@ function getHistoryae(){
     $.ajax({
         dataType: 'json',
         async: true,
-            url: rootPath+'_sudiv3/ar_engine/history-ae.php', //ruta a donde se enviaran los datos
+            url: rootPath+'_sudiv3/ar_engine/history-ae_ios.php', //ruta a donde se enviaran los datos
             type: 'POST', //por que metodo se enviaran las variables
-            data: { getHistoryae : true},
+            data: { getHistoryae : true,  patid : global_id },
             success: function(data){
             // $("#contain-payment-history").html("");
             console.log(data);
@@ -2749,9 +2749,9 @@ function getHistoryrenew(){
     $.ajax({
         dataType: 'json',
         async: true,
-            url: rootPath+'_sudiv3/ar_engine/history-renew.php', //ruta a donde se enviaran los datos
+            url: rootPath+'_sudiv3/ar_engine/history-renew_ios.php', //ruta a donde se enviaran los datos
             type: 'POST', //por que metodo se enviaran las variables
-            data: { getHistoryrenew : true},
+            data: { getHistoryrenew : true,  patid : global_id },
             success: function(data){
                 // console.log(data);
         console.log(data);
