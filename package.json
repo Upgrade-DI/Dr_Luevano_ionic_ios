@@ -10,6 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "cordova-browser": "~6.0.0",
+    "cordova-ios": "^6.1.1",
     "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-calendar": "^5.1.5",
     "cordova-plugin-camera": "^4.1.0",
@@ -29,7 +30,8 @@
   "dependencies": {},
   "cordova": {
     "platforms": [
-      "cordova-browser"
+      "cordova-browser",
+      "ios"
     ],
     "plugins": {
       "cordova-plugin-camera": {},

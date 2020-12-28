@@ -1,0 +1,14 @@
+{
+    "EventKit.framework": 1,
+    "EventKitUI.framework": 1,
+    "ImageIO.framework": 1,
+    "CoreLocation.framework": 3,
+    "AVFoundation.framework": 1,
+    "AudioToolbox.framework": 2,
+    "SystemConfiguration.framework": 1,
+    "CoreTelephony.framework": 1,
+    "Security.framework": 1,
+    "Storekit.framework": 1,
+    "libstdc++.dylib": 1,
+    "libz.dylib": 1
+}
