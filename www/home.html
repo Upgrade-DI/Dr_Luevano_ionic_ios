@@ -76,9 +76,10 @@
         <!-- <script src="../../dist/cordova-plugin-qrscanner-lib.min.js"></script> -->
         <script type="text/javascript">
      
+    
      // page__background page--material__background     background: none transparent !important;
       function prescan(){
-       QRScanner.prepare(onDone);
+       QRScanner.prepare();
        // window.document.querySelector('#account-rae').classList.add('transparent-body');
        
        $('#account-rae').removeClass('bg-degrad');
@@ -86,7 +87,7 @@
        window.document.querySelector('#contain-rae').classList.add('transparent-body');
        window.document.querySelector('#do_logout').classList.add('transparent-body');
 
-       QRScanner.useCamera();
+       // QRScanner.useCamera();
        QRScanner.show();
        $('#space_account').addClass('qr-invisibility');
        $('#qr_buttons').html('');
