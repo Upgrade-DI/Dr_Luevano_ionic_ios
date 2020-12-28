@@ -641,7 +641,7 @@
                     
                     <form id="quiz_ea_form" name="quiz_ea_form" action="#" autocomplete="off" method="POST" style="margin: 0px 22px;">
 
-                        <p style="padding-bottom: 15px;">En Armonia estética tenemos el compromiso de mejorar constantemente, por lo que nos ayudará saber tú opinión acerca de nosotros</p>
+                        <p style="padding-bottom: 15px;">En Armonia estética tenemos el compromiso de mejorar constantemente, por lo que nos ayudará saber tu opinión acerca de nosotros</p>
                         
                         <p style="padding-bottom: 5px;     font-size: 0.8em;">0 = Malo   1 = Regular   2 = Bueno   3 = Excelente</p>
 
@@ -666,7 +666,7 @@
                        
                         <input type="range" class="range_ae" value="0" step="1" min="0" max="3" oninput="three.value=quiz3.value" id="quiz3" name="quiz_3"></input>
 
-                        <p>Servicio de ayudante en quirofano</p>
+                        <p>Servicio de ayudante en quirófano</p>
                         
                         <output class="range_nps_box-ae" id="four" name="four" for="quiz4">0</output>
                         
@@ -678,13 +678,13 @@
                         
                         <input type="range" class="range_ae" value="0" step="1" min="0" max="3" oninput="five.value=quiz5.value" id="quiz5" name="quiz_5"></input>
 
-                        <p>Recomendarías nuestros servicios</p>  <p>0 = Sí   1 = No   2 = Tal vez </p> 
+                        <p>¿Recomendarías nuestros servicios?</p>  <p>0 = Sí   1 = No   2 = Tal vez </p> 
                         
                         <output class="range_nps_box-ae" id="six" name="six" for="quiz6">0</output>
                         
                         <input type="range" class="range_ae" value="0" step="1" min="0" max="2" oninput="six.value=quiz6.value" id="quiz6" name="quiz_6"></input>
 
-                        <p>¿Cómo podemos mejorar su experiencia en Armonía Estética?</p>
+                        <p>¿Cómo podemos mejorar tu experiencia en Armonía Estética?</p>
                         <textarea class="gray-s " id="quiz7" name="quiz_7" rows="5" cols="90"a></textarea>
 
 
@@ -761,7 +761,7 @@
                         <input class="range_renew" value="0" step="1" min="0" max="2" oninput="five_r.value=r_quiz5.value" id="r_quiz5" name="quiz_5" type="range"></input>
                         
 
-                        <p>Conociste nuestro menú de servicios</p>
+                        <p>¿Conociste nuestro menú de servicios?</p>
                         
                         <div style="display: flex; justify-content: space-evenly;">
                            <span><input name="quiz_6" type="radio" value="off" > No</span>
@@ -770,7 +770,7 @@
 
                         <!-- <ons-switch name="quiz_6" checked></ons-switch>  -->
 
-                        <p>Cómo podemos mejorar su experiencia en Renew Laser</p>
+                        <p>¿Cómo podemos mejorar su experiencia en Renew Laser?</p>
                         <textarea class="gray-s " id="r_quiz7" name="quiz_7" rows="5" cols="90"></textarea>
 
 
@@ -1280,8 +1280,10 @@ function getPatient(){
             
             /* menu head foto y nombre*/
 
-            if (data.patient[0].pat_photo == null | '') {
-                $photo_patient = '<img src="img/folder-h.png" class="circle-purple" >';
+            if (data.patient[0].pat_photo == null | data.patient[0].pat_photo == '' | data.patient[0].pat_photo == "") {
+                // $photo_patient = '<img src="img/lo-ae-3.png" class="circle-purple" >';
+                $photo_patient = 'img/lo-ae-3.png';
+
 
 
             }else{
@@ -1343,8 +1345,10 @@ function getPatient(){
                         getHomer();
                         getHistoryrenew();
             /* menu head foto y nombre*/
-            if (data.patient[0].pat_photo == null | '') {
-                $photo_patient = '<img src="img/folder-h.png" class="circle-purple" >';
+            if (data.patient[0].pat_photo == null | data.patient[0].pat_photo == '' | data.patient[0].pat_photo == "") {
+                // $photo_patient = '<img src="img/lo-ae-3.png" class="circle-purple" >';
+                $photo_patient = 'img/lo-ae-3.png';
+
 
 
             }else{
@@ -1352,7 +1356,7 @@ function getPatient(){
                 $photo_patient = urlRenew+''+data.patient[0].pat_photo;
 
 
-            $(".head-tittle-name").html('<h1 class="tittle_name">Hola, '+data.patient[0].pat_name+'</h1> <div class="profile-picture user-picture"></div>');
+                $(".head-tittle-name").html('<h1 class="tittle_name">Hola, '+data.patient[0].pat_name+'</h1> <div class="profile-picture user-picture"></div>');
             }
 
 
@@ -1388,20 +1392,12 @@ function getPatient(){
                         getHistoryae();
 
             /* menu head foto y nombre*/
-            if (data.patient[0].pat_photo == null | '') {
+            // if (data.patient[0].pat_photo == null | '') {
                 // $photo_patient = '<img src="img/folder-h.png" class="circle-purple" >';
-                 $photo_patient = 'img/logotipo_r.svg';
+                 $photo_patient = 'img/lo-ae-3.png';
             $('.profile-picture').css('background-image','url('+$photo_patient+')');
-
-
-
-
-            }else{
-                // $photo_patient = '<img src="'+urlAE+''+data.patient[0].pat_photo+'">';
-                 $photo_patient = urlAE+''+data.patient[0].pat_photo;
-
             $(".head-tittle-name").html('<h1 class="tittle_name">Hola, '+data.patient[0].pat_name+'</h1> <div class="profile-picture user-picture"></div>');
-            }
+            // }
 
 
             // $(".profile-picture").append($photo_patient);
@@ -1764,11 +1760,7 @@ function getHomer(){
 
               $("#contain-home-r").append(NoDataR);
 
-
-
         }else{
-
-
 
                                   // 0  'sessions_wait' 
                                   // 1  'sessions_confirm'
@@ -1797,18 +1789,24 @@ function getHomer(){
  
                                         var calend_status = '';
                                       //  calend_status = (data.arrayHomer[0].arrayR[m].rend_status == '1') ? '<img src="images/calendar.png" style="    width: 50px; height: auto;"><h5 class="purple" style="font-size: 0.9em;text-align: right;">Agregar a calendario</h5>' : '';
-                                      if (data.arrayHomer[0].arrayR[m].user_photo == null | '') {
-                                        $photo_user_homer = '<img src="img/folder-h.png" class="circle-purple" >';
+                                      // var root_web_renew = 'https://armoniaestetica.com/';
+                                      var root_web_renew = 'https://armoniaestetica.com/sudi_renew/';
+
+                                      if (data.arrayHomer[0].arrayR[m].user_photo == null | data.arrayHomer[0].arrayR[m].user_photo == '') {
+                                        $photo_user_homer = 'img/lo-ae-3.png';
                                       }else{
                                           // $photo_patient = '<img src="'+urlAE+''+data.patient[0].pat_photo+'">';
-                                        $photo_user_homer = root_web+data.arrayHomer[0].arrayR[m].user_photo;
+                                        $photo_user_homer = root_web_renew+data.arrayHomer[0].arrayR[m].user_photo;
                                       }
+
+
+
 
 
                 /*   DIV EMPLEADO*/
                                             var employee =    '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
                                                               '<div class="sales-person">'+
-                                                                  '<img src="'+$photo_user_homer+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; ">'+
+                                                                  '<img src="'+$photo_user_homer+'" class="photo_sales_r">'+
                                                                   '<span class="little" style="padding-left: 15px;">'+
                                                                       data.arrayHomer[0].arrayR[m].user_fname+' '+ data.arrayHomer[0].arrayR[m].user_lname+
                                                                   '</span>'+
@@ -1837,7 +1835,7 @@ function getHomer(){
                                                 '</div>'+
 
                                                 '<h3 class="tittle purple">Próxima cita</h3>'+
-                                                        '<span class="subtitle ">Recuerda que tu próxima de revisión de cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' será el '+ data.arrayHomer[0].arrayR[m].rend_date+' está como: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.'+
+                                                        '<span class="subtitle ">Recuerda que tu próxima de '+ data.arrayHomer[0].arrayR[m].serv_name+' será el '+ data.arrayHomer[0].arrayR[m].rend_date+' y su está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.'+
 
                                                 '<div style="text-align: center; padding-top: 15px;" id="confirm_renew">'+
                                                     '<span class="subtitle" style="color: rgb(125, 181, 254);">¿Confirmas que podrás asistir a la cita?</span>'+
@@ -1854,7 +1852,7 @@ function getHomer(){
 
                       
                               
-                                  return false;
+                                 // return false;
                                   break;
 
 
@@ -1872,7 +1870,7 @@ function getHomer(){
                                                 '</div>'+
 
                                                 '<h3 class="tittle purple">Próxima cita</h3>'+
-                                                        '<span class="subtitle ">Tu próxima cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el '+ data.arrayHomer[0].arrayR[m].rend_date+' está como: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Te esperamos!</span>'+
+                                                        '<span class="subtitle ">Tu próxima cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Te esperamos!</span>'+
                                                         
                                                         '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
                                                             employee+
@@ -1880,7 +1878,7 @@ function getHomer(){
                                             '</div>';
                                              $("#contain-home-r").append(Prox_rend);
 
-                                  return false;
+                                 // return false;
                                   break;
 
                         //asistencia        ¡Gracias por asistir!
@@ -1896,8 +1894,8 @@ function getHomer(){
                                                     '<h5 class="status-new" style= "background-color:'+arrayStatusColor[data.arrayHomer[0].arrayR[m].rend_status]+'; color:'+arrayStatusName[data.arrayHomer[0].arrayR[m].rend_status]+';"  data-status="'+data.arrayHomer[0].arrayR[m].rend_status+'";> '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+' </h5>'+
                                                 '</div>'+
 
-                                                '<h3 class="tittle purple">Tu cita</h3>'+
-                                                        '<span class="subtitle ">Tu cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' del '+ data.arrayHomer[0].arrayR[m].rend_date+' está como: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Gracias por asistir!</span>'+
+                                                '<h3 class="tittle purple">Cita Asistida</h3>'+
+                                                        '<span class="subtitle ">Tu cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' del '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Gracias por asistir!</span>'+
                                                         
                                                         '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
                                                             employee+
@@ -1906,7 +1904,7 @@ function getHomer(){
 
                                           $("#contain-home-r").append(Prox_rend);
 
-                                  return false;
+                                  //return false;
                                   break;
 
 
@@ -1924,8 +1922,8 @@ function getHomer(){
                                                     '<h5 class="status-new" style= "background-color:'+arrayStatusColor[data.arrayHomer[0].arrayR[m].rend_status]+'; color:'+arrayStatusName[data.arrayHomer[0].arrayR[m].rend_status] +';"  data-status="'+data.arrayHomer[0].arrayR[m].rend_status+'";> '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+' </h5>'+
                                                 '</div>'+
 
-                                                '<h3 class="tittle purple">Próxima cita</h3>'+
-                                                        '<span class="subtitle ">Tu próxima cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el '+ data.arrayHomer[0].arrayR[m].rend_date+' está como: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Te invitamos a agendar de nuevo!</span>'+
+                                                '<h3 class="tittle purple">Cita inasistencia</h3>'+
+                                                        '<span class="subtitle ">Tu cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el día '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Te invitamos a agendar de nuevo!</span>'+
                                                         
                                                         '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
                                                             employee+
@@ -1933,7 +1931,7 @@ function getHomer(){
                                             '</div>';
                                              $("#contain-home-r").append(Prox_rend);
 
-                                  return false;
+                                 // return false;
                                   break;
 
                         //reprogramada
@@ -1950,8 +1948,8 @@ function getHomer(){
                                                     '<h5 class="status-new" style= "background-color:'+arrayStatusColor[data.arrayHomer[0].arrayR[m].rend_status]+'; color:'+arrayStatusName[data.arrayHomer[0].arrayR[m].rend_status] +';"  data-status="'+data.arrayHomer[0].arrayR[m].rend_status+'";> '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+' </h5>'+
                                                 '</div>'+
 
-                                                '<h3 class="tittle purple">Próxima cita</h3>'+
-                                                        '<span class="subtitle ">Tu próxima cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el '+ data.arrayHomer[0].arrayR[m].rend_date+' está como: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Te esperamos!</span>'+
+                                                '<h3 class="tittle purple">Cita reprogramada</h3>'+
+                                                        '<span class="subtitle ">Tu próxima cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el día '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Te esperamos!</span>'+
                                                         
                                                         '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
                                                             employee+
@@ -1959,7 +1957,7 @@ function getHomer(){
                                             '</div>';
                                              $("#contain-home-r").append(Prox_rend);
 
-                                  return false;
+                                 // return false;
                                   break;
 
                         //cancelada
@@ -1976,7 +1974,7 @@ function getHomer(){
                                                 '</div>'+
 
                                                 '<h3 class="tittle purple">Cita cancelada</h3>'+
-                                                        '<span class="subtitle ">Tu cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el '+ data.arrayHomer[0].arrayR[m].rend_date+' ha sido cancelada'+'.</span><br><span class="subtitle ">¡Te invitamos a agendar de nuevo!</span>'+
+                                                        '<span class="subtitle ">Tu cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el día '+ data.arrayHomer[0].arrayR[m].rend_date+' ha sido cancelada'+'.</span><br><span class="subtitle ">¡Te invitamos a reagendar de nuevo!</span>'+
                                                         
                                                         '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
                                                             employee+
@@ -1984,7 +1982,7 @@ function getHomer(){
                                             '</div>';
                                              $("#contain-home-r").append(Prox_rend);
 
-                                  return false;
+                                  //return false;
                                   break;
 
 
@@ -2022,7 +2020,7 @@ function getHomer(){
                              
 
 
-                                var rect_ses, rect_green_ses, rect_yellow_ses, rect_gray_ses, rect_red_ses, rect_blue_ses, rect_orange_ses;
+                                var rect_ses, rect_green_ses, rect_yellow_ses, rect_gray_ses, rect_red_ses, rect_blue_ses, rect_orange_ses, start_hour, end_hour,  hour;
                                 var Session_made = '';
                                 
                                /* 0 */ sessions_wait = data.arrayHomer[0].arrayS[n].sessions_wait;
@@ -2033,6 +2031,9 @@ function getHomer(){
                                /* 4 */ sessions_resched = data.arrayHomer[0].arrayS[n].sessions_resched;
                                /* 5 */ sessions_cancel = data.arrayHomer[0].arrayS[n].sessions_cancel;
                                 
+                                 start_hour = data.arrayHomer[0].arrayS[n].ses_hour;
+                                 end_hour = data.arrayHomer[0].arrayS[n].ses_hour_end;
+
                                 sessiontotal = data.arrayHomer[0].arrayS[n].sessiontotal;
 
 
@@ -2054,13 +2055,20 @@ function getHomer(){
                                         rect_yellow_ses ='';
 
                                     }
+
+                                    if(start_hour == null && end_hour == null){
+                                      hour = '';
+
+                                    }else{
+                                      hour = data.arrayHomer[0].arrayS[n].ses_hour+'-'+data.arrayHomer[0].arrayS[n].ses_hour_end;
+                                    }
                                    
                              
                                 var Session_made = '<!-- BOX 2 -->'+
                                     '<div class="box-emergent-r bg-white" data-ses="'+data.arrayHomer[0].arrayS[n].id_ses+'">'+  
                                         '<div style=" display: flex; justify-content: space-between; padding-top: 10px; margin: 0px; align-items: center;">'+  
                                             '<div class="info-detail"><img src="img/reloj.svg" style="width: 30px;">'+
-                                                '<h4 class="hour" style="padding-left: 15px;">'+data.arrayHomer[0].arrayS[n].ses_hour+'-'+data.arrayHomer[0].arrayS[n].ses_hour_end+
+                                                '<h4 class="hour" style="padding-left: 15px;">'+hour+
                                             '</div>'+
                                             '<span style="text-decoration: underline; font-size: 0.9em;">Ver detalles</span>'+
                                         '</div>'+
@@ -2097,6 +2105,7 @@ function getHomer(){
                                         // var Products = ''; 
                                     // if (data.arrayHomer[0].arrayP[o].length > 0){
 
+                                        var img = 'https://armoniaestetica.com/sudi_renew/'+data.arrayHomer[0].arrayP[o].prod_image;
 
                                         var Products = 
                                         '<!-- BOX 3 -->'+
@@ -2134,6 +2143,7 @@ function getHomer(){
 
                                                         '<div style="margin: auto;">  <!-- div derecha -->'+
 
+                                                            '<img src="'+img+'" style="    border-radius: 10px;display: block;height: 100px;width: 100px;background-size: cover;">'+
                                                            
                                                         '</div> <!-- end div derecha -->'+
                                                 '</div>';
@@ -2261,7 +2271,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                                 '</div>'+
                                                 
                                 '<h3 class="tittle purple"></h3>'+
-                                '<span class="subtitle ">Recuerda que tu próxima de revisión de cita, será el '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+
+                                '<span class="subtitle ">Recuerda que tu próxima de revisión de cita, será el día '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+
                                 '</span>'+
 
                                 employee_ea+
@@ -2283,7 +2293,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
 
                       
                               
-                                  return false;
+                                  //return false;
                                   break;
 
 
@@ -2300,7 +2310,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                                 '</div>'+
                                                 
                                 '<h3 class="tittle purple"></h3>'+
-                                '<span class="subtitle ">Recuerda que tu próxima de revisión de cita, será el '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+
+                                '<span class="subtitle ">Recuerda que tu próxima de revisión de cita, será el día '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+
                                 '</span>'+
 
                                  employee_ea+
@@ -2308,7 +2318,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                             '</div>';
                                             $("#contain-home-ae").append(NextCons);
 
-                                  return false;
+                                 // return false;
                                   break;
 
                         //asistencia        ¡Gracias por asistir!
@@ -2332,7 +2342,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                             '</div>';
                                             $("#contain-home-ae").append(NextCons);
 
-                                  return false;
+                                //  return false;
                                   break;
 
 
@@ -2358,7 +2368,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                             '</div>';
                                             $("#contain-home-ae").append(NextCons);
 
-                                  return false;
+                                  //return false;
                                   break;
 
                         //reprogramada
@@ -2375,7 +2385,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                                 '</div>'+
                                                 
                                 '<h3 class="tittle purple"></h3>'+
-                                '<span class="subtitle ">Tu cita ha sido programada para el día '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+
+                                '<span class="subtitle ">Tu cita del día '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+ 'ha sido reprogramada '+
                                 '</span>'+
 
                                  employee_ea+
@@ -2383,7 +2393,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                             '</div>';
                                             $("#contain-home-ae").append(NextCons);
 
-                                  return false;
+                                  //return false;
                                   break;
 
                         //cancelada
@@ -2399,15 +2409,15 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                                 '</div>'+
                                                 
                                 '<h3 class="tittle purple"></h3>'+
-                                '<span class="subtitle ">Tu cita ha sido programada para el día  '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+
-                                '</span>'+
+                                '<span class="subtitle ">Tu cita del día  '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+
+                                ' ha sido cancelada </span>'+
 
                                 employee_ea+
                                 
                             '</div>';
                                             $("#contain-home-ae").append(NextCons);
 
-                                  return false;
+                                 // return false;
                                   break;
 
 
@@ -2496,7 +2506,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                 if (data.arrayHomeae[b].arrayPayae[a].Pay_inc_notes=== null){
                     notes = '';
                 }else{
-                notes = '<h3 class="tittle purple">'+ data.arrayHomeae[b].arrayPayae[a].Pay_inc_notes +'</h3>';
+                    notes = '<h3 class="tittle purple">'+ data.arrayHomeae[b].arrayPayae[a].Pay_inc_notes +'</h3>';
                 }
 
                 boxPay_ea = '<!-- BOX 3 -->'+

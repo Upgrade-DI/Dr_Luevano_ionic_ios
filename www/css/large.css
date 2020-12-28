@@ -2771,6 +2771,14 @@ input[type=range].range_ae:focus::-ms-fill-upper {
   color: #f3efeb;
 }
 
+.photo_sales_r{
+  border-radius: 60px; 
+  display: block; 
+  height: 40px; 
+  width: 40px; 
+  background-size: cover; 
+  margin-right: 25px;"
+}
 
 /* MAP */
 
