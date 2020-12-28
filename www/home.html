@@ -18,7 +18,7 @@
         <script src="js/onsenui.min.js"></script>
         <script src="js/login.js" ></script>
         <script src="js/main.js" ></script>    
-        <script type="text/javascript" src="cordova.js"></script>
+        <!-- <script type="text/javascript" src="cordova.js"></script> -->
         <script type="text/javascript" src="js/push.js"></script>
 
 
@@ -2232,7 +2232,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
 
                 /*   DIV EMPLEADO*/
                    if (data.arrayHomeae[b].arrayNextcons[i].Cons_user_photo == null | '') {
-                                          $photo_user_homeae = '<img src="img/folder-h.png" class="circle-purple" >';
+                                          $photo_user_homeae = 'img/lo-ae-3.png';
                    }else{
                                             
                                           $photo_user_homeae = root_web+data.arrayHomeae[b].arrayNextcons[i].Cons_user_photo;
@@ -2242,7 +2242,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                
                     var employee_ea =    '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
                                             '<div class="sales-person">'+
-                                                '<img src="'+$photo_user_homeae+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; ">'+
+                                                '<img src="'+$photo_user_homeae+'" class="circle-purple photo_sales" >'+
                                                 '<span class="little" style="padding-left: 15px;">'+
                                                 data.arrayHomeae[b].arrayNextcons[i].Cons_user_fname+' '+ data.arrayHomeae[b].arrayNextcons[i].Cons_user_lname+
                                                 '</span>'+
