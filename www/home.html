@@ -39,7 +39,7 @@
                 <!-- <div class="b"></div> -->
             </ons-tab>
 
-            <ons-tab page="account.html" label="" class="custom-ico center"  active>     <!-- cuenta RAE cliente-->
+            <ons-tab page="account.html" label="" class="custom-ico center" active>     <!-- cuenta RAE cliente-->
             </ons-tab>
 
             <ons-tab page="renew.html" id="tab_notif" label="" class="custom-ico r not_renew_view" style="background-size: 25%;" onclick="getHomer()"></ons-tab>   <!-- HOME R renew -->
@@ -76,7 +76,6 @@
         <!-- <script src="../../dist/cordova-plugin-qrscanner-lib.min.js"></script> -->
         <script type="text/javascript">
      
-    
      // page__background page--material__background     background: none transparent !important;
       function prescan(){
        QRScanner.prepare();
@@ -87,7 +86,7 @@
        window.document.querySelector('#contain-rae').classList.add('transparent-body');
        window.document.querySelector('#do_logout').classList.add('transparent-body');
 
-       QRScanner.useCamera();
+       // QRScanner.useCamera();
        QRScanner.show();
        $('#space_account').addClass('qr-invisibility');
        $('#qr_buttons').html('');
@@ -106,7 +105,7 @@
           QRScanner.scan(
           function(err, result){
             if(err) {
-              console.log('scan error:', result);
+              (appDebug) ? console.log('scan error:', result): '';
             } else {
            
            $("#do_logout").attr('disabled');
@@ -120,7 +119,8 @@
 
 
 
-           console.log('txt: ', result);
+           
+           (appDebug) ? console.log('txt: ', result): '';
            
            var var_Qr = result.split(';');
 
@@ -129,13 +129,13 @@
            var quiz = var_Qr[var_Qr.length -1];
 
             //var_Qr[0]; id cita
-           console.log("date_id: " + date_id); 
+           (appDebug) ? console.log("date_id: " + date_id): '';
 
             //var_Qr[1]; system 0: Renew     1:AE
-           console.log("system_rae: " + system_rae); 
+           (appDebug) ? console.log("system_rae: " + system_rae): '';
 
            //var_Qr[2]; si se le muestra la ENCUESTA 0:true o 1:false (Sólo para renew 1 y 3 aparecerá en true. Armonia todas true)
-           console.log("quiz: " + quiz); 
+           (appDebug) ? console.log("quiz: " + quiz): '';
 
            ons.notification.toast({message: 'el códígo ha sido escaneado', timeout: 1500});
 
@@ -263,8 +263,6 @@
 
             }
 
-
-         
 
             </script>
             <div class="qr-invisibility" id="qr_buttons">  
@@ -699,7 +697,7 @@
                 <div class="head-tittle-account">  
 
                     <div>
-                        <h1 class="tittle_menu">ENCUESTA ANONIMA DE SATISFACCION</h1>
+                        <h1 class="tittle_menu">ENCUESTA ANÓNIMA DE SATISFACCIÓN</h1>
 
                         <!-- <button class="btn-renew" onclick="myNavigator.popPage();" style="padding: 5px; width: 22%; margin: -84px 86%;">OMITIR</button> -->
 
@@ -726,7 +724,7 @@
                         <output class="range_nps_box" id="two_r" name="two_r" for="r_quiz2">0</output>
                         <input class="range_renew"  value="0" step="1" min="0" max="3" oninput="two_r.value=r_quiz2.value" id="r_quiz2" name="quiz_2" type="range"></input>
 
-                        <p>Limpieza de la clinica:</p>
+                        <p>Limpieza de la clínica:</p>
                         
                         <output class="range_nps_box" id="three_r" name="three_r" for="r_quiz3">0</output>
                         <input class="range_renew"  value="0" step="1" min="0" max="3" oninput="three_r.value=r_quiz3.value" id="r_quiz3" name="quiz_3" type="range"></input>
@@ -737,7 +735,7 @@
                         
                         <input class="range_renew" value="0" step="1" min="0" max="3" oninput="four_r.value=r_quiz4.value" id="r_quiz4" name="quiz_4" type="range"></input>
 
-                        <p>Recomendarías nuestra clínica</p> <p>0 = Sí   1 = No   2 = Tal vez </p>
+                        <p>¿Recomendarías nuestra clínica?</p> <p>0 = Sí   1 = No   2 = Tal vez </p>
 
                         <output class="range_nps_box" id="five_r" name="five_r" for="r_quiz5">0</output>
                         
@@ -753,7 +751,7 @@
 
                         <!-- <ons-switch name="quiz_6" checked></ons-switch>  -->
 
-                        <p>¿Cómo podemos mejorar su experiencia en Renew Laser?</p>
+                        <p>¿Cómo podemos mejorar su experiencia en Renew Láser?</p>
                         <textarea class="gray-s " id="r_quiz7" name="quiz_7" rows="5" cols="90"></textarea>
 
 
@@ -1007,7 +1005,8 @@ var appDebug = true;
                     myNavigator.pushPage(this_page_load, options);
 
                 var prescription = $(this).data("prescription");
-                console.log(prescription);
+             
+                (debugMode) ? console.log(prescription) : '';
 
     $.ajax({
         dataType: 'json',
@@ -1693,7 +1692,7 @@ function getBinnacle(){
                                         ' | ' +data.arrayBinn[j].arrayPay[k].dateago_pay+
                                     '</div>'+
                                 '<div>  <!-- div derecha -->'+
-                                    '<h5 class="status-green" style="padding: 4px 20px 4px 20px;">$'+data.arrayBinn[j].arrayPay[k].mount_pay+
+                                    '<h5 class="status-green" style="padding: 4px 20px 4px 20px;">'+data.arrayBinn[j].arrayPay[k].mount_pay+
                                     '</h5>'+
                                 '</div>'+
                             '</div>';
@@ -1779,7 +1778,7 @@ function getHomer(){
                                         $photo_user_homer = 'img/lo-ae-3.png';
                                       }else{
                                           // $photo_patient = '<img src="'+urlAE+''+data.patient[0].pat_photo+'">';
-                                        $photo_user_homer = root_web_renew+data.arrayHomer[0].arrayR[m].user_photo;
+                                        $photo_user_homer = root_web+data.arrayHomer[0].arrayR[m].user_photo;
                                       }
 
 
@@ -1818,14 +1817,14 @@ function getHomer(){
                                                 '</div>'+
 
                                                 '<h3 class="tittle purple">Próxima cita</h3>'+
-                                                        '<span class="subtitle ">Recuerda que tu próxima de '+ data.arrayHomer[0].arrayR[m].serv_name+' será el '+ data.arrayHomer[0].arrayR[m].rend_date+' y su está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.'+
+                                                        '<span class="subtitle ">Recuerda que tu próxima de '+ data.arrayHomer[0].arrayR[m].serv_name+' será el '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.'+
 
                                                 '<div style="text-align: center; padding-top: 15px;" id="confirm_renew">'+
                                                     '<span class="subtitle" style="color: rgb(125, 181, 254);">¿Confirmas que podrás asistir a la cita?</span>'+
                                                         '<div style="display: flex; justify-content: center; padding-top: 10px;padding-bottom: 10px;">'+
-                                                            '<button class="status-no" onclick="dateconfirmrno('+data.arrayHomer[0].arrayR[m].ren_rend_id+');">No podré</button>'+
+                                                            '<button class="status-no" onclick="dateconfirmrno('+data.arrayHomer[0].arrayR[m].ren_rend_id+');">No asistiré</button>'+
 
-                                                            '<button class="status-yes" onclick="dateconfirmr('+data.arrayHomer[0].arrayR[m].ren_rend_id+');">Sí</button>'+
+                                                            '<button class="status-yes" onclick="dateconfirmr('+data.arrayHomer[0].arrayR[m].ren_rend_id+');">Sí asistiré</button>'+
                                                             '<div style="padding: 10px"></div>'+
                                                         '</div>'+
                                                 '</div>'+ 
@@ -1853,13 +1852,13 @@ function getHomer(){
                                                 '</div>'+
 
                                                 '<h3 class="tittle purple">Próxima cita</h3>'+
-                                                        '<span class="subtitle ">Tu próxima cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Te esperamos!</span>'+
+                                                        '<span class="subtitle ">Tu próxima cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el día '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Te esperamos!</span>'+
                                                         
                                                         '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
                                                             employee+
                                                         '</div>'+
                                             '</div>';
-                                             $("#contain-home-r").append(Prox_rend);
+                                  $("#contain-home-r").append(Prox_rend);
 
                                  // return false;
                                   break;
@@ -1878,14 +1877,14 @@ function getHomer(){
                                                 '</div>'+
 
                                                 '<h3 class="tittle purple">Cita Asistida</h3>'+
-                                                        '<span class="subtitle ">Tu cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' del '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Gracias por asistir!</span>'+
+                                                        '<span class="subtitle ">Tu cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' del día '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Gracias por asistir!</span>'+
                                                         
                                                         '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
                                                             employee+
                                                         '</div>'+
                                             '</div>';
 
-                                          $("#contain-home-r").append(Prox_rend);
+                                  $("#contain-home-r").append(Prox_rend);
 
                                   //return false;
                                   break;
@@ -1912,7 +1911,7 @@ function getHomer(){
                                                             employee+
                                                         '</div>'+
                                             '</div>';
-                                             $("#contain-home-r").append(Prox_rend);
+                                  $("#contain-home-r").append(Prox_rend);
 
                                  // return false;
                                   break;
@@ -1938,7 +1937,7 @@ function getHomer(){
                                                             employee+
                                                         '</div>'+
                                             '</div>';
-                                             $("#contain-home-r").append(Prox_rend);
+                                  $("#contain-home-r").append(Prox_rend);
 
                                  // return false;
                                   break;
@@ -1962,8 +1961,9 @@ function getHomer(){
                                                         '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
                                                             employee+
                                                         '</div>'+
+
                                             '</div>';
-                                             $("#contain-home-r").append(Prox_rend);
+                                  $("#contain-home-r").append(Prox_rend);
 
                                   //return false;
                                   break;
@@ -2045,18 +2045,31 @@ function getHomer(){
                                     }else{
                                       hour = data.arrayHomer[0].arrayS[n].ses_hour+'-'+data.arrayHomer[0].arrayS[n].ses_hour_end;
                                     }
-                                   
-                             
+                                    
+                                    if (data.arrayHomer[0].arrayS[n].user_photo == null | data.arrayHomer[0].arrayS[n].user_photo == '') {
+                                        // $photo_user_homer = '<img src="img/folder-h.png" class="circle-purple" >';
+                                        $photo_user_homerr = 'img/lo-ae-3.png';
+
+                                    
+                                    }else{
+                                          // $photo_patient = '<img src="'+urlAE+''+data.patient[0].pat_photo+'">';
+                                        // $photo_user_homer = '<img src="'+root_web_renew+data.arrayHomer[0].arrayR[m].user_photo+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; ">';
+                                        $photo_user_homerr = root_web+data.arrayHomer[0].arrayS[n].user_photo;
+
+                                    }
+
+                                     // '<span style="text-decoration: underline; font-size: 0.9em;">Ver detalles</span>'+
+                                if (sessions_done > 0) {
                                 var Session_made = '<!-- BOX 2 -->'+
                                     '<div class="box-emergent-r bg-white" data-ses="'+data.arrayHomer[0].arrayS[n].id_ses+'">'+  
                                         '<div style=" display: flex; justify-content: space-between; padding-top: 10px; margin: 0px; align-items: center;">'+  
                                             '<div class="info-detail"><img src="img/reloj.svg" style="width: 30px;">'+
                                                 '<h4 class="hour" style="padding-left: 15px;">'+hour+
                                             '</div>'+
-                                            '<span style="text-decoration: underline; font-size: 0.9em;">Ver detalles</span>'+
+                                           
                                         '</div>'+
                                         '<h3 class="purple">¡Felicidades!</h3>'+
-                                        '<span>Has concluido tu sesión '+sessions_done+'/'+sessiontotal+'.<br>'+text_sessions +' de '+data.arrayHomer[0].arrayS[n].serv_name+'.'+'<br> ¡Felicidades! </span>'+
+                                        '<span>Has concluido tu sesión '+sessions_done+'/'+sessiontotal+'.<br>'+text_sessions +' de '+data.arrayHomer[0].arrayS[n].serv_name+'.'+
 
                                         '<div style="display: flex;align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
                                             
@@ -2078,17 +2091,42 @@ function getHomer(){
                               // }
                               
                                  $("#contain-home-r").append(Session_made);
-                            
+                                }
                             }  //cierre for arrayS
 /*  E N D     S E S I O N E S*/
 
 /*    P R O D U C T O S   C O M P R A D O S*/
 
                                 for (var o = 0; o < data.arrayHomer[0].arrayP.length; o++) {
-                                        // var Products = ''; 
+                                    // var Products = ''; 
                                     // if (data.arrayHomer[0].arrayP[o].length > 0){
 
-                                        var img = 'https://armoniaestetica.com/sudi_renew/'+data.arrayHomer[0].arrayP[o].prod_image;
+                                        // if (data.arrayHomer[0].arrayP[o].prod_image == '') {
+                                        //   var product_homer =  '';
+                                        // }else{
+
+                                          var root_renew = 'https://armoniaestetica.com/sudi_renew/'
+                                         
+                                          if (data.arrayHomer[0].arrayP[o].prod_image == null | data.arrayHomer[0].arrayP[o].prod_image == '') {
+                                            // $photo_user_homer = '<img src="img/folder-h.png" class="circle-purple" >';
+                                            $photo_user_homerrr = 'img/lo-ae-3.png';
+                                            // var img = 'https://armoniaestetica.com/sudi_renew/'+data.arrayHomer[0].arrayP[o].prod_image;
+
+                                          }else{
+                                              // $photo_patient = '<img src="'+urlAE+''+data.patient[0].pat_photo+'">';
+                                            // $photo_user_homer = '<img src="'+root_web_renew+data.arrayHomer[0].arrayR[m].user_photo+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; ">';
+                                            $photo_user_homerrr = root_renew+data.arrayHomer[0].arrayP[o].prod_image;
+
+                                          }
+
+                                           
+                                      //   var img =  'https://armoniaestetica.com/sudi_renew/'+ data.arrayHomer[0].arrayP[o].prod_image;
+                                          //    // $('.profile-picture').css('background-image','url('+$photo_patient+')');
+                                          // $('#img-product').css('background-image','url('+product_homer+')');
+                                          // console.log(data.arrayHomer[0].arrayP[o].prod_image);
+                                       // }
+
+                                        
 
                                         var Products = 
                                         '<!-- BOX 3 -->'+
@@ -2125,13 +2163,16 @@ function getHomer(){
                                                         '</div> <!-- end div izquierda -->'+
 
                                                         '<div style="margin: auto;">  <!-- div derecha -->'+
+                                                        
+                                                           '<img src="'+$photo_user_homerrr+'" style="border-radius: 10px;display: block;height: 100px;width: 100px;background-size: cover;">'+
 
-                                                            '<img src="'+img+'" style="    border-radius: 10px;display: block;height: 100px;width: 100px;background-size: cover;">'+
-                                                           
                                                         '</div> <!-- end div derecha -->'+
                                                 '</div>';
 
                                 $("#contain-home-r").append(Products);   
+
+                               // var root_web_renew = 'https://armoniaestetica.com/';
+                                
                                 //'<img style="border-radius: 15px; height:110px; width:110px;" src="https://armoniaestetica.com/sudi_renew/'+img+'">'+
                                    // }else{
                                    //   var   Products = ''; 
@@ -2222,7 +2263,6 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                    }
 
 
-               
                     var employee_ea =    '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
                                             '<div class="sales-person">'+
                                                 '<img src="'+$photo_user_homeae+'" class="circle-purple photo_sales" >'+
@@ -2262,8 +2302,8 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                                 '<div style="text-align: center; padding-top: 15px;" id="confirm_ae">'+
                                     '<span class="subtitle" style="color: #4b3348; font-size: 1.1em;">¿Confirmas que podrás asistir a la cita?</span>'+
                                         '<div style="display: flex; justify-content: center; padding-top: 10px;padding-bottom: 10px;">'+
-                                            '<button class="status-no" onclick="dateconfirmaeno('+data.arrayHomeae[b].arrayNextcons[i].Cons_id+');">No podré</button>'+
-                                            '<button class="status-yes" onclick="dateconfirmae('+data.arrayHomeae[b].arrayNextcons[i].Cons_id+');">Sí</button>'+
+                                            '<button class="status-no" onclick="dateconfirmaeno('+data.arrayHomeae[b].arrayNextcons[i].Cons_id+');">No asistiré</button>'+
+                                            '<button class="status-yes" onclick="dateconfirmae('+data.arrayHomeae[b].arrayNextcons[i].Cons_id+');">Sí asistiré</button>'+
                                         '</div>'+
                                 '</div>'+
 
@@ -2276,7 +2316,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
 
                       
                               
-                                  //return false;
+                                 // return false;
                                   break;
 
 
@@ -2293,7 +2333,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                                 '</div>'+
                                                 
                                 '<h3 class="tittle purple"></h3>'+
-                                '<span class="subtitle ">Recuerda que tu próxima de revisión de cita, será el día '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+
+                                '<span class="subtitle ">Recuerda que tu próxima cita, será el día '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+
                                 '</span>'+
 
                                  employee_ea+
@@ -2301,7 +2341,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                             '</div>';
                                             $("#contain-home-ae").append(NextCons);
 
-                                 // return false;
+                              //    return false;
                                   break;
 
                         //asistencia        ¡Gracias por asistir!
@@ -2343,7 +2383,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                                 '</div>'+
                                                 
                                 '<h3 class="tittle purple"></h3>'+
-                                '<span class="subtitle "> No asististe a tu cita del día '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+ 
+                                '<span class="subtitle "> No asististe a tu cita del día ' + data.arrayHomeae[b].arrayNextcons[i].Cons_date+ 
                                 '</span>'+
 
                                  employee_ea+
@@ -2351,7 +2391,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                             '</div>';
                                             $("#contain-home-ae").append(NextCons);
 
-                                  //return false;
+                                //  return false;
                                   break;
 
                         //reprogramada
@@ -2368,7 +2408,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                                 '</div>'+
                                                 
                                 '<h3 class="tittle purple"></h3>'+
-                                '<span class="subtitle ">Tu cita del día '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+ 'ha sido reprogramada '+
+                                '<span class="subtitle ">Tu cita del día '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+ ' ha sido reprogramada '+
                                 '</span>'+
 
                                  employee_ea+
@@ -2376,7 +2416,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                             '</div>';
                                             $("#contain-home-ae").append(NextCons);
 
-                                  //return false;
+                                // return false;
                                   break;
 
                         //cancelada
@@ -2489,7 +2529,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                 if (data.arrayHomeae[b].arrayPayae[a].Pay_inc_notes=== null){
                     notes = '';
                 }else{
-                    notes = '<h3 class="tittle purple">'+ data.arrayHomeae[b].arrayPayae[a].Pay_inc_notes +'</h3>';
+                notes = '<h3 class="tittle purple">'+ data.arrayHomeae[b].arrayPayae[a].Pay_inc_notes +'</h3>';
                 }
 
                 boxPay_ea = '<!-- BOX 3 -->'+
@@ -2634,9 +2674,10 @@ function getPrescriptions(){
             type: 'POST', //por que metodo se enviaran las variables
             data: { getPrescriptions : true,  patid : global_id },
             success: function(data){
-               
-            console.log('data prescriptions ' +data);
-            if (data.arrayRecipes.length == 0){ 
+            console.log('data prescriptions ');
+            console.log(data);
+
+             if (data.arrayRecipes[0].length == 0){  
             var NoData = '<h4 style="margin-top: 50px; padding-left: 15px; color: #002130;"> Por el momento no cuentas con información</h4>';
 
             $("#contain-prescriptions").append(NoData);
@@ -2736,7 +2777,7 @@ function getHistoryrenew(){
             type: 'POST', //por que metodo se enviaran las variables
             data: { getHistoryrenew : true, patid : global_id },
             success: function(data){
-                // console.log(data);
+                 // console.log(data);
         console.log(data);
 
         // $("#contain-payment-history").html("");
@@ -2865,7 +2906,7 @@ function getHistoryrenew(){
                                         '<span class="subtitle-paydate">' +data.arrayBinn[j].arrayPay[k].date_pay+
                                     '</div>'+
                                 '<div>  <!-- div derecha -->'+
-                                    '<h5 class="status-green" style="padding: 4px 20px 4px 20px;">$'+data.arrayBinn[j].arrayPay[k].mount_pay+
+                                    '<h5 class="status-green" style="padding: 4px 20px 4px 20px;">'+data.arrayBinn[j].arrayPay[k].mount_pay+
                                     '</h5>'+
                                 '</div>'+
                             '</div>';
