@@ -73,12 +73,12 @@
     <!-- # C U E N T A  R A E  # -->
 <template id="account.html">
         <ons-page id="account-rae" class="bg-degrad">
-        <!-- <script src="../../dist/cordova-plugin-qrscanner-lib.min.js"></script> -->
+        <script src="../../dist/cordova-plugin-qrscanner-lib.min.js"></script>
         <script type="text/javascript">
      
      // page__background page--material__background     background: none transparent !important;
       function prescan(){
-       // QRScanner.prepare();
+        QRScanner.prepare();
        // window.document.querySelector('#account-rae').classList.add('transparent-body');
        
        $('#account-rae').removeClass('bg-degrad');
@@ -2774,7 +2774,7 @@ function getHistoryae(){
                             '<!--  Proceso de pago -->'+
                             '<div class="pay-ea">   '+ 
                                 '<span class="span-ae">'+data.arrayBinnEA[f].typePayement+'</span>'+
-                                '<span class="span-aepay">Pagado: $'+data.arrayBinnEA[f].mount+' '+data.arrayBinnEA[f].total_sur+'</span>'+
+                                '<span class="span-aepay">Pagado: '+data.arrayBinnEA[f].mount+' '+data.arrayBinnEA[f].total_sur+'</span>'+
                             '</div>'+
 
                         '</div>';
