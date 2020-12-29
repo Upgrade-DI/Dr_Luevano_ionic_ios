@@ -18,7 +18,7 @@
         <script src="js/onsenui.min.js"></script>
         <script src="js/login.js" ></script>
         <script src="js/main.js" ></script>    
-        <script type="text/javascript" src="cordova.js"></script>
+        <!-- <script type="text/javascript" src="cordova.js"></script> -->
         <script type="text/javascript" src="js/push.js"></script>
 
 
@@ -1731,6 +1731,7 @@ function getHomer(){
             type: 'POST', //por que metodo se enviaran las variables
             data: { getHomer : true , patid : global_id },
             success: function(data){
+            
                 // console.log(data);
             $("#contain-home-r").html('');
             $("#contain-home-r").html("");
@@ -1742,7 +1743,11 @@ function getHomer(){
 
               $("#contain-home-r").append(NoDataR);
 
+
+
         }else{
+
+
 
                                   // 0  'sessions_wait' 
                                   // 1  'sessions_confirm'
@@ -1760,36 +1765,55 @@ function getHomer(){
 
                                 for (var m = 0; m < data.arrayHomer[0].arrayR.length; m++) {
                                     
-                                       // $status-rend = '<h5 class="status-new" style="">Confirmada</h5>';
+                                 // $status-rend = '<h5 class="status-new" style="">Confirmada</h5>';
                                  //  if (data.arrayHomer[0].arrayR[m] === null){
                                     
                                  // }else{  //si el array R no está vacio
                                         var arrayStatus = ['en espera','confirmada','asistencia','inasistencia','reprogramada','cancelada'];
                                         var arrayStatusColor = ['#f7f0ad','#e0f5eb','#e0f5eb','#ff584ce6','#f49136c2','#a7a39f'];
-                                        var arrayStatusName = ['#dc953a','#71d3a1','#000000','#000000','#000000','#000000'];
+                                        var arrayStatusName = ['#dc953a','#000000','#000000','#000000','#000000','#000000'];
                                        
- 
-                                        var calend_status = '';
-                                      //  calend_status = (data.arrayHomer[0].arrayR[m].rend_status == '1') ? '<img src="images/calendar.png" style="    width: 50px; height: auto;"><h5 class="purple" style="font-size: 0.9em;text-align: right;">Agregar a calendario</h5>' : '';
-                                      // var root_web_renew = 'https://armoniaestetica.com/';
-                                      var root_web_renew = 'https://armoniaestetica.com/sudi_renew/';
+                                     // var title = 'Cita de '+data.arrayHomer[0].arrayR[m].serv_name;
+// new Date ('2050-12-25T00:00+0700')
+                                      // Mon Dec 21 2020 14:00:00 GMT-0700 (hora estándar del Pacífico de México)
+                                      // Mon Dec 21 2020 15:00:00 GMT-0700 (hora estándar del Pacífico de México)
+                                      //var startDate = data.arrayHomer[0].arrayR[m].rend_date+' '+data.arrayHomer[0].arrayR[m].rend_hour;
+                                    //  var startDate = new Date (data.arrayHomer[0].arrayR[m].rend_date+'T'+data.arrayHomer[0].arrayR[m].rend_hour+'0700')
+                                      //var endDate = data.arrayHomer[0].arrayR[m].rend_date+' '+data.arrayHomer[0].arrayR[m].rend_hour_end;
+                                   //   var endDate = new Date (data.arrayHomer[0].arrayR[m].rend_date+'T'+data.arrayHomer[0].arrayR[m].rend_hour_end+'0700')
+                                      //var DateCalendarSend  = 'date_title= cita de '+data.arrayHomer[0].arrayR[m].serv_name +'&'+ 'date_loc= Rénew Láser'+'&'+ 
+                                     //  'date_start='+data.arrayHomer[0].arrayR[m].rend_hour+'&'+ 'date_end='+data.arrayHomer[0].arrayR[m].rend_hour_end;
 
+                                         var calend_status = '';
+                                  //    var calend_status =  
+                                     
+                                      //permisos  
+                                      //'<button onclick="requestReadPermission()">permisos</button><br/>'+
+                                      //crea evento
+                                     /// '<button onclick="createCalendarEventInteractivelyWithOptions()">crear evento</button>';
+
+                                      //  calend_status = (data.arrayHomer[0].arrayR[m].rend_status == '1') ? '<img src="images/calendar.png" style="    width: 50px; height: auto;"><h5 class="purple" style="font-size: 0.9em;text-align: right;">Agregar a calendario</h5>' : '';
+
+                // $photo_patient = 'img/lo-ae-3.png';
+                                      
+
+                                     
                                       if (data.arrayHomer[0].arrayR[m].user_photo == null | data.arrayHomer[0].arrayR[m].user_photo == '') {
+                                        // $photo_user_homer = '<img src="img/folder-h.png" class="circle-purple" >';
                                         $photo_user_homer = 'img/lo-ae-3.png';
+
                                       }else{
                                           // $photo_patient = '<img src="'+urlAE+''+data.patient[0].pat_photo+'">';
+                                        // $photo_user_homer = '<img src="'+root_web_renew+data.arrayHomer[0].arrayR[m].user_photo+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; ">';
                                         $photo_user_homer = root_web+data.arrayHomer[0].arrayR[m].user_photo;
+
                                       }
-
-
-
 
 
                 /*   DIV EMPLEADO*/
                                             var employee =    '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
                                                               '<div class="sales-person">'+
-                                                                  '<img src="'+$photo_user_homer+'" class="photo_sales_r">'+
-                                                                  '<span class="little" style="padding-left: 15px;">'+
+                                                                     '<img src="'+ $photo_user_homer+'" class="photo_sales_r">'+
                                                                       data.arrayHomer[0].arrayR[m].user_fname+' '+ data.arrayHomer[0].arrayR[m].user_lname+
                                                                   '</span>'+
                                                               '</div>'+
@@ -1799,13 +1823,15 @@ function getHomer(){
                                     
                 /* END DIV EMPLEADO*/
                         //switch de cita 
-                                  switch(data.arrayHomer[0].arrayR[m].rend_status){
+                                  // switch(data.arrayHomer[0].arrayR[m].rend_status){
+                                    switch(data.arrayHomer[0].arrayR[m].rend_status){
+
                         
                         //si la cita está como:
                         //en espera           CONFIRMAR CITA SI NO
                                   case '0':
 
-                    var Prox_rend = 
+                                  var Prox_rend = 
                                         '<!-- BOX 1 -->'+
                                             '<div class="box-emergent-r bg-white">'+
                                                 '<div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
@@ -1817,10 +1843,10 @@ function getHomer(){
                                                 '</div>'+
 
                                                 '<h3 class="tittle purple">Próxima cita</h3>'+
-                                                        '<span class="subtitle ">Recuerda que tu próxima de '+ data.arrayHomer[0].arrayR[m].serv_name+' será el '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.'+
+                                                        '<span class="subtitle ">Recuerda que tu próxima cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' será el '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.'+
 
                                                 '<div style="text-align: center; padding-top: 15px;" id="confirm_renew">'+
-                                                    '<span class="subtitle" style="color: rgb(125, 181, 254);">¿Confirmas que podrás asistir a la cita?</span>'+
+                                                    '<span class="subtitle" style="color: #856d7e;">¿Confirmas que podrás asistir a la cita?</span>'+
                                                         '<div style="display: flex; justify-content: center; padding-top: 10px;padding-bottom: 10px;">'+
                                                             '<button class="status-no" onclick="dateconfirmrno('+data.arrayHomer[0].arrayR[m].ren_rend_id+');">No asistiré</button>'+
 
@@ -1830,12 +1856,10 @@ function getHomer(){
                                                 '</div>'+ 
                                             '</div>';
 
-                             $("#contain-home-r").append(Prox_rend);
-
-                      
-                              
-                                 // return false;
-                                  break;
+                                    $("#contain-home-r").append(Prox_rend);
+                                    //return false;
+                                     // return true;
+                                     break;
 
 
                         //confirmada          Tu cita está como
@@ -1858,10 +1882,11 @@ function getHomer(){
                                                             employee+
                                                         '</div>'+
                                             '</div>';
-                                  $("#contain-home-r").append(Prox_rend);
-
-                                 // return false;
-                                  break;
+                                          
+                                    $("#contain-home-r").append(Prox_rend);
+                                    // return false;
+                                    // return true;
+                                     break;
 
                         //asistencia        ¡Gracias por asistir!
                                   case '2':
@@ -1884,10 +1909,11 @@ function getHomer(){
                                                         '</div>'+
                                             '</div>';
 
+                                          
                                   $("#contain-home-r").append(Prox_rend);
-
-                                  //return false;
-                                  break;
+                                    //return false;
+                                    // return true;
+                                     break;
 
 
                         //inasistencia                 ¡Te invitamos a agendar de nuevo!
@@ -1911,10 +1937,12 @@ function getHomer(){
                                                             employee+
                                                         '</div>'+
                                             '</div>';
-                                  $("#contain-home-r").append(Prox_rend);
+                                        
 
-                                 // return false;
-                                  break;
+                                    $("#contain-home-r").append(Prox_rend);
+                                    // return false;
+                                    // return true;
+                                     break;
 
                         //reprogramada
                                   case '4':
@@ -1937,10 +1965,11 @@ function getHomer(){
                                                             employee+
                                                         '</div>'+
                                             '</div>';
-                                  $("#contain-home-r").append(Prox_rend);
-
-                                 // return false;
-                                  break;
+                                           
+                                    $("#contain-home-r").append(Prox_rend);
+                                    // return false;
+                                    // return true;
+                                     break;
 
                         //cancelada
                                   case '5':
@@ -1958,24 +1987,18 @@ function getHomer(){
                                                 '<h3 class="tittle purple">Cita cancelada</h3>'+
                                                         '<span class="subtitle ">Tu cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el día '+ data.arrayHomer[0].arrayR[m].rend_date+' ha sido cancelada'+'.</span><br><span class="subtitle ">¡Te invitamos a reagendar de nuevo!</span>'+
                                                         
-                                                        '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
-                                                            employee+
-                                                        '</div>'+
-
                                             '</div>';
-                                  $("#contain-home-r").append(Prox_rend);
-
-                                  //return false;
-                                  break;
+                                    
+                                    $("#contain-home-r").append(Prox_rend);
+                                    // return false;
+                                    // return true;
+                                     break;
 
 
                                   } //cierre de switch
 
-
-
-
-
-
+                                  // return false;
+                                 // break;
 
                                } //cierre del for arrayR
 /*   E N D     C I T A S       P R O X I M A S*/
@@ -2013,10 +2036,11 @@ function getHomer(){
                                /* 3 */ sessions_absence = data.arrayHomer[0].arrayS[n].sessions_absence;
                                /* 4 */ sessions_resched = data.arrayHomer[0].arrayS[n].sessions_resched;
                                /* 5 */ sessions_cancel = data.arrayHomer[0].arrayS[n].sessions_cancel;
-                                
-                                 start_hour = data.arrayHomer[0].arrayS[n].ses_hour;
-                                 end_hour = data.arrayHomer[0].arrayS[n].ses_hour_end;
 
+                               start_hour = data.arrayHomer[0].arrayS[n].ses_hour;
+                               end_hour = data.arrayHomer[0].arrayS[n].ses_hour_end;
+
+                                
                                 sessiontotal = data.arrayHomer[0].arrayS[n].sessiontotal;
 
 
@@ -2045,20 +2069,21 @@ function getHomer(){
                                     }else{
                                       hour = data.arrayHomer[0].arrayS[n].ses_hour+'-'+data.arrayHomer[0].arrayS[n].ses_hour_end;
                                     }
-                                    
-                                    if (data.arrayHomer[0].arrayS[n].user_photo == null | data.arrayHomer[0].arrayS[n].user_photo == '') {
+                                   
+
+                                  
+                                      if (data.arrayHomer[0].arrayS[n].user_photo == null | data.arrayHomer[0].arrayS[n].user_photo == '') {
                                         // $photo_user_homer = '<img src="img/folder-h.png" class="circle-purple" >';
                                         $photo_user_homerr = 'img/lo-ae-3.png';
 
-                                    
-                                    }else{
+                                      }else{
                                           // $photo_patient = '<img src="'+urlAE+''+data.patient[0].pat_photo+'">';
                                         // $photo_user_homer = '<img src="'+root_web_renew+data.arrayHomer[0].arrayR[m].user_photo+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; ">';
                                         $photo_user_homerr = root_web+data.arrayHomer[0].arrayS[n].user_photo;
 
-                                    }
+                                      }
 
-                                     // '<span style="text-decoration: underline; font-size: 0.9em;">Ver detalles</span>'+
+                                      // '<span style="text-decoration: underline; font-size: 0.9em;">Ver detalles</span>'+
                                 if (sessions_done > 0) {
                                 var Session_made = '<!-- BOX 2 -->'+
                                     '<div class="box-emergent-r bg-white" data-ses="'+data.arrayHomer[0].arrayS[n].id_ses+'">'+  
@@ -2074,7 +2099,7 @@ function getHomer(){
                                         '<div style="display: flex;align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
                                             
                                              '<div class="sales-person" style=" width: 50%;">'+
-                                                '<img src="'+root_web+data.arrayHomer[0].arrayS[n].user_photo+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; overflow: hidden;">'+
+                                                '<img src="'+$photo_user_homerr+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; overflow: hidden;">'+
                                                 '<span class="little" style="padding-left: 15px;">'+
                                                         data.arrayHomer[0].arrayS[n].user_fname+' '+
                                                         data.arrayHomer[0].arrayS[n].user_lname+
@@ -2091,7 +2116,7 @@ function getHomer(){
                               // }
                               
                                  $("#contain-home-r").append(Session_made);
-                                }
+                              }
                             }  //cierre for arrayS
 /*  E N D     S E S I O N E S*/
 
@@ -2191,7 +2216,6 @@ function getHomer(){
       
 
     // $("#contain-home-r").append($Prox_rend + $Products);
-
 
 
           }  //cierre de success
