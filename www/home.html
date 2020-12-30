@@ -14,6 +14,7 @@
         <link href="css/customico.css" rel="stylesheet" type="text/css"/> 
         <script src="js/jquery-3.2.1.min.js" ></script>
         <script src="js/jquery.cookie.js" ></script> 
+
         <script src="js/onsenui.min.js"></script>
         <script src="js/login.js" ></script>
         <script src="js/main.js" ></script>    
@@ -88,9 +89,7 @@
        window.document.querySelector('#contain-rae').classList.add('transparent-body');
        window.document.querySelector('#do_logout').classList.add('transparent-body');
 
-
-       QRScanner.useCamera();
-
+       // QRScanner.useCamera();
        QRScanner.show();
        $('#space_account').addClass('qr-invisibility');
        $('#qr_buttons').html('');
@@ -260,9 +259,9 @@
                   $('#qr_buttons').addClass('qr-invisibility');
                   $('#qr_buttons').removeClass('qr-head');
 
-                  document.querySelector('#myNavigator').resetToPage("home.html");
+                  //document.querySelector('#myNavigator').resetToPage("home.html");
 
-                 //myNavigator.popPage();
+                  myNavigator.popPage();
 
 
             }
@@ -350,29 +349,24 @@
 
                        
                         <!-- BOX 4 
-
                         <div class="box-emergent-account bg-white account-module open_window" data-page="account-statement.html" onclick="myNavigator.pushPage('account-statement.html', { animation : 'slide' } )">  
                            
                                 <img src="images/money.svg" class="circle-neutro" >
-
                                
                                   <div style="margin-left: 15px;">   
                                     <h3 class="tittle blue-account"> Edo. de cuenta</h3>
                                     <span class="subtitle-blue "  style="font-size: 0.9em; "> Conoce tus saldos pendientes</span>
                                   </div>  
-
                         </div> end box 4 -->
 
                         <!-- BOX 5                         <div class="box-emergent-account bg-white account-module open_window" data-page="binnacle-r.html" onclick="myNavigator.pushPage('binnacle-r.html', { animation : 'slide' } )">  
                             
                                 <img src="images/money.svg" class="circle-neutro" >
-
                                 
                                   <div style="margin-left: 15px;">   
                                     <h3 class="tittle blue-account"> Bitácora</h3>
                                     <span class="subtitle-blue "  style="font-size: 0.9em; "> Conoce el avance de tus sesiones</span>
                                   </div>  
-
                         </div> end box 5 -->
                         <div id="account-box"></div>
                     </section><!-- safe-top-container -->
@@ -875,7 +869,6 @@
 
                         <!-- <div style="display: flex; justify-content: space-evenly; margin-top: 20px;margin-bottom: 20px;"> 
                             <div id="history-ae" style="background-color: #7eb6ff;padding: 10px 20px 10px 20px;border-radius: 10px;" onclick="getHistoryae();">AE</div>
-
                             <div id="history-renew" style="background-color: #4b3348;padding: 10px 20px 10px 20px;border-radius: 10px;color: #FFF;" onclick="getHistoryrenew();">Renew
                             </div>
                         </div>-->
@@ -1074,10 +1067,8 @@ var appDebug = true;
                     };  
                                 
                     myNavigator.pushPage(this_page_load, options);
-
                 var serv_detail = $(this).data("serv_detail");
                 console.log(serv_detail);
-
     $.ajax({
         dataType: 'json',
         async: true,
@@ -1087,28 +1078,23 @@ var appDebug = true;
             success: function(data){
             
             console.log(data);
-
             
             $(".box-emergent-account-presdetail").append('<span class="purple" id="presdetail">'+data.arrayRecipesDetail[0].rec_date+'</span><div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
                     '<h3 class="tittle blue-account">'+
                         '<img src="images/reloj.svg" style="padding-right: 15px; width: 30px;">Receta'+
                     '</h3>'+
                 '</div>');
-
             // $(".presdetail").append(data.arrayRecipesDetail[0].rec_date);
-
         for (var h = 0; h < data.arrayRecipesDetail[0].arrayDrugs.length; h++) {
             
             if(data.arrayRecipesDetail[0].notes == null) { 
                var notes = '';
                 
             }else{
-
                var  notes=  '<span class="hc_event_subtitle">Notas</span>'+
                             '<p class="hc_event_data">'+data.arrayRecipesDetail[0].notes+
                             '</p>';
             }
-
              
                 if (data.arrayRecipesDetail[0].arrayDrugs[h].length == 0){
                 var drugs = '';
@@ -1116,22 +1102,15 @@ var appDebug = true;
                
                 var drugs = '<span class="title-blue-l">'+data.arrayRecipesDetail[0].arrayDrugs[h].drug+'</span>'+
                 '<div style="height: 5px;"></div>'+
-
                 '<span class="subtitle-blue" style="margin-bottom:20px;">'+data.arrayRecipesDetail[0].arrayDrugs[h].indications+'</span>'+
                 '<div style="height: 15px;"></div>';
                 }
-
                      var prescriptiondetail = drugs+notes;
-
             $(".box-emergent-account-presdetail").append(prescriptiondetail);
-
             }
-
    
-
         }  //cierre de success
     });   //cierre de ajax                      
-
                 break;   
                 */
                 default:
@@ -1244,7 +1223,7 @@ function getPatient(){
 // TOKEN
                     if(the_patient != '' || the_patient != null){
                         
-                    setTimeout(function(){      
+                    setTimeout(function(){      
                         uploadToken();
                     }, 500);
 
@@ -2009,7 +1988,6 @@ function getHomer(){
       
 
 /*
-
 "id_ses":"974",
 "serv_name":"Siluet Renewal",
 "Service":"Reafirmante corporal",
@@ -2017,7 +1995,6 @@ function getHomer(){
 "sessiontotal":"10",
 "mount":"2500.00",
 "status":"Servicio incompleto",
-
 "user_id":"29",
 "user_fname":"Nelsy",
 "user_lname":"Corral",
@@ -2270,9 +2247,7 @@ function getHomeae(){
             for (var b = 0; b < data.arrayHomeae.length; b++) {
 
 /*
-
 Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","Cons_hour":"11:00:00","Cons_hour_end":"11:30:00","Cons_proce":"0","Cons_status":"0","Cons_user_id":"2","Cons_user_edit":"2","Cons_user_fname":"Upgrade","Cons_user_lname":"Dise\u00f1o","Cons_user_photo":"_files\/_img\/_users\/122718-171233_upgrade.jpg"}]
-
 */
 
 
@@ -2651,7 +2626,6 @@ function getProducts(){
 /*
 function getServices(){
     console.log('entrando a funcion de getServices');
-
     $.ajax({
         dataType: 'json',
         async: true,
@@ -2661,30 +2635,23 @@ function getServices(){
             success: function(data){
                
             console.log(data);
-
             if (data == 0){ 
                     
             }else{
             for (var l = 0; l < data.arrayServices.length; l++) {
-
                 services = '<!-- BOX '+l+' -->'+
                         '<div class="box-emergent-account-pres bg-white account-module open_window" data-page="serv_detail.html" data-serv_detail="'+data.arrayServices[l].id+'">'+  
                              '<!-- imagen izquierda -->  ' +
                                 '<img src="images/money.svg" class="circle-neutro" >'+
-
                                 '<!-- div derecha -->'+
                                 '<div style="margin-left: 15px;">'+   
                                     '<h3 class="tittle blue-account">'+data.arrayRecipes[l].name+'</h3>'+
                                 '</div>'+  
-
                         '</div> <!-- end box '+l+' -->';
-
             $("#contain-services").append(services);
             
-
         }   ///cierre array principal
             
-
         }  //cierre de success
     });   //cierre de ajax                      
 } //cierre de function
@@ -2876,17 +2843,14 @@ function getHistoryrenew(){
                                 '</div>'+
                             '</div>'+
                         '</div>'+
-
                         '<div class="services-r">'+
                         '<span class="span-r">Servicios contratados:  '+data.arrayBinn[j].service+'</span>'+
                         '<span class="span-r">Paquete:  '+data.arrayBinn[j].serv_name+'  </span>'+
                         '<span class="span-r">Incluye:  '+data.arrayBinn[j].incluye+'</span>'
                         +service_ex+ 
                         '</div>'+
-
                         // '<!-- línea divisoria -->'+
                          '<div class="pay" ></div>'+
-
                         // '<!--  Proceso de sesiones cuadros -->'+
                         // '<div class="sessions-r">'+
                            // '<span class="span-r">Sesiones:'+ses_complete+' de '+sessionsint+' </span>'+
@@ -2894,8 +2858,6 @@ function getHistoryrenew(){
                             // payments+
                             // '<span class="span-r">Pagos: </span>'+ //'+data.arrayBinn[j].sessions+
                         // '</div>'+
-
-
                         // '<div class="barsrect-r">'+
                         //     '<div class="barsrect-r-sessions" style="display: flex;">'+
                                 // rect_green_ses+
@@ -2906,10 +2868,8 @@ function getHistoryrenew(){
                                 // rect_green_pays+
                               
                             // '</div>'+
-
                         // '</div>'+
                   '</div> <!-- End box 1 -->');
-
                   */
 
                 for (var k = 0; k < data.arrayBinn[j].arrayPay.length; k++ ) {
@@ -2969,13 +2929,13 @@ function getHistoryrenew(){
                 if (data === '0') {
 
                     ons.notification.toast({message: 'Tu cita ha sido confirmada', timeout: 5500});
-                    setTimeout(function(){      
+                    setTimeout(function(){      
                         getHomeae();
                     }, 500);
 
                 }else{
                     ons.notification.toast({message: 'Hubo un error al confirmar tu cita', timeout: 5500});
-                    setTimeout(function(){      
+                    setTimeout(function(){      
                         getHomeae();
                     }, 500);
 
@@ -3004,7 +2964,7 @@ function confirmaeno(date_id){
                     $("#contain-home-ae").html("");
                     //refrescamos para que no aparezca el box de confirmar
                     
-                    setTimeout(function(){      
+                    setTimeout(function(){      
                         getHomeae();
                     }, 500);
                     //ocultamos el box de la cita
@@ -3015,7 +2975,7 @@ function confirmaeno(date_id){
                     //limpiamos el home AE
                     $("#contain-home-ae").html("");
                     //refrescamos para que no aparezca el box de confirmar
-                    setTimeout(function(){      
+                    setTimeout(function(){      
                         getHomeae();
                     }, 500);
 
@@ -3147,7 +3107,7 @@ function confirmaeno(date_id){
                     //limpiamos el home AE
                     $("#contain-home-ae").html("");
                     //refrescamos para que no aparezca el box de confirmar
-                         
+                         
                     
 
                     //ocultamos el box de la cita
@@ -3192,7 +3152,7 @@ function confirmaeno(date_id){
             }  //cierre de success
         });   //cierre de ajax    
           
-          setTimeout(function(){      
+          setTimeout(function(){      
               getHomer();
           }, 2000);
 
@@ -3227,7 +3187,7 @@ function dateconfirmrno(date_id){
         }  //cierre de success
     });   //cierre de ajax    
     
-     setTimeout(function(){      
+     setTimeout(function(){      
           getHomer();
      }, 2000);
 
@@ -3256,7 +3216,7 @@ function dateconfirmrno(date_id){
             }  //cierre de success
         });   //cierre de ajax    
 
-     setTimeout(function(){      
+     setTimeout(function(){      
                   getHomeae();
      }, 2000);
 
@@ -3276,7 +3236,7 @@ function dateconfirmaeno(date_id){
 
         }  //cierre de success
     });   //cierre de ajax    
-          setTimeout(function(){      
+          setTimeout(function(){      
                   getHomeae();
           }, 2000);
 } //cierre de function

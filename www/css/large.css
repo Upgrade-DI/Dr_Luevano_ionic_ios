@@ -1694,7 +1694,7 @@ span.title-blue-l {
   /*transition: all 1 ease;*/
 }
 
-#page_login .page__background, #page_register .page__background { background-color: #000; }  
+#page_login .page__background, #page_register .page__background { background-color: #ececec; }  
 
 #page_login, #page_register{
   /*text-align: center;*/
