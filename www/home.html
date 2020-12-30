@@ -238,10 +238,11 @@
 
             function canceledscan(){
                 //  myNavigator.popPage();
-                  QRScanner.cancelScan();
+                  
 
                   //document.querySelector('#myNavigator').resetToPage("home.html");
                   window.document.querySelector('#account-rae').classList.remove('transparent-body'); 
+
                   $("#do_logout").removeAttr('disabled');
                   $("#account_qr").removeAttr('disabled');
                   $("#account_product").removeAttr('disabled');
@@ -260,7 +261,7 @@
                   $('#qr_buttons').removeClass('qr-head');
 
                   //document.querySelector('#myNavigator').resetToPage("home.html");
-
+                  QRScanner.cancelScan();
                   myNavigator.popPage();
 
 
