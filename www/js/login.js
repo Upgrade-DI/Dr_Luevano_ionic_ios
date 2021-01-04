@@ -9,6 +9,9 @@ var serverSource = 'remote'; // <-- Fuente del proyecto
 var rootPath = (serverSource === 'local') ? './' : 'https://armoniaestetica.com/';
 var phpValidate = rootPath+'_sudiv3/ar_engine/login_validate_ios.php';
 
+var root_app_path = 'connectMySql_develop.php';
+
+
 // Touch or Click Definimos si se usará click o Touch según disponibilidad // touchstart
 	var clickHandler = ('ontouchstart' in document.documentElement ? "touchend" : "click");
 	var touchmoved;
@@ -78,19 +81,41 @@ function validate_phpSession() {
 	(debugMode) ? console.log("revisando sesion...") : '';
 	
 		
-		 var cookieId = $.cookie("id_pat");
-		 (debugMode) ? console.log(cookieId) : '';
+		 // var cookieId = $.cookie("id_pat");
+		 // (debugMode) ? console.log(cookieId) : '';
 
 	
-		 var cookieMail = $.cookie("mail_pat");
-		 (debugMode) ? console.log(cookieMail) : '';
+		 // var cookieMail = $.cookie("mail_pat");
+		 // (debugMode) ? console.log(cookieMail) : '';
 
-		 var cookiePass = $.cookie("pass_pat");
-		 (debugMode) ? console.log(cookiePass) : '';
+		 // var cookiePass = $.cookie("pass_pat");
+		 // (debugMode) ? console.log(cookiePass) : '';
 
+		 	
+		 var cookieIdAutologin = $.cookie("id_pat");
+		 (debugMode) ? console.log(cookieIdAutologin) : '';
+		
+		 var cookieMailAutologin = $.cookie("mail_pat");
+		 (debugMode) ? console.log(cookieMailAutologin) : '';
+
+		 var cookiePassAutologin = $.cookie("pass_pat");
+		 (debugMode) ? console.log(cookiePassAutologin) : '';
+
+		 $sessionData = new Array(cookieIdAutologin,cookieMailAutologin,cookiePassAutologin);
+		
+		 (debugMode) ? console.log($sessionData) : '';
+
+		 if ( cookieIdAutologin == '' || cookieIdAutologin == null || cookieIdAutologin ==  'null' || cookieIdAutologin == undefined || cookieIdAutologin == 'undefined') {
+		 	console.log('No hay sesión activa');
+		 	// modal.hide();
+		 }else{
+		 	console.log('Sí hay unasesión activa');
+			getLoginAcess($sessionData);
+		}
 /*
+
 	var request = $.ajax({
-		url: phpValidate+'?method=validate_session',
+		url: phpValidate+'?method=validate_login',
 		type: "post"
 	});
 	// En conexión exitosa
