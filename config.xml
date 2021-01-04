@@ -91,8 +91,9 @@
     <plugin name="cordova-plugin-splashscreen" spec="~6.0.0" />
     
     <plugin name="cordova-plugin-statusbar" spec="~2.4.3" />
-    <preference name="StatusBarBackgroundColor" value="#000000" />
-
+    <!-- <preference name="StatusBarBackgroundColor" value="#000000" /> -->
+    <preference name="StatusBarStyle" value="blacktranslucent" />
+    
     <plugin name="cordova-plugin-qrscanner-dual" spec="~3.0.8" />
 
     <plugin name="cordova-plugin-test-framework" source="npm" spec="~1.1.6" />
