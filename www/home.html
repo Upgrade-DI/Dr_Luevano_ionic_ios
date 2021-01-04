@@ -1004,7 +1004,7 @@ var appDebug = true;
 
                 var prescription = $(this).data("prescription");
              
-                (debugMode) ? console.log(prescription) : '';
+                // (debugMode) ? console.log(prescription) : '';
 
     $.ajax({
         dataType: 'json',
@@ -1014,7 +1014,7 @@ var appDebug = true;
             data: { getPreDetail : true, prescription:prescription},
             success: function(data){
             
-            console.log(data);
+            // console.log(data);
 
             
             $(".box-emergent-account-presdetail").append('<span class="purple" id="presdetail">'+data.arrayRecipesDetail[0].rec_date+'</span><div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
@@ -1162,7 +1162,7 @@ picPath = 'https://armoniaestetica.com/_sudiv3/';
                 data: {the_patient : the_patient, token : the_token }
                 }).done(function(data){
                 
-                    console.log('resultado: ' + data);
+                    // console.log('resultado: ' + data);
                     //ons.notification.toast({message: data, timeout: 5500});
 
                     token_sent = 1;
