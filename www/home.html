@@ -2098,6 +2098,37 @@ function getHomer(){
                               // }
                               
                                  $("#contain-home-r").append(Session_made);
+                              }else{
+
+                                   var Session_made = '<!-- BOX 2 -->'+
+                                    '<div class="box-emergent-r bg-white" data-ses="'+data.arrayHomer[0].arrayS[n].id_ses+'">'+  
+                                        '<div style=" display: flex; justify-content: space-between; padding-top: 10px; margin: 0px; align-items: center;">'+  
+                                        
+                                        '</div>'+
+                                        '<h3 class="purple">¡Sesión pendiente!</h3>'+
+                                        '<span> '+'<br>'+text_sessions +' de '+data.arrayHomer[0].arrayS[n].serv_name+'.'+
+
+                                        '<div style="display: flex;align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
+                                            
+                                             '<div class="sales-person" style=" width: 50%;">'+
+                                                '<img src="'+$photo_user_homerr+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; overflow: hidden;">'+
+                                                '<span class="little" style="padding-left: 15px;">'+
+                                                        data.arrayHomer[0].arrayS[n].user_fname+' '+
+                                                        data.arrayHomer[0].arrayS[n].user_lname+
+                                                '</span>'+
+                                             '</div>'+
+                                                '<div style="display: flex; width: 50%;">'+
+                                                rect_green_ses+rect_yellow_ses+
+                                                '</div>'+
+                                        '</div>'+
+                                    '</div>';
+                              // }else{
+                                      
+                              //      var   Session_made = '';
+                              // }
+                              
+                                 $("#contain-home-r").append(Session_made);
+
                               }
                             }  //cierre for arrayS
 /*  E N D     S E S I O N E S*/

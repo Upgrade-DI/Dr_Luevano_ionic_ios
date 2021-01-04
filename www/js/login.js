@@ -91,7 +91,7 @@ function validate_phpSession() {
 		 // var cookiePass = $.cookie("pass_pat");
 		 // (debugMode) ? console.log(cookiePass) : '';
 
-		 	
+
 		 var cookieIdAutologin = $.cookie("id_pat");
 		 (debugMode) ? console.log(cookieIdAutologin) : '';
 		
@@ -540,6 +540,10 @@ $(document).on(clickHandler,'#do_logout',function(){ "use strict"; if(!touchmove
 function do_logout(){
 	"use strict";
 	// [A] solicitamos la baja de la sessión
+	 	 $.cookie("id_pat", '', { expires : -7 });
+		 $.cookie("mail_pat", '', { expires : -7 });
+		 $.cookie("pass_pat", '', { expires : -7 });
+
 	var request = $.ajax({
 		url: phpValidate,
 		type: "post",
