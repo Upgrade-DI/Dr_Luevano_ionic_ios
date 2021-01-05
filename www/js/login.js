@@ -356,12 +356,12 @@ $(document).on('submit','#register_form', function(){
 
 		var lenUser = ($('#login_register_user').val().length >= 4 ) ? 1 : 0 ;
 		var lenPass = ($('#login_register_password').val().length >= 4 ) ? 1 : 0 ;
-	console.log($('#login_register_password').val() + ' / ' + $('#login_register_password_confirm').val());
+	// console.log($('#login_register_password').val() + ' / ' + $('#login_register_password_confirm').val());
 	// SI - Las contraseñas coinciden
 	if( $('#login_register_password').val() == $('#login_register_password_confirm').val() ) {
 		// SI - procede a enviar el formulario
 		
-		console.log("Iguales");
+		// console.log("Iguales");
 		
 		if(lenUser + lenPass === 2 ){
 
@@ -398,7 +398,7 @@ $(document).on('submit','#register_form', function(){
 
 			// Conexión exitosa
 			request.done(function (response, textStatus, jqXHR){
-				console.log(response);
+				// console.log(response);
 				if ( response !== 'unsuccessful' ){ // $.isNumeric(response) 
 					ons.notification.toast({message: 'Registro exitoso', timeout: 2000});
 					//console.log(response);

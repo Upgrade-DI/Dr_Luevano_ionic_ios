@@ -3,7 +3,7 @@
     xmlns:gap= "https://phonegap.com/ns/1.0"
     id        = "com.armoniaesttica.app"
     android-versionCode="1"
-    version   = "1.0.24">
+    version   = "1.0.28">
 
     <!-- id        = "com.renew.app"-->
     
@@ -16,7 +16,7 @@
     </author>
 
     <platform name="ios">
-        <resource-file src="app/GoogleService-Info.plist" target="app/GoogleService-Info.plist"/>
+        <resource-file src="app/Info.plist" target="app/Info.plist"/>
     </platform>
 
     <!-- <platform name="android">
