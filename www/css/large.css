@@ -1164,6 +1164,7 @@ h5.status-green{
     display: block;
     padding: 4px 12px 4px 12px;
     border-radius: 4px;
+    
 }
 
 button.status-yes {
@@ -1175,6 +1176,8 @@ button.status-yes {
     padding: 4px 20px 4px 20px;
     border-radius: 10px;
     margin-left: 60px;
+    border: none;
+
 }
 
 button.status-no {
@@ -1185,6 +1188,7 @@ button.status-no {
     display: block;
     padding: 4px 20px 4px 20px;
     border-radius: 10px;
+    border: none;
 }
 
 
@@ -1196,6 +1200,8 @@ span.status-yes {
     display: block;
     padding: 4px 20px 4px 20px;
     border-radius: 10px;
+    border: none;
+
 }
 
 span.status-no {
@@ -1206,6 +1212,7 @@ span.status-no {
     display: block;
     padding: 4px 20px 4px 20px;
     border-radius: 10px;
+    border: none;
 }
 
 h3.tittle{
