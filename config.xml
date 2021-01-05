@@ -3,7 +3,7 @@
     xmlns:gap= "https://phonegap.com/ns/1.0"
     id        = "com.armoniaesttica.app"
     android-versionCode="1"
-    version   = "1.0.18">
+    version   = "1.0.20">
 
     <!-- id        = "com.renew.app"-->
     

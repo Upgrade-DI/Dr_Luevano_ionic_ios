@@ -34,11 +34,12 @@
 	<string>https://dr-luevano-ios.firebaseio.com</string>
 
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Dr. Luevano no necesita localizacion </string>
+	<string>Dr. Luevano utiliza la ubicación para obtener la dirección actual del usuario. </string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Dr. Luevano no necesita localizacion </string>
+	<string>Dr. Luevano Utiliza la ubicación para obtener la dirección actual del usuario. </string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Dr. Luevano no necesita localizacion</string>
+	<string>Dr. Luevano utiliza la ubicación para obtener la dirección actual del usuario.</string>
+
 
 </dict>
 </plist>
