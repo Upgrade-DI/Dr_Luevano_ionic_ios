@@ -11,11 +11,9 @@
   "devDependencies": {
     "cordova-browser": "~6.0.0",
     "cordova-plugin-add-swift-support": "^2.0.2",
-    "cordova-plugin-calendar": "^5.1.5",
     "cordova-plugin-camera": "^4.1.0",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-dialogs": "^2.0.2",
-    "cordova-plugin-geolocation": "^4.0.2",
     "cordova-plugin-inappbrowser": "^4.0.0",
     "cordova-plugin-network-information": "^2.0.2",
     "cordova-plugin-qrscanner-dual": "^3.0.8",
