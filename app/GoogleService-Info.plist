@@ -32,11 +32,13 @@
 	<string>1:578524963473:ios:861e738be042a1c4785530</string>
 	<key>DATABASE_URL</key>
 	<string>https://dr-luevano-ios.firebaseio.com</string>
-	
-	<key>NSLocationAlwaysUsageDescription</key> 
-	<string>La aplicacion no cuenta con uso de localizacion</string> 
-	<key>NSLocationWhenInUseUsageDescription</key> 
-	<string>La aplicacion no cuenta con uso de localizacion</string>
-	
+
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Dr. Luevano no necesita localizacion </string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Dr. Luevano no necesita localizacion </string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Dr. Luevano no necesita localizacion</string>
+
 </dict>
 </plist>

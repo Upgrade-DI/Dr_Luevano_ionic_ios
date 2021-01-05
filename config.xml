@@ -3,7 +3,8 @@
     xmlns:gap= "https://phonegap.com/ns/1.0"
     id        = "com.armoniaesttica.app"
     android-versionCode="1"
-    version   = "1.0.14">
+    version   = "1.0.18">
+
     <!-- id        = "com.renew.app"-->
     
     <name>Dr. Luevano</name>
@@ -94,7 +95,7 @@
 
     <plugin name="cordova-plugin-test-framework" source="npm" spec="~1.1.6" />
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.1" />
-    <engine name="cordova-browser" spec="~6.0.0" />
+    <!-- <engine name="cordova-browser" spec="~6.0.0" /> -->
     
     <!-- <content src="home.html" /> -->
     
