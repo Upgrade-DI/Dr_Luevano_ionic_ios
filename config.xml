@@ -3,7 +3,7 @@
 	xmlns:gap= "https://phonegap.com/ns/1.0"
 	id        = "com.armoniaesttica.app"
 	android-versionCode="1"
-	version   = "1.0.32">
+	version   = "1.0.34">
 	<!-- id        = "com.renew.app"-->
     
 	<name>Dr. Luevano</name>
