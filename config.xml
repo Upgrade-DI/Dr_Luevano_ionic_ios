@@ -3,7 +3,7 @@
     xmlns:gap= "https://phonegap.com/ns/1.0"
     id        = "com.armoniaesttica.app"
     android-versionCode="1"
-    version   = "1.0.22">
+    version   = "1.0.24">
 
     <!-- id        = "com.renew.app"-->
     
@@ -84,17 +84,17 @@
 
     <preference name="permissions" value="none"/>
 
-    <plugin name="cordova-plugin-camera" spec="~5.0.1" source="npm"/>
-    <plugin name="cordova-plugin-device" spec="~2.0.3" source="npm"/>
-    <plugin name="cordova-plugin-dialogs" spec="~2.0.2" source="npm"/>
+    <!-- <plugin name="cordova-plugin-camera" spec="~5.0.1" source="npm"/> -->
+    <!-- <plugin name="cordova-plugin-device" spec="~2.0.3" source="npm"/> -->
+    <!-- <plugin name="cordova-plugin-dialogs" spec="~2.0.2" source="npm"/> -->
     <plugin name="cordova-plugin-inappbrowser" spec="~4.1.0" source="npm"/>
     <plugin name="cordova-plugin-network-information" spec="~2.0.2" source="npm"/>
     <plugin name="cordova-plugin-splashscreen" spec="~6.0.0" />
     <plugin name="cordova-plugin-statusbar" spec="~2.4.3" />
     <plugin name="cordova-plugin-qrscanner-dual" spec="~3.0.8" />
 
-    <plugin name="cordova-plugin-test-framework" source="npm" spec="~1.1.6" />
-    <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.1" />
+ <!--    <plugin name="cordova-plugin-test-framework" source="npm" spec="~1.1.6" />
+    <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.1" /> -->
     <!-- <engine name="cordova-browser" spec="~6.0.0" /> -->
     
     <!-- <content src="home.html" /> -->
