@@ -1,6 +1,6 @@
 {
   "name": "com.armoniaesttica.app",
-  "version": "1.0.28",
+  "version": "1.0.30",
   "description": "Version for Dr. Luevano App",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,6 @@
   "author": "Upgrade DI",
   "license": "ISC",
   "devDependencies": {
-    "cordova-browser": "~6.0.0",
     "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-dialogs": "^2.0.2",
