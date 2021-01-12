@@ -57,9 +57,9 @@ function onPushwooshInitialized(pushNotification) {
     
     //initialize Pushwoosh with projectid: "GOOGLE_PROJECT_ID", appid : "PUSHWOOSH_APP_ID". This will trigger all pending push notifications on start.
     pushNotification.onDeviceReady({
-    	projectid: "355704478592",
+    	projectid: "578524963473",
      	appid: "96698-47E03",
-     	serviceName: "Renew"
+     	serviceName: "dr-luevano-ios"
    	});
 	  
 	  
