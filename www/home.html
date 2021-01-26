@@ -683,7 +683,7 @@
                // $(".profile-picture").append($photo_patient);   
             $('.profile-picture').css('background-image','url('+$photo_patient+')');
 
-            $("#r_quiz5").append('<input type="hidden" name="patient" id="patient" value="'+the_patient+'"/>');
+            $("#quiz_r_form").append('<input type="hidden" name="patient" id="patient" value="'+the_patient+'"/>');
 
            </script>
            <div class="space_element renew"> 
@@ -1523,7 +1523,7 @@ function getPatient(){
                 // Serializamos la información del Formulario
                 var serializedData = $form.serialize();
                 
-                // console.log(serializedData);
+                console.log(serializedData);
             
                 // Disparamos la solicitud (request) 
                 request = $.ajax({
