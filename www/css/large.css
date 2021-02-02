@@ -2550,6 +2550,24 @@ td { border:none; border-bottom: transparent;  box-sizing: border-box; }
     padding: 10px;
 }
 
+
+.segment--material__button_renew, .segment--material__item:first-child>.segment--material__button_renew, .segment--material__item:last-child>.segment--material__button_renew, 
+
+:active+.segment--material__button {
+border-width: 0;
+border-radius: 0;
+background-color: #f1dadc;
+}
+
+
+:checked+.segment--material__button_renew {
+/*background-color: #c8c8c8;*/
+border-radius: 0;
+border-width: 0;
+background-color: #4f3249;
+}
+
+
 input[type=range].range_renew {
   -webkit-appearance: none;
   margin: 10px 0;
