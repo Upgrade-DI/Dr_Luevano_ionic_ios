@@ -658,11 +658,29 @@
                         
                         <input type="range" class="range_ae" value="0" step="1" min="0" max="3" oninput="five.value=quiz5.value" id="quiz5" name="quiz_5"></input>
 
-                        <p>¿Recomendarías nuestros servicios?</p>  <p>0 = No   1 = Tal vez  2 = Sí </p> 
+                        <p>¿Recomendarías nuestros servicios?</p> <!--  <p>0 = No   1 = Tal vez  2 = Sí </p> 
                         
                         <output class="range_nps_box-ae" id="six" name="six" for="quiz6">0</output>
                         
-                        <input type="range" class="range_ae" value="0" step="1" min="0" max="2" oninput="six.value=quiz6.value" id="quiz6" name="quiz_6"></input>
+                        <input type="range" class="range_ae" value="0" step="1" min="0" max="2" oninput="six.value=quiz6.value" id="quiz6" name="quiz_6"></input> -->
+
+
+                        <!-- segment -->
+                        <div class="segment segment--material" style="width: 280px; margin: 0 auto;">
+                            <div class="segment__item segment--material__item">
+                                <input type="radio" class="segment__input segment--material__input" name="quiz6" data-length="0" value="0" >
+                                <div class="segment__button segment--material__button">No</div>
+                            </div>
+                            <div class="segment__item segment--material__item">
+                                <input type="radio" class="segment__input segment--material__input" name="quiz6" data-length="1" value="1">
+                                <div class="segment__button segment--material__button">Tal vez</div>
+                            </div>
+                            <div class="segment__item segment--material__item">
+                                <input type="radio" class="segment__input segment--material__input" name="quiz6" data-length="2" value="2" checked>
+                                <div class="segment__button segment--material__button">Sí</div>
+                            </div>
+                        </div>
+                        <!-- segment -->
 
                         <p>¿Cómo podemos mejorar tu experiencia en Armonía Estética?</p>
                         <textarea class="gray-s " id="quiz7" name="quiz_7" rows="5" cols="90"a></textarea>
