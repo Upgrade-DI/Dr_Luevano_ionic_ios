@@ -15,7 +15,7 @@
 	</author>
 
 	<platform name="ios">
-    	<resource-file src="app/GoogleService-Info.plist" target="app/GoogleService-Info.plist"/>
+    	<resource-file src="GoogleService-Info.plist" target="app/GoogleService-Info.plist"/>
 	</platform>
 
 	<!-- <platform name="android">
@@ -23,6 +23,8 @@
 	</platform>  -->
 	
 	<preference name='phonegap-version' value='cli-9.0.0' />
+	<preference name='cordova-cli' value='cli-9.0.0' />
+	
 
 	
 
