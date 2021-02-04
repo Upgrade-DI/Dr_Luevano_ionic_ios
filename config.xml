@@ -2,7 +2,6 @@
 	<widget xmlns = "https://www.w3.org/ns/widgets"
 	xmlns:gap= "https://phonegap.com/ns/1.0"
 	id        = "com.armoniaesttica.app"
-	android-versionCode="1"
 	version   = "1.0.36">
 	<!-- id        = "com.renew.app"-->
     
