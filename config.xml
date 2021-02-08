@@ -2,7 +2,7 @@
 	<widget xmlns = "https://www.w3.org/ns/widgets"
 	xmlns:gap= "https://phonegap.com/ns/1.0"
 	id        = "com.armoniaesttica.app"
-	version   = "1.0.36">
+	version   = "1.0.38">
 	<!-- id        = "com.renew.app"-->
     
 	<name>Dr. Luevano</name>
@@ -55,6 +55,7 @@
 
 	<!-- icons and splash -->
 	<platform name="ios">
+        <icon height="29" src="resources/ios/icon/29x29.png" width="29" />
         <icon height="40" src="resources/ios/icon/40x40.png" width="40" />
         <icon height="50" src="resources/ios/icon/50x50.png" width="50" />
         <icon height="57" src="resources/ios/icon/57x57.png" width="57" />
