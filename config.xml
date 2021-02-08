@@ -94,6 +94,14 @@
 	<plugin name="cordova-plugin-statusbar" spec="~2.4.3" />
 	<plugin name="cordova-plugin-qrscanner-dual" spec="~3.0.8" />
 
+	<plugin name="cordova-plugin-wkwebview-engine" spec="~5.0.0" />
+	<preference name="WKWebViewOnly" value="true" />​
+	<preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+	<feature name="CDVWKWebViewEngine">
+	    <param name="ios-package" value="CDVWKWebViewEngine" />
+	</feature>
+
+
 	<plugin name="cordova-plugin-test-framework" source="npm" spec="~1.1.6" />
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.1" />
     <engine name="cordova-browser" spec="~6.0.0" />
