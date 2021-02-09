@@ -3309,39 +3309,6 @@ function dateconfirmaeno(date_id){
 } //cierre de function
 
 
-
-
-      var app = {
-        // Application Constructor
-        initialize: function() {
-          this.bindEvents();
-        },
-
-        bindEvents: function() {
-          document.addEventListener('deviceready', this.onDeviceReady, false);
-        },
-        onDeviceReady: function() {
-
-        app.receivedEvent('deviceready');
-            
-        if (!ons.platform.isIPhoneX()) {
-          StatusBar.hide();
-        }   
-          
-        
-
-        },
-        // Update DOM on a Received Event
-        receivedEvent: function(id) {
-          "use strict";
-          
-          console.log('Received Event: ' + id);
-        }
-        };
-
-        app.initialize();
-    
-
     </script>
     
     <!--<script type="text/javascript" src="includes/js/universal_links.js"></script>-->
