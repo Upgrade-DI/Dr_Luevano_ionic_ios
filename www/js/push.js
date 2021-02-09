@@ -59,7 +59,7 @@ function onPushwooshInitialized(pushNotification) {
     pushNotification.onDeviceReady({
     	projectid: "578524963473",
      	appid: "96698-47E03",
-     	serviceName: "dr-luevano-ios"
+     	serviceName: "Dr. Luevano"
    	});
 	  
 	  
