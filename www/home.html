@@ -148,7 +148,8 @@
                  confirmr(date_id);
 
                  if (quiz == 0) {   //si puede contestar la encuesta
-                   QRScanner.cancelScan();
+                   // QRScanner.cancelScan();
+                   QRScanner.destroy();
                    window.document.querySelector('#account-rae').classList.remove('transparent-body');
                    
                    $("#do_logout").removeAttr('disabled');
@@ -171,7 +172,8 @@
                    document.querySelector('#myNavigator').pushPage("quiz_renew.html");
 
                  }else if (quiz == 1){  //no puede contestar encuesta y lo redirecciona al menú principal
-                  QRScanner.cancelScan();
+                  // QRScanner.cancelScan();
+                  QRScanner.destroy();
                   window.document.querySelector('#account-rae').classList.remove('transparent-body');
 
                    $("#do_logout").removeAttr('disabled');
@@ -201,7 +203,8 @@
            }else if(system_rae == 1) {  //si el paciente es de armonía 
              //funcion para actualizar estado de cita
              confirmae(date_id);
-             QRScanner.cancelScan();
+             // QRScanner.cancelScan();
+             QRScanner.destroy();
              window.document.querySelector('#account-rae').classList.remove('transparent-body');
                    
                    $("#do_logout").removeAttr('disabled');
