@@ -20,7 +20,7 @@
 	<!-- <platform name="android">
 		<resource-file src="app/google-services.json" target="app/google-services.json" />
 	</platform>  -->
-	
+
 	<preference name='phonegap-version' value='cli-9.0.0' />
 	<preference name='cordova-cli' value='cli-9.0.0' />
 
@@ -81,7 +81,6 @@
 	<splash src="resources/ios/splash/Default@2x~universal~anyany.png" />
 	</platform>
 
-	
 
 	<preference name="permissions" value="none"/>
 
