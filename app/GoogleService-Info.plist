@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>578524963473-7bsbm86a8845olus03mgatm2kuio1393.apps.googleusercontent.com</string>
+	<string>305538909303-fo26pucru74lfs5tjp0rm2e2craokfj6.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.578524963473-7bsbm86a8845olus03mgatm2kuio1393</string>
+	<string>com.googleusercontent.apps.305538909303-fo26pucru74lfs5tjp0rm2e2craokfj6</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDMW6uE5gMKl0rgoQ0Eqk2Y5cg_9HbP6aU</string>
+	<string>AIzaSyDuFQXEkvlWXHk8GVdBntG7B5zlQUcABPA</string>
 	<key>GCM_SENDER_ID</key>
-	<string>578524963473</string>
+	<string>305538909303</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.armoniaesttica.app</string>
+	<string>com.hospitalangeles.app</string>
 	<key>PROJECT_ID</key>
-	<string>dr-luevano-ios</string>
+	<string>hospital-angeles</string>
 	<key>STORAGE_BUCKET</key>
-	<string>dr-luevano-ios.appspot.com</string>
+	<string>hospital-angeles.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:578524963473:ios:861e738be042a1c4785530</string>
+	<string>1:305538909303:ios:81f439c2d0e4100298b272</string>
 	<key>DATABASE_URL</key>
-	<string>https://dr-luevano-ios.firebaseio.com</string>
+	<string>https://hospital-angeles.firebaseio.com</string>
 </dict>
 </plist>
