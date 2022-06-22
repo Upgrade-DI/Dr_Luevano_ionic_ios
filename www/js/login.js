@@ -180,7 +180,7 @@ function validate_phpSession() {
 		
 	 	 var DataAutoSend  =  'autologin_user='+cookieMailAutologin +'&'+ 'autologin_password='+cookiePassAutologin;
 
-		 (debugMode) ? console.log($DataAutoSend) : '';
+		 (debugMode) ? console.log(DataAutoSend) : '';
 
 		 if ( cookieIdAutologin == '' || cookieIdAutologin == null || cookieIdAutologin ==  'null' || cookieIdAutologin == undefined || cookieIdAutologin == 'undefined') {
 		 	console.log('No hay sesión activa');
