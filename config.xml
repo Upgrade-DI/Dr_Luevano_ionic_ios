@@ -109,6 +109,8 @@
         <variable name="ANDROID_FOREGROUND_PUSH" value="false" />
      </plugin>
        
+    <preference name="scheme" value="app" />
+	<preference name="hostname" value="localhost" />
 
 
 	<access origin="*" subdomains="true"/>
