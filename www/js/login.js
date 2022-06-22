@@ -2,12 +2,12 @@
 
 // CONFIGURABLE
 
-var debugMode = false;
+var debugMode = true;
 var serverSource = 'remote'; // <-- Fuente del proyecto
 //var serverSource = 'local'; // <-- Fuente del proyecto
 
 var rootPath = (serverSource === 'local') ? './' : 'https://armoniaestetica.com/';
-var phpValidate = rootPath+'_sudiv3/ar_engine/login_validate_ios.php';
+var phpValidate = rootPath+'_sudiv3/ar_engine/login_validate_new_ios.php';
 
 var root_app_path = 'connectMySql_develop.php';
 
@@ -25,7 +25,8 @@ var root_app_path = 'connectMySql_develop.php';
 	function getLoginAcess(userCompanyData) {
 		// Aquí va la acción a seguir (eje. Reload Location)
 		// Aquí va la acción a seguir (eje. Reload Location)
-			
+		console.log(userCompanyData);
+		
 		var id_pat = userCompanyData[0] ;    //id del paciente
 		var mail_pat = userCompanyData[1];	 //mail del paciente
 		var pass_pat = userCompanyData[2];	 //pass del paciente
@@ -44,16 +45,102 @@ var root_app_path = 'connectMySql_develop.php';
 
 
 		
-		   setTimeout(function() {
-			 modal.hide();
-		   }, 2000);
-		   setTimeout(function() {
-			 var url = "home.html";
-			 window.location.replace(url);
-			 //document.querySelector('#myNavigator').resetToPage("home.html");
-		   }, 500);
-		   
+		$new_form = 'login_user_id='+id_pat +'&'+ 'login_mail='+ mail_pat+'&'+ 'login_password='+ pass_pat;
+		
+
+		var $form = $('#login_form');
+
+		var serializedData = $new_form;
+
+		(debugMode) ? console.log(serializedData) : '';
+
+		var modal = document.querySelector('ons-modal');
+// Seleccionamos todos los posibles inputs
+		var $inputs = $form.find("input, select, button, textarea, checkbox");
+		var login_btn_text = $('#submit_login').html();
+				request = $.ajax({
+					url:  phpValidate+'?method=validate_loginUser',
+					type: "post",
+					data: serializedData
+				});
+				
+				// Conexión exitosa
+				request.done(function (response, textStatus, jqXHR){
+						
+						(debugMode) ? console.log(response) : '';
+
+							
+							if(response == 'unsuccessful'){
+							// Si no es user en db empresa
+								// Mostramos el mensaje de error
+								//showMsgError($('.error_login'),'Acceso denegado','#F00');
+
+							//22	document.cookie = "db_client=; expires=Thu, 01 Jan 1970 00:00:00 UTC;"; // Eliminamos cookie - EIPA
+								(debugMode) ? console.log('No entro getLoginAcess') : '';
+							
+							
+								 modal.hide();
+								ons.notification.toast({message: 'Not user validate', timeout: 1000});		
+								
+								// Reestablecemos el login
+								$inputs.prop("disabled", false);
+								$('#submit_login').html(login_btn_text);
+							
+							}else {
+								//si es user en db empresa
+								(debugMode) ?  console.log('si entro getLoginAcess') : '';
+								
+								   setTimeout(function() {
+									  modal.hide();
+								   }, 2000);
+								   setTimeout(function() {
+									  var url = "home.html";
+									  window.location.replace(url);
+									 //document.querySelector('#myNavigator').resetToPage("home.html");
+								   }, 500);
+		 						
+
+								// Reestablecemos el login
+								$inputs.prop("disabled", false);
+								$('#submit_login').html(login_btn_text);
+								
+							}
+			
+				});
+
 	}
+
+
+
+
+
+//Funcion para leer una cookie dada - EIPA
+		function getCookie(cname) {
+		  var name = cname + "=";
+		  var decodedCookie = decodeURIComponent(document.cookie);
+		  var ca = decodedCookie.split(";");
+		  for (var i = 0; i < ca.length; i++) {
+		    var c = ca[i];
+		    while (c.charAt(0) == " ") {
+		      c = c.substring(1);
+		    }
+		    if (c.indexOf(name) == 0) {
+		      return c.substring(name.length, c.length);
+		    }
+		  }
+		  return "";
+		}
+//Fin funcion para leer cookie - EIPA
+
+
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+
 
 	//Si se da click en # do_logout, se realiza la siguiente acción.
 	function getLogOut() {
@@ -80,18 +167,6 @@ function validate_phpSession() {
 
 	(debugMode) ? console.log("revisando sesion...") : '';
 	
-		
-		 // var cookieId = $.cookie("id_pat");
-		 // (debugMode) ? console.log(cookieId) : '';
-
-	
-		 // var cookieMail = $.cookie("mail_pat");
-		 // (debugMode) ? console.log(cookieMail) : '';
-
-		 // var cookiePass = $.cookie("pass_pat");
-		 // (debugMode) ? console.log(cookiePass) : '';
-
-
 		 var cookieIdAutologin = $.cookie("id_pat");
 		 (debugMode) ? console.log(cookieIdAutologin) : '';
 		
@@ -101,8 +176,10 @@ function validate_phpSession() {
 		 var cookiePassAutologin = $.cookie("pass_pat");
 		 (debugMode) ? console.log(cookiePassAutologin) : '';
 
-		 $sessionData = new Array(cookieIdAutologin,cookieMailAutologin,cookiePassAutologin);
+		 //$sessionData = new Array(cookieIdAutologin,cookieMailAutologin,cookiePassAutologin);
 		
+	 	 var DataAutoSend  =  'autologin_user='+cookieMailAutologin +'&'+ 'autologin_password='+cookiePassAutologin;
+
 		 (debugMode) ? console.log($sessionData) : '';
 
 		 if ( cookieIdAutologin == '' || cookieIdAutologin == null || cookieIdAutologin ==  'null' || cookieIdAutologin == undefined || cookieIdAutologin == 'undefined') {
@@ -110,7 +187,50 @@ function validate_phpSession() {
 		 	// modal.hide();
 		 }else{
 		 	console.log('Sí hay unasesión activa');
-			getLoginAcess($sessionData);
+			// getLoginAcess($sessionData);
+			var request = $.ajax({
+				url: phpValidate+'?method=validate_autologin',
+				data: DataAutoSend,
+				type: "post"
+			});
+
+
+	// Conexión exitosa
+				request.done(function (response, textStatus, jqXHR){
+				
+					(debugMode) ? console.log(response)  : '';
+
+							(debugMode) ? console.log('Resultado: ' + response) : '';
+							
+							if(response !== 'unsuccessful'){
+							//si es cliente en db admin	en tabla sudi_clients_tb
+								var session_response = $.parseJSON(response);
+								//ejecutamos la siguiente funcion con la respuesta que nos trajo el ajax
+								getLoginAcess(session_response);
+							
+							// Si no es cliente en db admin
+							}else {
+								// Mostramos el mensaje de error
+								//showMsgError($('.error_login'),'Acceso denegado','#F00');
+								// 22document.cookie = "db_client=; expires=Thu, 01 Jan 1970 00:00:00 UTC;"; // Eliminamos cookie - EIPA
+								
+								//ons.notification.toast({message: 'Incorrect Information', timeout: 1000});		
+
+								(debugMode) ?console.log('no auto login client'): '';
+								
+							}
+				});
+
+			// Si falla la conexión
+			request.fail(function (jqXHR, textStatus, errorThrown){
+				(debugMode) ?console.error(
+					"Han ocurrido los siguientes errores: "+
+					textStatus, errorThrown
+				): '';
+				//$('#page_login').css('opacity', '1');
+			});
+
+
 		}
 /*
 
@@ -306,8 +426,8 @@ $(document).on('submit','#login_form',function(){
 								getLoginAcess(session_response);
 								
 								// Reestablecemos el login
-								$inputs.prop("disabled", false);
-								$('#submit_login').html(login_btn_text);
+								// $inputs.prop("disabled", false);
+								// $('#submit_login').html(login_btn_text);
 								
 							// Si no es correcto
 							}else {
@@ -544,6 +664,15 @@ function do_logout(){
 		 $.cookie("mail_pat", '', { expires : -7 });
 		 $.cookie("pass_pat", '', { expires : -7 });
 
+
+		 $.cookie("id_pat", '', { expires : -7 });
+		 $.cookie("mail_pat", '', { expires : -7 });
+		 $.cookie("pass_pat", '', { expires : -7 });
+
+		 $.removeCookie('id_pat', { path: '/' });
+		 $.removeCookie('mail_pat', { path: '/' });
+         $.removeCookie('pass_pat', { path: '/' });
+
 	var request = $.ajax({
 		url: phpValidate,
 		type: "post",
@@ -553,6 +682,9 @@ function do_logout(){
 		if(data == 'successful')
 		{			
 			// Si se cerro sesión completamente:
+			document.cookie = "db_client=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Eliminamos cookie - EIPA
+			document.cookie = "user_mail=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Eliminamos cookie - EIPA
+
 			(debugMode) ? console.log("sesión cerrada") : '';
 			getLogOut();
 			
