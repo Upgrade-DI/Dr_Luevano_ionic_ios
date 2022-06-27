@@ -27,65 +27,39 @@ var root_app_path = 'connectMySql_develop.php';
 		// Aquí va la acción a seguir (eje. Reload Location)
 		console.log(userCompanyData);
 		
-		//var id_pat = userCompanyData[0] ;    //id del paciente
-		var mail_pat = userCompanyData[0];	 //mail del paciente
-		var pass_pat = userCompanyData[1];	 //pass del paciente
 
 
-		 $.cookie("mail_pat", mail_pat, { expires : 30 });
-		 var cookieMail = $.cookie("mail_pat");
-		 (debugMode) ? console.log(cookieMail) : '';
+		var id_pat = userCompanyData[0] ;    //id del paciente
+		var mail_pat = userCompanyData[1];	 //mail del paciente
+		var pass_pat = userCompanyData[2];	 //pass del paciente
 
-		 $.cookie("pass_pat", pass_pat, { expires : 30 });
-		 var cookiePass = $.cookie("pass_pat");
-		 (debugMode) ? console.log(cookiePass) : '';
-
-
-		
-		$new_form = 'login_mail='+ mail_pat+'&'+ 'login_password='+ pass_pat;
-		
-
-		var $form = $('#login_form');
-
-		var serializedData = $new_form;
-
-		(debugMode) ? console.log(serializedData) : '';
-
-		var modal = document.querySelector('ons-modal');
-// Seleccionamos todos los posibles inputs
-		var $inputs = $form.find("input, select, button, textarea, checkbox");
-		var login_btn_text = $('#submit_login').html();
-				request = $.ajax({
-					url:  phpValidate+'?method=validate_loginUser',
-					type: "post",
-					data: serializedData
-				});
-				
-				// Conexión exitosa
-				request.done(function (response, textStatus, jqXHR){
-						
-						(debugMode) ? console.log(response) : '';
-
-							
-							if(response == 'unsuccessful'){
-							// Si no es user en db empresa
-								// Mostramos el mensaje de error
-								//showMsgError($('.error_login'),'Acceso denegado','#F00');
-
-							//22	document.cookie = "db_client=; expires=Thu, 01 Jan 1970 00:00:00 UTC;"; // Eliminamos cookie - EIPA
-								(debugMode) ? console.log('No entro getLoginAcess') : '';
+		if ( mail_pat == '' || mail_pat == null || mail_pat ==  'null' || mail_pat == undefined || mail_pat == 'undefined' || mail_pat == 'u' ) {
+				(debugMode) ? console.log('No entro getLoginAcess') : '';
 							
 							
-								 modal.hide();
-								ons.notification.toast({message: 'Not user validate', timeout: 1000});		
+				modal.hide();
+				ons.notification.toast({message: 'Not user validate', timeout: 1000});		
 								
-								// Reestablecemos el login
-								$inputs.prop("disabled", false);
-								$('#submit_login').html(login_btn_text);
-							
-							}else {
-								//si es user en db empresa
-								(debugMode) ?  console.log('si entro getLoginAcess') : '';
+				// Reestablecemos el login
+				$inputs.prop("disabled", false);
+				$('#submit_login').html(login_btn_text);
+
+		}else{
+
+
+		 		$.cookie("id_pat", id_pat, { expires : 30 });
+		 		var cookieId = $.cookie("id_pat");
+		 		(debugMode) ? console.log(cookieId) : '';
+
+		 		$.cookie("mail_pat", mail_pat, { expires : 30 });
+		 		var cookieMail = $.cookie("mail_pat");
+		 		(debugMode) ? console.log(cookieMail) : '';
+
+		 		$.cookie("pass_pat", pass_pat, { expires : 30 });
+		 		var cookiePass = $.cookie("pass_pat");
+		 		(debugMode) ? console.log(cookiePass) : '';
+
+		 		(debugMode) ?  console.log('si entro getLoginAcess') : '';
 								
 								   setTimeout(function() {
 									  modal.hide();
@@ -100,10 +74,9 @@ var root_app_path = 'connectMySql_develop.php';
 								// Reestablecemos el login
 								$inputs.prop("disabled", false);
 								$('#submit_login').html(login_btn_text);
-								
-							}
-			
-				});
+
+		}		
+		
 
 	}
 
