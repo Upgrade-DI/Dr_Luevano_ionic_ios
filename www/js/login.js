@@ -652,8 +652,10 @@ function do_logout(){
 		if(data == 'successful')
 		{			
 			// Si se cerro sesión completamente:
-			document.cookie = "db_client=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Eliminamos cookie - EIPA
+			document.cookie = "id_pat=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Eliminamos cookie - EIPA
 			document.cookie = "user_mail=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Eliminamos cookie - EIPA
+			document.cookie = "pass_pat=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Eliminamos cookie - EIPA
+
 
 			(debugMode) ? console.log("sesión cerrada") : '';
 			getLogOut();
