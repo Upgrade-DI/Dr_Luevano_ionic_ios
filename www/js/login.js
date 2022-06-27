@@ -27,13 +27,10 @@ var root_app_path = 'connectMySql_develop.php';
 		// Aquí va la acción a seguir (eje. Reload Location)
 		console.log(userCompanyData);
 		
-		var id_pat = userCompanyData[0] ;    //id del paciente
-		var mail_pat = userCompanyData[1];	 //mail del paciente
-		var pass_pat = userCompanyData[2];	 //pass del paciente
+		//var id_pat = userCompanyData[0] ;    //id del paciente
+		var mail_pat = userCompanyData[0];	 //mail del paciente
+		var pass_pat = userCompanyData[1];	 //pass del paciente
 
-		 $.cookie("id_pat", id_pat, { expires : 30 });
-		 var cookieId = $.cookie("id_pat");
-		 (debugMode) ? console.log(cookieId) : '';
 
 		 $.cookie("mail_pat", mail_pat, { expires : 30 });
 		 var cookieMail = $.cookie("mail_pat");
@@ -45,7 +42,7 @@ var root_app_path = 'connectMySql_develop.php';
 
 
 		
-		$new_form = 'login_user_id='+id_pat +'&'+ 'login_mail='+ mail_pat+'&'+ 'login_password='+ pass_pat;
+		$new_form = 'login_mail='+ mail_pat+'&'+ 'login_password='+ pass_pat;
 		
 
 		var $form = $('#login_form');
