@@ -72,8 +72,8 @@ var root_app_path = 'connectMySql_develop.php';
 		 						
 
 								// Reestablecemos el login
-								$inputs.prop("disabled", false);
-								$('#submit_login').html(login_btn_text);
+								// $inputs.prop("disabled", false);
+								// $('#submit_login').html(login_btn_text);
 
 		}		
 		

@@ -471,7 +471,9 @@
                     </div>
                 </div>                
             </div>                
-                    <section id="contain-products" class="section-underline">
+                  
+                    <section id="contain-products" class="section-underline" style="  display: block;  overflow: scroll;  height: calc(100% - 140px);">
+
                                             
                     </section><!-- safe-top-container -->
         </ons-page>
@@ -1462,7 +1464,9 @@ function getPatient(){
         $(document).on('submit','#quiz_ea_form',function(){
         "use strict";
                 // console.log("Enviando");
-            
+
+                // Deshabilitamos el botón submit mientras se ejecuta el Ajax
+                $('.btn-ae').prop("disabled", true);
 
                 // Definimos el tipo de formulario
                 var aeQuizPath = rootPath+'_sudiv3/ar_engine/ae_quiz.php';
@@ -1502,9 +1506,13 @@ function getPatient(){
                        
                         myNavigator.popPage();
                         //getPatient();
+                        $('.btn-ae').prop("disabled", false);
+
 
                     }else{
                         ons.notification.toast({message: 'Error en la solicitud', timeout: 1000});
+                        $('.btn-ae').prop("disabled", false);
+
                     }
                    
                 }); 
@@ -1530,7 +1538,9 @@ function getPatient(){
         $(document).on('submit','#quiz_r_form',function(){
         "use strict";
                 // console.log("Enviando");
-            
+
+                // Deshabilitamos el botón submit mientras se ejecuta el Ajax
+                $('.btn-renew').prop("disabled", true);
 
                 // Definimos el tipo de formulario
                 var rQuizPath = rootPath+'_sudiv3/ar_engine/re_quiz.php';
@@ -1568,10 +1578,14 @@ function getPatient(){
                        
                         myNavigator.popPage();
                         //getPatient();
+                        $('.btn-renew').prop("disabled", false);
+
 
 
                     }else{
                         ons.notification.toast({message: 'Error en la solicitud', timeout: 1000});
+                        $('.btn-renew').prop("disabled", false);
+
                     }
                    
                 }); 
