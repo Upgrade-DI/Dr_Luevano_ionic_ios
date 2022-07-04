@@ -2,7 +2,7 @@
 
 // CONFIGURABLE
 
-var debugMode = true;
+var debugMode = false;
 var serverSource = 'remote'; // <-- Fuente del proyecto
 //var serverSource = 'local'; // <-- Fuente del proyecto
 
