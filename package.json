@@ -1,6 +1,6 @@
 {
   "name": "com.armoniaesttica.app",
-  "version": "1.0.71",
+  "version": "1.0.80",
   "description": "DR LUEVANO APP",
   "main": "index.js",
   "scripts": {
