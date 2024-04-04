@@ -575,16 +575,20 @@ background: linear-gradient(to top right, #ffa6a3 0%, #ffe175 100%); /* W3C, IE1
 
 
 .rect-yellow{
-fill: rgb(247,240,173);stroke-width:3;justify-content: space-between;
+fill: rgb(247,240,173);
+stroke-width:3;
+justify-content: space-between;
 
 }
 
 .rect-green{
-  fill: rgb(224,245,235);stroke-width:3;justify-content: space-between;
+  fill: rgb(224,245,235);
+  stroke-width: 3;
+  justify-content: space-between;
 }
 
 .h-50{
-  padding-top: : 15px;
+  padding-top: 15px;
    height: 50%;
   display: block;
   width: 100%;
@@ -2380,7 +2384,7 @@ td { border:none; border-bottom: transparent;  box-sizing: border-box; }
 
 .bg-gray{ background-color: #EDEDED !important; }
 
-.bg-purple{ background-color: ##7d4b6e !important; }
+.bg-purple{ background-color: #7d4b6e !important; }
 
 .bg-blue{ background-color: #dceafd !important; }
 
@@ -2802,7 +2806,7 @@ input[type=range].range_ae:focus::-ms-fill-upper {
   height: 40px; 
   width: 40px; 
   background-size: cover; 
-  margin-right: 25px;"
+  margin-right: 25px;
 }
 
 /* MAP */
