@@ -1,56 +1,28 @@
 {
-  "name": "com.armoniaesttica.app",
-  "version": "1.0.80",
-  "description": "DR LUEVANO APP",
+  "name": "capacitor-app",
+  "version": "1.0.0",
+  "description": "An Amazing Capacitor App",
   "main": "index.js",
+  "keywords": [
+    "capacitor",
+    "mobile"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "author": "Upgrade DI",
-  "license": "ISC",
   "dependencies": {
-    "cordova-ios": "6.2.0",
-    "onsenui": "^2.11.1"
+    "@capacitor/android": "^5.7.4",
+    "@capacitor/camera": "latest",
+    "@capacitor/core": "^5.7.4",
+    "@capacitor/ios": "^5.7.4",
+    "@capacitor/splash-screen": "latest"
   },
   "devDependencies": {
-    "cordova-browser": "~6.0.0",
-    "cordova-plugin-add-swift-support": "^2.0.2",
-    "cordova-plugin-camera": "~5.0.1",
-    "cordova-plugin-device": "~2.0.3",
-    "cordova-plugin-dialogs": "~2.0.2",
-    "cordova-plugin-inappbrowser": "~4.1.0",
-    "cordova-plugin-network-information": "~2.0.2",
-    "cordova-plugin-qrscanner-dual": "~3.0.8",
-    "cordova-plugin-splashscreen": "~6.0.0",
-    "cordova-plugin-statusbar": "~2.4.3",
-    "cordova-plugin-test-framework": "~1.1.6",
-    "cordova-plugin-vibration": "~2.1.1",
-    "cordova-plugin-whitelist": "~1.3.4",
-    "pushwoosh-cordova-plugin": "~8.0.0"
+    "@capacitor/cli": "^5.7.4",
+    "vite": "^2.9.13"
   },
-  "cordova": {
-    "platforms": [
-      "cordova-browser",
-      "ios"
-    ],
-    "plugins": {
-      "cordova-plugin-camera": {},
-      "cordova-plugin-device": {},
-      "cordova-plugin-dialogs": {},
-      "cordova-plugin-inappbrowser": {},
-      "cordova-plugin-network-information": {},
-      "cordova-plugin-splashscreen": {},
-      "cordova-plugin-statusbar": {},
-      "cordova-plugin-qrscanner-dual": {},
-      "cordova-plugin-test-framework": {},
-      "cordova-plugin-vibration": {},
-      "cordova-plugin-whitelist": {},
-      "pushwoosh-cordova-plugin": {
-        "LOG_LEVEL": "DEBUG",
-        "IOS_FOREGROUND_ALERT_TYPE": "BANNER",
-        "ANDROID_FOREGROUND_PUSH": "false"
-      },
-      "cordova-plugin-qrscanner": {}
-    }
-  }
+  "author": "",
+  "license": "ISC"
 }
