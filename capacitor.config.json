@@ -9,6 +9,7 @@
     }
   },
   "server": {
-    "androidScheme": "https"
+    "androidScheme": "https",
+    "iosScheme": "capacitor"  // Añadir esquema para iOS
   }
 }
