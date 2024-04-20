@@ -12,10 +12,16 @@
   <link  href="./fonts/stylesheet.css" rel="stylesheet" type="text/css" />
   <link href="./css/large.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" type="text/css" media="only screen and (min-width:10px) and (max-width:380px)" href="./css/small.css" />
-  <link href="/css/customico.css" rel="stylesheet" type="text/css" />
+  <link href="./css/customico.css" rel="stylesheet" type="text/css" />
 
+  <script>
+    if (!window.setImmediate) {
+      window.setImmediate = function(fn) {
+        setTimeout(fn, 0);
+      };
+    }
+  </script>
   <script defer src="./js/onsenui.js"></script>
-
   <script src="./js/jquery-3.2.1.min.js"></script>
   <script src="./js/jquery.cookie.js"></script>
   <script type="module" defer src="./js/login.js"></script>
@@ -42,8 +48,8 @@
         <div class="box-emergent-white bg-white" id="login-white">
 
           <div class='sk-three-bounce'>
-            <img class='sk-bounce-1 sk-child' src="/img/logotipo_r.svg" style="width: 100%;" />
-            <img class='sk-bounce-2 sk-child' src="/img/logotipo_ae.svg" style="width: 75%;" />
+            <img class='sk-bounce-1 sk-child' src="./img/logotipo_r.svg" style="width: 100%;" />
+            <img class='sk-bounce-2 sk-child' src="./img/logotipo_ae.svg" style="width: 75%;" />
           </div>
           <!-- <div style="padding-bottom: 30px; display: flex; justify-content: center;"> -->
 
@@ -73,7 +79,8 @@
     <template id="page_login.html">
       <ons-page id="page_login">
         <script type="text/javascript">
-          validate_phpSession();
+          
+          // validate_phpSession();
 
           var createAlertDialog = function () {
             var dialog = document.getElementById('my-alert-dialog');
@@ -170,8 +177,7 @@
 
 
 
-        <span
-          style="background-color: transparent; color: #6574a7ab; position: absolute;bottom: 50px;justify-content: center;align-items: center;text-align: center;">¿Tienes
+        <span style="background-color: transparent; color: #6574a7ab; position: absolute;bottom: 50px;justify-content: center;align-items: center;text-align: center;">¿Tienes
           problemas para ingresar a nuestra app? Escríbenos al <a
             href="https://api.whatsapp.com/send?phone=+526142941005&amp;text=Hola,%20tengo%20problemas%20para%20ingresar%20a%20la%20app%20Dr.%20Luevano"
             style="font-size: 0.9em; text-decoration: underline;  color: #4b3348;">614 294 1005</a></span>
@@ -197,7 +203,7 @@
   </footer>
   <script type="text/javascript">
 
-    //ons.disableAutoStatusBarFill();
+    // ons.disableAutoStatusBarFill();
 
 
     // $(document).on("init", '#dashboard_page', function (e) {
@@ -210,58 +216,7 @@
     // });
 
 
-    $(document).ready(function () {
-
-
-      validate_phpSession();
-
-      // PRINCIPAL A LOGIN
-      $('#push-button-login').click(function (e) {
-        var options = {
-          animation: 'slide', // What animation to use
-          onTransitionEnd: function () { } // Called when finishing transition animation
-        };
-        document.querySelector('#myNavigator').pushPage("page_login.html", options);
-
-      });
-
-
-    }); // Document ready
-
-  </script>
-  <script src="/js/login.js"></script>
-  <script type="text/javascript">
-    /*
-      var app = {
-        // Application Constructor
-        initialize: function() {
-          this.bindEvents();
-        },
-
-        bindEvents: function() {
-          document.addEventListener('deviceready', this.onDeviceReady, false);
-        },
-        onDeviceReady: function() {
-
-        app.receivedEvent('deviceready');
-            
-        if (!ons.platform.isIPhoneX()) {
-          StatusBar.hide();
-        }   
-          
-        
-
-        },
-        // Update DOM on a Received Event
-        receivedEvent: function(id) {
-          "use strict";
-          
-          console.log('Received Event: ' + id);
-        }
-        };
-
-        app.initialize();
-    */
+    
 
   </script>
   <!-- <script type="text/javascript" src="https://debug1.phonegap.com/target/target-script-min.js#c2e41c10-ae44-11e7-bf7a-062ae262fc2e"></script> -->
