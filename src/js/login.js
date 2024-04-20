@@ -19,16 +19,6 @@ var root_app_path = 'connectMySql_develop.php';
 
 (debugMode) ? console.log("iniciado ok") : '';
 
-function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) === ' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-}
 // Function - GET ACCESS
 	//Si se otorga el acceso, se realiza la siguiente acción:
 	
@@ -57,10 +47,17 @@ function getCookie(name) {
 		}else{
 
 
-		 		//$.cookie("id_pat", id_pat, { expires : 30 });
-				document.cookie = "id_pat="+id_pat+"; max-age=3600; path=/";
-				document.cookie = "mail_pat="+mail_pat+"; max-age=3600; path=/";
-				document.cookie = "pass_pat="+pass_pat+"; max-age=3600; path=/";
+		 		$.cookie("id_pat", id_pat, { expires : 30 });
+		 		var cookieId = $.cookie("id_pat");
+		 		(debugMode) ? console.log(cookieId) : '';
+
+		 		$.cookie("mail_pat", mail_pat, { expires : 30 });
+		 		var cookieMail = $.cookie("mail_pat");
+		 		(debugMode) ? console.log(cookieMail) : '';
+
+		 		$.cookie("pass_pat", pass_pat, { expires : 30 });
+		 		var cookiePass = $.cookie("pass_pat");
+		 		(debugMode) ? console.log(cookiePass) : '';
 
 		 		(debugMode) ?  console.log('si entro getLoginAcess') : '';
 								
@@ -140,14 +137,13 @@ function validate_phpSession() {
 
 	(debugMode) ? console.log("revisando sesion...") : '';
 	
-		 var cookieIdAutologin = getCookie("id_pat");
-
+		 var cookieIdAutologin = $.cookie("id_pat");
 		 (debugMode) ? console.log(cookieIdAutologin) : '';
 		
-		 var cookieMailAutologin = getCookie("mail_pat");
+		 var cookieMailAutologin = $.cookie("mail_pat");
 		 (debugMode) ? console.log(cookieMailAutologin) : '';
 
-		 var cookiePassAutologin = getCookie("pass_pat");
+		 var cookiePassAutologin = $.cookie("pass_pat");
 		 (debugMode) ? console.log(cookiePassAutologin) : '';
 
 		 //$sessionData = new Array(cookieIdAutologin,cookieMailAutologin,cookiePassAutologin);
