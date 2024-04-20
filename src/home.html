@@ -81,198 +81,112 @@
         <script type="text/javascript">
      
 
-      // page__background page--material__background     background: none transparent !important;
-      function prescan(){
-       QRScanner.prepare();
-       // window.document.querySelector('#account-rae').classList.add('transparent-body');
+     function prescan() {
+        // Configura y muestra el QRScanner
+        setupQRScanner();
 
-       $('#account-rae').removeClass('bg-degrad');
-
-       window.document.querySelector('#contain-rae').classList.add('transparent-body');
-       window.document.querySelector('#do_logout').classList.add('transparent-body');
-
-       // QRScanner.useCamera();
-       QRScanner.show();
-       $('#space_account').addClass('qr-invisibility');
-       $('#qr_buttons').html('');
-       $('#qr_buttons').removeClass('qr-invisibility');
-       $('#qr_buttons').addClass('qr-head');
-
-  
-
-       $('#qr_buttons').append('<span class="btn_opt_qr" onclick="canceledscan()">Cancelar</span>'+
-        '<span class="btn_opt_qr" onclick="scan()">Escanear</span>');
-       scan();
-      }
-
-
-       function scan(){
-          QRScanner.scan(
-          function(err, result){
-            if(err) {
-              (appDebug) ? console.log('scan error:', result): '';
-            } else {
-           
-           $("#do_logout").attr('disabled');
-           $("#account_qr").attr('disabled');
-           $("#account_product").attr('disabled');
-           $("#account_service").attr('disabled');
-           $("#account_pay").attr('disabled');
-           $("#account_presc").attr('disabled');
-
-            $("#name").removeAttr('disabled');
-
-
-
-           
-           (appDebug) ? console.log('txt: ', result): '';
-           
-           var var_Qr = result.split(';');
-
-           var date_id = var_Qr[var_Qr.length -3];
-           var system_rae = var_Qr[var_Qr.length -2];
-           var quiz = var_Qr[var_Qr.length -1];
-
-            //var_Qr[0]; id cita
-           (appDebug) ? console.log("date_id: " + date_id): '';
-
-            //var_Qr[1]; system 0: Renew     1:AE
-           (appDebug) ? console.log("system_rae: " + system_rae): '';
-
-           //var_Qr[2]; si se le muestra la ENCUESTA 0:true o 1:false (Sólo para renew 1 y 3 aparecerá en true. Armonia todas true)
-           (appDebug) ? console.log("quiz: " + quiz): '';
-
-           ons.notification.toast({message: 'el códígo ha sido escaneado', timeout: 1500});
-
-
-           if (system_rae == 0) {   //si el paciente es de renew
-                //funcion para actualizar estado de cita
-                 confirmr(date_id);
-
-                 if (quiz == 0) {   //si puede contestar la encuesta
-                   // QRScanner.cancelScan();
-                   QRScanner.destroy();
-                   window.document.querySelector('#account-rae').classList.remove('transparent-body');
-                   
-                   $("#do_logout").removeAttr('disabled');
-                   $("#account_qr").removeAttr('disabled');
-                   $("#account_product").removeAttr('disabled');
-                   $("#account_service").removeAttr('disabled');
-                   $("#account_pay").removeAttr('disabled');
-                   $("#account_presc").removeAttr('disabled');
-
-                   
-                   $('#space_account').removeClass('qr-invisibility');
-                   $('#contain-rae').removeClass('transparent-body');
-                   $('#do_logout').removeClass('transparent-body');
-
-                   $('#account-rae').addClass('bg-degrad');
-                   $('#qr_buttons').html('');
-                   $('#qr_buttons').removeClass('qr-head');   
-                   $('#qr_buttons').addClass('qr-invisibility');
-
-                   document.querySelector('#myNavigator').pushPage("quiz_renew.html");
-
-                 }else if (quiz == 1){  //no puede contestar encuesta y lo redirecciona al menú principal
-                  // QRScanner.cancelScan();
-                  QRScanner.destroy();
-                  window.document.querySelector('#account-rae').classList.remove('transparent-body');
-
-                   $("#do_logout").removeAttr('disabled');
-                   $("#account_qr").removeAttr('disabled');
-                   $("#account_product").removeAttr('disabled');
-                   $("#account_service").removeAttr('disabled');
-                   $("#account_pay").removeAttr('disabled');
-                   $("#account_presc").removeAttr('disabled');
-
-
-                   $('#contain-rae').removeClass('transparent-body');
-                   $('#do_logout').removeClass('transparent-body');
-
-
-                  $('#space_account').removeClass('qr-invisibility');
-                  $('#account-rae').addClass('bg-degrad');
-                  $('#qr_buttons').html('');
-                  $('#qr_buttons').addClass('qr-invisibility');
-                  $('#qr_buttons').removeClass('qr-head');
-
-
-                  document.querySelector('#myNavigator').resetToPage("home.html");
-                 
-                 }
-
-
-           }else if(system_rae == 1) {  //si el paciente es de armonía 
-             //funcion para actualizar estado de cita
-             confirmae(date_id);
-             // QRScanner.cancelScan();
-             QRScanner.destroy();
-             window.document.querySelector('#account-rae').classList.remove('transparent-body');
-                   
-                   $("#do_logout").removeAttr('disabled');
-                   $("#account_qr").removeAttr('disabled');
-                   $("#account_product").removeAttr('disabled');
-                   $("#account_service").removeAttr('disabled');
-                   $("#account_pay").removeAttr('disabled');
-                   $("#account_presc").removeAttr('disabled');
-
-             $('#contain-rae').removeClass('transparent-body');
-             $('#do_logout').removeClass('transparent-body');
-
-
-             $('#space_account').removeClass('qr-invisibility');
-             $('#account-rae').addClass('bg-degrad');
-             $('#qr_buttons').html('');
-             $('#qr_buttons').addClass('qr-invisibility');
-             $('#qr_buttons').removeClass('qr-head');
-
-
-             //si puede contestar la encuesta
-             document.querySelector('#myNavigator').pushPage("quiz_ea.html");
-
-           }
-            
-           //document.querySelector('#myNavigator').resetToPage("home.html");
-
-          //window.alert('result: ' + result);
-        } //end else
-      });
+        $('#account-rae').removeClass('bg-degrad');
+        document.querySelector('#contain-rae').classList.add('transparent-body');
+        document.querySelector('#do_logout').classList.add('transparent-body');
+        $('#space_account').addClass('qr-invisibility');
+        $('#qr_buttons').html('');
+        $('#qr_buttons').removeClass('qr-invisibility');
+        $('#qr_buttons').addClass('qr-head');
+        $('#qr_buttons').append('<span class="btn_opt_qr" onclick="canceledscan()">Cancelar</span>' +
+            '<span class="btn_opt_qr" onclick="scan()">Escanear</span>');
     }
 
-
-
-            function canceledscan(){
-                //  myNavigator.popPage();
-                  
-
-                  //document.querySelector('#myNavigator').resetToPage("home.html");
-                  window.document.querySelector('#account-rae').classList.remove('transparent-body'); 
-
-
-                  $("#do_logout").removeAttr('disabled');
-                  $("#account_qr").removeAttr('disabled');
-                  $("#account_product").removeAttr('disabled');
-                  $("#account_service").removeAttr('disabled');
-                  $("#account_pay").removeAttr('disabled');
-                  $("#account_presc").removeAttr('disabled');
-
-                  $('#contain-rae').removeClass('transparent-body');
-                  $('#do_logout').removeClass('transparent-body');
-
-
-                  $('#space_account').removeClass('qr-invisibility');
-                  $('#account-rae').addClass('bg-degrad');
-                  $('#qr_buttons').html('');
-                  $('#qr_buttons').addClass('qr-invisibility');
-                  $('#qr_buttons').removeClass('qr-head');
-
-                  //document.querySelector('#myNavigator').resetToPage("home.html");
-                  // QRScanner.hide();
-                  QRScanner.destroy();
-                  myNavigator.popPage();
-
-
+    function setupQRScanner() {
+        QRScanner.prepare(function (err, status) {
+            if (err) {
+                console.error(err);
             }
+            if (status.authorized) {
+                QRScanner.show();
+            } else if (status.denied) {
+                ons.notification.toast({ message: 'Camera permission denied', timeout: 3000 });
+                QRScanner.openSettings();
+            } else {
+                ons.notification.toast({ message: 'Camera permission is not authorized and not denied', timeout: 3000 });
+            }
+        });
+    }
+
+    function scan() {
+        QRScanner.scan(function (err, result) {
+            if (err) {
+                if (err.name === 'CAMERA_ACCESS_DENIED') {
+                    ons.notification.toast({ message: 'Camera access was denied', timeout: 3000 });
+                    QRScanner.openSettings();
+                } else {
+                    ons.notification.toast({ message: 'Scanning error', timeout: 3000 });
+                }
+                QRScanner.destroy();
+                return;
+            }
+            processScanResult(result);
+        });
+    }
+
+    function processScanResult(result) {
+        $("#do_logout, #account_qr, #account_product, #account_service, #account_pay, #account_presc").attr('disabled', 'disabled');
+        $("#name").removeAttr('disabled');
+
+        var var_Qr = result.split(';');
+        var date_id = var_Qr[var_Qr.length - 3];
+        var system_rae = var_Qr[var_Qr.length - 2];
+        var quiz = var_Qr[var_Qr.length - 1];
+
+        ons.notification.toast({ message: 'El código ha sido escaneado', timeout: 1500 });
+
+        handleScannedData(date_id, system_rae, quiz);
+    }
+
+    function handleScannedData(date_id, system_rae, quiz) {
+        if (system_rae == 0) {
+            confirmr(date_id);
+            if (quiz == 0) {
+                navigateToQuizRenew();
+            } else {
+                navigateToHome();
+            }
+        } else if (system_rae == 1) {
+            confirmae(date_id);
+            navigateToQuizEA();
+        }
+    }
+
+    function navigateToQuizRenew() {
+        resetUI();
+        document.querySelector('#myNavigator').pushPage("quiz_renew.html");
+    }
+
+    function navigateToQuizEA() {
+        resetUI();
+        document.querySelector('#myNavigator').pushPage("quiz_ea.html");
+    }
+
+    function navigateToHome() {
+        resetUI();
+        document.querySelector('#myNavigator').resetToPage("home.html");
+    }
+
+    function resetUI() {
+        QRScanner.destroy();
+        document.querySelector('#account-rae').classList.remove('transparent-body');
+        $("#do_logout, #account_qr, #account_product, #account_service, #account_pay, #account_presc").removeAttr('disabled');
+        $('#contain-rae, #do_logout').removeClass('transparent-body');
+        $('#space_account').removeClass('qr-invisibility');
+        $('#account-rae').addClass('bg-degrad');
+        $('#qr_buttons').html('');
+        $('#qr_buttons').removeClass('qr-head').addClass('qr-invisibility');
+    }
+
+    function canceledscan() {
+        resetUI();
+        myNavigator.popPage();
+    }
+
 
    
             </script>
@@ -304,23 +218,39 @@
                                 <span class="subtitle-blue "  style="font-size: 0.9em; "> Escanea el código QR</span>
                         </div> <!-- end box 2 -->
 
+                        <div id="account-box"></div>
 
-                         <!-- BOX 1 -->
-                        <div id="account_product"  class="box-emergent-account bg-white account-module open_window" data-page="products.html" onclick="myNavigator.pushPage('products.html', { animation : 'slide' } )">  
+                        <!-- BOX 3 -->
+                        <div id="account_pay" class="box-emergent-account bg-white account-module open_window" data-page="payment-history.html" onclick="myNavigator.pushPage('payment-history.html', { animation : 'slide' } )">  
+                            <!-- imagen izquierda -->  
+                               <!-- <img src="img/pay_h.svg" class="circle-neutro" > -->
+                               <div class="circle-neutro">
+                                 <img src="./img/pay_h.svg"  style=" width: 25px; height: 25px;">
+                               </div>
 
-                             <!-- imagen izquierda -->  
-                                <div class="circle-neutro">
-                                  <img src="img/product.svg"  style=" width: 25px; height: 25px;">
-                                </div>
+                               <!-- div derecha -->
+                               <div style="margin-left: 15px;">   
+                                   <h3 class="tittle blue-account">  Historial de pagos</h3>
+                                   <span class="subtitle-blue "  style="font-size: 0.9em; "> Consulta  tu historial de pagos</span>
+                               </div>  
 
-                                <!-- div derecha -->
-                                <div style="margin-left: 15px;">   
-                                    <h3 class="tittle blue-account"> Productos</h3>
-                                    <span class="subtitle-blue" style="font-size: 0.9em;"> Consulta nuestros productos en venta</span>
-                                </div>  
+                       </div> <!-- end box 3 -->
 
-                        </div> <!-- end box 1 -->
+                       <!-- BOX 1 -->
+                       <div id="account_product"  class="box-emergent-account bg-white account-module open_window" data-page="products.html" onclick="myNavigator.pushPage('products.html', { animation : 'slide' } )">  
 
+                        <!-- imagen izquierda -->  
+                           <div class="circle-neutro">
+                             <img src="img/product.svg"  style=" width: 25px; height: 25px;">
+                           </div>
+
+                           <!-- div derecha -->
+                           <div style="margin-left: 15px;">   
+                               <h3 class="tittle blue-account"> Catalogo</h3>
+                               <span class="subtitle-blue" style="font-size: 0.9em;"> Consulta nuestros productos en venta</span>
+                           </div>  
+
+                   </div> <!-- end box 1 -->
 
                         <!-- BOX 2 -->
                         <div id="account_service"  class="box-emergent-account bg-white account-module open_window" data-page="services.html" onclick="myNavigator.pushPage('services.html', { animation : 'slide' } )" style="display: none;">  
@@ -338,22 +268,6 @@
                                 </div>  
 
                         </div> <!-- end box 2 -->
-        
-                        <!-- BOX 3 -->
-                        <div id="account_pay" class="box-emergent-account bg-white account-module open_window" data-page="payment-history.html" onclick="myNavigator.pushPage('payment-history.html', { animation : 'slide' } )">  
-                             <!-- imagen izquierda -->  
-                                <!-- <img src="img/pay_h.svg" class="circle-neutro" > -->
-                                <div class="circle-neutro">
-                                  <img src="./img/pay_h.svg"  style=" width: 25px; height: 25px;">
-                                </div>
-
-                                <!-- div derecha -->
-                                <div style="margin-left: 15px;">   
-                                    <h3 class="tittle blue-account">  Historial de pagos</h3>
-                                    <span class="subtitle-blue "  style="font-size: 0.9em; "> Consulta  tu historial de pagos</span>
-                                </div>  
-
-                        </div> <!-- end box 3 -->
 
                        
                         <!-- BOX 4 
@@ -376,7 +290,6 @@
                                     <span class="subtitle-blue "  style="font-size: 0.9em; "> Conoce el avance de tus sesiones</span>
                                   </div>  
                         </div> end box 5 -->
-                        <div id="account-box"></div>
                     </section><!-- safe-top-container -->
                      <button id="do_logout" class="btn-red" style="font-size: 1.1em;">Cerrar Sesión</button>
 
@@ -464,7 +377,7 @@
 
                 <div class="head-tittle-account">  
                     <div>
-                        <h1 class="tittle_menu">Productos</h1>
+                        <h1 class="tittle_menu">Catalogo</h1>
                     </div>
  
                      <div class="profile-picture user-picture" style="margin: 0px; ">
@@ -1337,7 +1250,7 @@ function getPatient(){
                                   '</div> '+ 
 
                         '</div> <!-- end box 2 -->');
-                        $("#account-box").append( recetasAccount);
+                        $("#account-box").prepend(recetasAccount);
 
                         $('.not_renew_view').remove();
 
@@ -1445,7 +1358,7 @@ function getPatient(){
 
 
 
-                        $("#account-box").append( recetasAccount);
+                        $("#account-box").prepend( recetasAccount);
 
                         return false;
                         
