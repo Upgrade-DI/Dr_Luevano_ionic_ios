@@ -46,17 +46,16 @@ var root_app_path = 'connectMySql_develop.php';
 
 		}else{
 
-
-		 		$.cookie("id_pat", id_pat, { expires : 30 });
-		 		var cookieId = $.cookie("id_pat");
+				localStorage.setItem("id_pat", id_pat);
+		 		var cookieId = localStorage.getItem("id_pat");
 		 		(debugMode) ? console.log(cookieId) : '';
 
-		 		$.cookie("mail_pat", mail_pat, { expires : 30 });
-		 		var cookieMail = $.cookie("mail_pat");
+				localStorage.setItem("mail_pat", mail_pat);
+		 		var cookieMail = localStorage.getItem("mail_pat");
 		 		(debugMode) ? console.log(cookieMail) : '';
 
-		 		$.cookie("pass_pat", pass_pat, { expires : 30 });
-		 		var cookiePass = $.cookie("pass_pat");
+				localStorage.setItem("pass_pat", pass_pat);
+		 		var cookiePass = localStorage.getItem("pass_pat");
 		 		(debugMode) ? console.log(cookiePass) : '';
 
 		 		(debugMode) ?  console.log('si entro getLoginAcess') : '';
@@ -133,103 +132,40 @@ function setCookie(cname, cvalue, exdays) {
 
 // V A L I D A T E   S E S S I O N
 	// validamos si existe una sesión de usuario.
-function validate_phpSession() {
-
-	(debugMode) ? console.log("revisando sesion...") : '';
+	function validate_phpSession() {
+		if (debugMode) console.log("Revisando sesión...");
 	
-		 var cookieIdAutologin = $.cookie("id_pat");
-		 (debugMode) ? console.log(cookieIdAutologin) : '';
-		
-		 var cookieMailAutologin = $.cookie("mail_pat");
-		 (debugMode) ? console.log(cookieMailAutologin) : '';
-
-		 var cookiePassAutologin = $.cookie("pass_pat");
-		 (debugMode) ? console.log(cookiePassAutologin) : '';
-
-		 //$sessionData = new Array(cookieIdAutologin,cookieMailAutologin,cookiePassAutologin);
-		
-	 	 var DataAutoSend  =  'autologin_user='+cookieMailAutologin +'&'+ 'autologin_password='+cookiePassAutologin;
-
-		 (debugMode) ? console.log(DataAutoSend) : '';
-
-		 if ( cookieIdAutologin == '' || cookieIdAutologin == null || cookieIdAutologin ==  'null' || cookieIdAutologin == undefined || cookieIdAutologin == 'undefined') {
-		 	console.log('No hay sesión activa');
-		 	// modal.hide();
-		 }else{
-		 	console.log('Sí hay unasesión activa');
-			// getLoginAcess($sessionData);
-			var request = $.ajax({
-				url: phpValidate+'?method=validate_autologin',
-				data: DataAutoSend,
-				type: "post"
-			});
-
-
-	// Conexión exitosa
-				request.done(function (response, textStatus, jqXHR){
-				
-					(debugMode) ? console.log(response)  : '';
-
-							(debugMode) ? console.log('Resultado: ' + response) : '';
-							
-							if(response !== 'unsuccessful'){
-							//si es cliente en db admin	en tabla sudi_clients_tb
-								var session_response = $.parseJSON(response);
-								//ejecutamos la siguiente funcion con la respuesta que nos trajo el ajax
-								getLoginAcess(session_response);
-							
-							// Si no es cliente en db admin
-							}else {
-								// Mostramos el mensaje de error
-								//showMsgError($('.error_login'),'Acceso denegado','#F00');
-								// 22document.cookie = "db_client=; expires=Thu, 01 Jan 1970 00:00:00 UTC;"; // Eliminamos cookie - EIPA
-								
-								//ons.notification.toast({message: 'Incorrect Information', timeout: 1000});		
-
-								(debugMode) ?console.log('no auto login client'): '';
-								
-							}
-				});
-
-			// Si falla la conexión
-			request.fail(function (jqXHR, textStatus, errorThrown){
-				(debugMode) ?console.error(
-					"Han ocurrido los siguientes errores: "+
-					textStatus, errorThrown
-				): '';
-				//$('#page_login').css('opacity', '1');
-			});
-
-
-		}
-/*
-
-	var request = $.ajax({
-		url: phpValidate+'?method=validate_login',
-		type: "post"
-	});
-	// En conexión exitosa
-	request.done(function (response, textStatus, jqXHR){
-		if(response != 'unsuccessful'){
-			var session_response = $.parseJSON(response);
-			console.log(session_response); 
-			getLoginAcess();
-		}else{
+		var idPat = localStorage.getItem("id_pat");
+		var mailPat = localStorage.getItem("mail_pat");
+		var passPat = localStorage.getItem("pass_pat");
+	
+		if (!idPat) {
 			console.log('No hay sesión activa');
-			$('#page_login').css('opacity', '1');
-		}
-	});
+		} else {
+			console.log('Sí hay una sesión activa');
+			var dataToSend = 'autologin_user=' + mailPat + '&autologin_password=' + passPat;
 	
-	// Si falla la conexión
-	request.fail(function (jqXHR, textStatus, errorThrown){
-		console.error(
-			"Han ocurrido los siguientes errores: "+
-			textStatus, errorThrown
-		);
-		$('#page_login').css('opacity', '1');
-	});
-	*/
-}
+			if (debugMode) console.log(dataToSend);
+	
+			$.ajax({
+				url: phpValidate + '?method=validate_autologin',
+				data: dataToSend,
+				type: "post",
+				success: function (response) {
+					if (debugMode) console.log(response);
+					if (response !== 'unsuccessful') {
+						var sessionResponse = JSON.parse(response);
+						getLoginAcess(sessionResponse);
+					} else {
+						if (debugMode) console.log('No auto login client');
+					}
+				},
+				error: function (jqXHR, textStatus, errorThrown) {
+					if (debugMode) console.error("Errores: " + textStatus, errorThrown);
+				}
+			});
+		}
+	}
 
 
 /* FIN DE CONFIGURABLE */
@@ -627,42 +563,31 @@ $(document).on(clickHandler,'#do_logout',function(){ "use strict"; if(!touchmove
 	});
 
 
-function do_logout(){
-	"use strict";
-	// [A] solicitamos la baja de la sessión
-	 	 $.cookie("id_pat", '', { expires : -7 });
-		 $.cookie("mail_pat", '', { expires : -7 });
-		 $.cookie("pass_pat", '', { expires : -7 });
-
-
-		 $.cookie("id_pat", '', { expires : -7 });
-		 $.cookie("mail_pat", '', { expires : -7 });
-		 $.cookie("pass_pat", '', { expires : -7 });
-
-		 $.removeCookie('id_pat', { path: '/' });
-		 $.removeCookie('mail_pat', { path: '/' });
-         $.removeCookie('pass_pat', { path: '/' });
-
-	var request = $.ajax({
-		url: phpValidate,
-		type: "post",
-		data: {method : 'do_logout'}
-	});
-	request.done(function (data, textStatus, jqXHR){
-		if(data == 'successful')
-		{			
-			// Si se cerro sesión completamente:
-			document.cookie = "id_pat=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Eliminamos cookie - EIPA
-			document.cookie = "user_mail=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Eliminamos cookie - EIPA
-			document.cookie = "pass_pat=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Eliminamos cookie - EIPA
-
-
-			(debugMode) ? console.log("sesión cerrada") : '';
-			getLogOut();
-			
-		}
-	});
-} // Log Out
+	function do_logout() {
+		"use strict";
+		// [A] solicitamos la baja de la sesión
+		localStorage.removeItem("id_pat");
+		localStorage.removeItem("mail_pat");
+		localStorage.removeItem("pass_pat");
+	
+		var request = $.ajax({
+			url: phpValidate,
+			type: "post",
+			data: { method: 'do_logout' }
+		});
+	
+		request.done(function (data, textStatus, jqXHR) {
+			if (data == 'successful') {
+				// Si se cerró sesión completamente
+				(debugMode) ? console.log("sesión cerrada") : '';
+				getLogOut();
+			}
+		});
+	
+		request.fail(function (jqXHR, textStatus, errorThrown) {
+			(debugMode) ? console.error("Han ocurrido los siguientes errores: " + textStatus, errorThrown) : '';
+		});
+	}
 
 
 	// Función "Mostrar Mensaje"
