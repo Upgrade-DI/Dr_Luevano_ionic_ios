@@ -1224,9 +1224,9 @@ picPath = 'https://armoniaestetica.com/_sudiv3/';
 
 function getPatient(){
 
-         global_id =  $.cookie("id_pat");
-         global_mail = $.cookie("mail_pat");
-         global_pass = $.cookie("pass_pat");
+         global_id =  localStorage.getItem("id_pat");
+         global_mail = localStorage.getItem("mail_pat");
+         global_pass = localStorage.getItem("pass_pat");
 
         (appDebug) ? console.log(global_id): '';
         (appDebug) ?  console.log(global_mail): '';
