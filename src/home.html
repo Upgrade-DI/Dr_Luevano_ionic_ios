@@ -6,22 +6,22 @@
         <meta name="robots" content="nofollow, noindex"/>
         <meta name="author" content="Upgrade Diseño Interactivo"/>
         <meta name="copyright" content="2021"/>
-        <link rel="stylesheet" href="/css/onsenui.css">
-        <link rel="stylesheet" href="/css/onsen-css-components.min.css">
-        <link href="/fonts/stylesheet.css" rel="stylesheet" type="text/css"/>
-        <link href="/css/large.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" type="text/css" media="only screen and (min-width:10px) and (max-width:380px)"   href="/css/small.css"/>
-        <link href="/css/customico.css" rel="stylesheet" type="text/css"/> 
-        <script src="/js/jquery-3.2.1.min.js" ></script>
+        <link rel="stylesheet" href="./css/onsenui.css">
+        <link rel="stylesheet" href="./css/onsen-css-components.min.css">
+        <link href="./fonts/stylesheet.css" rel="stylesheet" type="text/css"/>
+        <link href="./css/large.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" media="only screen and (min-width:10px) and (max-width:380px)"   href="./css/small.css"/>
+        <link href="./css/customico.css" rel="stylesheet" type="text/css"/> 
+        <script src="./js/jquery-3.2.1.min.js" ></script>
         <!-- <script src="js/jquery-3.6.0.min.js" ></script> -->
 
-        <script src="/js/jquery.cookie.js" ></script> 
+        <script src="./js/jquery.cookie.js" ></script> 
 
-        <script src="/js/onsenui.min.js"></script>
-        <script src="/js/login.js" ></script>
-        <script src="/js/main.js" ></script>    
+        <script src="./js/onsenui.min.js"></script>
+        <script src="./js/login.js" ></script>
+        <script src="./js/main.js" ></script>    
         <!-- <script type="text/javascript" src="cordova.js"></script> -->
-        <script type="text/javascript" src="/js/push.js"></script>
+        <script type="text/javascript" src="./js/push.js"></script>
 
 
         <title>Dr. Luevano</title>
@@ -328,7 +328,7 @@
                              <!-- imagen izquierda -->  
                                 <!-- <img src="img/money.svg" class="circle-neutro" > -->
                                 <div class="circle-neutro">
-                                  <img src="img/money.svg"  style=" width: 25px; height: 25px;">
+                                  <img src="./img/money.svg"  style=" width: 25px; height: 25px;">
                                 </div>
 
                                 <!-- div derecha -->
@@ -344,7 +344,7 @@
                              <!-- imagen izquierda -->  
                                 <!-- <img src="img/pay_h.svg" class="circle-neutro" > -->
                                 <div class="circle-neutro">
-                                  <img src="img/pay_h.svg"  style=" width: 25px; height: 25px;">
+                                  <img src="./img/pay_h.svg"  style=" width: 25px; height: 25px;">
                                 </div>
 
                                 <!-- div derecha -->
@@ -1292,7 +1292,7 @@ function getPatient(){
 
             if (data.patient[0].pat_photo == null | data.patient[0].pat_photo == '' | data.patient[0].pat_photo == "") {
                 // $photo_patient = '<img src="img/lo-ae-3.png" class="circle-purple" >';
-                $photo_patient = 'img/lo-ae-3.png';
+                $photo_patient = './img/lo-ae-3.png';
 
 
 
@@ -1724,7 +1724,7 @@ function getBinnacle(){
                     }else{
                         boxPay = '<div class="box-emergent-r bg-white" style="display: none;justify-content: space-between; align-items: center;">'+
                                 '<!-- imagen izquierda -->'+
-                                    '<img src="img/money.svg" class="circle-purple" >'+
+                                    '<img src="./img/money.svg" class="circle-purple" >'+
                                     '<!-- div centro -->'+
                                     '<div class="payment-date">'+
                                         '<h3 class="purple"> Pago '+ countPay+'</h3>'+
@@ -1840,7 +1840,7 @@ function getHomer(){
                                      
                                       if (data.arrayHomer[0].arrayR[m].user_photo == null | data.arrayHomer[0].arrayR[m].user_photo == '') {
                                         // $photo_user_homer = '<img src="img/folder-h.png" class="circle-purple" >';
-                                        $photo_user_homer = 'img/lo-ae-3.png';
+                                        $photo_user_homer = './img/lo-ae-3.png';
 
                                       }else{
                                           // $photo_patient = '<img src="'+urlAE+''+data.patient[0].pat_photo+'">';
@@ -1909,7 +1909,7 @@ function getHomer(){
                                             '<div class="box-emergent-r bg-white">'+
                                                 '<div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
                                                     '<h4 class="hour">'+
-                                                        '<img src="img/reloj.svg" style="padding-right: 10px; width: 30px;">'+
+                                                        '<img src="./img/reloj.svg" style="padding-right: 10px; width: 30px;">'+
                                                         data.arrayHomer[0].arrayR[m].rend_hour+' - '+data.arrayHomer[0].arrayR[m].rend_hour_end
                                                     +'</h4>'+
                                                     '<h5 class="status-new" style= "background-color:'+arrayStatusColor[data.arrayHomer[0].arrayR[m].rend_status]+'; color:'+arrayStatusName[data.arrayHomer[0].arrayR[m].rend_status] +';"  data-status="'+data.arrayHomer[0].arrayR[m].rend_status+'";> '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+' </h5>'+
@@ -1935,7 +1935,7 @@ function getHomer(){
                                             '<div class="box-emergent-r bg-white">'+
                                                 '<div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
                                                     '<h4 class="hour">'+
-                                                        '<img src="img/reloj.svg" style="padding-right: 10px; width: 30px;">'+
+                                                        '<img src="./img/reloj.svg" style="padding-right: 10px; width: 30px;">'+
                                                         data.arrayHomer[0].arrayR[m].rend_hour+' - '+data.arrayHomer[0].arrayR[m].rend_hour_end
                                                     +'</h4>'+
                                                     '<h5 class="status-new" style= "background-color:'+arrayStatusColor[data.arrayHomer[0].arrayR[m].rend_status]+'; color:'+arrayStatusName[data.arrayHomer[0].arrayR[m].rend_status]+';"  data-status="'+data.arrayHomer[0].arrayR[m].rend_status+'";> '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+' </h5>'+
@@ -1964,7 +1964,7 @@ function getHomer(){
                                             '<div class="box-emergent-r bg-white">'+
                                                 '<div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
                                                     '<h4 class="hour">'+
-                                                        '<img src="img/reloj.svg" style="padding-right: 10px; width: 30px;">'+
+                                                        '<img src="./img/reloj.svg" style="padding-right: 10px; width: 30px;">'+
                                                         data.arrayHomer[0].arrayR[m].rend_hour+' - '+data.arrayHomer[0].arrayR[m].rend_hour_end
                                                     +'</h4>'+
                                                     '<h5 class="status-new" style= "background-color:'+arrayStatusColor[data.arrayHomer[0].arrayR[m].rend_status]+'; color:'+arrayStatusName[data.arrayHomer[0].arrayR[m].rend_status] +';"  data-status="'+data.arrayHomer[0].arrayR[m].rend_status+'";> '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+' </h5>'+
@@ -1992,7 +1992,7 @@ function getHomer(){
                                             '<div class="box-emergent-r bg-white">'+
                                                 '<div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
                                                     '<h4 class="hour">'+
-                                                        '<img src="img/reloj.svg" style="padding-right: 10px; width: 30px;">'+
+                                                        '<img src="./img/reloj.svg" style="padding-right: 10px; width: 30px;">'+
                                                         data.arrayHomer[0].arrayR[m].rend_hour+' - '+data.arrayHomer[0].arrayR[m].rend_hour_end
                                                     +'</h4>'+
                                                     '<h5 class="status-new" style= "background-color:'+arrayStatusColor[data.arrayHomer[0].arrayR[m].rend_status]+'; color:'+arrayStatusName[data.arrayHomer[0].arrayR[m].rend_status] +';"  data-status="'+data.arrayHomer[0].arrayR[m].rend_status+'";> '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+' </h5>'+
@@ -2018,7 +2018,7 @@ function getHomer(){
                                             '<div class="box-emergent-r bg-white">'+
                                                 '<div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
                                                     '<h4 class="hour">'+
-                                                        '<img src="img/reloj.svg" style="padding-right: 10px; width: 30px;">'+
+                                                        '<img src="./img/reloj.svg" style="padding-right: 10px; width: 30px;">'+
                                                         data.arrayHomer[0].arrayR[m].rend_hour+' - '+data.arrayHomer[0].arrayR[m].rend_hour_end
                                                     +'</h4>'+
                                                     '<h5 class="status-new" style= "background-color:'+arrayStatusColor[data.arrayHomer[0].arrayR[m].rend_status]+'; color:'+arrayStatusName[data.arrayHomer[0].arrayR[m].rend_status] +';"  data-status="'+data.arrayHomer[0].arrayR[m].rend_status+'";> '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+' </h5>'+
@@ -2112,7 +2112,7 @@ function getHomer(){
                                   
                                       if (data.arrayHomer[0].arrayS[n].user_photo == null | data.arrayHomer[0].arrayS[n].user_photo == '') {
                                         // $photo_user_homer = '<img src="img/folder-h.png" class="circle-purple" >';
-                                        $photo_user_homerr = 'img/lo-ae-3.png';
+                                        $photo_user_homerr = './img/lo-ae-3.png';
 
                                       }else{
                                           // $photo_patient = '<img src="'+urlAE+''+data.patient[0].pat_photo+'">';
@@ -2203,7 +2203,7 @@ function getHomer(){
                                          
                                           if (data.arrayHomer[0].arrayP[o].prod_image == null | data.arrayHomer[0].arrayP[o].prod_image == '') {
                                             // $photo_user_homer = '<img src="img/folder-h.png" class="circle-purple" >';
-                                            $photo_user_homerrr = 'img/lo-ae-3.png';
+                                            $photo_user_homerrr = './img/lo-ae-3.png';
                                             // var img = 'https://armoniaestetica.com/sudi_renew/'+data.arrayHomer[0].arrayP[o].prod_image;
 
                                           }else{
@@ -2228,7 +2228,7 @@ function getHomer(){
                                                      
                                                         '<div>  <!-- div izquierda -->'+
                                                           '<div style="display: flex; align-items: center;">'+
-                                                            '<img src="img/calendar.png" style="width: 50px; padding-right: 10px;">'+
+                                                            '<img src="./img/calendar.png" style="width: 50px; padding-right: 10px;">'+
                                                             '<h4 style=" margin: 8px 0px; font-size: 0.9em; color: rgb(164 145 162);">'+
                                                                  data.arrayHomer[0].arrayP[o].date_pay + 
                                                             '</h4>'+
@@ -2550,7 +2550,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                                 '<div class="info-detail">'+
                                     
                                     '<h4 class="hour">'+
-                                        '<img src="img/folder.jpg" style="width: 30px; padding-right: 15px;">'+
+                                        '<img src="./img/folder.jpg" style="width: 30px; padding-right: 15px;">'+
                                         data.arrayHomeae[b].arrayExams[w].Exam_name+'</h4>'+
                                         '<h5 class="status-gray" style="display:none;">Ver</h5>'+
                                 '</div>'+
@@ -2581,7 +2581,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                                 '<div class="info-detail">'+
                                     
                                     '<h4 class="hour">'+
-                                        '<img src="img/folder.jpg" style="width: 30px; padding-right: 15px;">'+
+                                        '<img src="./img/folder.jpg" style="width: 30px; padding-right: 15px;">'+
                                         data.arrayHomeae[b].arrayExams[w].Exam_name+'</h4>'+
                                         '<h5 class="status-gray" style="display:none;">Ver</h5>'+
                                 '</div>'+
@@ -2597,7 +2597,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                                       data.arrayHomeae[b].arrayExams[w].user_lname+
                                     '</span>'+
 
-                                    '<img src="img/photo-w.png" class="circle-photo" style="display:none;">'+
+                                    '<img src="./img/photo-w.png" class="circle-photo" style="display:none;">'+
                                 '</div>'+  
 
                             '</div>';
@@ -2627,12 +2627,12 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                             '<div class="box-emergent-ae bg-white" data-payea="'+ data.arrayHomeae[b].arrayPayae[a].Pay_inc_id +'">'+  
                                 '<div style="display: flex;justify-content: space-between; padding-top: 10px; margin: 0px; align-items: center;">'+
                                 '<div class="info-detail">'+
-                                    '<img src="img/tag.jpg" style="width: 30px; padding-right: 15px;">'+
+                                    '<img src="./img/tag.jpg" style="width: 30px; padding-right: 15px;">'+
                                     '<h4 class="hour">Pago</h4>'+
                                 '</div>'+
     
                                     '<div class="info-detail" style="width: 50%;justify-content: flex-end;">'+
-                                        '<img src="img/calendar.png" style="width: 50px;">'+
+                                        '<img src="./img/calendar.png" style="width: 50px;">'+
                                         '<h5 class="purple" style="font-size: 0.9em;text-align: right;">'+
                                         data.arrayHomeae[b].arrayPayae[a].Pay_inc_payment_date +'</h5>'+
                                     '</div>'+
@@ -2775,7 +2775,7 @@ function getPrescriptions(){
                         '<div class="box-emergent-account-pres bg-white account-module open_window" data-page="prescription-detail.html" data-prescription="'+data.arrayRecipes[f].id+'">'+  
                              '<!-- imagen izquierda -->  ' +
                                 '<div class="circle-neutro">'+
-                                  '<img src="img/recipe.svg" style=" width: 25px; height: 25px;">'+
+                                  '<img src="./img/recipe.svg" style=" width: 25px; height: 25px;">'+
                                 '</div>'+
                                 
                                 '<!-- div derecha -->'+
@@ -2823,7 +2823,7 @@ function getHistoryae(){
 
                             '<div class="binn-r">'+
                                 '<div class="contract-r">'+
-                                    '<img src="img/icons/logo_ae.svg" class="circle-purple" style="background-color: #f4f9ff;">' +
+                                    '<img src="./img/icons/logo_ae.svg" class="circle-purple" style="background-color: #f4f9ff;">' +
                                     '<div style="margin-left: 15px;">'+
                                         '<h3 class="blue">'+data.arrayBinnEA[f].provenance+'</h3>'+
                                     '</div>'+
@@ -2974,7 +2974,7 @@ function getHistoryrenew(){
                             '</div>'+
 
                                 '<!-- imagen izquierda -->'+
-                                    '<img src="img/icons/logo_renew.svg" class="circle-purple" style="background-color: #7d4b6e;">'+
+                                    '<img src="./img/icons/logo_renew.svg" class="circle-purple" style="background-color: #7d4b6e;">'+
 
                                     '<!-- div centro -->'+
                                     '<div class="payment-date">'+

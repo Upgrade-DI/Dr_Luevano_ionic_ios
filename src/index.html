@@ -79,8 +79,7 @@
     <template id="page_login.html">
       <ons-page id="page_login">
         <script type="text/javascript">
-          
-          // validate_phpSession();
+          validate_phpSession();
 
           var createAlertDialog = function () {
             var dialog = document.getElementById('my-alert-dialog');
@@ -177,7 +176,8 @@
 
 
 
-        <span style="background-color: transparent; color: #6574a7ab; position: absolute;bottom: 50px;justify-content: center;align-items: center;text-align: center;">¿Tienes
+        <span
+          style="background-color: transparent; color: #6574a7ab; position: absolute;bottom: 50px;justify-content: center;align-items: center;text-align: center;">¿Tienes
           problemas para ingresar a nuestra app? Escríbenos al <a
             href="https://api.whatsapp.com/send?phone=+526142941005&amp;text=Hola,%20tengo%20problemas%20para%20ingresar%20a%20la%20app%20Dr.%20Luevano"
             style="font-size: 0.9em; text-decoration: underline;  color: #4b3348;">614 294 1005</a></span>
@@ -216,7 +216,62 @@
     // });
 
 
-    
+    $(document).ready(function () {
+
+      if (ons.platform.isIPhoneX()) { // Utility function
+        // Add empty attribute to the <html> element
+        // document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
+      }
+
+      validate_phpSession();
+
+      // PRINCIPAL A LOGIN
+      $('#push-button-login').click(function (e) {
+        var options = {
+          animation: 'slide', // What animation to use
+          onTransitionEnd: function () { } // Called when finishing transition animation
+        };
+        document.querySelector('#myNavigator').pushPage("page_login.html", options);
+
+      });
+
+
+    }); // Document ready
+
+  </script>
+  <script src="./js/login.js"></script>
+  <script type="text/javascript">
+    /*
+      var app = {
+        // Application Constructor
+        initialize: function() {
+          this.bindEvents();
+        },
+
+        bindEvents: function() {
+          document.addEventListener('deviceready', this.onDeviceReady, false);
+        },
+        onDeviceReady: function() {
+
+        app.receivedEvent('deviceready');
+            
+        if (!ons.platform.isIPhoneX()) {
+          StatusBar.hide();
+        }   
+          
+        
+
+        },
+        // Update DOM on a Received Event
+        receivedEvent: function(id) {
+          "use strict";
+          
+          console.log('Received Event: ' + id);
+        }
+        };
+
+        app.initialize();
+    */
 
   </script>
   <!-- <script type="text/javascript" src="https://debug1.phonegap.com/target/target-script-min.js#c2e41c10-ae44-11e7-bf7a-062ae262fc2e"></script> -->
