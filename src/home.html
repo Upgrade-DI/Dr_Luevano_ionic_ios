@@ -79,169 +79,42 @@
 
         <!-- <script src="../../dist/cordova-plugin-qrscanner-lib.min.js"></script> -->
         <script type="text/javascript">
-            function onDone(err, status) {
-                if (err) {
-                console.error(err);
-                } else if (status.authorized) {
-                    QRScanner.show(function(status) {
-                        console.log("Camera showing with status: ", status);
-                    });
-                }
-            }
+            document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('startScanButton').addEventListener('click', startScan);
+});
 
-     document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById('startScanButton').addEventListener('click', function() {
-            setupQRScanner();
-        });
-    });
-
-    function setupQRScanner() {
-        RScanner.prepare(function (err, status) {
-            console.log("Preparación completada, estatus:", status);
-            if (err) {
-                console.error("Error preparando QRScanner:", err);
-                return;
-            }
-            if (status.authorized) {
-                QRScanner.show(function(status) {
-                    console.log("Mostrando cámara, estatus:", status);
-                });
-                startScanning();
-            } else if (status.denied) {
-                console.warn("Permiso de cámara denegado");
-            } else {
-                console.warn("Permiso de cámara no concedido");
-            }
-        });
+async function startScan() {
+    try {
+        const result = await QRScanner.scan();
+        console.log('QR code result:', result);
+        processScanResult(result); // Asume que tienes una función para procesar el resultado
+    } catch (error) {
+        console.error('Failed to scan QR code:', error);
     }
+}
 
-    function startScanning() {
-        QRScanner.scan(function (err, text) {
-            if (err) {
-                if (err.name === 'CAMERA_ACCESS_DENIED') {
-                    console.error('Camera access denied:', err);
-                } else {
-                    console.error('Scanning error:', err);
-                }
-                QRScanner.destroy();
-                return;
-            }
-            console.log('Scan successful:', text);
-            // Procesar el texto obtenido del QR aquí
-        });
-    }
+function processScanResult(result) {
+    console.log('Processing scan result:', result);
+    // Aquí procesarías el resultado del escaneo, como mostrarlo en la UI, etc.
+}
 
-    function resetUI() {
-        QRScanner.destroy();
-        // Restablecer la UI como necesites
-    }
-
-
-     function prescan() {
-        // Configura y muestra el QRScanner
-        setupQRScanner();
-
-        $('#account-rae').removeClass('bg-degrad');
-        document.querySelector('#contain-rae').classList.add('transparent-body');
-        document.querySelector('#do_logout').classList.add('transparent-body');
-        $('#space_account').addClass('qr-invisibility');
-        $('#qr_buttons').html('');
-        $('#qr_buttons').removeClass('qr-invisibility');
-        $('#qr_buttons').addClass('qr-head');
-        $('#qr_buttons').append('<span class="btn_opt_qr" onclick="canceledscan()">Cancelar</span>' +
-            '<span class="btn_opt_qr" onclick="scan()">Escanear</span>');
-    }
-
-    function setupQRScanner() {
-        QRScanner.prepare(function (err, status) {
-            if (err) {
-                console.error(err);
-            }
-            if (status.authorized) {
-                QRScanner.show();
-            } else if (status.denied) {
-                ons.notification.toast({ message: 'Camera permission denied', timeout: 3000 });
-                QRScanner.openSettings();
-            } else {
-                ons.notification.toast({ message: 'Camera permission is not authorized and not denied', timeout: 3000 });
-            }
-        });
-    }
-
-    function scan() {
-        QRScanner.scan(function (err, result) {
-            if (err) {
-                if (err.name === 'CAMERA_ACCESS_DENIED') {
-                    ons.notification.toast({ message: 'Camera access was denied', timeout: 3000 });
-                    QRScanner.openSettings();
-                } else {
-                    ons.notification.toast({ message: 'Scanning error', timeout: 3000 });
-                }
-                QRScanner.destroy();
-                return;
-            }
-            processScanResult(result);
-        });
-    }
-
-    function processScanResult(result) {
-        $("#do_logout, #account_qr, #account_product, #account_service, #account_pay, #account_presc").attr('disabled', 'disabled');
-        $("#name").removeAttr('disabled');
-
-        var var_Qr = result.split(';');
-        var date_id = var_Qr[var_Qr.length - 3];
-        var system_rae = var_Qr[var_Qr.length - 2];
-        var quiz = var_Qr[var_Qr.length - 1];
-
-        ons.notification.toast({ message: 'El código ha sido escaneado', timeout: 1500 });
-
-        handleScannedData(date_id, system_rae, quiz);
-    }
-
-    function handleScannedData(date_id, system_rae, quiz) {
-        if (system_rae == 0) {
-            confirmr(date_id);
-            if (quiz == 0) {
-                navigateToQuizRenew();
-            } else {
-                navigateToHome();
-            }
-        } else if (system_rae == 1) {
-            confirmae(date_id);
-            navigateToQuizEA();
+function setupQRScanner() {
+    QRScanner.prepare(function (err, status) {
+        if (err) {
+            console.error("Error preparando QRScanner:", err);
+            return;
         }
-    }
-
-    function navigateToQuizRenew() {
-        resetUI();
-        document.querySelector('#myNavigator').pushPage("quiz_renew.html");
-    }
-
-    function navigateToQuizEA() {
-        resetUI();
-        document.querySelector('#myNavigator').pushPage("quiz_ea.html");
-    }
-
-    function navigateToHome() {
-        resetUI();
-        document.querySelector('#myNavigator').resetToPage("home.html");
-    }
-
-    function resetUI() {
-        QRScanner.destroy();
-        document.querySelector('#account-rae').classList.remove('transparent-body');
-        $("#do_logout, #account_qr, #account_product, #account_service, #account_pay, #account_presc").removeAttr('disabled');
-        $('#contain-rae, #do_logout').removeClass('transparent-body');
-        $('#space_account').removeClass('qr-invisibility');
-        $('#account-rae').addClass('bg-degrad');
-        $('#qr_buttons').html('');
-        $('#qr_buttons').removeClass('qr-head').addClass('qr-invisibility');
-    }
-
-    function canceledscan() {
-        resetUI();
-        myNavigator.popPage();
-    }
+        if (status.authorized) {
+            QRScanner.show(function(status) {
+                console.log("Mostrando cámara, estatus:", status);
+            });
+        } else if (status.denied) {
+            console.warn("Permiso de cámara denegado");
+        } else {
+            console.warn("Permiso de cámara no concedido");
+        }
+    });
+}
 
 
    
@@ -267,9 +140,9 @@
                     <section id="contain-rae" class="section-underline" >
 
                         <!-- BOX QR -->
-                        <div id="account_qr" onclick="prescan()" class="box-emergent-qr bg-white" >  
+                        <div id="startScanButton" onclick="prescan()" class="box-emergent-qr bg-white" >  
                             <!-- imagen izquierda -->  
-                                <img src="img/qr.png" style="width: 30%;">   
+                                <img src="./img/qr.png" style="width: 30%;">   
                                 <h3 class="tittle blue-account"> Código QR</h3>
                                 <span class="subtitle-blue "  style="font-size: 0.9em; "> Escanea el código QR</span>
                         </div> <!-- end box 2 -->
