@@ -116,6 +116,21 @@ function setupQRScanner() {
     });
 }
 
+function prescan() {
+    // Configura y muestra el QRScanner
+    setupQRScanner();
+
+    $('#account-rae').removeClass('bg-degrad');
+    document.querySelector('#contain-rae').classList.add('transparent-body');
+    document.querySelector('#do_logout').classList.add('transparent-body');
+    $('#space_account').addClass('qr-invisibility');
+    $('#qr_buttons').html('');
+    $('#qr_buttons').removeClass('qr-invisibility');
+    $('#qr_buttons').addClass('qr-head');
+    $('#qr_buttons').append('<span class="btn_opt_qr" onclick="canceledscan()">Cancelar</span>' +
+        '<span class="btn_opt_qr" onclick="scan()">Escanear</span>');
+}
+
 
    
             </script>
