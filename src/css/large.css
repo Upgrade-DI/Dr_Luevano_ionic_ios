@@ -32,6 +32,7 @@ html, body{ margin:0px; padding:0px;
 .transparent-body {
   background: none transparent !important;
   opacity: 0 !important;
+  display: none;
 }
 .safe-top-container{
   width: 100%;

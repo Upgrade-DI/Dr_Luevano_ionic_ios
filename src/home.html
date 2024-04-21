@@ -79,51 +79,62 @@
 
         <!-- <script src="../../dist/cordova-plugin-qrscanner-lib.min.js"></script> -->
         <script type="text/javascript">
-     document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('startScanButton').addEventListener('click', function() {
-        setupQRScanner();
-    });
-});
-
-function setupQRScanner() {
-    QRScanner.prepare(function (err, status) {
-        if (err) {
-            console.error('Error preparing QR Scanner:', err);
-            return;
-        }
-        if (status.authorized) {
-            QRScanner.show();
-            startScanning();
-        } else if (status.denied) {
-            console.warn('Camera permission denied');
-            // Opcionalmente redirigir al usuario a la configuración
-        } else {
-            console.warn('Camera permission not granted');
-            // Manejar otros estados, como rechazo no permanente
-        }
-    });
-}
-
-function startScanning() {
-    QRScanner.scan(function (err, text) {
-        if (err) {
-            if (err.name === 'CAMERA_ACCESS_DENIED') {
-                console.error('Camera access denied:', err);
-            } else {
-                console.error('Scanning error:', err);
+            function onDone(err, status) {
+                if (err) {
+                console.error(err);
+                } else if (status.authorized) {
+                    QRScanner.show(function(status) {
+                        console.log("Camera showing with status: ", status);
+                    });
+                }
             }
-            QRScanner.destroy();
-            return;
-        }
-        console.log('Scan successful:', text);
-        // Procesar el texto obtenido del QR aquí
-    });
-}
 
-function resetUI() {
-    QRScanner.destroy();
-    // Restablecer la UI como necesites
-}
+     document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('startScanButton').addEventListener('click', function() {
+            setupQRScanner();
+        });
+    });
+
+    function setupQRScanner() {
+        RScanner.prepare(function (err, status) {
+            console.log("Preparación completada, estatus:", status);
+            if (err) {
+                console.error("Error preparando QRScanner:", err);
+                return;
+            }
+            if (status.authorized) {
+                QRScanner.show(function(status) {
+                    console.log("Mostrando cámara, estatus:", status);
+                });
+                startScanning();
+            } else if (status.denied) {
+                console.warn("Permiso de cámara denegado");
+            } else {
+                console.warn("Permiso de cámara no concedido");
+            }
+        });
+    }
+
+    function startScanning() {
+        QRScanner.scan(function (err, text) {
+            if (err) {
+                if (err.name === 'CAMERA_ACCESS_DENIED') {
+                    console.error('Camera access denied:', err);
+                } else {
+                    console.error('Scanning error:', err);
+                }
+                QRScanner.destroy();
+                return;
+            }
+            console.log('Scan successful:', text);
+            // Procesar el texto obtenido del QR aquí
+        });
+    }
+
+    function resetUI() {
+        QRScanner.destroy();
+        // Restablecer la UI como necesites
+    }
 
 
      function prescan() {
