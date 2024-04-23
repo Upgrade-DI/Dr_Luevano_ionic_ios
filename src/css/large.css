@@ -785,7 +785,6 @@ p.yellow{
 }
 
 .info-to-detail h4 {
-    font-family: 'Gotham-Book-i';
     margin: 8px 0px;
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
@@ -909,7 +908,6 @@ input.white-off::-webkit-input-placeholder { color:#fce4ec; }
 }
 
 .info-precinct> h5{
-    font-family: 'Gotham-Book-i';
     color: rgb(113, 113, 113);
     text-align: center;
     font-size: 0.7em;
@@ -949,7 +947,6 @@ input.white-off::-webkit-input-placeholder { color:#fce4ec; }
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Gotham-Book-i';
     padding: 10px 7px 10px 5px;
 }
 .section1-diarys{
@@ -1102,7 +1099,6 @@ input.white-off::-webkit-input-placeholder { color:#fce4ec; }
 
 .status{
     font-size: 0.8em;
-    font-family: 'Gotham-Book-i';
     color:rgb(209, 181, 98);
     background-color: rgb(247,240,173);
     display: block;
@@ -1112,7 +1108,6 @@ input.white-off::-webkit-input-placeholder { color:#fce4ec; }
 
 h5.status-new{
     font-size: 0.9em;
-    font-family: 'Gotham-Book-i';
     color: #000000;
     display: block;
     padding: 4px 12px 4px 12px;
@@ -1122,7 +1117,6 @@ h5.status-new{
 
 .status-r h5{
     font-size: 0.8em;
-    font-family: 'Gotham-Book-i';
     color: rgba(86, 203, 143);
     background-color: rgb(224,245,235);
     display: block;
@@ -1132,7 +1126,6 @@ h5.status-new{
 
 h5.status-yellow {
      font-size: 0.9em;
-    font-family: 'Gotham-Book-i';
     color:rgb(209, 181, 98);
     background-color: rgb(247,240,173);
     display: block;
@@ -1142,7 +1135,6 @@ h5.status-yellow {
 
 h5.status-blue {
      font-size: 0.9em;
-    font-family: 'Gotham-Book-i';
     color:rgb(231, 242, 254);
     background-color: rgb(125,181,254);
     display: block;
@@ -1153,7 +1145,6 @@ h5.status-blue {
 
 h5.status-gray{
     font-size: 0.9em;
-    font-family: 'Gotham-Book-i';
     color:rgb(248, 248, 248);
     background-color:rgb(196,196,196);
     display: block;
@@ -1163,7 +1154,6 @@ h5.status-gray{
 
 h5.status-green{
     font-size: 0.9em;
-    font-family: 'Gotham-Book-i';
     color:rgb(113, 211, 161);
     background-color:rgb(224,245,235);
     display: block;
@@ -1174,7 +1164,6 @@ h5.status-green{
 
 button.status-yes {
     font-size: 0.8em;
-    font-family: 'Gotham-Book-i';
     color: rgb(231, 242, 254);
     background-color: rgb(124 207 137);
     display: block;
@@ -1187,7 +1176,6 @@ button.status-yes {
 
 button.status-no {
     font-size: 0.8em;
-    font-family: 'Gotham-Book-i';
     background-color: rgb(254 125 125);
     color: rgb(231, 242, 254);
     display: block;
@@ -1199,7 +1187,6 @@ button.status-no {
 
 span.status-yes {
     font-size: 0.8em;
-    font-family: 'Gotham-Book-i';
     color: rgb(231, 242, 254);
     background-color: rgb(124 207 137);
     display: block;
@@ -1211,7 +1198,6 @@ span.status-yes {
 
 span.status-no {
     font-size: 0.8em;
-    font-family: 'Gotham-Book-i';
     background-color: rgb(254 125 125);
     color: rgb(231, 242, 254);
     display: block;
@@ -1257,7 +1243,6 @@ span.title-blue-l {
 }
 
 .info-travel> h5{
-    font-family: 'Gotham-Book-i';
     color: rgb(113, 113, 113);
     text-align: center;
     font-size: 0.7em;
@@ -1277,7 +1262,6 @@ span.title-blue-l {
 }
 
 .info-travel> h5{
-    font-family: 'Gotham-Book-i';
     color: rgb(113, 113, 113);
     text-align: center;
     font-size: 0.7em;
@@ -1285,7 +1269,6 @@ span.title-blue-l {
 
 .footer-travel >h2{
     margin: 0;
-    font-family: 'Gotham-Book-i';
     width: 25%;
     text-align: center;
     padding: 0px 10px;
@@ -1312,7 +1295,6 @@ span.title-blue-l {
     outline: none;
     background: url(../../_images/icons/row-select.png) no-repeat 99.5% center;
     background-color: white;
-    font-family: 'Gotham-Book-i';
     padding: 0px 7px 0px 10px;
 }
 
@@ -1322,7 +1304,6 @@ span.title-blue-l {
 
 .diarys-item >h4{
     margin: 0;
-    font-family: 'Gotham-Book-i';
     font-size: 0.9em;
 }
 
@@ -1430,7 +1411,6 @@ span.title-blue-l {
 }
 
 #requirement-ann li{
-    font-family: 'Gotham-Book-i';
     font-size: 0.9em;
 }
 
@@ -1501,7 +1481,6 @@ span.title-blue-l {
 }
 
 .summary-conv-det p{
-    font-family: 'Gotham-Book-i';
     line-height: 1.9;
 }
 
@@ -1522,7 +1501,6 @@ span.title-blue-l {
 
 .details2-conv-det >p{
     color: rgb(255,58,155);
-    font-family: 'Gotham-Book-i';
     font-size: 0.8em;
 }
 
@@ -1588,7 +1566,6 @@ span.title-blue-l {
 }
 
 .info-detail-precinct p{
-    font-family: 'Gotham-Book-i';
     line-height: 1.9;
 }
 
@@ -1635,7 +1612,6 @@ span.title-blue-l {
 }
 
 .info-address-pd p{
-    font-family: 'Gotham-Book-i';
     width: 70%;
     line-height: 1.9;
     margin: 0 auto;
@@ -3015,3 +2991,12 @@ input[type='checkbox']{
   }
 }
 
+.btn_request{
+  text-decoration: none;
+  display: block;
+  background-color: #6573a7;
+  padding: 13px;
+  color: white;
+  border-radius: 10px;
+  margin: 20px 40px;
+}
