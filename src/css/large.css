@@ -106,7 +106,8 @@ a { text-decoration: none; }
 *:focus{
     outline: none;
 }
-.page__background, .page__content { background-color: black; }
+.page__background { background-color: black; }
+.page__content { background-color: white; }
 .pad1{
   box-sizing: border-box;
   padding: 10px;
