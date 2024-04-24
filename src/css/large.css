@@ -3002,3 +3002,5 @@ input[type='checkbox']{
   border-radius: 10px;
   margin: 20px 40px;
 }
+
+.box-emergent-account-presdetail p { margin: 0px; }
