@@ -106,6 +106,7 @@ a { text-decoration: none; }
 *:focus{
     outline: none;
 }
+.page__background, .page__content { background-color: black; }
 .pad1{
   box-sizing: border-box;
   padding: 10px;
