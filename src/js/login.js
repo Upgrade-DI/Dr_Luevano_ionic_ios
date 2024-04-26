@@ -328,6 +328,7 @@ $(document).on('submit','#login_form',function(){
 							if(response !== 'unsuccessful'){
 								var session_response = $.parseJSON(response);
 								
+								ons.notification.toast({message: 'Datos correctos', timeout: 1000});	
 								// getLoginAcess();
 								getLoginAcess(session_response);
 								
