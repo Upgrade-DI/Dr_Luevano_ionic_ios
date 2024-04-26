@@ -1211,7 +1211,7 @@ function getPatient(){
             // data: { getPat : true, the_patient : global_user_id},
             data: { getPat : true, patid : global_id },
             }).done(function(data){
-            // console.log(data);
+            console.log(data);
             
             //count_userData_try = count_userData_try + 1;    
          
@@ -1261,21 +1261,22 @@ function getPatient(){
 
             if (data.patient[0].pat_photo == null | data.patient[0].pat_photo == '' | data.patient[0].pat_photo == "") {
                 // $photo_patient = '<img src="img/lo-ae-3.png" class="circle-purple" >';
-                $photo_patient = './img/lo-ae-3.png';
+                var photo_patient = './img/lo-ae-3.png';
 
-
+                $('.profile-picture').css('background-image','url('+photo_patient+')');
 
             }else{
                 // $photo_patient = '<img src="'+urlAE+''+data.patient[0].pat_photo+'">';
-                $photo_patient = urlAE+''+data.patient[0].pat_photo;
+                var photo_patient = urlAE+''+data.patient[0].pat_photo;
 
             $(".head-tittle-name").html('<h1 class="tittle_name">Hola, '+data.patient[0].pat_name+'</h1> <div class="profile-picture user-picture"></div>');
+                $('.profile-picture').css('background-image','url(https://app.renew.armoniaestetica.com/'+photo_patient+')');
             }
 
 
             // $(".profile-picture").append($photo_patient);
 
-            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+            
 
                 // background-image: url(https://armoniaestetica.com/sudi_renew/_files/_img/_clients/081619-160835_b9b3947e-3813-4f96-8739-b1aa85406df2.jpeg);
 
@@ -1326,13 +1327,13 @@ function getPatient(){
             /* menu head foto y nombre*/
             if (data.patient[0].pat_photo == null | data.patient[0].pat_photo == '' | data.patient[0].pat_photo == "") {
                 // $photo_patient = '<img src="img/lo-ae-3.png" class="circle-purple" >';
-                $photo_patient = './img/lo-ae-3.png';
+                var photo_patient = './img/lo-ae-3.png';
 
 
 
             }else{
                 // $photo_patient = '<img src="'+urlRenew+''+data.patient[0].pat_photo+'">';
-                $photo_patient = urlRenew+''+data.patient[0].pat_photo;
+                var photo_patient = urlRenew+''+data.patient[0].pat_photo;
 
 
                 $(".head-tittle-name").html('<h1 class="tittle_name">Hola, '+data.patient[0].pat_name+'</h1> <div class="profile-picture user-picture"></div>');
@@ -1340,7 +1341,7 @@ function getPatient(){
 
 
             // $(".profile-picture").append($photo_patient);
-            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+            $('.profile-picture').css('background-image','url(https://app.renew.armoniaestetica.com/'+photo_patient+')');
 
 
             // $(".profile-picture").append('<img src="https://armoniaestetica.com/_sudiv3/'+data.patient[i].photo+'">');
@@ -1373,12 +1374,12 @@ function getPatient(){
             /* menu head foto y nombre*/
             if (data.patient[0].pat_photo == null | '') {
                 // $photo_patient = '<img src="img/folder-h.png" class="circle-purple" >';
-                 $photo_patient = './img/lo-ae-3.png';
-            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+                 var photo_patient = './img/lo-ae-3.png';
+            $('.profile-picture').css('background-image','url('+photo_patient+')');
             $(".head-tittle-name").html('<h1 class="tittle_name">Hola, '+data.patient[0].pat_name+'</h1> <div class="profile-picture user-picture"></div>');
             }else{
                    // $(".profile-picture").append($photo_patient);
-            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+            $('.profile-picture').css('background-image','url(https://app.renew.armoniaestetica.com/'+data.patient[0].pat_photo+')');
             }
 
             // $(".profile-picture").append('<img src="https://armoniaestetica.com/_sudiv3/'+data.patient[i].photo+'">');
