@@ -271,7 +271,7 @@
                                 <img src="./img/survey.png" style="width: 30%;">   
                                 <h3 class="tittle blue-account"> Código QR</h3>
                                 <span class="subtitle-blue "  style="font-size: 0.9em; "> Escanea el código QR</span>  
-                                <a class="btn_request" href="https://forms.monday.com/forms/af3b189adac214661e55cbd03147f595?r=use1" target="_blank">Responder encuesta</a>
+                                <a class="btn_request" href="https://forms.monday.com/forms/af3b189adac214661e55cbd03147f595?r=use1" target="_blank">Contestar encuesta</a>
                         </div> <!-- end box 2 -->
 
                         <div id="account-box"></div>
@@ -1378,6 +1378,7 @@ function getPatient(){
             $(".head-tittle-name").html('<h1 class="tittle_name">Hola, '+data.patient[0].pat_name+'</h1> <div class="profile-picture user-picture"></div>');
             }else{
                 $photo_patient = urlRenew+''+data.patient[0].pat_photo;
+                $(".head-tittle-name").html('<h1 class="tittle_name">Hola, '+data.patient[0].pat_name+'</h1> <div class="profile-picture user-picture"></div>');
                    // $(".profile-picture").append($photo_patient);
             $('.profile-picture').css('background-image','url('+$photo_patient+')');
             }
