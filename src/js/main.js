@@ -1,16 +1,6 @@
 // JavaScript Document
-import { QrScanner } from '@diningcity/capacitor-qr-scanner';
 
 $(document).ready(function() {
-    
-	async function startScan() {
-		try {
-			const result = await QrScanner.scan();
-			console.log('QR code result:', result);
-		} catch (error) {
-			console.error('Failed to scan QR code:', error);
-		}
-	}
 	// Recargar contenido en el segundo touch
 	document.querySelector('#tabbar').addEventListener('reactive', function() { 
 		var tab_index = document.querySelector('#tabbar').getActiveTabIndex();
