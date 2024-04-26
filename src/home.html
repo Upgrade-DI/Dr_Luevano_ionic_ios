@@ -420,7 +420,7 @@
         <ons-page id="products" style="background: linear-gradient(to bottom, #F8FBFF 0%,#F5F5F5 100%);">
         <script type="text/javascript">
                // $(".profile-picture").append($photo_patient);    
-            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+            $('.profile-picture').css('background-image','url(https://app.renew.armoniaestetica.com/'+photo_patient+')');
 
                getProducts();
            </script>
@@ -454,7 +454,7 @@
         <ons-page id="services" style="background: linear-gradient(to bottom, #F8FBFF 0%, #F5F5F5 100%);">
         <script type="text/javascript">
                // $(".profile-picture").append($photo_patient);  
-            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+            $('.profile-picture').css('background-image','url(https://app.renew.armoniaestetica.com/'+photo_patient+')');
 
                // getServices();
 
@@ -578,7 +578,7 @@
     <template id="quiz_ea.html">
         <ons-page id="quiz_ea" style="background: linear-gradient(to bottom, #F8FBFF 0%,#F4F9FC 100%);">
         <script type="text/javascript">
-               $('.profile-picture').css('background-image','url('+$photo_patient+')');   
+               $('.profile-picture').css('background-image','url(https://app.renew.armoniaestetica.com/'+photo_patient+')');   
 
                $("#quiz_ea_form").append('<input type="hidden" name="patient" id="patient" value="'+the_patient+'"/>');
            </script>
@@ -677,7 +677,7 @@
         <ons-page id="quiz_renew" style="background: linear-gradient(to bottom, #F8FBFF 0%,#FCF7F4 100%);">
         <script type="text/javascript">
                // $(".profile-picture").append($photo_patient);   
-            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+            $('.profile-picture').css('background-image','url(https://app.renew.armoniaestetica.com/'+photo_patient+')');
 
             $("#quiz_r_form").append('<input type="hidden" name="patient" id="patient" value="'+the_patient+'"/>');
 
@@ -783,7 +783,7 @@
         <ons-page id="prescriptions" style="background: linear-gradient(to bottom, #F8FBFF 0%,#F5F5F5 100%);">
            <script type="text/javascript">
                // $(".profile-picture").append($photo_patient);   
-            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+            $('.profile-picture').css('background-image','url(https://app.renew.armoniaestetica.com/'+photo_patient+')');
 
 
                getPrescriptions();               
@@ -823,7 +823,7 @@
         <ons-page id="prescription-detail" style="background: linear-gradient(to bottom, #F8FBFF 0%,#F5F5F5 100%);">
             <script type="text/javascript">
                 // $(".profile-picture").append($photo_patient); 
-            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+            $('.profile-picture').css('background-image','url(https://app.renew.armoniaestetica.com/'+photo_patient+')');
 
                 //getPrescriptionsDetail();   
             </script>
@@ -859,7 +859,7 @@
         <ons-page id="payment-history" style="background: linear-gradient(to bottom, #F8FBFF 0%,#F5F5F5 100%);">
            <script type="text/javascript">
                // $(".profile-picture").append($photo_patient); 
-            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+            $('.profile-picture').css('background-image','url(https://app.renew.armoniaestetica.com/'+photo_patient+')');
 
                getHistoryae();
                getHistoryrenew();
@@ -900,7 +900,7 @@
         <ons-page id="account-statement" style="background: linear-gradient(to bottom, #F8FBFF 0%,#FCF7F4 100%);">
            <script type="text/javascript">
                // $(".profile-picture").append($photo_patient);    
-            $('.profile-picture').css('background-image','url('+urlAE+''+data.patient[0].pat_photo+')');
+            $('.profile-picture').css('background-image','url(https://app.renew.armoniaestetica.com/'+''+data.patient[0].pat_photo+')');
 
            </script>
            <div class="space_element-rae"> 
@@ -1267,7 +1267,7 @@ function getPatient(){
 
             }else{
                 // $photo_patient = '<img src="'+urlAE+''+data.patient[0].pat_photo+'">';
-                var photo_patient = urlAE+''+data.patient[0].pat_photo;
+                var photo_patient = data.patient[0].pat_photo;
 
             $(".head-tittle-name").html('<h1 class="tittle_name">Hola, '+data.patient[0].pat_name+'</h1> <div class="profile-picture user-picture"></div>');
                 $('.profile-picture').css('background-image','url(https://app.renew.armoniaestetica.com/'+photo_patient+')');
