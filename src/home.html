@@ -973,7 +973,7 @@ var appDebug = false;
                         '<div class="head-tittle">'+
                             '<h1 class="tittle_menu">Hola, Estetica</h1>'+
                             '<div class="profile-picture user-picture">'+
-                                '<img src="img/me.svg">'+
+                                '<img src="./img/me.svg">'+
                             '</div>'+
                         '</div>'+
                         
@@ -982,7 +982,7 @@ var appDebug = false;
                             '<div class="box-emergent-white bg-white" >'+  
                                 '<div class="info-detail">'+
                                     '<h4 class="hour">'+
-                                        '<img src="img/reloj.svg" style="padding-right: 15px; width: 19px;">8:30 AM'+ 
+                                        '<img src="./img/reloj.svg" style="padding-right: 15px; width: 19px;">8:30 AM'+ 
                                     '</h4>'+
                                     '<h5 class="status-yellow">Pendiente</h5>'+
                                 '</div>'+
@@ -994,7 +994,7 @@ var appDebug = false;
                                 '<div style="display: flex;align-items: center; margin: 0px; justify-content: space-between;">'+
                                     
                                     '<span class="little" style="padding-top: 10px;">'+
-                                    '<img src="img/ic2.png" style="padding-right: 15px;">Claudia Quezada</span>'+
+                                    '<img src="./img/ic2.png" style="padding-right: 15px;">Claudia Quezada</span>'+
                                     
                                     '<h5 style"color: rgb(125, 181, 254);">¿Confirmas que podrás asistir a la cita?</h5>'+
                                 '</div>'+
@@ -1032,7 +1032,7 @@ var appDebug = false;
             
             $(".box-emergent-account-presdetail").append('<span class="purple" id="presdetail">'+data.arrayRecipesDetail[0].rec_date+'</span><div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
                     '<h3 class="tittle blue-account">'+
-                        '<img src="img/recipe_purple.svg" style="padding-right: 15px; width: 20px;">Receta'+
+                        '<img src="./img/recipe_purple.svg" style="padding-right: 15px; width: 20px;">Receta'+
                     '</h3>'+
                 '</div>');
 
@@ -1326,7 +1326,7 @@ function getPatient(){
             /* menu head foto y nombre*/
             if (data.patient[0].pat_photo == null | data.patient[0].pat_photo == '' | data.patient[0].pat_photo == "") {
                 // $photo_patient = '<img src="img/lo-ae-3.png" class="circle-purple" >';
-                $photo_patient = 'img/lo-ae-3.png';
+                $photo_patient = './img/lo-ae-3.png';
 
 
 
@@ -1371,17 +1371,15 @@ function getPatient(){
                         getHistoryae();
 
             /* menu head foto y nombre*/
-            // if (data.patient[0].pat_photo == null | '') {
+            if (data.patient[0].pat_photo == null | '') {
                 // $photo_patient = '<img src="img/folder-h.png" class="circle-purple" >';
-                 $photo_patient = 'img/lo-ae-3.png';
+                 $photo_patient = './img/lo-ae-3.png';
             $('.profile-picture').css('background-image','url('+$photo_patient+')');
             $(".head-tittle-name").html('<h1 class="tittle_name">Hola, '+data.patient[0].pat_name+'</h1> <div class="profile-picture user-picture"></div>');
-            // }
-
-
-            // $(".profile-picture").append($photo_patient);
+            }else{
+                   // $(".profile-picture").append($photo_patient);
             $('.profile-picture').css('background-image','url('+$photo_patient+')');
-
+            }
 
             // $(".profile-picture").append('<img src="https://armoniaestetica.com/_sudiv3/'+data.patient[i].photo+'">');
 
