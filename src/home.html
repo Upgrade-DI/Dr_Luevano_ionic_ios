@@ -1261,7 +1261,7 @@ function getPatient(){
 
             if (data.patient[0].pat_photo == null | data.patient[0].pat_photo == '' | data.patient[0].pat_photo == "") {
                 // $photo_patient = '<img src="img/lo-ae-3.png" class="circle-purple" >';
-                $photo_patient = 'img/lo-ae-3.png';
+                $photo_patient = '/img/lo-ae-3.png';
 
 
 
@@ -1326,7 +1326,7 @@ function getPatient(){
             /* menu head foto y nombre*/
             if (data.patient[0].pat_photo == null | data.patient[0].pat_photo == '' | data.patient[0].pat_photo == "") {
                 // $photo_patient = '<img src="img/lo-ae-3.png" class="circle-purple" >';
-                $photo_patient = 'img/lo-ae-3.png';
+                $photo_patient = '/img/lo-ae-3.png';
 
 
 
@@ -1373,7 +1373,7 @@ function getPatient(){
             /* menu head foto y nombre*/
             if (data.patient[0].pat_photo == null | '') {
                 // $photo_patient = '<img src="img/folder-h.png" class="circle-purple" >';
-                 $photo_patient = 'img/lo-ae-3.png';
+                 $photo_patient = '/img/lo-ae-3.png';
             $('.profile-picture').css('background-image','url('+$photo_patient+')');
             $(".head-tittle-name").html('<h1 class="tittle_name">Hola, '+data.patient[0].pat_name+'</h1> <div class="profile-picture user-picture"></div>');
             }else{
@@ -1809,7 +1809,7 @@ function getHomer(){
                                      
                                       if (data.arrayHomer[0].arrayR[m].user_photo == null | data.arrayHomer[0].arrayR[m].user_photo == '') {
                                         // $photo_user_homer = '<img src="img/folder-h.png" class="circle-purple" >';
-                                        $photo_user_homer = 'img/lo-ae-3.png';
+                                        $photo_user_homer = '/img/lo-ae-3.png';
 
                                       }else{
                                           // $photo_patient = '<img src="'+urlAE+''+data.patient[0].pat_photo+'">';
@@ -2081,7 +2081,7 @@ function getHomer(){
                                   
                                       if (data.arrayHomer[0].arrayS[n].user_photo == null | data.arrayHomer[0].arrayS[n].user_photo == '') {
                                         // $photo_user_homer = '<img src="img/folder-h.png" class="circle-purple" >';
-                                        $photo_user_homerr = 'img/lo-ae-3.png';
+                                        $photo_user_homerr = '/img/lo-ae-3.png';
 
                                       }else{
                                           // $photo_patient = '<img src="'+urlAE+''+data.patient[0].pat_photo+'">';
@@ -2172,7 +2172,7 @@ function getHomer(){
                                          
                                           if (data.arrayHomer[0].arrayP[o].prod_image == null | data.arrayHomer[0].arrayP[o].prod_image == '') {
                                             // $photo_user_homer = '<img src="img/folder-h.png" class="circle-purple" >';
-                                            $photo_user_homerrr = 'img/lo-ae-3.png';
+                                            $photo_user_homerrr = '/img/lo-ae-3.png';
                                             // var img = 'https://armoniaestetica.com/sudi_renew/'+data.arrayHomer[0].arrayP[o].prod_image;
 
                                           }else{
@@ -2315,7 +2315,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
 
                 /*   DIV EMPLEADO*/
                    if (data.arrayHomeae[b].arrayNextcons[i].Cons_user_photo == null | '') {
-                                          $photo_user_homeae = 'img/lo-ae-3.png';
+                                          $photo_user_homeae = '/img/lo-ae-3.png';
                    }else{
                                             
                                           $photo_user_homeae = root_web+data.arrayHomeae[b].arrayNextcons[i].Cons_user_photo;
