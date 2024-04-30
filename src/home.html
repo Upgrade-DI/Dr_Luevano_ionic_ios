@@ -1377,7 +1377,7 @@ function getPatient(){
             $('.profile-picture').css('background-image','url('+$photo_patient+')');
             $(".head-tittle-name").html('<h1 class="tittle_name">Hola, '+data.patient[0].pat_name+'</h1> <div class="profile-picture user-picture"></div>');
             }else{
-                $photo_patient = urlRenew+''+data.patient[0].pat_photo;
+                $photo_patient = 'https://app.renew.armoniaestetica.com/'+data.patient[0].pat_photo;
                 $(".head-tittle-name").html('<h1 class="tittle_name">Hola, '+data.patient[0].pat_name+'</h1> <div class="profile-picture user-picture"></div>');
                    // $(".profile-picture").append($photo_patient);
             $('.profile-picture').css('background-image','url('+$photo_patient+')');
