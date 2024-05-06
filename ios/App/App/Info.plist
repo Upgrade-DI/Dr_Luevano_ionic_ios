@@ -45,6 +45,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Esta aplicación necesita acceder a tus fotos para que puedas adjuntar imágenes a tus notas médicas</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
 </dict>
