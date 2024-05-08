@@ -4,10 +4,10 @@
       background-repeat: no-repeat;
       background-color: #f9f5f5;
       background-size: 19%;
-      height: 92%; 
+      height: 100%;
   }
   .custom-ico.active{
-    border-bottom: 3px solid #6574a7;
+    border-top: 2px solid #6574a7;
     opacity: 1
   }
  /*   .custom-ico.home{background-image: url(../img/icons/home.svg);}
