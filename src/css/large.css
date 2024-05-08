@@ -95,7 +95,7 @@ html, body{ margin:0px; padding:0px;
 
     }*/
 
-
+.left {padding-top: 30px;}
 .text_center {text-align: center;}
 .text_right {text-align: right;}
 .text_bold { font-family: 'Gotham Bold'; }
