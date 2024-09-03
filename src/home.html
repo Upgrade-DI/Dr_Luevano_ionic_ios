@@ -1027,17 +1027,26 @@ var appDebug = false;
             data: { getPreDetail : true, prescription:prescription},
             success: function(data){
             
-            // console.log(data);
+            console.log(data);
 
             
             $(".box-emergent-account-presdetail").append('<span class="purple" id="presdetail">'+data.arrayRecipesDetail[0].rec_date+'</span><div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
                     '<h3 class="tittle blue-account">'+
-                        '<img src="./img/recipe_purple.svg" style="padding-right: 15px; width: 20px;">Receta'+
+                        '<img src="./img/recipe_purple.svg" style="padding-right: 15px; width: 20px;">Notificación'+
                     '</h3>'+
                 '</div>');
 
             // $(".presdetail").append(data.arrayRecipesDetail[0].rec_date);
+        
+            if(data.arrayRecipesDetail[0].arrayDrugs == null){
+                var  notes=  '<span class="hc_event_subtitle">Notas</span>'+
+                            '<p class="hc_event_data">'+data.arrayRecipesDetail[0].notes+
+                            '</p>';
 
+                            var prescriptiondetail = notes;
+
+$(".box-emergent-account-presdetail").append(prescriptiondetail);
+            }else{
         for (var h = 0; h < data.arrayRecipesDetail[0].arrayDrugs.length; h++) {
             
             if(data.arrayRecipesDetail[0].notes == null) { 
@@ -1067,6 +1076,7 @@ var appDebug = false;
             $(".box-emergent-account-presdetail").append(prescriptiondetail);
 
             }
+        }
 
    
 
