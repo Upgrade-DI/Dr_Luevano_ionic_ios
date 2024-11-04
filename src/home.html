@@ -1030,7 +1030,7 @@ var appDebug = false;
             console.log(data);
 
             
-            $(".box-emergent-account-presdetail").append('<span class="purple" id="presdetail">'+data.arrayRecipesDetail[0].rec_date+'</span><div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
+            $(".box-emergent-account-presdetail").append('<span class="purple" id="presdetail">'+data.arrayRecipesDetail[0].rec_date+' '+data.arrayRecipesDetail[0].rec_hour+'</span><div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
                     '<h3 class="tittle blue-account">'+
                         '<img src="./img/recipe_purple.svg" style="padding-right: 15px; width: 20px;">Notificación'+
                     '</h3>'+
@@ -2759,6 +2759,7 @@ function getPrescriptions(){
                                 '<!-- div derecha -->'+
                                 '<div style="margin-left: 15px;">'+   
                                     '<h3 class="tittle blue-account">'+data.arrayRecipes[f].item_date+'</h3>'+
+                                    '<h3 class="tittle blue-account">'+data.arrayRecipes[f].item_hour+'</h3>'+
                                 '</div>'+  
 
                         '</div> <!-- end box '+f+' -->';
@@ -2803,7 +2804,8 @@ function getHistoryae(){
                                 '<div class="contract-r">'+
                                     '<img src="./img/icons/logo_ae.svg" class="circle-purple" style="background-color: #f4f9ff;">' +
                                     '<div style="margin-left: 15px;">'+
-                                        '<h3 class="blue">'+data.arrayBinnEA[f].provenance+'</h3>'+
+                                        '<h3 class="blue">'+data.arrayBinnEA[f].provenance+' #'+data.arrayBinnEA[f].id+'</h3>'+
+                                        '<span class="blue" style="line-height: 17px;">'+data.arrayBinnEA[f].notes+' </span>'+
                                     '</div>'+
                                 '</div>'+
                             '</div>'+
