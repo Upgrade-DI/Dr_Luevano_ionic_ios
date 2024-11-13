@@ -1,0 +1,3317 @@
+<!DOCTYPE HTML>
+<html>
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">
+        <meta name="robots" content="nofollow, noindex"/>
+        <meta name="author" content="Upgrade Diseño Interactivo"/>
+        <meta name="copyright" content="2024"/>
+        <link rel="stylesheet" href="./css/onsenui.css">
+        <link rel="stylesheet" href="./css/onsen-css-components.min.css">
+        <link href="./fonts/stylesheet.css" rel="stylesheet" type="text/css"/>
+        <link href="./css/large.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" media="only screen and (min-width:10px) and (max-width:380px)"   href="./css/small.css"/>
+        <link href="./css/customico.css" rel="stylesheet" type="text/css"/> 
+        <script src="./js/jquery-3.6.0.min.js" ></script>
+        <!-- <script src="js/jquery-3.6.0.min.js" ></script> -->
+
+        <script src="./js/jquery.cookie.js" ></script> 
+
+        <script src="./js/onsenui.min.js"></script>
+        <script src="./js/login.js" ></script>
+        <script src="./js/main.js" ></script>    
+        <!-- <script type="text/javascript" src="cordova.js"></script> -->
+        <script type="text/javascript" src="./js/push.js"></script>
+
+
+        <title>Dr. Luevano</title>
+    </head>
+<body id="app">
+<script type="text/javascript">            
+    
+</script>   
+<!-- # M A I N # -->    
+<ons-navigator id="myNavigator" page="account.html">
+
+    <!-- MENU PRINCIPAL - BOTTOM -->      
+    <ons-page >
+        <ons-tabbar position="bottom" id="tabbar">
+
+            <ons-tab page="stetic.html" label="" class="custom-ico ae not_ea_view " style="background-size: 18%;" onclick="getHomeae()">  <!-- HOME EA estetica-->
+                <!-- <div class="b"></div> -->
+            </ons-tab>
+
+            <ons-tab page="account.html" label="" class="custom-ico center" active>     <!-- cuenta RAE cliente-->
+            </ons-tab>
+
+            <ons-tab page="renew.html" id="tab_notif" label="" class="custom-ico r not_renew_view" style="background-size: 20%;" onclick="getHomer()"></ons-tab>   <!-- HOME R renew -->
+
+        </ons-tabbar>
+    </ons-page>
+
+    
+    <!-- #  B I T A C O R A  R# 
+    <template id="binnacle-r.html">
+        <ons-page id="binnacle-r" style="background: linear-gradient(to bottom, #F8FBFF 0%,#FCF7F4 100%);">
+           <script type="text/javascript">
+               $(".profile-picture").append($photo_patient);    
+           </script>
+           <div class="space_element renew"> 
+                
+                <div class="head-tittle">  
+                    <div>
+                        <h1 class="tittle_menu">Depilación</h1>
+                    </div>
+ 
+                     <div class="profile-picture user-picture">
+                    </div>
+                </div>
+            </div>                
+                    <section id="contain-bitacora-r" class="section-float">
+                    </section>
+        </ons-page>
+    </template>-->
+
+<!-- # C U E N T A  R A E  # -->
+<template id="account.html">
+        <ons-page id="account-rae" class="bg-degrad">
+        <!-- <script type="text/javascript" src="js/test.js"></script> -->
+
+        <!-- <script src="../../dist/cordova-plugin-qrscanner-lib.min.js"></script> -->
+        <script type="text/javascript">
+            function onDone(err, status) {
+                if (err) {
+                console.error(err);
+                } else if (status.authorized) {
+                    QRScanner.show(function(status) {
+                        console.log("Camera showing with status: ", status);
+                    });
+                }
+            }
+
+     document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('startScanButton').addEventListener('click', function() {
+            setupQRScanner();
+        });
+    });
+
+    // function setupQRScanner() {
+    //     RScanner.prepare(function (err, status) {
+    //         console.log("Preparación completada, estatus:", status);
+    //         if (err) {
+    //             console.error("Error preparando QRScanner:", err);
+    //             return;
+    //         }
+    //         if (status.authorized) {
+    //             QRScanner.show(function(status) {
+    //                 console.log("Mostrando cámara, estatus:", status);
+    //             });
+    //             startScanning();
+    //         } else if (status.denied) {
+    //             console.warn("Permiso de cámara denegado");
+    //         } else {
+    //             console.warn("Permiso de cámara no concedido");
+    //         }
+    //     });
+    // }
+
+    function startScanning() {
+        QRScanner.scan(function (err, text) {
+            if (err) {
+                if (err.name === 'CAMERA_ACCESS_DENIED') {
+                    console.error('Camera access denied:', err);
+                } else {
+                    console.error('Scanning error:', err);
+                }
+                QRScanner.destroy();
+                return;
+            }
+            console.log('Scan successful:', text);
+            // Procesar el texto obtenido del QR aquí
+        });
+    }
+
+    function resetUI() {
+        QRScanner.destroy();
+        // Restablecer la UI como necesites
+    }
+
+
+     function prescan() {
+        // Configura y muestra el QRScanner
+        setupQRScanner();
+
+        $('#account-rae').removeClass('bg-degrad');
+        document.querySelector('#contain-rae').classList.add('transparent-body');
+        document.querySelector('#do_logout').classList.add('transparent-body');
+        $('#space_account').addClass('qr-invisibility');
+        $('#qr_buttons').html('');
+        $('#qr_buttons').removeClass('qr-invisibility');
+        $('#qr_buttons').addClass('qr-head');
+        $('#qr_buttons').append('<span class="btn_opt_qr" onclick="canceledscan()">Cancelar</span>' +
+            '<span class="btn_opt_qr" onclick="scan()">Escanear</span>');
+    }
+
+    function setupQRScanner() {
+        QRScanner.prepare(function (err, status) {
+            if (err) {
+                console.error(err);
+            }
+            if (status.authorized) {
+                QRScanner.show();
+            } else if (status.denied) {
+                ons.notification.toast({ message: 'Camera permission denied', timeout: 3000 });
+                QRScanner.openSettings();
+            } else {
+                ons.notification.toast({ message: 'Camera permission is not authorized and not denied', timeout: 3000 });
+            }
+        });
+    }
+
+    function scan() {
+        QRScanner.scan(function (err, result) {
+            if (err) {
+                if (err.name === 'CAMERA_ACCESS_DENIED') {
+                    ons.notification.toast({ message: 'Camera access was denied', timeout: 3000 });
+                    QRScanner.openSettings();
+                } else {
+                    ons.notification.toast({ message: 'Scanning error', timeout: 3000 });
+                }
+                QRScanner.destroy();
+                return;
+            }
+            processScanResult(result);
+        });
+    }
+
+    function processScanResult(result) {
+        $("#do_logout, #account_qr, #account_product, #account_service, #account_pay, #account_presc").attr('disabled', 'disabled');
+        $("#name").removeAttr('disabled');
+
+        var var_Qr = result.split(';');
+        var date_id = var_Qr[var_Qr.length - 3];
+        var system_rae = var_Qr[var_Qr.length - 2];
+        var quiz = var_Qr[var_Qr.length - 1];
+
+        ons.notification.toast({ message: 'El código ha sido escaneado', timeout: 1500 });
+
+        handleScannedData(date_id, system_rae, quiz);
+    }
+
+    function handleScannedData(date_id, system_rae, quiz) {
+        if (system_rae == 0) {
+            confirmr(date_id);
+            if (quiz == 0) {
+                navigateToQuizRenew();
+            } else {
+                navigateToHome();
+            }
+        } else if (system_rae == 1) {
+            confirmae(date_id);
+            navigateToQuizEA();
+        }
+    }
+
+    function navigateToQuizRenew() {
+        resetUI();
+        document.querySelector('#myNavigator').pushPage("quiz_renew.html");
+    }
+
+    function navigateToQuizEA() {
+        resetUI();
+        document.querySelector('#myNavigator').pushPage("quiz_ea.html");
+    }
+
+    function navigateToHome() {
+        resetUI();
+        document.querySelector('#myNavigator').resetToPage("home.html");
+    }
+
+    function resetUI() {
+        QRScanner.destroy();
+        document.querySelector('#account-rae').classList.remove('transparent-body');
+        $("#do_logout, #account_qr, #account_product, #account_service, #account_pay, #account_presc").removeAttr('disabled');
+        $('#contain-rae, #do_logout').removeClass('transparent-body');
+        $('#space_account').removeClass('qr-invisibility');
+        $('#account-rae').addClass('bg-degrad');
+        $('#qr_buttons').html('');
+        $('#qr_buttons').removeClass('qr-head').addClass('qr-invisibility');
+    }
+
+    function canceledscan() {
+        resetUI();
+        myNavigator.popPage();
+    }
+
+
+            </script>
+            <div class="qr-invisibility" id="qr_buttons">  
+            </div>
+
+           <div class="space_element-rae" id="space_account">  
+                
+                <div class="head-tittle">  
+                    <div id="profile">
+                        <h1 class="tittle_menu">Cuenta</h1>
+
+
+                        <!-- <span> arrianna@upgrade.com.mx</span> -->
+                    </div>
+
+                    <div class="profile-picture user-picture">
+                        <!-- <img src="images/me.svg"> -->
+                    </div>
+                </div>
+            </div>
+                    <section id="contain-rae" class="section-underline" >
+
+                        <!-- BOX QR -->
+                        <div class="box-emergent-qr bg-white" >  
+                            <!-- imagen izquierda -->  
+                                <img src="./img/survey.png" style="width: 30%;">   
+                                <h3 class="tittle blue-account"> Código QR</h3>
+                                <span class="subtitle-blue "  style="font-size: 0.9em; "> Escanea el código QR</span>  
+                                <a class="btn_request" href="https://forms.monday.com/forms/af3b189adac214661e55cbd03147f595?r=use1" target="_blank">Contestar encuesta</a>
+                        </div> <!-- end box 2 -->
+
+                        <div id="account-box"></div>
+
+                        <!-- BOX 3 -->
+                        <div id="account_pay" class="box-emergent-account bg-white account-module open_window" data-page="payment-history.html" onclick="myNavigator.pushPage('payment-history.html', { animation : 'slide' } )">  
+                            <!-- imagen izquierda -->  
+                               <!-- <img src="img/pay_h.svg" class="circle-neutro" > -->
+                               <div class="circle-neutro">
+                                 <img src="./img/pay_h.svg"  style=" width: 25px; height: 25px;">
+                               </div>
+
+                               <!-- div derecha -->
+                               <div style="margin-left: 15px;">   
+                                   <h3 class="tittle blue-account">  Historial de pagos</h3>
+                                   <span class="subtitle-blue "  style="font-size: 0.9em; "> Consulta  tu historial de pagos</span>
+                               </div>  
+
+                       </div> <!-- end box 3 -->
+
+                       <!-- BOX 1 -->
+                       <div id="account_product"  class="box-emergent-account bg-white account-module open_window" data-page="products.html" onclick="myNavigator.pushPage('products.html', { animation : 'slide' } )">  
+
+                        <!-- imagen izquierda -->  
+                           <div class="circle-neutro">
+                             <img src="img/product.svg"  style=" width: 25px; height: 25px;">
+                           </div>
+
+                           <!-- div derecha -->
+                           <div style="margin-left: 15px;">   
+                               <h3 class="tittle blue-account"> Catalogo</h3>
+                               <span class="subtitle-blue" style="font-size: 0.9em;"> Consulta nuestros productos en venta</span>
+                           </div>  
+
+                   </div> <!-- end box 1 -->
+
+                        <!-- BOX 2 -->
+                        <div id="account_service"  class="box-emergent-account bg-white account-module open_window" data-page="services.html" onclick="myNavigator.pushPage('services.html', { animation : 'slide' } )" style="display: none;">  
+
+                             <!-- imagen izquierda -->  
+                                <!-- <img src="img/money.svg" class="circle-neutro" > -->
+                                <div class="circle-neutro">
+                                  <img src="./img/money.svg"  style=" width: 25px; height: 25px;">
+                                </div>
+
+                                <!-- div derecha -->
+                                <div style="margin-left: 15px;">   
+                                    <h3 class="tittle blue-account"> Servicios</h3>
+                                    <span class="subtitle-blue" style="font-size: 0.9em;"> Consulta nuestros servicios</span>
+                                </div>  
+
+                        </div> <!-- end box 2 -->
+
+                       
+                        <!-- BOX 4 
+                        <div class="box-emergent-account bg-white account-module open_window" data-page="account-statement.html" onclick="myNavigator.pushPage('account-statement.html', { animation : 'slide' } )">  
+                           
+                                <img src="images/money.svg" class="circle-neutro" >
+                               
+                                  <div style="margin-left: 15px;">   
+                                    <h3 class="tittle blue-account"> Edo. de cuenta</h3>
+                                    <span class="subtitle-blue "  style="font-size: 0.9em; "> Conoce tus saldos pendientes</span>
+                                  </div>  
+                        </div> end box 4 -->
+
+                        <!-- BOX 5                         <div class="box-emergent-account bg-white account-module open_window" data-page="binnacle-r.html" onclick="myNavigator.pushPage('binnacle-r.html', { animation : 'slide' } )">  
+                            
+                                <img src="images/money.svg" class="circle-neutro" >
+                                
+                                  <div style="margin-left: 15px;">   
+                                    <h3 class="tittle blue-account"> Bitácora</h3>
+                                    <span class="subtitle-blue "  style="font-size: 0.9em; "> Conoce el avance de tus sesiones</span>
+                                  </div>  
+                        </div> end box 5 -->
+                    </section><!-- safe-top-container -->
+                     <button id="do_logout" class="btn-red" style="font-size: 1.1em;">Cerrar Sesión</button>
+
+        </ons-page>
+    </template>
+
+
+<!-- # H O M E  E A   A Z U L # -->
+    <template id="stetic.html">
+        <ons-page id="estetica" style="background: linear-gradient(to bottom, #F8FBFF 0%,#F4F9FC 100%);">
+            <script type="text/javascript">
+            // getHomeae();
+            </script>
+            <div class="space_element estetica">  
+                    
+                <!-- <div style=" display: flex; justify-content: space-between; width: 88%; ">   -->
+                <div class="head-tittle-name">  
+                    <!-- <h1 class="tittle_menu">Hola, Estetica</h1> -->
+                    <div class="profile-picture user-picture">
+                        <!-- <img src="images/me.svg"> -->
+                    </div>
+
+                </div>
+            </div>        
+                        <section id="contain-home-ae" style="margin-top: -30px;"> 
+
+                        </section><!-- safe-top-container -->
+        </ons-page>
+    </template>
+    
+
+    <!-- # H O M E   R E N E W   M O R A D O   # -->
+    <template id="renew.html">
+        <ons-page id="renew2" style="background: linear-gradient(to bottom, #F8FBFF 0%,#FCF7F4 100%);">
+            <script type="text/javascript">
+            // getHomer();
+            //getBinnacle();        
+            </script>
+            
+            <div class="space_element renew"> 
+                
+                <div class="head-tittle-name">  
+                    <!-- <h1 class="tittle_menu">Hola, Renew</h1> -->
+                     <div class="profile-picture user-picture">
+                        <!-- <img src="images/me.svg"> -->
+                    </div>
+                </div>
+            </div>
+                    <section id="contain-home-r" class="section-float" style="margin-top: -30px;"></section><!-- safe-top-container -->
+                    <section id="contain-bitacora-r" class="section-float"></section><!-- safe-top-container -->
+        </ons-page>
+    </template>
+
+
+    <!-- # A C C O U N T  R E N E W# -->
+    <template id="account-renew.html">
+        <ons-page id="account-renew">
+             <script type="text/javascript">             
+                // Si es iPhone X agregamos área segura a los nuevos elementos. 
+                // if (ons.platform.isIPhoneX()) {
+                //  $('.tabbar').not('.iphonex').addClass('iphonex');
+                //  $('.main-container').not('.iphonex').addClass('iphonex');
+                // } 
+            </script>  
+            <section id="section-acount-r" ></section>
+        </ons-page>
+    </template>
+
+
+ <!-- #  P R O D U C T S  # -->
+    <template id="products.html">
+        <ons-page id="products" style="background: linear-gradient(to bottom, #F8FBFF 0%,#F5F5F5 100%);">
+        <script type="text/javascript">
+               // $(".profile-picture").append($photo_patient);    
+            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+
+               getProducts();
+           </script>
+           <div class="space_element-rae"> 
+           <div class="left">
+                <ons-back-button style="fill:bisque; color:bisque;">
+                    <span style="color:bisque;"> Volver </span>
+                </ons-back-button>
+            </div>
+
+                <div class="head-tittle-account">  
+                    <div>
+                        <h1 class="tittle_menu">Catalogo</h1>
+                    </div>
+ 
+                     <div class="profile-picture user-picture" style="margin: 0px; ">
+                    </div>
+                </div>                
+            </div>                
+                  
+                    <section id="contain-products" class="section-underline" style="  display: block;  overflow: scroll;  height: calc(100% - 140px);">
+
+                                            
+                    </section><!-- safe-top-container -->
+        </ons-page>
+    </template>
+
+
+<!-- #  S E R V I C E S  # -->
+    <template id="services.html">
+        <ons-page id="services" style="background: linear-gradient(to bottom, #F8FBFF 0%, #F5F5F5 100%);">
+        <script type="text/javascript">
+               // $(".profile-picture").append($photo_patient);  
+            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+
+               // getServices();
+
+
+/*  INICIO FUNCIONES DE SERVICIOS*/
+    function depi(){ 
+        $("#services-detail").html('');   
+        $("#services-detail").append(
+            '<div><span>Bigote</span>'+
+            '<span>Axilas</span>'+
+            '<span>Bikini</span>'+
+            '<span>Nariz</span>'+
+            '<span>Orejas</span>'+
+            '<span>Mentón</span>'+
+            '<span>Ombligo</span>'+
+            '<span>Entreceja</span>'+
+            '<span>Pezón</span>'+
+            '<span>Manos</span>'+
+            '<span>Pies</span>'+
+            '<span>Frente</span>'+
+            '<span>1/2 Linea de abdomen</span>'+
+            '<span>Mejillas</span>'+
+            '</div><div>'+
+            '<span>Nuca</span>'+
+            '<span>Cuello</span>'+
+            '<span>Patillas</span>'+
+            '<span>Quijada</span>'+
+            '<span>Entrepierna</span>'+
+            '<span>Busto</span>'+
+            '<span>Línea de abdomen</span>'+
+            '<span>Bikini Extension</span>'+
+            '<span>Hombros</span>'+
+            '<span>Barba</span>'+
+            '<span>1/2 Cara</span>'+
+            '<span>Coccix</span>'+
+            '<span>1/2 Brazos</span>'+
+            '<span>Pecho</span>'+
+            '<span>Abdomen</span>'+
+            '<span>Glúteos</span>'+
+            '<span>1/2 Piernas</span>'+
+            '<span>Cara completa</span>'+
+            '<span>Muslos</span>'+
+            '<span>Brazos completos</span>'+
+            '<span>Espalda</span>'+
+            '<span>Piernas completas</span>'+
+            '<span>Pomulos</span></div>');
+                  
+    } //function depi   
+
+
+    function face(){ 
+        $("#services-detail").html('');   
+        $("#services-detail").append(
+            '<span>Limpieza facial básica</span>'+
+            '<span>Limpieza facial completa</span>'+
+            '<span>Anti Acné</span>'+
+            '<span>Rejuvenecimiento facial</span>'+
+            '<span>Reafirmante facial</span>'+
+            '<span>Facial Amatista</span>');
+                  
+    } //function face   
+
+    function siluet(){ 
+        $("#services-detail").html('');   
+        $("#services-detail").append(
+            '<span>Eliminación de grasa localizada</span>'+
+            '<span>Reafirmante corporal</span>'+
+            '<span>Cavix</span>'+
+            '<span>Cavix Super Plus</span>'+
+            '<span>Masajes de drenaje linfático</span>'+
+            '<span>Carboxiterapia</span>'+
+            '<span>Radiofrecuencia</span>');
+                  
+    } //function  siluet 
+
+    function skin(){ 
+        $("#services-detail").html('');   
+        $("#services-detail").append('<span>Anti Celulitis</span>'+
+            '<span>Blanqueamiento láser</span>');  
+    } //function    skin
+
+
+/*  FINAL FUNCIONES DE SERVICIOS*/
+
+           </script>
+           <div class="space_element-rae"> 
+           <div class="left">
+                <ons-back-button style="fill:bisque; color:bisque;">
+                    <span style="color:bisque;"> Volver </span>
+                </ons-back-button>
+            </div>
+
+                <div class="head-tittle-account">  
+                    <div>
+                        <h1 class="tittle_menu">Servicios</h1>
+                    </div>
+ 
+                     <div class="profile-picture user-picture" style="margin: 0px; ">
+                    </div>
+                </div>                
+            </div>                
+                    <section id="contain-services" class="section-underline">
+
+                    <div class="nav-menu" style="margin-top: 60px; margin-bottom: 15px;">
+                      <span class="nav-menu-option feed_filter opt_yellow" onclick="depi();" >Depilación</span>
+                      <span class="nav-menu-option feed_filter opt_green" onclick="face();" >Face renewal</span>
+                      <span class="nav-menu-option feed_filter opt_blue" onclick="siluet();" >Siluet Renewal</span>
+                      <span class="nav-menu-option feed_filter opt_blue" onclick="skin();" >Skin Renewal</span>
+                    </div>
+
+                    <div id="services-detail">
+                        
+                    </div>
+                        
+                    </section><!-- safe-top-container -->
+        </ons-page>
+    </template>
+
+
+<!-- #  Q U I Z     EA  # -->
+    <template id="quiz_ea.html">
+        <ons-page id="quiz_ea" style="background: linear-gradient(to bottom, #F8FBFF 0%,#F4F9FC 100%);">
+        <script type="text/javascript">
+               $('.profile-picture').css('background-image','url('+$photo_patient+')');   
+
+               $("#quiz_ea_form").append('<input type="hidden" name="patient" id="patient" value="'+the_patient+'"/>');
+           </script>
+           <div class="space_element estetica"> 
+               <div class="left">
+                    <ons-back-button style="fill:bisque; color:bisque; visibility: hidden;">
+                        <span style="color:bisque;"> Volver </span>
+                    </ons-back-button>
+                </div>
+
+                <div class="head-tittle-account">  
+                    <h1 class="tittle_menu">ENCUESTA ANONIMA DE SATISFACCION</h1>
+                    <!-- <span class="btn-ae" onclick="myNavigator.popPage();" style="padding: 5px; width: 22%;    color: #d3711b;">OMITIR</span> -->
+                </div>
+              
+            </div>                
+                <section id="contain-quiz-ae" class="section-underline">
+                    
+                    <form id="quiz_ea_form" name="quiz_ea_form" action="#" autocomplete="off" method="POST" style="margin: 0px 22px;">
+
+                        <p style="padding-bottom: 15px;">En Armonía estética tenemos el compromiso de mejorar constantemente, por lo que nos ayudará saber tu opinión acerca de nosotros</p>
+                        
+                        <p style="padding-bottom: 5px;     font-size: 0.8em;">0 = Malo   1 = Regular   2 = Bueno   3 = Excelente</p>
+
+
+                        <p>Servicio de recepcionista</p>
+
+                        <output class="range_nps_box-ae" id="one" name="one" for="quiz1">0</output>
+                        
+                        <input type="range" class="range_ae" value="0" step="1" min="0" max="3" oninput="one.value=quiz1.value" id="quiz1" name="quiz_1"></input>
+
+                        <!-- <ons-range class="range_satisfaction" style="width: 80%;" value="0" step="1" min="0" max="4" step="1"  oninput="one.value=quiz1.value" id="quiz1" name="quiz_1"></ons-range> -->
+
+                        <p>Servicio de tu asesora</p>
+                        
+                        <output class="range_nps_box-ae" id="two" name="two" for="quiz2">0</output>
+                        
+                        <input type="range" class="range_ae" value="0" step="1" min="0" max="3" oninput="two.value=quiz2.value" id="quiz2" name="quiz_2"></input>
+
+                        <p>Servicio de enfermera a domicilio</p>
+                        
+                        <output class="range_nps_box-ae" id="three" name="three" for="quiz3">0</output>
+                       
+                        <input type="range" class="range_ae" value="0" step="1" min="0" max="3" oninput="three.value=quiz3.value" id="quiz3" name="quiz_3"></input>
+
+                        <p>Servicio de ayudante en quirófano</p>
+                        
+                        <output class="range_nps_box-ae" id="four" name="four" for="quiz4">0</output>
+                        
+                        <input type="range" class="range_ae" value="0" step="1" min="0" max="3" oninput="four.value=quiz4.value" id="quiz4" name="quiz_4"></input>
+
+                        <p>Servicio del doctor</p>
+                        
+                        <output class="range_nps_box-ae" id="five" name="five" for="quiz5">0</output>
+                        
+                        <input type="range" class="range_ae" value="0" step="1" min="0" max="3" oninput="five.value=quiz5.value" id="quiz5" name="quiz_5"></input>
+
+                        <p>¿Recomendarías nuestros servicios?</p> <!--  <p>0 = No   1 = Tal vez  2 = Sí </p> 
+                        
+                        <output class="range_nps_box-ae" id="six" name="six" for="quiz6">0</output>
+                        
+                        <input type="range" class="range_ae" value="0" step="1" min="0" max="2" oninput="six.value=quiz6.value" id="quiz6" name="quiz_6"></input> -->
+
+
+                        <!-- segment -->
+                        <div class="segment segment--material" style="width: 280px; margin: 0 auto;">
+                            <div class="segment__item segment--material__item">
+                                <input type="radio" class="segment__input segment--material__input" name="quiz_6" data-length="0" value="0" >
+                                <div class="segment__button segment--material__button" >No</div>
+                            </div>
+                            <div class="segment__item segment--material__item">
+                                <input type="radio" class="segment__input segment--material__input" name="quiz_6" data-length="1" value="1">
+                                <div class="segment__button segment--material__button" >Tal vez</div>
+                            </div>
+                            <div class="segment__item segment--material__item">
+                                <input type="radio" class="segment__input segment--material__input" name="quiz_6" data-length="2" value="2" checked>
+                                <div class="segment__button segment--material__button" >Sí</div>
+                            </div>
+                        </div>
+                        <!-- segment -->
+
+                        <p>¿Cómo podemos mejorar tu experiencia en Armonía Estética?</p>
+                        <textarea class="gray-s " id="quiz7" name="quiz_7" rows="5" cols="90"a></textarea>
+
+
+                        <button class="btn-ae" name="quiz_ea_form" type="submit" value="submit" onclick="" >FINALIZAR</button>
+
+                    </form>
+                </section><!-- safe-top-container -->
+        </ons-page>
+    </template>
+
+
+    <!-- #  Q U I Z     RENEW  # -->
+    <template id="quiz_renew.html">
+        <ons-page id="quiz_renew" style="background: linear-gradient(to bottom, #F8FBFF 0%,#FCF7F4 100%);">
+        <script type="text/javascript">
+               // $(".profile-picture").append($photo_patient);   
+            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+
+            $("#quiz_r_form").append('<input type="hidden" name="patient" id="patient" value="'+the_patient+'"/>');
+
+           </script>
+           <div class="space_element renew"> 
+            <div class="left">
+                <ons-back-button style="fill:bisque; color:bisque; visibility: hidden;">
+                    <span style="color:bisque;"> Volver </span>
+                </ons-back-button>
+            </div> 
+
+                <div class="head-tittle-account">  
+
+                    <div>
+                        <h1 class="tittle_menu">ENCUESTA ANÓNIMA DE SATISFACCIÓN</h1>
+
+                        <!-- <button class="btn-renew" onclick="myNavigator.popPage();" style="padding: 5px; width: 22%; margin: -84px 86%;">OMITIR</button> -->
+
+                    </div>
+                </div>                
+            </div>                
+                <section id="contain-quiz-r" class="section-underline">
+
+                    <!-- <form id="quiz_r_form" name="quiz_r_form" action="#" autocomplete="off" style="margin: 0px 22px;"> -->
+                    <form id="quiz_r_form" name="quiz_r_form" action="#" autocomplete="off" style="margin: 0px 22px;" method="POST">
+
+                      <p style="padding-bottom: 5px;     font-size: 0.8em;">0 = Malo   1 = Regular   2 = Bueno   3 = Excelente</p>
+                        <!-- <h1>En Ar</h1> -->
+
+
+                        <p>Calidad del servicio:</p> 
+                        <output class="range_nps_box" id="one_r" name="one_r" for="r_quiz1" >0</output>
+                        <input class="range_renew" value="0" step="1" min="0" max="3" oninput="one_r.value=r_quiz1.value" id="r_quiz1" name="quiz_1" type="range"></input>
+                        
+
+  
+                        <p>Rapidez del servicio:</p>
+                        
+                        <output class="range_nps_box" id="two_r" name="two_r" for="r_quiz2">0</output>
+                        <input class="range_renew"  value="0" step="1" min="0" max="3" oninput="two_r.value=r_quiz2.value" id="r_quiz2" name="quiz_2" type="range"></input>
+
+                        <p>Limpieza de la clínica:</p>
+                        
+                        <output class="range_nps_box" id="three_r" name="three_r" for="r_quiz3">0</output>
+                        <input class="range_renew"  value="0" step="1" min="0" max="3" oninput="three_r.value=r_quiz3.value" id="r_quiz3" name="quiz_3" type="range"></input>
+
+                        <p>Servicio de la terapeuta:</p>
+                        
+                        <output class="range_nps_box" id="four_r" name="four_r" for="r_quiz4">0</output>
+                        
+                        <input class="range_renew" value="0" step="1" min="0" max="3" oninput="four_r.value=r_quiz4.value" id="r_quiz4" name="quiz_4" type="range"></input>
+
+                        <p>¿Recomendarías nuestra clínica?</p> <!-- <p>0 = No   1 = Tal vez   2 = Sí </p> -->
+
+                       <!--  <output class="range_nps_box" id="five_r" name="five_r" for="r_quiz5">0</output>
+                        
+                        <input class="range_renew" value="0" step="1" min="0" max="2" oninput="five_r.value=r_quiz5.value" id="r_quiz5" name="quiz_5" type="range"></input> -->    
+
+                        <!-- segment RENEW -->
+                        <div class="segment segment--material" style="width: 280px; margin: 0 auto;">
+                            <div class="segment__item segment--material__item">
+                                <input type="radio" class="segment__input segment--material__input" name="quiz_5" data-length="0" value="0" >
+                                <div class="segment__button segment--material__button" >No</div>
+                            </div>
+                            <div class="segment__item segment--material__item">
+                                <input type="radio" class="segment__input segment--material__input" name="quiz_5" data-length="1" value="1">
+                                <div class="segment__button segment--material__button" >Tal vez</div>
+                            </div>
+                            <div class="segment__item segment--material__item">
+                                <input type="radio" class="segment__input segment--material__input" name="quiz_5" data-length="2" value="2" checked>
+                                <div class="segment__button segment--material__button"   >Sí</div>
+                            </div>
+                        </div>
+                        <!-- segment RENEW-->
+                        
+
+                        <p>¿Conociste nuestro menú de servicios?</p>
+                        
+                        <div style="display: flex; justify-content: space-evenly;">
+                           <span><input name="quiz_6" type="radio" value="off" > No</span>
+                           <span><input name="quiz_6" type="radio" value="on" checked>  Sí</span>
+                        </div>
+
+                        <!-- <ons-switch name="quiz_6" checked></ons-switch>  -->
+
+                        <p>¿Cómo podemos mejorar su experiencia en Renew Láser?</p>
+                        <textarea class="gray-s " id="r_quiz7" name="quiz_7" rows="5" cols="90"></textarea>
+
+
+                        <button class="btn-renew" name="quiz_r_form" type="submit" value="submit" onclick="" >FINALIZAR</button>
+                   
+
+                        <!-- <input type="hidden" name="quiz_patient" id="quiz_patient" value=""/> -->
+
+                    </form>
+                </section><!-- safe-top-container -->
+        </ons-page>
+    </template>
+
+
+ <!-- #  P R E S C R I P T I O N S  # -->
+    <template id="prescriptions.html">
+        <ons-page id="prescriptions" style="background: linear-gradient(to bottom, #F8FBFF 0%,#F5F5F5 100%);">
+           <script type="text/javascript">
+               // $(".profile-picture").append($photo_patient);   
+            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+
+
+               getPrescriptions();               
+           </script>
+           <div class="space_element-rae"> 
+                <div class="left">
+                <ons-back-button style="fill:bisque; color:bisque;">
+                    <span style="color:bisque;"> Volver </span>
+                </ons-back-button>
+            </div>
+
+
+                <div class="head-tittle-account">  
+                    <div>
+                        <h1 class="tittle_menu">Notificaciones</h1>
+                    </div>
+ 
+                     <div class="profile-picture user-picture" style="margin: 0px; ">
+                    </div>
+                </div>
+            </div>                
+                    <section id="contain-prescriptions" class="section-underline" style="display: block;  overflow: scroll;  height: calc(100% - 140px);">
+                        <script type="text/javascript">
+                            // Aquí se cargan todas las recetas
+
+                        </script>
+                        
+                    </section><!-- safe-top-container -->
+        </ons-page>
+    </template>
+
+
+
+
+ <!-- #  P R E S C R I P T I O N    D E T A I L  # -->
+    <template id="prescription-detail.html">
+        <ons-page id="prescription-detail" style="background: linear-gradient(to bottom, #F8FBFF 0%,#F5F5F5 100%);">
+            <script type="text/javascript">
+                // $(".profile-picture").append($photo_patient); 
+            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+
+                //getPrescriptionsDetail();   
+            </script>
+           <div class="space_element-rae"> 
+                <div class="left">
+                <ons-back-button style="fill:bisque; color:bisque;">
+                    <span style="color:bisque;"> Volver </span>
+                </ons-back-button>
+            </div>
+
+
+                <div class="head-tittle-account">  
+                    <div>
+                        <h1 class="tittle_menu">Receta</h1>
+                    </div>
+ 
+                     <div class="profile-picture user-picture" style="margin: 0px; ">
+                    </div>
+                </div>
+            </div>                
+                    <section id="contain-prescription-detail" class="section-underline">
+                      
+                        <div class="box-emergent-account-presdetail bg-white" ></div>
+                           
+                    </section><!-- safe-top-container -->
+        </ons-page>
+    </template>
+
+
+
+ <!-- #  P A Y M E N T      H I S T O R Y  # -->
+    <template id="payment-history.html">
+        <ons-page id="payment-history" style="background: linear-gradient(to bottom, #F8FBFF 0%,#F5F5F5 100%);">
+           <script type="text/javascript">
+               // $(".profile-picture").append($photo_patient); 
+            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+
+               getHistoryae();
+               getHistoryrenew();
+           </script>
+           <div class="space_element-rae"> 
+           <div class="left">
+                <ons-back-button style="fill:bisque; color:bisque;">
+                    <span style="color:bisque;"> Volver </span>
+                </ons-back-button>
+           </div>
+                
+                <div class="head-tittle-account">  
+                    <div>
+                        <h1 class="tittle_menu">Historial de pagos</h1>
+                    </div>
+ 
+                     <div class="profile-picture user-picture">
+                    </div>
+                </div>
+            </div>       
+
+                        <!-- <div style="display: flex; justify-content: space-evenly; margin-top: 20px;margin-bottom: 20px;"> 
+                            <div id="history-ae" style="background-color: #7eb6ff;padding: 10px 20px 10px 20px;border-radius: 10px;" onclick="getHistoryae();">AE</div>
+                            <div id="history-renew" style="background-color: #4b3348;padding: 10px 20px 10px 20px;border-radius: 10px;color: #FFF;" onclick="getHistoryrenew();">Renew
+                            </div>
+                        </div>-->
+
+                    <section id="contain-payment-history" class="section-underline" style="display: block;  overflow: scroll;  height: calc(100% - 140px);">
+                       
+
+                    </section><!-- safe-top-container -->
+        </ons-page>
+    </template>
+
+
+ <!-- #  E S T A D O     D E     C U E N T A  # -->
+    <template id="account-statement.html">
+        <ons-page id="account-statement" style="background: linear-gradient(to bottom, #F8FBFF 0%,#FCF7F4 100%);">
+           <script type="text/javascript">
+               // $(".profile-picture").append($photo_patient);    
+            $('.profile-picture').css('background-image','url(https://app.renew.armoniaestetica.com/'+data.patient[0].pat_photo+')');
+
+           </script>
+           <div class="space_element-rae"> 
+           <div class="left">
+                <ons-back-button style="fill:bisque; color:bisque;">
+                    <span style="color:bisque;"> Volver </span>
+                </ons-back-button>
+            </div>     
+                <div class="head-tittle">  
+                    <div>
+                        <h1 class="tittle_menu">Estado de cuenta</h1>
+                    </div>
+ 
+                     <div class="profile-picture user-picture">
+                    </div>
+                </div>
+            </div>                
+                    <section id="contain-acount-statement" class="section-underline">
+                    </section><!-- safe-top-container -->
+        </ons-page>
+    </template>
+
+
+
+<!-- # L O A D E R # -->
+<ons-modal direction="up">
+    <div class="circle_progress_container" style="text-align: center;"><ons-progress-circular indeterminate></ons-progress-circular></div>
+</ons-modal>
+
+</ons-navigator>   
+    <script type="text/javascript">
+
+var the_client = null;  
+var token_sent = 0;
+var the_token = null;
+var appDebug = false;
+
+
+//variables del paciente
+  var global_id = null;
+  var global_mail = null;  
+  var global_pass = null;
+
+
+
+
+    $(document).ready(function() {
+        var myNavigator = document.querySelector('ons-navigator');
+
+     
+            /* O P E N  W I N D O W */
+        $(document).on(clickHandler,'.open_window',function(){
+            "use strict";
+            if(!touchmoved){
+            var this_page_load = $(this).data('page');
+            
+            switch(this_page_load){
+// EVENTS DETAIL open widget
+                case 'account-stetic.html':
+                    var options = {
+                        animation: 'lift', // What animation to use
+                        onTransitionEnd: function() { } // Called when finishing transition animation
+                    };  
+                                
+                    myNavigator.pushPage(this_page_load, options);
+
+
+
+                    $("#section-acount-s").append('<div class="space_element estetica"></div>'+
+                        '<div class="head-tittle">'+
+                            '<h1 class="tittle_menu">Hola, Estetica</h1>'+
+                            '<div class="profile-picture user-picture">'+
+                                '<img src="./img/me.svg">'+
+                            '</div>'+
+                        '</div>'+
+                        
+                        '<section id="contain">'+ 
+
+                            '<div class="box-emergent-white bg-white" >'+  
+                                '<div class="info-detail">'+
+                                    '<h4 class="hour">'+
+                                        '<img src="./img/reloj.svg" style="padding-right: 15px; width: 19px;">8:30 AM'+ 
+                                    '</h4>'+
+                                    '<h5 class="status-yellow">Pendiente</h5>'+
+                                '</div>'+
+                               
+                                                
+                                '<h3 class="tittle purple">Próxima cita</h3>'+
+                                '<span class="subtitle ">Recuerda que tu próxima de revisión de cita, será el 8 de Marzo de 2020 (Dentro de 14 días)</span>'+
+           
+                                '<div style="display: flex;align-items: center; margin: 0px; justify-content: space-between;">'+
+                                    
+                                    '<span class="little" style="padding-top: 10px;">'+
+                                    '<img src="./img/ic2.png" style="padding-right: 15px;">Claudia Quezada</span>'+
+                                    
+                                    '<h5 style"color: rgb(125, 181, 254);">¿Confirmas que podrás asistir a la cita?</h5>'+
+                                '</div>'+
+                                    '<div style="position: center; display: flex; justify-content: center; justify-content: space-evenly;">'+
+                                            '<h5 class="status-no" >No podré</h5>'+
+                                            '<h5 class="status-yes" >Sí</h5>'+
+                                        '</div>'+
+                            '</div>'+
+                            '</div>');
+                 
+
+                break;   
+                case 'prescription-detail.html':
+                    var options = {
+                        animation: 'slice', // What animation to use
+                        onTransitionEnd: function() { } // Called when finishing transition animation
+                    };  
+                                
+                    myNavigator.pushPage(this_page_load, options);
+
+                var prescription = $(this).data("prescription");
+             
+                // (debugMode) ? console.log(prescription) : '';
+
+    $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/prescription-detail.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            data: { getPreDetail : true, prescription:prescription},
+            success: function(data){
+            
+            console.log(data);
+
+            
+            $(".box-emergent-account-presdetail").append('<span class="purple" id="presdetail">'+data.arrayRecipesDetail[0].rec_date+' '+data.arrayRecipesDetail[0].rec_hour+'</span><div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
+                    '<h3 class="tittle blue-account">'+
+                        '<img src="./img/recipe_purple.svg" style="padding-right: 15px; width: 20px;">Notificación'+
+                    '</h3>'+
+                '</div>');
+
+            // $(".presdetail").append(data.arrayRecipesDetail[0].rec_date);
+        
+            if(data.arrayRecipesDetail[0].arrayDrugs == null){
+                var  notes=  '<span class="hc_event_subtitle">Notas</span>'+
+                            '<p class="hc_event_data">'+data.arrayRecipesDetail[0].notes+
+                            '</p>';
+
+                            var prescriptiondetail = notes;
+
+$(".box-emergent-account-presdetail").append(prescriptiondetail);
+            }else{
+        for (var h = 0; h < data.arrayRecipesDetail[0].arrayDrugs.length; h++) {
+            
+            if(data.arrayRecipesDetail[0].notes == null) { 
+               var notes = '';
+                
+            }else{
+
+               var  notes=  '<span class="hc_event_subtitle">Notas</span>'+
+                            '<p class="hc_event_data">'+data.arrayRecipesDetail[0].notes+
+                            '</p>';
+            }
+
+             
+                if (data.arrayRecipesDetail[0].arrayDrugs[h].length == 0){
+                var drugs = '';
+                }else{
+               
+                var drugs = '<span class="title-blue-l">'+data.arrayRecipesDetail[0].arrayDrugs[h].drug+'</span>'+
+                '<div style="height: 5px;"></div>'+
+
+                '<span class="subtitle-blue" style="margin-bottom:20px;">'+data.arrayRecipesDetail[0].arrayDrugs[h].indications+'</span>'+
+                '<div style="height: 15px;"></div>';
+                }
+
+                     var prescriptiondetail = drugs+notes;
+
+            $(".box-emergent-account-presdetail").append(prescriptiondetail);
+
+            }
+        }
+
+   
+
+        }  //cierre de success
+    });   //cierre de ajax                      
+
+                break;   
+             /*   case 'serv_detail.html':
+                    var options = {
+                        animation: 'slice', // What animation to use
+                        onTransitionEnd: function() { } // Called when finishing transition animation
+                    };  
+                                
+                    myNavigator.pushPage(this_page_load, options);
+                var serv_detail = $(this).data("serv_detail");
+                console.log(serv_detail);
+    $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/service-detail.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            data: { getServDetail : true, serv_detail:serv_detail},
+            success: function(data){
+            
+            console.log(data);
+            
+            $(".box-emergent-account-presdetail").append('<span class="purple" id="presdetail">'+data.arrayRecipesDetail[0].rec_date+'</span><div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
+                    '<h3 class="tittle blue-account">'+
+                        '<img src="images/reloj.svg" style="padding-right: 15px; width: 30px;">Receta'+
+                    '</h3>'+
+                '</div>');
+            // $(".presdetail").append(data.arrayRecipesDetail[0].rec_date);
+        for (var h = 0; h < data.arrayRecipesDetail[0].arrayDrugs.length; h++) {
+            
+            if(data.arrayRecipesDetail[0].notes == null) { 
+               var notes = '';
+                
+            }else{
+               var  notes=  '<span class="hc_event_subtitle">Notas</span>'+
+                            '<p class="hc_event_data">'+data.arrayRecipesDetail[0].notes+
+                            '</p>';
+            }
+             
+                if (data.arrayRecipesDetail[0].arrayDrugs[h].length == 0){
+                var drugs = '';
+                }else{
+               
+                var drugs = '<span class="title-blue-l">'+data.arrayRecipesDetail[0].arrayDrugs[h].drug+'</span>'+
+                '<div style="height: 5px;"></div>'+
+                '<span class="subtitle-blue" style="margin-bottom:20px;">'+data.arrayRecipesDetail[0].arrayDrugs[h].indications+'</span>'+
+                '<div style="height: 15px;"></div>';
+                }
+                     var prescriptiondetail = drugs+notes;
+            $(".box-emergent-account-presdetail").append(prescriptiondetail);
+            }
+   
+        }  //cierre de success
+    });   //cierre de ajax                      
+                break;   
+                */
+                default:
+                    var options = {
+                        animation: 'slide', // What animation to use
+                        onTransitionEnd: function() { } // Called when finishing transition animation
+                    };
+                     myNavigator.pushPage(this_page_load, options);
+                break;
+            }
+
+                
+            } // if !touchmoved
+            }).on('touchmove', function(e){
+                "use strict";
+                touchmoved = true;
+            }).on('touchstart', function(){
+                "use strict";
+                touchmoved = false;
+            }); 
+    }); // $document.ready    
+
+
+// loadUserData();
+
+//FUNCIONES DINÁMICAS DE LA APP
+
+
+picPath = 'https://armoniaestetica.com/_sudiv3/';
+
+
+
+        // @function - Upload Token Device  
+            // Función que carga ID del dispositivo 
+        function uploadToken(type=null){
+            // console.log("cargando token...");           
+            // AJAX - Load Records
+            $.ajax({
+                
+                beforeSend: function(){ 
+                    //Antes de enviar la solicitud
+                },
+
+                //dataType: 'json',
+                async: true,
+                url: rootPath+'/_sudiv3/ar_engine/token_device.php',
+                type: 'POST',
+                data: {the_patient : the_patient, token : the_token }
+                }).done(function(data){
+                
+                    // console.log('resultado: ' + data);
+                    //ons.notification.toast({message: data, timeout: 5500});
+
+                    token_sent = 1;
+                }); // AJAX - Load Records
+    
+    }
+
+         
+// console.log('rootPath'+ rootPath);
+//Función que trae la info del paciente
+// function getPatient(global_user_id){
+    getPatient();
+    var count_userData_try = 0; 
+    var the_patient = null; 
+
+function getPatient(){
+
+         global_id =  localStorage.getItem("id_pat");
+         global_mail = localStorage.getItem("mail_pat");
+         global_pass = localStorage.getItem("pass_pat");
+
+        (appDebug) ? console.log(global_id): '';
+        (appDebug) ?  console.log(global_mail): '';
+        (appDebug) ?  console.log(global_pass): '';
+
+
+    // console.log('entrando a funcion de getPatient');
+    $.ajax({
+        // dataType: 'json',
+            async: true,
+            url: rootPath+'_sudiv3/ar_engine/patient_ios.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            // data: { getPat : true, the_patient : global_user_id},
+            data: { getPat : true, patid : global_id },
+            }).done(function(data){
+            // console.log(data);
+            
+            //count_userData_try = count_userData_try + 1;    
+         
+          //  for (var i = 0; i < data.patient[i].length; i++) {
+
+          //  'pat_photo' => $row_rsData["pat_photo"],
+       // data.arrayHomer[0].arrayR[m].rend_status
+                     // global_user_id = data.patient[0].pat_id;
+                      
+                urlAE = 'https://armoniaestetica.com/_sudiv3/';
+                // urlAE = 'https://armoniaestetica.com/_sudiv3/';
+                urlRenew ='https://armoniaestetica.com/sudi_renew/';
+
+                // console.log('user id ' + data.patient[0].pat_id);
+                // console.log('user mail ' + data.patient[0].pat_mail);
+                // console.log('user name ' + data.patient[0].pat_name);
+                // console.log('user client ' + data.patient[0].pat_system);
+                // console.log('user PHOTO ' + data.patient[0].pat_photo);
+                
+                    //Igualar variables
+                    the_patient = data.patient[0].pat_id;
+
+// TOKEN
+                    if(the_patient != '' || the_patient != null){
+                        
+                    setTimeout(function(){      
+                        uploadToken();
+                    }, 500);
+
+                    }else{
+                        // console.log('Token no enviado: '+token_sent);
+                    }
+//END TOKEN
+
+/* AQUI SE DEFINEN LOS PRIVILEGIOS DEL MENÚ TABBAR*/
+
+                    switch(data.patient[0].pat_system){
+            //Pacientes de EA
+                        case '1':
+                        getHomeae();
+                        getPrescriptions();
+                        getHistoryae();
+
+
+            
+            /* menu head foto y nombre*/
+
+            if (data.patient[0].pat_photo == null | data.patient[0].pat_photo == '' | data.patient[0].pat_photo == "") {
+                // $photo_patient = '<img src="img/lo-ae-3.png" class="circle-purple" >';
+                $photo_patient = '/img/logo-ae-3.png';
+
+
+
+            }else{
+                // $photo_patient = '<img src="'+urlAE+''+data.patient[0].pat_photo+'">';
+                $photo_patient = ''+urlAE+data.patient[0].pat_photo;
+
+            $(".head-tittle-name").html('<h1 class="tittle_name">Hola, '+data.patient[0].pat_name+'</h1> <div class="profile-picture user-picture"></div>');
+            }
+
+
+            // $(".profile-picture").append($photo_patient);
+
+            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+
+                // background-image: url(https://armoniaestetica.com/sudi_renew/_files/_img/_clients/081619-160835_b9b3947e-3813-4f96-8739-b1aa85406df2.jpeg);
+
+
+            // $(".profile-picture").append('<img src="https://armoniaestetica.com/_sudiv3/'+data.patient[i].photo+'">');
+
+            $("#profile").append(' <span class="profile-mail">'+data.patient[0].pat_mail+'</span> ');
+            /* end menu head foto y nombre*/
+
+
+                        document.getElementById('tabbar').setTabbarVisibility('false');
+                        $('.not_renew_view').css('opacity','.1');
+                        $('.not_renew_view').css('display','none');
+                
+
+                        
+                        recetasAccount =('<!-- BOX RECETAS --><div id="account_presc" class="box-emergent-account bg-white account-module open_window" data-page="prescriptions.html" onclick="myNavigator.pushPage("prescriptions.html", { animation : "slide" } )">'+  
+                             '<!-- imagen izquierda -->  '+
+                                '<div class="circle-neutro">'+
+                                  '<img src="img/recipe.svg" style=" width: 25px; height: 25px;" >'+
+                                '</div>'+
+
+
+                                '<!-- div derecha -->'+
+                                  '<div style="margin-left: 15px;" >   '+
+                                    '<h3 class="tittle blue-account"> Notificaciones</h3>'+
+                                    '<span class="subtitle-blue "  style="font-size: 0.9em; ">'+ 'Consulta las notificaciones anteriores</span>'+
+                                  '</div> '+ 
+
+                        '</div> <!-- end box 2 -->');
+                        $("#account-box").prepend(recetasAccount);
+
+                        $('.not_renew_view').remove();
+
+                        /*QUIZ ae se oculta el id del paciente*/
+                        // $("#quiz_ae_form").append('<input type="hidden" name="patient" id="patient" value="'+the_patient+'"/>');
+
+                    
+                        return false;
+                        break;
+
+
+        //Pacientes de RENEW
+                        case '2':
+                     
+                        getHomer();
+                        getHistoryrenew();
+            /* menu head foto y nombre*/
+            if (data.patient[0].pat_photo == null | data.patient[0].pat_photo == '' | data.patient[0].pat_photo == "") {
+                // $photo_patient = '<img src="img/lo-ae-3.png" class="circle-purple" >';
+                $photo_patient = '/img/logo-ae-3.png';
+
+
+
+            }else{
+                // $photo_patient = '<img src="'+urlRenew+''+data.patient[0].pat_photo+'">';
+                $photo_patient = ''+urlRenew+data.patient[0].pat_photo;
+
+
+                $(".head-tittle-name").html('<h1 class="tittle_name">Hola, '+data.patient[0].pat_name+'</h1> <div class="profile-picture user-picture"></div>');
+            }
+
+
+            // $(".profile-picture").append($photo_patient);
+            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+
+
+            // $(".profile-picture").append('<img src="https://armoniaestetica.com/_sudiv3/'+data.patient[i].photo+'">');
+
+            $("#profile").append(' <span class="profile-mail">'+data.patient[0].pat_mail+'</span> ');
+            /*end menu head foto y nombre */
+
+
+            /*QUIZ Renew se oculta el id del paciente*/
+            // $("#quiz_r_form").append('<input type="hidden" name="patient" id="patient" value="'+the_patient+'"/>');
+
+                        document.getElementById('tabbar').setTabbarVisibility('false');
+                        $('.not_ea_view').css('opacity','.1');
+                        $('.not_ea_view').css('display','none');
+
+                        return false;
+                        
+                        break;
+                       
+
+        //Pacientes de REA (ambos)
+                        case '3':
+                   
+                        getHomer();
+                        getHomeae();
+                        getPrescriptions();
+                        getHistoryrenew();
+                        getHistoryae();
+
+            /* menu head foto y nombre*/
+            if (data.patient[0].pat_photo == null | '') {
+                // $photo_patient = '<img src="img/folder-h.png" class="circle-purple" >';
+                 $photo_patient = '/img/logo-ae-3.png';
+            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+            $(".head-tittle-name").html('<h1 class="tittle_name">Hola, '+data.patient[0].pat_name+'</h1> <div class="profile-picture user-picture"></div>');
+            }else{
+                $photo_patient = ''+urlAE+data.patient[0].pat_photo;
+                $(".head-tittle-name").html('<h1 class="tittle_name">Hola, '+data.patient[0].pat_name+'</h1> <div class="profile-picture user-picture"></div>');
+                   // $(".profile-picture").append($photo_patient);
+            $('.profile-picture').css('background-image','url('+$photo_patient+')');
+            }
+
+            // $(".profile-picture").append('<img src="https://armoniaestetica.com/_sudiv3/'+data.patient[i].photo+'">');
+
+            $("#profile").append(' <span class="profile-mail">'+data.patient[0].pat_mail+'</span> ');
+            /*end menu head foto y nombre */
+
+
+            /*QUIZ ae se oculta el id del paciente*/
+            // $("#quiz_ae_form").append('<input type="hidden" name="patient" id="patient" value="'+the_patient+'"/>');
+
+             /*QUIZ Renew se oculta el id del paciente*/
+            // $("#quiz_r_form").append('<input type="hidden" name="patient" id="patient" value="'+the_patient+'"/>');
+
+                       
+
+
+                        recetasAccount =('<!-- BOX RECETAS --><div id="account_presc" class="box-emergent-account bg-white account-module open_window" data-page="prescriptions.html" onclick="myNavigator.pushPage("prescriptions.html", { animation : "slide" } )">'+  
+                             '<!-- imagen izquierda -->  '+
+                                '<div class="circle-neutro">'+
+                                  '<img src="img/recipe.svg" style=" width: 25px; height: 25px;" >'+
+                                '</div>'+
+
+                                '<!-- div derecha -->'+
+                                  '<div style="margin-left: 15px;" >   '+
+                                    '<h3 class="tittle blue-account"> Notificaciones</h3>'+
+                                    '<span class="subtitle-blue "  style="font-size: 0.9em; ">'+ 'Consulta las notificaciones anteriores</span>'+
+                                  '</div> '+ 
+
+                        '</div> <!-- end box 2 -->');
+
+
+
+                        $("#account-box").prepend( recetasAccount);
+
+                        return false;
+                        
+                        break;
+                            
+
+                    } 
+/*END PRIVILEGIOS DEL MENÚ TABBAR*/
+
+            });  //end ajax
+        }   //end function getPatient
+
+
+    // @acction - Submit Quiz AE 
+       
+        $(document).on('submit','#quiz_ea_form',function(){
+        "use strict";
+                // console.log("Enviando");
+
+                // Deshabilitamos el botón submit mientras se ejecuta el Ajax
+                $('.btn-ae').prop("disabled", true);
+
+                // Definimos el tipo de formulario
+                var aeQuizPath = rootPath+'_sudiv3/ar_engine/ae_quiz.php';
+                
+                // console.log(aeQuizPath);                     
+                // Variable que contiene la solicitud
+                var request;
+
+                // Establecemos la variable del Formulario
+                var $form = $(this);
+            
+                // Seleccionamos todos los posibles inputs
+                var $inputs = $form.find("input, select, button, textarea, checkbox, number, radio, text, range, switch");
+            
+                // Serializamos la información del Formulario
+                var serializedData = $form.serialize();
+                
+                // console.log(serializedData);
+            
+                // Disparamos la solicitud (request) 
+                request = $.ajax({
+                    url: aeQuizPath,
+                    // dataType: "json",
+                    type: "post",
+                    data: serializedData
+                });
+                
+                // Conexión exitosa
+                request.done(function (response, textStatus, jqXHR){                   
+                    // console.log(response);
+                    if(response != 'fail'){
+                        window.document.querySelector('#account-rae').classList.remove('transparent-body');
+                        $('#space_account').removeClass('qr-invisibility');
+
+
+                        ons.notification.toast({message: '¡Gracias por tu retroalimentación!', timeout: 2500});
+                       
+                        myNavigator.popPage();
+                        //getPatient();
+                        $('.btn-ae').prop("disabled", false);
+
+
+                    }else{
+                        ons.notification.toast({message: 'Error en la solicitud', timeout: 1000});
+                        $('.btn-ae').prop("disabled", false);
+
+                    }
+                   
+                }); 
+            
+                 //Si falla la conexión
+                request.fail(function (jqXHR, textStatus, errorThrown){
+                    console.error(
+                    "Han ocurrido los siguientes errores: "+
+                    textStatus, errorThrown
+                    );
+                });  
+                // Habilitamos de nuevo los botones
+                request.always(function () {
+                    
+                });
+             // No enviar el formulario
+                return false; 
+        });
+
+
+    // @acction - Submit Quiz renew 
+       
+        $(document).on('submit','#quiz_r_form',function(){
+        "use strict";
+                // console.log("Enviando");
+
+                // Deshabilitamos el botón submit mientras se ejecuta el Ajax
+                $('.btn-renew').prop("disabled", true);
+
+                // Definimos el tipo de formulario
+                var rQuizPath = rootPath+'_sudiv3/ar_engine/re_quiz.php';
+                
+                // console.log(rQuizPath);                     
+                // Variable que contiene la solicitud
+                var request;
+
+                // Establecemos la variable del Formulario
+                var $form = $(this);
+            
+                // Seleccionamos todos los posibles inputs
+                var $inputs = $form.find("input, select, button, textarea, checkbox, number, radio, text, range, switch");
+            
+                // Serializamos la información del Formulario
+                var serializedData = $form.serialize();
+                
+                console.log(serializedData);
+            
+                // Disparamos la solicitud (request) 
+                request = $.ajax({
+                    url: rQuizPath,
+                    // dataType: "json",
+                    type: "post",
+                    data: serializedData
+                });
+                
+                // Conexión exitosa
+                request.done(function (response, textStatus, jqXHR){                   
+                    // console.log(response);
+                    if(response != 'fail'){
+                        window.document.querySelector('#account-rae').classList.remove('transparent-body');
+                        $('#space_account').removeClass('qr-invisibility');
+                        ons.notification.toast({message: '¡Gracias por tu retroalimentación!', timeout: 3500});
+                       
+                        myNavigator.popPage();
+                        //getPatient();
+                        $('.btn-renew').prop("disabled", false);
+
+
+
+                    }else{
+                        ons.notification.toast({message: 'Error en la solicitud', timeout: 1000});
+                        $('.btn-renew').prop("disabled", false);
+
+                    }
+                   
+                }); 
+            
+                 //Si falla la conexión
+                request.fail(function (jqXHR, textStatus, errorThrown){
+                    console.error(
+                    "Han ocurrido los siguientes errores: "+
+                    textStatus, errorThrown
+                    );
+                });  
+             // No enviar el formulario
+                return false; 
+        });
+
+
+rect_green = '<div style="width:17px;height:32px;background-color: #e0f5eb; border: 2px solid #fff;"></div>';
+
+rect_yellow = '<div style="width:17px;height:32px;background-color: #f7f0ad; border: 2px solid #fff;"></div>';
+
+
+rect_red = '<div style="width:17px;height:32px;background-color: #ff584ce6; border: 2px solid #fff;"></div>';
+
+rect_blue = '<div style="width:17px;height:32px;background-color: #8addff; border: 2px solid #fff;"></div>';
+
+rect_gray = '<div style="width:17px;height:32px;background-color: #a7a39f; border: 2px solid #fff;"></div>';
+
+rect_orange = '<div style="width:17px;height:32px;background-color: #f49136c2; border: 2px solid #fff;"></div>';
+
+root_web= 'https://armoniaestetica.com/_sudiv3/';
+
+//getPatient();
+
+// Falta traerme las sesiones realizadas/total y los cuadros. Verificar error por qué te trae tantos días y dato de incluye correctamente
+function getBinnacle(){
+    // console.log('entrando a funcion de getBinnacle');
+          $("#contain-bitacora-r").html('');
+          $("#contain-bitacora-r").html("");
+    $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/binnacle_ios.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            data: { getBin : true, patid : global_id },
+            success: function(data){
+                // console.log(data);
+     // console.log(data);
+     //    if (data == 0){ 
+                    
+     //    }else{
+        
+
+            for (var j = 0; j < data.arrayBinn.length; j++) {
+
+                    
+                if (data.arrayBinn[j].service_extra === null){
+                        service_ex = '';         
+                }else{
+                        service_ex = '<span class="span-r">Servicio Extra:  '+data.arrayBinn[j].service_extra+'</span>';
+                }
+
+
+                    for (var l = 0; l < data.arrayBinn[j].arrayPay.length; l++ ) {
+
+                    countPay1 = l + 1;
+                    if (data.arrayBinn[j].arrayPay[l] === null){
+                        
+                        payments = '<span class="span-r">Pagos: 0</span>'
+
+                    }else{
+                        payments = '<span class="span-r">Pagos: '+ countPay1+'</span>'
+                   
+                        var rect_green_pays =  rect_green.repeat(countPay1);
+
+                    }
+                            
+                    } //cierre de for l  
+
+ // '<span class="span-r">Incluye:  '+data.arrayBinn[j].incluye+'</span>'
+ //                        +service_ex+ 
+                    $("#contain-bitacora-r").append('<div class="box-emergent-r bg-white" id="'+data.arrayBinn[j].id+'">'+
+                        '<div class="binn-r">'+
+                            '<div class="contract-r">'+
+                                '<img src="img/folder-h.png" class="circle-purple" >'+
+                                '<div style="margin-left: 15px;">'+
+                                    '<h3 class="purple">  Bitácora del servicio</h3>'+ 
+                                    '<h4 class="hour" >Contratado: '+data.arrayBinn[j].date_contract+'</h4>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+
+                        '<div class="services-r">'+
+                        '<span class="span-r">Servicios contratados:  '+data.arrayBinn[j].service+'</span>'+
+                        '<span class="span-r">Paquete:  '+data.arrayBinn[j].serv_name+'  </span>'+
+                       
+                        '</div>'+
+
+                        '<!-- línea divisoria -->'+
+                        '<div class="line-purple" ></div>'+
+
+                        '<!--  Proceso de sesiones cuadros -->'+
+                        '<div class="sessions-r">'+
+                            '<span class="span-r">Sesiones: 1 de 6 </span>'+
+                           
+
+                            payments+
+                            // '<span class="span-r">Pagos: </span>'+ //'+data.arrayBinn[j].sessions+
+                        '</div>'+
+
+
+                        '<div class="barsrect-r">'+
+                            '<div class="barsrect-r-sessions" style="display: flex;">'+
+                                rect_green+
+                                rect_yellow+
+                                rect_yellow+
+                                rect_yellow+
+                                rect_yellow+
+                                rect_yellow+
+                            '</div>'+
+                            
+                            '<div class="barsbarsrect-r-pays" style="display: flex;">'+
+                                rect_green_pays+
+                              
+                            '</div>'+
+
+                        '</div>'+
+                    '</div> <!-- End box 1 -->');
+
+                    for (var k = 0; k < data.arrayBinn[j].arrayPay.length; k++ ) {
+
+                    countPay = k + 1;
+                    if (data.arrayBinn[j].arrayPay[k] === null){
+                        boxPay = '';
+                      //  payments = '<span class="span-r">Pagos: 0</span>'
+
+                    }else{
+                        boxPay = '<div class="box-emergent-r bg-white" style="display: none;justify-content: space-between; align-items: center;">'+
+                                '<!-- imagen izquierda -->'+
+                                    '<img src="./img/money.svg" class="circle-purple" >'+
+                                    '<!-- div centro -->'+
+                                    '<div class="payment-date">'+
+                                        '<h3 class="purple"> Pago '+ countPay+'</h3>'+
+                                        '<span class="subtitle-paydate">' +data.arrayBinn[j].arrayPay[k].date_pay+
+                                        ' | ' +data.arrayBinn[j].arrayPay[k].dateago_pay+
+                                    '</div>'+
+                                '<div>  <!-- div derecha -->'+
+                                    '<h5 class="status-green" style="padding: 4px 20px 4px 20px;">'+data.arrayBinn[j].arrayPay[k].mount_pay+
+                                    '</h5>'+
+                                '</div>'+
+                            '</div>';
+
+                          //  payments = '<span class="span-r">Pagos: '+ countPay+'</span>'
+                        }
+
+                        $("#contain-bitacora-r").append(boxPay);
+
+                        //$("#sessions-r").append(payments);
+
+                    } //cierre de for k  arrayPay ARRAY HIJO
+
+
+
+            }  //cierre de for j arrayBinn ARRAY PRINCIPAL
+      //  }//else
+}  //cierre success
+
+
+});
+}
+
+
+
+// Funcion Home Renew
+function getHomer(){
+    // console.log('entrando a funcion de getHomer');
+   // $("#contain-home-ae").html('');
+    $("#contain-home-r").html('');
+    
+    $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/home_r_ios.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            data: { getHomer : true , patid : global_id },
+            success: function(data){
+            
+                // console.log(data);
+            $("#contain-home-r").html('');
+            $("#contain-home-r").html("");
+    
+     // console.log(data);
+        if(data.arrayHomer[0].arrayR.length == 0 && data.arrayHomer[0].arrayS.length == 0 && data.arrayHomer[0].arrayP.length == 0){
+
+              var NoDataR = '<h4 style="margin-top: 50px; padding-left: 15px; color: #4b3348;"> Por el momento no cuentas con información</h4>';
+
+              $("#contain-home-r").append(NoDataR);
+
+
+
+        }else{
+
+
+
+                                  // 0  'sessions_wait' 
+                                  // 1  'sessions_confirm'
+                                  // 2  'sessions_done'
+                                  // 3  'sessions_absence' 
+                                  // 4  'sessions_resched'     #4b3348;
+                                  // 5  'sessions_cancel'
+
+        // if (data.arrayHomer[0].length === null | 0 | '' | "") {   //si el arrayHomer es vacio
+        //  var NoDataR = '<h4 style="margin-top: 150px; padding-left: 15px; color: #fff;"> Por el momento no cuentas con información</h4>';
+        //   $("#contain-home-r").append(NoDataR);
+        // } else {  //else si el arrayHomer tiene datos 
+
+/*    C I T A S       P R O X I M A S*/
+
+                                for (var m = 0; m < data.arrayHomer[0].arrayR.length; m++) {
+                                    
+                                 // $status-rend = '<h5 class="status-new" style="">Confirmada</h5>';
+                                 //  if (data.arrayHomer[0].arrayR[m] === null){
+                                    
+                                 // }else{  //si el array R no está vacio
+                                        var arrayStatus = ['en espera','confirmada','asistencia','inasistencia','reprogramada','cancelada'];
+                                        var arrayStatusColor = ['#f7f0ad','#e0f5eb','#e0f5eb','#ff584ce6','#f49136c2','#a7a39f'];
+                                        var arrayStatusName = ['#dc953a','#000000','#000000','#000000','#000000','#000000'];
+                                       
+                                     // var title = 'Cita de '+data.arrayHomer[0].arrayR[m].serv_name;
+// new Date ('2050-12-25T00:00+0700')
+                                      // Mon Dec 21 2020 14:00:00 GMT-0700 (hora estándar del Pacífico de México)
+                                      // Mon Dec 21 2020 15:00:00 GMT-0700 (hora estándar del Pacífico de México)
+                                      //var startDate = data.arrayHomer[0].arrayR[m].rend_date+' '+data.arrayHomer[0].arrayR[m].rend_hour;
+                                    //  var startDate = new Date (data.arrayHomer[0].arrayR[m].rend_date+'T'+data.arrayHomer[0].arrayR[m].rend_hour+'0700')
+                                      //var endDate = data.arrayHomer[0].arrayR[m].rend_date+' '+data.arrayHomer[0].arrayR[m].rend_hour_end;
+                                   //   var endDate = new Date (data.arrayHomer[0].arrayR[m].rend_date+'T'+data.arrayHomer[0].arrayR[m].rend_hour_end+'0700')
+                                      //var DateCalendarSend  = 'date_title= cita de '+data.arrayHomer[0].arrayR[m].serv_name +'&'+ 'date_loc= Rénew Láser'+'&'+ 
+                                     //  'date_start='+data.arrayHomer[0].arrayR[m].rend_hour+'&'+ 'date_end='+data.arrayHomer[0].arrayR[m].rend_hour_end;
+
+                                         var calend_status = '';
+                                  //    var calend_status =  
+                                     
+                                      //permisos  
+                                      //'<button onclick="requestReadPermission()">permisos</button><br/>'+
+                                      //crea evento
+                                     /// '<button onclick="createCalendarEventInteractivelyWithOptions()">crear evento</button>';
+
+                                      //  calend_status = (data.arrayHomer[0].arrayR[m].rend_status == '1') ? '<img src="images/calendar.png" style="    width: 50px; height: auto;"><h5 class="purple" style="font-size: 0.9em;text-align: right;">Agregar a calendario</h5>' : '';
+
+                // $photo_patient = 'img/lo-ae-3.png';
+                                      
+
+                                     
+                                      if (data.arrayHomer[0].arrayR[m].user_photo == null | data.arrayHomer[0].arrayR[m].user_photo == '') {
+                                        // $photo_user_homer = '<img src="img/folder-h.png" class="circle-purple" >';
+                                        $photo_user_homer = '/img/logo-ae-3.png';
+
+                                      }else{
+                                          // $photo_patient = '<img src="'+urlAE+''+data.patient[0].pat_photo+'">';
+                                        // $photo_user_homer = '<img src="'+root_web_renew+data.arrayHomer[0].arrayR[m].user_photo+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; ">';
+                                        $photo_user_homer = root_web+data.arrayHomer[0].arrayR[m].user_photo;
+
+                                      }
+
+
+                /*   DIV EMPLEADO*/
+                                            var employee =    '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
+                                                              '<div class="sales-person">'+
+                                                                     '<img src="'+ $photo_user_homer+'" class="photo_sales_r">'+
+                                                                      data.arrayHomer[0].arrayR[m].user_fname+' '+ data.arrayHomer[0].arrayR[m].user_lname+
+                                                                  '</span>'+
+                                                              '</div>'+
+                                                              '<div class="info-detail-r" style=" width: 50%; justify-content: flex-end;">'+
+                                                                  calend_status+
+                                                          '</div>';
+                                    
+                /* END DIV EMPLEADO*/
+                        //switch de cita 
+                                  // switch(data.arrayHomer[0].arrayR[m].rend_status){
+                                    switch(data.arrayHomer[0].arrayR[m].rend_status){
+
+                        
+                        //si la cita está como:
+                        //en espera           CONFIRMAR CITA SI NO
+                                  case '0':
+
+                                  var Prox_rend = 
+                                        '<!-- BOX 1 -->'+
+                                            '<div class="box-emergent-r bg-white">'+
+                                                '<div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
+                                                    '<h4 class="hour">'+
+                                                        '<img src="img/reloj.svg" style="padding-right: 10px; width: 30px;">'+
+                                                        data.arrayHomer[0].arrayR[m].rend_hour+' - '+data.arrayHomer[0].arrayR[m].rend_hour_end
+                                                    +'</h4>'+
+                                                    '<h5 class="status-new" style= "background-color:'+arrayStatusColor[data.arrayHomer[0].arrayR[m].rend_status]+'; color:'+arrayStatusName[data.arrayHomer[0].arrayR[m].rend_status] +';"  data-status="'+data.arrayHomer[0].arrayR[m].rend_status+'";> '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+' </h5>'+
+                                                '</div>'+
+
+                                                '<h3 class="tittle purple">Próxima cita</h3>'+
+                                                        '<span class="subtitle ">Recuerda que tu próxima cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' será el '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.'+
+
+                                                '<div style="text-align: center; padding-top: 15px;" id="confirm_renew">'+
+                                                    '<span class="subtitle" style="color: #856d7e;">¿Confirmas que podrás asistir a la cita?</span>'+
+                                                        '<div style="display: flex; justify-content: center; padding-top: 10px;padding-bottom: 10px;">'+
+                                                            '<button class="status-no" onclick="dateconfirmrno('+data.arrayHomer[0].arrayR[m].ren_rend_id+');">No asistiré</button>'+
+
+                                                            '<button class="status-yes" onclick="dateconfirmr('+data.arrayHomer[0].arrayR[m].ren_rend_id+');">Sí asistiré</button>'+
+                                                            '<div style="padding: 10px"></div>'+
+                                                        '</div>'+
+                                                '</div>'+ 
+                                            '</div>';
+
+                                    $("#contain-home-r").append(Prox_rend);
+                                    //return false;
+                                     // return true;
+                                     break;
+
+
+                        //confirmada          Tu cita está como
+                                  case '1':
+                                  var Prox_rend = 
+                                        '<!-- BOX 1 -->'+
+                                            '<div class="box-emergent-r bg-white">'+
+                                                '<div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
+                                                    '<h4 class="hour">'+
+                                                        '<img src="./img/reloj.svg" style="padding-right: 10px; width: 30px;">'+
+                                                        data.arrayHomer[0].arrayR[m].rend_hour+' - '+data.arrayHomer[0].arrayR[m].rend_hour_end
+                                                    +'</h4>'+
+                                                    '<h5 class="status-new" style= "background-color:'+arrayStatusColor[data.arrayHomer[0].arrayR[m].rend_status]+'; color:'+arrayStatusName[data.arrayHomer[0].arrayR[m].rend_status] +';"  data-status="'+data.arrayHomer[0].arrayR[m].rend_status+'";> '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+' </h5>'+
+                                                '</div>'+
+
+                                                '<h3 class="tittle purple">Próxima cita</h3>'+
+                                                        '<span class="subtitle ">Tu próxima cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el día '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Te esperamos!</span>'+
+                                                        
+                                                        '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
+                                                            employee+
+                                                        '</div>'+
+                                            '</div>';
+                                          
+                                    $("#contain-home-r").append(Prox_rend);
+                                    // return false;
+                                    // return true;
+                                     break;
+
+                        //asistencia        ¡Gracias por asistir!
+                                  case '2':
+                                  var Prox_rend = 
+                                          '<!-- BOX 1 -->'+
+                                            '<div class="box-emergent-r bg-white">'+
+                                                '<div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
+                                                    '<h4 class="hour">'+
+                                                        '<img src="./img/reloj.svg" style="padding-right: 10px; width: 30px;">'+
+                                                        data.arrayHomer[0].arrayR[m].rend_hour+' - '+data.arrayHomer[0].arrayR[m].rend_hour_end
+                                                    +'</h4>'+
+                                                    '<h5 class="status-new" style= "background-color:'+arrayStatusColor[data.arrayHomer[0].arrayR[m].rend_status]+'; color:'+arrayStatusName[data.arrayHomer[0].arrayR[m].rend_status]+';"  data-status="'+data.arrayHomer[0].arrayR[m].rend_status+'";> '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+' </h5>'+
+                                                '</div>'+
+
+                                                '<h3 class="tittle purple">Cita Asistida</h3>'+
+                                                        '<span class="subtitle ">Tu cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' del día '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Gracias por asistir!</span>'+
+                                                        
+                                                        '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
+                                                            employee+
+                                                        '</div>'+
+                                            '</div>';
+
+                                          
+                                  $("#contain-home-r").append(Prox_rend);
+                                    //return false;
+                                    // return true;
+                                     break;
+
+
+                        //inasistencia                 ¡Te invitamos a agendar de nuevo!
+                                  case '3':
+
+                                  var Prox_rend = 
+                                        '<!-- BOX 1 -->'+
+                                            '<div class="box-emergent-r bg-white">'+
+                                                '<div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
+                                                    '<h4 class="hour">'+
+                                                        '<img src="./img/reloj.svg" style="padding-right: 10px; width: 30px;">'+
+                                                        data.arrayHomer[0].arrayR[m].rend_hour+' - '+data.arrayHomer[0].arrayR[m].rend_hour_end
+                                                    +'</h4>'+
+                                                    '<h5 class="status-new" style= "background-color:'+arrayStatusColor[data.arrayHomer[0].arrayR[m].rend_status]+'; color:'+arrayStatusName[data.arrayHomer[0].arrayR[m].rend_status] +';"  data-status="'+data.arrayHomer[0].arrayR[m].rend_status+'";> '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+' </h5>'+
+                                                '</div>'+
+
+                                                '<h3 class="tittle purple">Cita inasistencia</h3>'+
+                                                        '<span class="subtitle ">Tu cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el día '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Te invitamos a agendar de nuevo!</span>'+
+                                                        
+                                                        '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
+                                                            employee+
+                                                        '</div>'+
+                                            '</div>';
+                                        
+
+                                    $("#contain-home-r").append(Prox_rend);
+                                    // return false;
+                                    // return true;
+                                     break;
+
+                        //reprogramada
+                                  case '4':
+
+                                  var Prox_rend = 
+                                        '<!-- BOX 1 -->'+
+                                            '<div class="box-emergent-r bg-white">'+
+                                                '<div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
+                                                    '<h4 class="hour">'+
+                                                        '<img src="./img/reloj.svg" style="padding-right: 10px; width: 30px;">'+
+                                                        data.arrayHomer[0].arrayR[m].rend_hour+' - '+data.arrayHomer[0].arrayR[m].rend_hour_end
+                                                    +'</h4>'+
+                                                    '<h5 class="status-new" style= "background-color:'+arrayStatusColor[data.arrayHomer[0].arrayR[m].rend_status]+'; color:'+arrayStatusName[data.arrayHomer[0].arrayR[m].rend_status] +';"  data-status="'+data.arrayHomer[0].arrayR[m].rend_status+'";> '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+' </h5>'+
+                                                '</div>'+
+
+                                                '<h3 class="tittle purple">Cita reprogramada</h3>'+
+                                                        '<span class="subtitle ">Tu próxima cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el día '+ data.arrayHomer[0].arrayR[m].rend_date+' y su estatus está: '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+'.</span><br><span class="subtitle ">¡Te esperamos!</span>'+
+                                                        
+                                                        '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
+                                                            employee+
+                                                        '</div>'+
+                                            '</div>';
+                                           
+                                    $("#contain-home-r").append(Prox_rend);
+                                    // return false;
+                                    // return true;
+                                     break;
+
+                        //cancelada
+                                  case '5':
+                                  var Prox_rend = 
+                                        '<!-- BOX 1 -->'+
+                                            '<div class="box-emergent-r bg-white">'+
+                                                '<div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
+                                                    '<h4 class="hour">'+
+                                                        '<img src="./img/reloj.svg" style="padding-right: 10px; width: 30px;">'+
+                                                        data.arrayHomer[0].arrayR[m].rend_hour+' - '+data.arrayHomer[0].arrayR[m].rend_hour_end
+                                                    +'</h4>'+
+                                                    '<h5 class="status-new" style= "background-color:'+arrayStatusColor[data.arrayHomer[0].arrayR[m].rend_status]+'; color:'+arrayStatusName[data.arrayHomer[0].arrayR[m].rend_status] +';"  data-status="'+data.arrayHomer[0].arrayR[m].rend_status+'";> '+arrayStatus[data.arrayHomer[0].arrayR[m].rend_status]+' </h5>'+
+                                                '</div>'+
+
+                                                '<h3 class="tittle purple">Cita cancelada</h3>'+
+                                                        '<span class="subtitle ">Tu cita de '+ data.arrayHomer[0].arrayR[m].serv_name+' para el día '+ data.arrayHomer[0].arrayR[m].rend_date+' ha sido cancelada'+'.</span><br><span class="subtitle ">¡Te invitamos a reagendar de nuevo!</span>'+
+                                                        
+                                            '</div>';
+                                    
+                                    $("#contain-home-r").append(Prox_rend);
+                                    // return false;
+                                    // return true;
+                                     break;
+
+
+                                  } //cierre de switch
+
+                                  // return false;
+                                 // break;
+
+                               } //cierre del for arrayR
+/*   E N D     C I T A S       P R O X I M A S*/
+      
+
+/*
+"id_ses":"974",
+"serv_name":"Siluet Renewal",
+"Service":"Reafirmante corporal",
+"sessions_done":0,
+"sessiontotal":"10",
+"mount":"2500.00",
+"status":"Servicio incompleto",
+"user_id":"29",
+"user_fname":"Nelsy",
+"user_lname":"Corral",
+"user_photo":"_files\/_img\/_users\/010320-150144_nelsy.jpg"
+*/
+/*    S E S I O N E S*/ 
+                            for (var n = 0; n < data.arrayHomer[0].arrayS.length; n++) {
+
+                               // if (data.arrayHomer[0].arrayS.length > 0){
+                             
+
+
+                                var rect_ses, rect_green_ses, rect_yellow_ses, rect_gray_ses, rect_red_ses, rect_blue_ses, rect_orange_ses, start_hour, end_hour,  hour;
+                                var Session_made = '';
+                                
+                               /* 0 */ sessions_wait = data.arrayHomer[0].arrayS[n].sessions_wait;
+                               /* 1 */ sessions_confirm = data.arrayHomer[0].arrayS[n].sessions_confirm;
+                               /* 2 */ sessions_done = data.arrayHomer[0].arrayS[n].sessions_done;
+                                
+                               /* 3 */ sessions_absence = data.arrayHomer[0].arrayS[n].sessions_absence;
+                               /* 4 */ sessions_resched = data.arrayHomer[0].arrayS[n].sessions_resched;
+                               /* 5 */ sessions_cancel = data.arrayHomer[0].arrayS[n].sessions_cancel;
+
+                               start_hour = data.arrayHomer[0].arrayS[n].ses_hour;
+                               end_hour = data.arrayHomer[0].arrayS[n].ses_hour_end;
+
+                                
+                                sessiontotal = data.arrayHomer[0].arrayS[n].sessiontotal;
+
+
+                                    if (sessions_done < sessiontotal) {
+
+                                        sessions_remaining = sessiontotal - sessions_done;
+                                        text_sessions = 'Ya solamente faltan ' + sessions_remaining + ' sesiones para finalizar ';
+                                        rect_green_ses =  rect_green.repeat(sessions_done);
+                                     
+
+                                        rect_yellow_ses =  rect_yellow.repeat(sessions_remaining);
+
+
+                                    }else{
+
+                                        sessions_remaining = 0;
+                                        text_sessions = 'Haz finalizado tus sesiones ';
+                                        rect_green_ses =  rect_green.repeat(sessions_done);
+                                        rect_yellow_ses ='';
+
+                                    }
+
+                                    if(start_hour == null && end_hour == null){
+                                      hour = '';
+
+                                    }else{
+                                      hour = data.arrayHomer[0].arrayS[n].ses_hour+'-'+data.arrayHomer[0].arrayS[n].ses_hour_end;
+                                    }
+                                   
+
+                                  
+                                      if (data.arrayHomer[0].arrayS[n].user_photo == null | data.arrayHomer[0].arrayS[n].user_photo == '') {
+                                        // $photo_user_homer = '<img src="img/folder-h.png" class="circle-purple" >';
+                                        $photo_user_homerr = '/img/logo-ae-3.png';
+
+                                      }else{
+                                          // $photo_patient = '<img src="'+urlAE+''+data.patient[0].pat_photo+'">';
+                                        // $photo_user_homer = '<img src="'+root_web_renew+data.arrayHomer[0].arrayR[m].user_photo+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; ">';
+                                        $photo_user_homerr = root_web+data.arrayHomer[0].arrayS[n].user_photo;
+
+                                      }
+                                      // '<span style="text-decoration: underline; font-size: 0.9em;">Ver detalles</span>'+
+                                if (sessions_done > 0) {
+                                var Session_made = '<!-- BOX 2 -->'+
+                                    '<div class="box-emergent-r bg-white" data-ses="'+data.arrayHomer[0].arrayS[n].id_ses+'">'+  
+                                        '<div style=" display: flex; justify-content: space-between; padding-top: 10px; margin: 0px; align-items: center;">'+  
+                                            '<div class="info-detail"><img src="img/reloj.svg" style="width: 30px;">'+
+                                                '<h4 class="hour" style="padding-left: 15px;">'+hour+
+                                            '</div>'+
+                                           
+                                        '</div>'+
+                                        '<h3 class="purple">¡Felicidades!</h3>'+
+                                        '<span>Has concluido tu sesión '+sessions_done+'/'+sessiontotal+'.<br>'+text_sessions +' '+data.arrayHomer[0].arrayS[n].serv_name+'.'+
+
+                                        '<div style="display: flex;align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
+                                            
+                                             '<div class="sales-person" style=" width: 50%;">'+
+                                                '<img src="'+$photo_user_homerr+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; overflow: hidden;">'+
+                                                '<span class="little" style="padding-left: 15px;">'+
+                                                        data.arrayHomer[0].arrayS[n].user_fname+' '+
+                                                        data.arrayHomer[0].arrayS[n].user_lname+
+                                                '</span>'+
+                                             '</div>'+
+                                                '<div style="display: flex; width: 50%;">'+
+                                                rect_green_ses+rect_yellow_ses+
+                                                '</div>'+
+                                        '</div>'+
+                                    '</div>';
+                              // }else{
+                                      
+                              //      var   Session_made = '';
+                              // }
+                              
+                                 $("#contain-home-r").append(Session_made);
+                              }else{
+
+                                   var Session_made = '<!-- BOX 2 -->'+
+                                    '<div class="box-emergent-r bg-white" data-ses="'+data.arrayHomer[0].arrayS[n].id_ses+'">'+  
+                                        '<div style=" display: flex; justify-content: space-between; padding-top: 10px; margin: 0px; align-items: center;">'+  
+                                        
+                                        '</div>'+
+                                        '<h3 class="purple">¡Sesión pendiente!</h3>'+
+                                        '<span> '+'<br>'+text_sessions +' de '+data.arrayHomer[0].arrayS[n].serv_name+'.'+
+
+                                        '<div style="display: flex;align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
+                                            
+                                             '<div class="sales-person" style=" width: 50%;">'+
+                                                '<img src="'+$photo_user_homerr+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; overflow: hidden;">'+
+                                                '<span class="little" style="padding-left: 15px;">'+
+                                                        data.arrayHomer[0].arrayS[n].user_fname+' '+
+                                                        data.arrayHomer[0].arrayS[n].user_lname+
+                                                '</span>'+
+                                             '</div>'+
+                                                '<div style="display: flex; width: 50%;">'+
+                                                rect_green_ses+rect_yellow_ses+
+                                                '</div>'+
+                                        '</div>'+
+                                    '</div>';
+                              // }else{
+                                      
+                              //      var   Session_made = '';
+                              // }
+                              
+                                 $("#contain-home-r").append(Session_made);
+
+                              }
+                            }  //cierre for arrayS
+/*  E N D     S E S I O N E S*/
+
+/*    P R O D U C T O S   C O M P R A D O S*/
+
+                                for (var o = 0; o < data.arrayHomer[0].arrayP.length; o++) {
+                                    // var Products = ''; 
+                                    // if (data.arrayHomer[0].arrayP[o].length > 0){
+
+                                        // if (data.arrayHomer[0].arrayP[o].prod_image == '') {
+                                        //   var product_homer =  '';
+                                        // }else{
+
+                                          var root_renew = 'https://armoniaestetica.com/sudi_renew/'
+                                         
+                                          if (data.arrayHomer[0].arrayP[o].prod_image == null | data.arrayHomer[0].arrayP[o].prod_image == '') {
+                                            // $photo_user_homer = '<img src="img/folder-h.png" class="circle-purple" >';
+                                            $photo_user_homerrr = '/img/logo-ae-3.png';
+                                            // var img = 'https://armoniaestetica.com/sudi_renew/'+data.arrayHomer[0].arrayP[o].prod_image;
+
+                                          }else{
+                                              // $photo_patient = '<img src="'+urlAE+''+data.patient[0].pat_photo+'">';
+                                            // $photo_user_homer = '<img src="'+root_web_renew+data.arrayHomer[0].arrayR[m].user_photo+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; ">';
+                                            $photo_user_homerrr = root_renew+data.arrayHomer[0].arrayP[o].prod_image;
+
+                                          }
+
+                                           
+                                      //   var img =  'https://armoniaestetica.com/sudi_renew/'+ data.arrayHomer[0].arrayP[o].prod_image;
+                                          //    // $('.profile-picture').css('background-image','url('+$photo_patient+')');
+                                          // $('#img-product').css('background-image','url('+product_homer+')');
+                                          // console.log(data.arrayHomer[0].arrayP[o].prod_image);
+                                       // }
+
+                                        
+
+                                        var Products = 
+                                        '<!-- BOX 3 -->'+
+                                            '<div class="box-emergent-r bg-white" style="display: flex;">'+  
+                                                     
+                                                        '<div>  <!-- div izquierda -->'+
+                                                          '<div style="display: flex; align-items: center;">'+
+                                                            '<img src="./img/calendar.png" style="width: 50px; padding-right: 10px;">'+
+                                                            '<h4 style=" margin: 8px 0px; font-size: 0.9em; color: rgb(164 145 162);">'+
+                                                                 data.arrayHomer[0].arrayP[o].date_pay + 
+                                                            '</h4>'+
+                                                          '</div>'+
+                            //font-family: 'Gotham-Book-i'; '<img src="img/reloj.svg" style="width: 30px; padding-right: 15px;">'+
+                                                            '<div class="info--r">'+ 
+                                                                '<h4 style=" margin: 8px 0px; font-size: 0.8em; color: rgb(164 145 162);">'+
+                                                                'Adquisición de producto'+ 
+                                                                '</h4>'+
+                                                            '</div>'+
+
+                                                            
+                                                            '<h3 class="tittle purple"> '+data.arrayHomer[0].arrayP[o].prod_name+' </h3>'+
+                                                            '<span class="subtitle style="padding-bottom: 20px;">Gracias por comprar</span><br>'+
+                                                            '<span class="subtitle "> '+data.arrayHomer[0].arrayP[o].quantity+' '+data.arrayHomer[0].arrayP[o].prod_name+'</span>'+
+                                                            
+                                                            '<div style="display: flex;align-items: center; margin: 0px; padding-top: 10px;">'+
+
+                                                                    '<img src="'+root_web+data.arrayHomer[0].arrayP[o].user_photo+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; ">'+
+                                                                    '<span class="little" style="padding-left: 15px;">'+
+                                                                data.arrayHomer[0].arrayP[o].user_fname+' '+ data.arrayHomer[0].arrayP[o].user_lname+
+                                                                '</span>'+
+                                                            '</div>'+
+
+
+                                                        '</div> <!-- end div izquierda -->'+
+
+                                                        '<div style="margin: auto;">  <!-- div derecha -->'+
+                                                        
+                                                           '<img src="'+$photo_user_homerrr+'" style="border-radius: 10px;display: block;height: 100px;width: 100px;background-size: cover;">'+
+
+                                                        '</div> <!-- end div derecha -->'+
+                                                '</div>';
+
+                                $("#contain-home-r").append(Products);   
+
+                               // var root_web_renew = 'https://armoniaestetica.com/';
+                                
+                                //'<img style="border-radius: 15px; height:110px; width:110px;" src="https://armoniaestetica.com/sudi_renew/'+img+'">'+
+                                   // }else{
+                                   //   var   Products = ''; 
+                                   // }  
+                                } //END FOR ARRAY P
+
+                        /*  E N D     P R O D U C T O S   C O M P R A D O S*/
+            }//end data 
+
+       // $("#contain-home-r").append(Prox_rend+ Session_made+ Products);
+       // $("#contain-home-r").append(Prox_rend);
+
+      //}
+       //        } //end else  si el array tiene datos 
+
+      
+
+    // $("#contain-home-r").append($Prox_rend + $Products);
+
+
+          }  //cierre de success
+
+    });   //cierre de ajax       
+
+     // getBinnacle();               
+} //cierre de function
+
+
+
+///////////////////////
+// Falta traerme las sesiones realizadas/total y los cuadros. Verificar error por qué te trae tantos días y dato de incluye correctamente
+function getHomeae(){
+    // console.log('entrando a funcion de getHomeae');
+     $("#contain-home-ae").html('');
+     //$("#contain-home-ae").empty();
+
+   // global_user_id = 10;
+    $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/home_ae_ios.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            // data: { getHomeae : true},
+            data: { getHomeae : true, patid : global_id },
+            success: function(data){
+            $("#contain-home-ae").html('');
+            
+
+            console.log(data);
+            // console.log(data);
+           
+            // console.log(data.arrayHomeae[0].arrayNextcons.length);
+            // console.log(data.arrayHomeae[0].arrayNextcons);
+
+
+             if ( data.arrayHomeae[0].arrayNextcons.length == 0 && data.arrayHomeae[0].arrayExams.length == 0 && data.arrayHomeae[0].arrayExams.length == 0 && data.arrayHomeae[0].arrayPayae.length == 0){ 
+
+
+              var NoDataEA = '<h4 style="margin-top: 50px; padding-left: 15px; color: #002130;"> Por el momento no cuentas con información</h4>';
+
+              $("#contain-home-ae").append(NoDataEA);
+                    
+             }else{
+
+            for (var b = 0; b < data.arrayHomeae.length; b++) {
+
+/*
+Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","Cons_hour":"11:00:00","Cons_hour_end":"11:30:00","Cons_proce":"0","Cons_status":"0","Cons_user_id":"2","Cons_user_edit":"2","Cons_user_fname":"Upgrade","Cons_user_lname":"Dise\u00f1o","Cons_user_photo":"_files\/_img\/_users\/122718-171233_upgrade.jpg"}]
+*/
+
+
+                for (var i = 0; i < data.arrayHomeae[b].arrayNextcons.length; i++) {
+           
+                var arrayStatusEA = ['en espera','confirmada','asistencia','inasistencia','reprogramada','cancelada'];
+                var arrayStatusColorEA = ['#f7f0ad','#e0f5eb','#e0f5eb','#ff584ce6','#f49136c2','#a7a39f'];
+                var arrayStatusNameEA = ['#dc953a','#71d3a1','#000000','#000000','#000000','#000000'];
+
+                /*   DIV EMPLEADO*/
+                   if (data.arrayHomeae[b].arrayNextcons[i].Cons_user_photo == null | '') {
+                                          $photo_user_homeae = '/img/logo-ae-3.png';
+                   }else{
+                                            
+                                          $photo_user_homeae = root_web+data.arrayHomeae[b].arrayNextcons[i].Cons_user_photo;
+                   }
+
+
+                    var employee_ea =    '<div style="display: flex; padding-top: 10px; align-items: center; margin: 0px; justify-content: space-between;">'+
+                                            '<div class="sales-person">'+
+                                                '<img src="'+$photo_user_homeae+'" class="circle-purple photo_sales" >'+
+                                                '<span class="little" style="padding-left: 15px;">'+
+                                                data.arrayHomeae[b].arrayNextcons[i].Cons_user_fname+' '+ data.arrayHomeae[b].arrayNextcons[i].Cons_user_lname+
+                                                '</span>'+
+                                            '</div>'+
+                                      '</div>';
+
+                /*   END  DIV EMPLEADO*/
+
+
+
+              //switch de cita 
+                                  switch(data.arrayHomeae[b].arrayNextcons[i].Cons_status){
+                        
+                        //si la cita está como:
+                        //en espera           CONFIRMAR CITA SI NO
+                                  case '0':
+
+                    NextCons = '<div class="box-emergent-ae bg-white" class="section-float" id="date_ae">'+  
+                                '<div class="info-detail">'+
+                                    '<h4 class="hour">'+
+
+                                       '<img src="img/reloj.svg" style="padding-right: 15px; width: 30px;">'+data.arrayHomeae[b].arrayNextcons[i].Cons_hour+' - '+data.arrayHomeae[b].arrayNextcons[i].Cons_hour_end+'</h4>'+
+                                    
+                                    '<h5 class="status-new" style= "background-color:'+arrayStatusColorEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+'; color:'+arrayStatusNameEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+'; padding: 4px 8px 4px 8px;" data-status="'+data.arrayHomeae[b].arrayNextcons[i].Cons_status+'";>'+arrayStatusEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+'</h5>'+
+
+                                '</div>'+
+                                                
+                                '<h3 class="tittle purple"></h3>'+
+                                '<span class="subtitle ">Recuerda que tu próxima de revisión de cita, será el día '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+
+                                '</span>'+
+
+                                employee_ea+
+                                    
+                                '<div style="text-align: center; padding-top: 15px;" id="confirm_ae">'+
+                                    '<span class="subtitle" style="color: #4b3348; font-size: 1.1em;">¿Confirmas que podrás asistir a la cita?</span>'+
+                                        '<div style="display: flex; justify-content: center; padding-top: 10px;padding-bottom: 10px;">'+
+                                            '<button class="status-no" onclick="dateconfirmaeno('+data.arrayHomeae[b].arrayNextcons[i].Cons_id+');">No asistiré</button>'+
+                                            '<button class="status-yes" onclick="dateconfirmae('+data.arrayHomeae[b].arrayNextcons[i].Cons_id+');">Sí asistiré</button>'+
+                                        '</div>'+
+                                '</div>'+
+
+                            '</div>';
+
+                                                            
+                                                    
+
+                            $("#contain-home-ae").append(NextCons);
+
+                      
+                              
+                                 // return false;
+                                  break;
+
+
+                        //confirmada          Tu cita está como
+                                  case '1':
+                                   NextCons = '<div class="box-emergent-ae bg-white" class="section-float" id="date_ae">'+  
+                                '<div class="info-detail">'+
+                                    '<h4 class="hour">'+
+
+                                       '<img src="img/reloj.svg" style="padding-right: 15px; width: 30px;">'+data.arrayHomeae[b].arrayNextcons[i].Cons_hour+' - '+data.arrayHomeae[b].arrayNextcons[i].Cons_hour_end+'</h4>'+
+                                    
+                                    '<h5 class="status-new" style= "background-color:'+arrayStatusColorEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+'; color:'+arrayStatusNameEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+';" data-status="'+data.arrayHomeae[b].arrayNextcons[i].Cons_status+'";>'+arrayStatusEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+'</h5>'+
+
+                                '</div>'+
+                                                
+                                '<h3 class="tittle purple"></h3>'+
+                                '<span class="subtitle ">Recuerda que tu próxima cita, será el día '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+
+                                '</span>'+
+
+                                 employee_ea+
+                                
+                            '</div>';
+                                            $("#contain-home-ae").append(NextCons);
+
+                              //    return false;
+                                  break;
+
+                        //asistencia        ¡Gracias por asistir!
+                                  case '2':
+                                  NextCons = '<div class="box-emergent-ae bg-white" class="section-float" id="date_ae">'+  
+                                '<div class="info-detail">'+
+                                    '<h4 class="hour">'+
+
+                                       '<img src="img/reloj.svg" style="padding-right: 15px; width: 30px;">'+data.arrayHomeae[b].arrayNextcons[i].Cons_hour+' - '+data.arrayHomeae[b].arrayNextcons[i].Cons_hour_end+'</h4>'+
+                                    
+                                    '<h5 class="status-new" style= "background-color:'+arrayStatusColorEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+'; color:'+arrayStatusNameEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+';" data-status="'+data.arrayHomeae[b].arrayNextcons[i].Cons_status+'";>'+arrayStatusEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+'</h5>'+
+
+                                '</div>'+
+                                                
+                                '<h3 class="tittle purple"></h3>'+
+                                '<span class="subtitle ">Has asistido a tu cita el día '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+ 
+                                '</span>'+
+
+                                 employee_ea+
+                                
+                            '</div>';
+                                            $("#contain-home-ae").append(NextCons);
+
+                                //  return false;
+                                  break;
+
+
+                        //inasistencia                 ¡Te invitamos a agendar de nuevo!
+                                  case '3':
+
+                                  NextCons = '<div class="box-emergent-ae bg-white" class="section-float" id="date_ae">'+  
+                                '<div class="info-detail">'+
+                                    '<h4 class="hour">'+
+
+                                       '<img src="img/reloj.svg" style="padding-right: 15px; width: 30px;">'+data.arrayHomeae[b].arrayNextcons[i].Cons_hour+' - '+data.arrayHomeae[b].arrayNextcons[i].Cons_hour_end+'</h4>'+
+                                    
+                                    '<h5 class="status-new" style= "background-color:'+arrayStatusColorEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+'; color:'+arrayStatusNameEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+';" data-status="'+data.arrayHomeae[b].arrayNextcons[i].Cons_status+'";>'+arrayStatusEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+'</h5>'+
+
+                                '</div>'+
+                                                
+                                '<h3 class="tittle purple"></h3>'+
+                                '<span class="subtitle "> No asististe a tu cita del día ' + data.arrayHomeae[b].arrayNextcons[i].Cons_date+ 
+                                '</span>'+
+
+                                 employee_ea+
+                                
+                            '</div>';
+                                            $("#contain-home-ae").append(NextCons);
+
+                                //  return false;
+                                  break;
+
+                        //reprogramada
+                                  case '4':
+
+                                  NextCons = '<div class="box-emergent-ae bg-white" class="section-float" id="date_ae">'+  
+                                '<div class="info-detail">'+
+                                    '<h4 class="hour">'+
+
+                                       '<img src="img/reloj.svg" style="padding-right: 15px; width: 30px;">'+data.arrayHomeae[b].arrayNextcons[i].Cons_hour+' - '+data.arrayHomeae[b].arrayNextcons[i].Cons_hour_end+'</h4>'+
+                                    
+                                    '<h5 class="status-new" style= "background-color:'+arrayStatusColorEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+'; color:'+arrayStatusNameEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+';" data-status="'+data.arrayHomeae[b].arrayNextcons[i].Cons_status+'";>'+arrayStatusEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+'</h5>'+
+
+                                '</div>'+
+                                                
+                                '<h3 class="tittle purple"></h3>'+
+                                '<span class="subtitle ">Tu cita del día '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+ ' ha sido reprogramada '+
+                                '</span>'+
+
+                                 employee_ea+
+                                
+                            '</div>';
+                                            $("#contain-home-ae").append(NextCons);
+
+                                // return false;
+                                  break;
+
+                        //cancelada
+                                  case '5':
+                                  NextCons = '<div class="box-emergent-ae bg-white" class="section-float" id="date_ae">'+  
+                                '<div class="info-detail">'+
+                                    '<h4 class="hour">'+
+
+                                       '<img src="img/reloj.svg" style="padding-right: 15px; width: 30px;">'+data.arrayHomeae[b].arrayNextcons[i].Cons_hour+' - '+data.arrayHomeae[b].arrayNextcons[i].Cons_hour_end+'</h4>'+
+                                    
+                                    '<h5 class="status-new" style= "background-color:'+arrayStatusColorEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+'; color:'+arrayStatusNameEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+';" data-status="'+data.arrayHomeae[b].arrayNextcons[i].Cons_status+'";>'+arrayStatusEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+'</h5>'+
+
+                                '</div>'+
+                                                
+                                '<h3 class="tittle purple"></h3>'+
+                                '<span class="subtitle ">Tu cita del día  '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+
+                                ' ha sido cancelada </span>'+
+
+                                employee_ea+
+                                
+                            '</div>';
+                                            $("#contain-home-ae").append(NextCons);
+
+                                 // return false;
+                                  break;
+
+
+                                  } //cierre de switch
+
+   
+            }
+
+
+
+
+          for (var w = 0; w < data.arrayHomeae[b].arrayExams.length; w++) {
+
+                if (data.arrayHomeae[b].arrayExams[w].Exam_id != null | 0 | '' | ""){
+                    Exams = '<div class="box-emergent-ae bg-white" date-exams="'+data.arrayHomeae[b].arrayExams[w].Exam_id+'">'+  
+                                '<div class="info-detail">'+
+                                    
+                                    '<h4 class="hour">'+
+                                        '<img src="./img/folder.jpg" style="width: 30px; padding-right: 15px;">'+
+                                        data.arrayHomeae[b].arrayExams[w].Exam_name+'</h4>'+
+                                        '<h5 class="status-gray" style="display:none;">Ver</h5>'+
+                                '</div>'+
+                            
+                                '<h3 class="tittle purple">Solicitud de exámenes</h3>'+
+                                '<span class="subtitle">'+data.arrayHomeae[b].arrayExams[w].Exam_indications+'</span>'+
+ 
+                                '<div class="sales-person" >'+ 
+                                    '<img src="'+root_web+data.arrayHomeae[b].arrayExams[w].user_photo+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; overflow: hidden;">'+
+                                     
+                                    '<span class="little" style="padding-left: 15px;">'+
+                                      data.arrayHomeae[b].arrayExams[w].user_fname+' '+
+                                      data.arrayHomeae[b].arrayExams[w].user_lname+
+                                    '</span>'+
+
+                                    '<img src="img/photo-w.png" class="circle-photo" style="display:none;">'+
+                                '</div>'+  
+
+                            '</div>';
+              
+
+
+
+           // $("#contain-home-ae").append(NextCons);
+
+                }else{
+                 Exams =  Exams = '<div class="box-emergent-ae bg-white" date-exams="'+data.arrayHomeae[b].arrayExams[w].Exam_id+'">'+  
+                                '<div class="info-detail">'+
+                                    
+                                    '<h4 class="hour">'+
+                                        '<img src="./img/folder.jpg" style="width: 30px; padding-right: 15px;">'+
+                                        data.arrayHomeae[b].arrayExams[w].Exam_name+'</h4>'+
+                                        '<h5 class="status-gray" style="display:none;">Ver</h5>'+
+                                '</div>'+
+                            
+                                '<h3 class="tittle purple">Solicitud de exámenes</h3>'+
+                                '<span class="subtitle">'+data.arrayHomeae[b].arrayExams[w].Exam_indications+'</span>'+
+ 
+                                '<div class="sales-person" >'+ 
+                                    '<img src="'+root_web+data.arrayHomeae[b].arrayExams[w].user_photo+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; overflow: hidden;">'+
+                                     
+                                    '<span class="little" style="padding-left: 15px;">'+
+                                      data.arrayHomeae[b].arrayExams[w].user_fname+' '+
+                                      data.arrayHomeae[b].arrayExams[w].user_lname+
+                                    '</span>'+
+
+                                    '<img src="./img/photo-w.png" class="circle-photo" style="display:none;">'+
+                                '</div>'+  
+
+                            '</div>';
+              
+              
+
+           
+                }
+             $("#contain-home-ae").append(Exams);
+   
+            }
+
+
+                    
+                            
+
+
+
+            for (var a = 0; a < data.arrayHomeae[b].arrayPayae.length; a++) {
+                if (data.arrayHomeae[b].arrayPayae[a].Pay_inc_notes=== null){
+                    notes = '';
+                }else{
+                notes = '<h3 class="tittle purple">'+ data.arrayHomeae[b].arrayPayae[a].Pay_inc_notes +'</h3>';
+                }
+
+                boxPay_ea = '<!-- BOX 3 -->'+
+                            '<div class="box-emergent-ae bg-white" data-payea="'+ data.arrayHomeae[b].arrayPayae[a].Pay_inc_id +'">'+  
+                                '<div style="display: flex;justify-content: space-between; padding-top: 10px; margin: 0px; align-items: center;">'+
+                                '<div class="info-detail">'+
+                                    '<img src="./img/tag.jpg" style="width: 30px; padding-right: 15px;">'+
+                                    '<h4 class="hour">Pago</h4>'+
+                                '</div>'+
+    
+                                    '<div class="info-detail" style="width: 50%;justify-content: flex-end;">'+
+                                        '<img src="./img/calendar.png" style="width: 50px;">'+
+                                        '<h5 class="purple" style="font-size: 0.9em;text-align: right;">'+
+                                        data.arrayHomeae[b].arrayPayae[a].Pay_inc_payment_date +'</h5>'+
+                                    '</div>'+
+                                '</div>'+ 
+
+                                '<h3 class="tittle purple">¡Gracias por tu pago!</h3>'+
+                                notes+
+
+
+                                '<div style="display: flex;align-items: center; margin: 0px; margin-top: 10px;">'+
+                                    
+                                        '<img src="'+root_web+data.arrayHomeae[b].arrayPayae[a].Pay_user_photo+'" style="border-radius: 60px; display: block; height: 30px; width: 30px; background-size: cover; overflow: hidden;">'+'<span class="little" style="padding-left: 15px;">'+
+                                         data.arrayHomeae[b].arrayPayae[a].Pay_user_name +' '+ data.arrayHomeae[0].arrayPayae[a].Pay_user_lname +
+                                    '</span>'+
+                                    '<div style="display:flex;">'+
+                                    '<h5 class="status-green" style="right:15px; bottom:15px; position: absolute;"> '+     
+                                    '$'+ data.arrayHomeae[b].arrayPayae[a].Pay_inc_amount +'</h5>'+
+                                    '</div>'+
+
+                                '</div>'+
+                            '</div>';
+            
+            $("#contain-home-ae").append(boxPay_ea);
+            }
+
+        }
+            
+     }
+        }  //cierre de success
+    });   //cierre de ajax                      
+} //cierre de function
+
+/////////////////////////////////////////  
+
+function getProducts(){
+    // console.log('entrando a funcion de getProducts');
+
+    $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/products.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            data: { getProducts : true},
+            success: function(data){
+               
+            // console.log('data products ' +data);
+
+            for (var i = 0; i < data.arrayProducts.length; i++) {
+
+                if (data.arrayProducts[i].image == null | "" | '' ) {
+                    imagen_product = '<div class="product" style ="display: none;"> <!-- div derecha -->'+
+                                        '<img src="https://armoniaestetica.com/sudi_renew/'+data.arrayProducts[i].image+'" style="height: 100px;width: auto; display: none;">'+
+                                     '</div> <!-- end div derecha -->';
+                }else{
+                    imagen_product = '<div class="product"> <!-- div derecha -->'+
+                                        '<img src="https://armoniaestetica.com/sudi_renew/'+data.arrayProducts[i].image+'" style="height: 100px;width: auto;">'+
+                                     '</div> <!-- end div derecha -->';
+                }
+
+                products ='<div class="box-emergent-products bg-white" style="display: flex; data-product="'+data.arrayProducts[i].id+'">'+  
+                    
+                            '<div>  <!-- div izquierda -->'+
+                                '<h3 class="tittle blue-account">'+data.arrayProducts[i].name+' </h3>'+
+                                '<span class="subtitle-blue ">'+data.arrayProducts[i].description+'</span>'+
+                               
+                            '</div> <!-- end div izquierda -->'+imagen_product+
+                        '</div>';
+
+            $("#contain-products").append(products);
+            
+
+        }   ///cierre array principal
+            
+
+        }  //cierre de success
+    });   //cierre de ajax                      
+} //cierre de function
+
+/*
+function getServices(){
+    console.log('entrando a funcion de getServices');
+    $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/services.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            data: { getServices : true},
+            success: function(data){
+               
+            console.log(data);
+            if (data == 0){ 
+                    
+            }else{
+            for (var l = 0; l < data.arrayServices.length; l++) {
+                services = '<!-- BOX '+l+' -->'+
+                        '<div class="box-emergent-account-pres bg-white account-module open_window" data-page="serv_detail.html" data-serv_detail="'+data.arrayServices[l].id+'">'+  
+                             '<!-- imagen izquierda -->  ' +
+                                '<img src="images/money.svg" class="circle-neutro" >'+
+                                '<!-- div derecha -->'+
+                                '<div style="margin-left: 15px;">'+   
+                                    '<h3 class="tittle blue-account">'+data.arrayRecipes[l].name+'</h3>'+
+                                '</div>'+  
+                        '</div> <!-- end box '+l+' -->';
+            $("#contain-services").append(services);
+            
+        }   ///cierre array principal
+            
+        }  //cierre de success
+    });   //cierre de ajax                      
+} //cierre de function
+*/
+
+
+
+function getPrescriptions(){
+    // console.log('entrando a funcion de getPrescriptions');
+
+    $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/prescriptions_ios.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            data: { getPrescriptions : true,  patid : global_id },
+            success: function(data){
+            // console.log('data prescriptions ');
+            // console.log(data);
+
+             if (data.arrayRecipes[0].length == 0){  
+            var NoData = '<h4 style="margin-top: 50px; padding-left: 15px; color: #002130;"> Por el momento no cuentas con información</h4>';
+
+            $("#contain-prescriptions").append(NoData);
+
+                    
+            }else{
+            for (var f = 0; f < data.arrayRecipes.length; f++) {
+//data-page="prescription-detail.html"
+//myNavigator.pushPage("prescription-detail.html", {data-prescription: '+data.arrayRecipes[f].id+'}, { animation : "slide" } )"
+
+                prescriptions = '<!-- BOX '+f+' -->'+
+                        '<div class="box-emergent-account-pres bg-white account-module open_window" data-page="prescription-detail.html" data-prescription="'+data.arrayRecipes[f].id+'">'+  
+                             '<!-- imagen izquierda -->  ' +
+                                '<div class="circle-neutro">'+
+                                  '<img src="./img/recipe.svg" style=" width: 25px; height: 25px;">'+
+                                '</div>'+
+                                
+                                '<!-- div derecha -->'+
+                                '<div style="margin-left: 15px;">'+   
+                                    '<h3 class="tittle blue-account">'+data.arrayRecipes[f].item_date+'</h3>'+
+                                    '<h3 class="tittle blue-account">'+data.arrayRecipes[f].item_hour+'</h3>'+
+                                '</div>'+  
+
+                        '</div> <!-- end box '+f+' -->';
+
+            $("#contain-prescriptions").append(prescriptions);
+            
+
+        }   ///cierre array principal
+            
+
+            }
+        }  //cierre de success
+    });   //cierre de ajax                      
+} //cierre de function
+
+
+/* function gethistory RAE */
+function getHistoryae(){ 
+    // console.log('entrando a funcion de getHistoryae');
+
+    $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/history-ae_ios.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            data: { getHistoryae : true, patid : global_id },
+            success: function(data){
+            // $("#contain-payment-history").html("");
+            // console.log(data);
+            if (data == 0){ 
+              
+                    
+            }else{
+ 
+            for (var f = 0; f < data.arrayBinnEA.length; f++) {
+                BinnAE = '<div class="box-emergent-ea bg-white">'+
+                            '<div style="position: absolute;right: 20px;top: 15px;">'+
+                                 '<span class="subtitle-paydate-ea"> '+data.arrayBinnEA[f].date_pay+' </span>'+
+                            '</div>'+
+
+                            '<div class="binn-r">'+
+                                '<div class="contract-r">'+
+                                    '<img src="./img/icons/logo_ae.svg" class="circle-purple" style="background-color: #f4f9ff;">' +
+                                    '<div style="margin-left: 15px;">'+
+                                        '<h3 class="blue">'+data.arrayBinnEA[f].provenance+' #'+data.arrayBinnEA[f].id+'</h3>'+
+                                        '<span class="blue" style="line-height: 17px;">'+data.arrayBinnEA[f].notes+' </span>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>'+
+                           
+                            '<!--  Proceso de pago -->'+
+                            '<div class="pay-ea">   '+ 
+                                '<span class="span-ae">'+data.arrayBinnEA[f].typePayement+'</span>'+
+                                '<span class="span-aepay">Pagado: '+data.arrayBinnEA[f].mount+' '+data.arrayBinnEA[f].total_sur+'</span>'+
+                            '</div>'+
+
+                        '</div>';
+
+            $("#contain-payment-history").append(BinnAE);
+        
+            }   ///cierre array principal
+            
+            }
+        }  //cierre de success
+    });   //cierre de ajax                      
+} //cierre de function
+
+
+/*Fuction gethistory renew*/
+// Falta traerme las sesiones realizadas/total y los cuadros. Verificar error por qué te trae tantos días y dato de incluye correctamente
+function getHistoryrenew(){
+    // console.log('entrando a funcion de getHistoryrenew');
+
+    $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/history-renew_ios.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            data: { getHistoryrenew : true, patid : global_id },
+            success: function(data){
+                 // console.log(data);
+        // console.log(data);
+
+        // $("#contain-payment-history").html("");
+            if (data == 0){ 
+
+            }else{
+            for (var j = 0; j < data.arrayBinn.length; j++) {
+
+                    
+                if (data.arrayBinn[j].service_extra === null){
+                        service_ex = '';         
+                }else{
+                        service_ex = '<span class="span-r">Servicio Extra:  '+data.arrayBinn[j].service_extra+'</span>';
+                }
+
+                ses_complete = data.arrayBinn[j].ses_complete;
+                sessionsint = data.arrayBinn[j].sessionsint;
+                
+                if(ses_complete != null){
+                   
+                    if (ses_complete > sessionsint){
+                         ses_complete = sessionsint;
+                        var rect_green_ses =  rect_green.repeat(sessionsint);
+                        var rect_yellow_ses = '';
+
+                    }else{
+                        faltantes = sessionsint - ses_complete;
+
+                        var rect_green_ses =  rect_green.repeat(ses_complete);
+                        var rect_yellow_ses =  rect_yellow.repeat(faltantes);
+
+                    }
+
+                }else{
+                    ses_complete = 0;
+
+                    var rect_green_ses =  '';
+                    var rect_yellow_ses =  rect_yellow.repeat(sessionsint);
+
+                }
+
+
+
+                    for (var l = 0; l < data.arrayBinn[j].arrayPay.length; l++ ) {
+
+                    countPay1 = l + 1;
+                    if (data.arrayBinn[j].arrayPay[l] === null){
+                        
+                        payments = '<span class="span-r">Pagos: 0</span>'
+
+                    }else{
+                        payments = '<span class="span-r">Pagos: '+ countPay1+'</span>'
+                   
+                        var rect_green_pays =  rect_green.repeat(countPay1);
+
+                    }
+                            
+                    } //cierre de for l  
+
+                        /*
+                    $("#contain-payment-history").append('<div class="box-emergent-r bg-white" id="'+data.arrayBinn[j].id+'">'+
+                        '<div class="binn-r">'+
+                            '<div class="contract-r">'+
+                                '<img src="images/folder-h.png" class="circle-purple" >'+
+                                '<div style="margin-left: 15px;">'+
+                                    '<h3 class="purple">  Bitácora del servicio</h3>'+ 
+                                    '<h4 class="hour" >Contratado: '+data.arrayBinn[j].date_contract+'</h4>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="services-r">'+
+                        '<span class="span-r">Servicios contratados:  '+data.arrayBinn[j].service+'</span>'+
+                        '<span class="span-r">Paquete:  '+data.arrayBinn[j].serv_name+'  </span>'+
+                        '<span class="span-r">Incluye:  '+data.arrayBinn[j].incluye+'</span>'
+                        +service_ex+ 
+                        '</div>'+
+                        // '<!-- línea divisoria -->'+
+                         '<div class="pay" ></div>'+
+                        // '<!--  Proceso de sesiones cuadros -->'+
+                        // '<div class="sessions-r">'+
+                           // '<span class="span-r">Sesiones:'+ses_complete+' de '+sessionsint+' </span>'+
+                           
+                            // payments+
+                            // '<span class="span-r">Pagos: </span>'+ //'+data.arrayBinn[j].sessions+
+                        // '</div>'+
+                        // '<div class="barsrect-r">'+
+                        //     '<div class="barsrect-r-sessions" style="display: flex;">'+
+                                // rect_green_ses+
+                                // rect_yellow_ses+
+                            // '</div>'+
+                            
+                            // '<div class="barsbarsrect-r-pays" style="display: flex;">'+
+                                // rect_green_pays+
+                              
+                            // '</div>'+
+                        // '</div>'+
+                  '</div> <!-- End box 1 -->');
+                  */
+
+                for (var k = 0; k < data.arrayBinn[j].arrayPay.length; k++ ) {
+
+                    countPay = k + 1;
+                    if (data.arrayBinn[j].arrayPay[k] === null){
+                        boxPay = '';
+                      //  payments = '<span class="span-r">Pagos: 0</span>'
+
+                    }else{
+                        boxPay = '<div class="box-emergent-r bg-white" style="display: flex;justify- : space-between; align-items: center;">'+
+                            '<div style="position: absolute; left: 8px; top: 8px;">'+
+                                 '<span class="subtitle-paydate">'+ data.arrayBinn[j].serv_name +'</span>'+
+                            '</div>'+
+
+                                '<!-- imagen izquierda -->'+
+                                    '<img src="./img/icons/logo_renew.svg" class="circle-purple" style="background-color: #7d4b6e;">'+
+
+                                    '<!-- div centro -->'+
+                                    '<div class="payment-date">'+
+                                        '<h3 class="purple"> Pago </h3>'+
+                                        '<span class="subtitle-paydate">' +data.arrayBinn[j].arrayPay[k].date_pay+
+                                    '</div>'+
+                                '<div>  <!-- div derecha -->'+
+                                    '<h5 class="status-green" style="padding: 4px 20px 4px 20px;">'+data.arrayBinn[j].arrayPay[k].mount_pay+
+                                    '</h5>'+
+                                '</div>'+
+                            '</div>';
+
+                          //  payments = '<span class="span-r">Pagos: '+ countPay+'</span>'
+                        }
+
+                        $("#contain-payment-history").append(boxPay);
+
+                        //$("#sessions-r").append(payments);
+
+                    } //cierre de for k  arrayPay ARRAY HIJO
+
+            }  //cierre de for j arrayBinn ARRAY PRINCIPAL
+        }
+        }  //cierre de success
+    });   //cierre de ajax                      
+} //cierre de function
+
+
+    // function CONFIRMAR AE 
+    function confirmae(date_id){ 
+  
+        $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/confirm_ae.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variabl
+            data: { confirmae : true, date_id : date_id },
+            success: function(data){
+               
+                if (data === '0') {
+
+                    ons.notification.toast({message: 'Tu cita ha sido confirmada', timeout: 5500});
+                    setTimeout(function(){      
+                        getHomeae();
+                    }, 500);
+
+                }else{
+                    ons.notification.toast({message: 'Hubo un error al confirmar tu cita', timeout: 5500});
+                    setTimeout(function(){      
+                        getHomeae();
+                    }, 500);
+
+                }
+             
+            }  //cierre de success
+        });   //cierre de ajax    
+    } //cierre de function
+
+
+ //function CONFIRMAR No     AE 
+function confirmaeno(date_id){ 
+
+     $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/confirmaeno.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            data: { confirmae : true, date_id : date_id },
+            success: function(data){
+
+            if (data == 'yes') {
+
+                    ons.notification.toast({message: 'Tu cita ha sido cancelada', timeout: 5500});
+                    //limpiamos el home AE
+                    $("#contain-home-ae").html("");
+                    //refrescamos para que no aparezca el box de confirmar
+                    
+                    setTimeout(function(){      
+                        getHomeae();
+                    }, 500);
+                    //ocultamos el box de la cita
+                   // $("#cita_ae").css('display','none');
+
+                }else{
+                    ons.notification.toast({message: 'Hubo un error al cancelar tu cita', timeout: 5500});
+                    //limpiamos el home AE
+                    $("#contain-home-ae").html("");
+                    //refrescamos para que no aparezca el box de confirmar
+                    setTimeout(function(){      
+                        getHomeae();
+                    }, 500);
+
+                    //ocultamos el box de la cita
+                    //$("#cita_ae").css('display','none');
+
+            }
+
+        
+             
+        }  //cierre de success
+    });   //cierre de ajax    
+
+        
+} //cierre de function
+
+
+
+
+    // function CONFIRMAR Renew 
+    function confirmr(date_id){ 
+  
+        $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/confirm_renew.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            data: { confirmr : true, date_id : date_id },
+            success: function(data){
+
+             if (data == 'yes') {
+
+                    ons.notification.toast({message: 'Tu cita ha sido confirmada', timeout: 5500});
+                  
+                }else{
+                    ons.notification.toast({message: 'Hubo un error al confirmar tu cita', timeout: 5500});
+                   
+              }
+            
+            }  //cierre de success
+        });   //cierre de ajax    
+
+    } //cierre de function
+
+
+ //function CONFIRMAR No     RENEW 
+function confirmrno(date_id){ 
+
+     $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/confirmrno.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            data: { confirmrno : true, date_id : date_id },
+            success: function(data){
+
+              if (data == 'yes') {
+
+                    ons.notification.toast({message: 'Tu cita ha sido cancelada', timeout: 5500});
+                    //limpiamos el home RENEW
+                    $("#contain-home-r").html("");
+                  
+                }else{
+                    ons.notification.toast({message: 'Hubo un error al cancelar tu cita', timeout: 5500});
+                    //limpiamos el home RENEW
+                    $("#contain-home-r").html("");
+                   
+              }
+       
+        }  //cierre de success
+    });   //cierre de ajax    
+      
+} //cierre de function
+
+
+
+    // function CONFIRMAR AE 
+    function confirmae(date_id){ 
+  
+        $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/confirm_ae.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variabl
+            data: { confirmae : true, date_id : date_id },
+            success: function(data){
+               
+                if (data === '0') {
+
+                    ons.notification.toast({message: 'Tu cita ha sido confirmada', timeout: 5500});
+                   
+
+                }else{
+                    ons.notification.toast({message: 'Hubo un error al confirmar tu cita', timeout: 5500});
+                    
+                }
+             
+            }  //cierre de success
+        });   //cierre de ajax    
+
+    } //cierre de function
+
+
+ //function CONFIRMAR No     AE 
+function confirmaeno(date_id){ 
+
+     $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/confirmaeno.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            data: { confirmae : true, date_id : date_id },
+            success: function(data){
+
+            if (data == 'yes') {
+
+                    ons.notification.toast({message: 'Tu cita ha sido cancelada', timeout: 5500});
+                    //limpiamos el home AE
+                    $("#contain-home-ae").html("");
+                    //refrescamos para que no aparezca el box de confirmar
+                    
+                    
+                   
+                    //ocultamos el box de la cita
+                   // $("#cita_ae").css('display','none');
+
+                }else{
+                    ons.notification.toast({message: 'Hubo un error al cancelar tu cita', timeout: 5500});
+                    //limpiamos el home AE
+                    $("#contain-home-ae").html("");
+                    //refrescamos para que no aparezca el box de confirmar
+                         
+                    
+
+                    //ocultamos el box de la cita
+                    //$("#cita_ae").css('display','none');
+
+            }
+
+        
+             
+        }  //cierre de success
+    });   //cierre de ajax    
+
+        
+} //cierre de function
+
+
+
+
+
+
+
+    // function DATE CONFIRMAR Renew 
+    function dateconfirmr(date_id){ 
+  
+        $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/dateconfirm_renew.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            data: { confirmr : true, date_id : date_id },
+            success: function(data){
+
+             if (data == 'yes') {
+
+                    ons.notification.toast({message: 'Tu cita ha sido confirmada', timeout: 5500});
+                  
+                }else{
+                    ons.notification.toast({message: 'Hubo un error al confirmar tu cita', timeout: 5500});
+                   
+              }
+             
+            }  //cierre de success
+        });   //cierre de ajax    
+          
+          setTimeout(function(){      
+              getHomer();
+          }, 2000);
+
+    } //cierre de function
+
+
+ //function DATE CONFIRMAR No     RENEW 
+function dateconfirmrno(date_id){ 
+
+     $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/dateconfirmrno.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            data: { confirmrno : true, date_id : date_id },
+            success: function(data){
+
+              if (data == 'yes') {
+
+                    ons.notification.toast({message: 'Tu cita ha sido cancelada', timeout: 5500});
+                    //limpiamos el home RENEW
+                    $("#contain-home-r").html("");
+                  
+                }else{
+                    ons.notification.toast({message: 'Hubo un error al cancelar tu cita', timeout: 5500});
+                    //limpiamos el home RENEW
+                    $("#contain-home-r").html("");
+                   
+              }
+        //document.querySelector('#myNavigator').resetToPage("home.html");
+             
+        }  //cierre de success
+    });   //cierre de ajax    
+    
+     setTimeout(function(){      
+          getHomer();
+     }, 2000);
+
+        
+} //cierre de function
+
+
+
+    // function DATE CONFIRMAR AE 
+    function dateconfirmae(date_id){ 
+  
+        $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/dateconfirm_ae.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variabl
+            data: { confirmae : true, date_id : date_id },
+            success: function(data){
+               
+               
+                      
+               
+       // document.querySelector('#myNavigator').resetToPage("home.html");
+
+             
+            }  //cierre de success
+        });   //cierre de ajax    
+
+     setTimeout(function(){      
+                  getHomeae();
+     }, 2000);
+
+    } //cierre de function
+
+
+ //function DATE CONFIRMAR No     AE 
+function dateconfirmaeno(date_id){ 
+
+     $.ajax({
+        dataType: 'json',
+        async: true,
+            url: rootPath+'_sudiv3/ar_engine/dateconfirmaeno.php', //ruta a donde se enviaran los datos
+            type: 'POST', //por que metodo se enviaran las variables
+            data: { confirmae : true, date_id : date_id },
+            success: function(data){
+
+        }  //cierre de success
+    });   //cierre de ajax    
+          setTimeout(function(){      
+                  getHomeae();
+          }, 2000);
+} //cierre de function
+
+
+    </script>
+    
+    <!--<script type="text/javascript" src="includes/js/universal_links.js"></script>-->
+
+</body>
+</html>

@@ -13,6 +13,9 @@ def capacitor_pods
   pod 'CordovaPluginsStatic', :path => '../capacitor-cordova-ios-plugins'
 end
 
+# Especificar la ruta al archivo del proyecto Xcode
+project '../App.xcodeproj'
+
 target 'App' do
   capacitor_pods
   # Add your Pods here
