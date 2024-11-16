@@ -19,6 +19,7 @@
     "@capacitor/ios": "^6.1.2",
     "@capacitor/push-notifications": "^6.0.2",
     "@capacitor/splash-screen": "^6.0.2",
+    "capacitor": "github:ionic-team/capacitor#main",
     "pushwoosh-cordova-plugin": "^8.3.33"
   },
   "devDependencies": {
