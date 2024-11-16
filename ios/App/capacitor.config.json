@@ -15,5 +15,10 @@
 	"server": {
 		"androidScheme": "https",
 		"iosScheme": "capacitor"
-	}
+	},
+	"packageClassList": [
+		"CAPCameraPlugin",
+		"SplashScreenPlugin",
+		"CDVPlugin"
+	]
 }

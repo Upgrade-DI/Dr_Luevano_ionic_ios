@@ -13,16 +13,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@capacitor/android": "^5.7.4",
-    "@capacitor/camera": "latest",
-    "@capacitor/core": "^5.7.4",
-    "@capacitor/ios": "^5.7.4",
-    "@capacitor/splash-screen": "latest",
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/camera": "^6.1.0",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/ios": "^6.1.2",
+    "@capacitor/push-notifications": "^6.0.2",
+    "@capacitor/splash-screen": "^6.0.2",
     "pushwoosh-cordova-plugin": "^8.3.33"
   },
   "devDependencies": {
-    "@capacitor/cli": "^5.7.4",
-    "vite": "^2.9.13"
+    "@capacitor/cli": "^6.1.2",
+    "vite": "^5.4.11"
   },
   "author": "",
   "license": "ISC"
