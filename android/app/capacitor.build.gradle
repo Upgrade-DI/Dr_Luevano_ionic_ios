@@ -10,6 +10,7 @@ android {
 apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
     implementation project(':capacitor-camera')
+    implementation project(':capacitor-push-notifications')
     implementation project(':capacitor-splash-screen')
     implementation "androidx.work:work-runtime:2.7.1"
     implementation "androidx.annotation:annotation:1.4.0"
