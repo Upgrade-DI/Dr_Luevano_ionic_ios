@@ -14,6 +14,17 @@
   <link rel="stylesheet" type="text/css" media="only screen and (min-width:10px) and (max-width:380px)" href="./css/small.css" />
   <link href="./css/customico.css" rel="stylesheet" type="text/css" />
 
+  
+  <script defer src="./js/onsenui.js"></script>
+  <script src="./js/jquery-3.6.0.min.js"></script>
+  <script src="./js/jquery.cookie.js"></script>
+  <script type="module" defer src="./js/login.js"></script>
+  <script src="https://cdn.pushwoosh.com/webpush/v3/pushwoosh-web-notifications.js"></script>
+
+  <title>Dr. Luevano</title>
+</head>
+
+<body>
   <script>
     Pushwoosh.init({
       logLevel: 'debug', // Opcional, solo para desarrollo
@@ -37,16 +48,6 @@
       };
     }
   </script>
-  <script defer src="./js/onsenui.js"></script>
-  <script src="./js/jquery-3.6.0.min.js"></script>
-  <script src="./js/jquery.cookie.js"></script>
-  <script type="module" defer src="./js/login.js"></script>
-  <script src="https://cdn.pushwoosh.com/webpush/v3/pushwoosh-web-notifications.js"></script>
-
-  <title>Dr. Luevano</title>
-</head>
-
-<body>
 
   <!-- <div id="app"> -->
   <ons-navigator id="myNavigator" page="page_principal.html">
