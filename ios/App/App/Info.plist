@@ -56,8 +56,10 @@
 		<string>remote-notification</string>
 	</array>
 	<key>Pushwoosh_ALERT_TYPE</key>
-	<string>3</string>
+	<string>ALERT</string>
 	<key>Pushwoosh_LOG_LEVEL</key>
 	<string>DEBUG</string>
+	<key>NSPushNotificationUsageDescription</key>
+	<string>Esta aplicación utiliza notificaciones para mantenerte informado.</string>
 </dict>
 </plist>
