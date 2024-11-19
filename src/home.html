@@ -21,15 +21,29 @@
         <script src="./js/login.js" ></script>
         <script src="./js/main.js" ></script>    
         <!-- <script type="text/javascript" src="cordova.js"></script> -->
-        <script type="text/javascript" src="./js/push.js"></script>
+        <!-- <script type="text/javascript" src="./js/push.js"></script> -->
 
 
         <title>Dr. Luevano</title>
     </head>
 <body id="app">
-<script type="text/javascript">            
+    <script>
+        Pushwoosh.init({
+          logLevel: 'debug', // Opcional, solo para desarrollo
+          applicationCode: 'DE31D-FA23F',
+          defaultNotificationTitle: 'Armonia Estetica',
+          defaultNotificationImage: 'https://armoniaestetica.com/_images/general/logo2.png',
+        });
     
-</script>   
+        // Registra el dispositivo para recibir notificaciones
+        Pushwoosh.registerForPushNotifications()
+          .then(token => {
+            console.log('Pushwoosh device token:', token);
+          })
+          .catch(error => {
+            console.error('Error registering for Pushwoosh notifications:', error);
+          });
+      </script>
 <!-- # M A I N # -->    
 <ons-navigator id="myNavigator" page="account.html">
 
