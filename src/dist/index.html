@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">
+  <meta name="robots" content="follow" />
+  <meta name="author" content="Upgrade Diseño Interactivo" />
+  <meta name="copyright" content="2024" />
+  <link rel="stylesheet" type="text/css" media="only screen and (min-width:10px) and (max-width:380px)" href="data:text/css;base64,LyogLSAtIC0gLSAtIC0gLSAtIC0gLSAtIC0gLSAtIC0KQ1NTIHNlY3VuZGFyaW8KRGVzYXJyb2xsYWRvIHBvcjogVXBncmFkZSBEaXNlw7FvIEludGVyYWN0aXZvClBhcmE6CkZlY2hhOiAyNy8wOC8yMDIwClVsdGltYSBtb2RpZmljYWNpw7NuIHBvcjogU2VsZW5lIEhlcnJyZXJhCkZlY2hhOgpfIF8gXyBfIF8gXyBfIF8gXyBfIF8gXyBfIF8gXyAqLwoKCi5zay10aHJlZS1ib3VuY2UgewogIHdpZHRoOiA1MCU7CiAgdG9wOiA0JTsKfQoKLnBheW1lbnQtZGF0ZSB7CiAgICBwYWRkaW5nOiA1cHggMjVweCA1cHggMjVweDsKfQoKICAgCi5oZWFkLXRpdHRsZXsKICAgIHBhZGRpbmc6IDQwcHggMjBweCAyMHB4IDMwcHg7Cn0KCi5wcm9maWxlLW1haWx7CiAgICBmb250LXNpemU6IDAuOWVtOwp9CgoKCmlucHV0W3R5cGU9cmFuZ2VdLnJhbmdlX2FlIHsKICB3aWR0aDogNzUlOwogIG1hcmdpbi1sZWZ0OiAxMHB4Owp9CgoKaW5wdXRbdHlwZT1yYW5nZV0ucmFuZ2VfcmVuZXcgewogIHdpZHRoOiA3NSU7CiAgbWFyZ2luLWxlZnQ6IDEwcHg7Cn0=" />
+
+  <script>
+    Pushwoosh.init({
+      logLevel: 'debug', // Opcional, solo para desarrollo
+      applicationCode: 'DE31D-FA23F',
+      defaultNotificationTitle: 'Armonia Estetica',
+      defaultNotificationImage: 'https://armoniaestetica.com/_images/general/logo2.png',
+    });
+
+    // Registra el dispositivo para recibir notificaciones
+    Pushwoosh.registerForPushNotifications()
+      .then(token => {
+        console.log('Pushwoosh device token:', token);
+      })
+      .catch(error => {
+        console.error('Error registering for Pushwoosh notifications:', error);
+      });
+
+    if (!window.setImmediate) {
+      window.setImmediate = function(fn) {
+        setTimeout(fn, 0);
+      };
+    }
+  </script>
+  <script defer src="./js/onsenui.js"></script>
+  <script src="./js/jquery-3.6.0.min.js"></script>
+  <script src="./js/jquery.cookie.js"></script>
+  <script src="https://cdn.pushwoosh.com/webpush/v3/pushwoosh-web-notifications.js"></script>
+
+  <title>Dr. Luevano</title>
+  <script type="module" crossorigin src="/assets/index-D87l_bWD.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-C4H8-79v.css">
+</head>
+
+<body>
+
+  <!-- <div id="app"> -->
+  <ons-navigator id="myNavigator" page="page_principal.html">
+
+
+    <!-- 1  P R I N C I P A L-->
+    <template id="page_principal.html" style="background-color: #FFF;">
+      <ons-page id="page_principal">
+        <script type="text/javascript">
+          // Si es iPhone X agregamos área segura a los nuevos elementos. 
+          // if (ons.platform.isIPhoneX()) {
+          //   $('#login-social').not('.iphonex').addClass('iphonex');
+          // }
+          // validate_phpSession();
+        </script>
+        <div class="box-emergent-white bg-white" id="login-white">
+
+          <div class='sk-three-bounce'>
+            <img class='sk-bounce-1 sk-child' src="/assets/logotipo_r-Crj06zgz.svg" style="width: 100%;" />
+            <img class='sk-bounce-2 sk-child' src="/assets/logotipo_ae-D61FbAR8.svg" style="width: 75%;" />
+          </div>
+          <!-- <div style="padding-bottom: 30px; display: flex; justify-content: center;"> -->
+
+          <span style="background-color: rgb(255, 255, 255);  margin-top: 15px; color: rgb(209 200 208); ">Bienvenido
+          </span>
+
+          <h2 style="background-color: rgb(255, 255, 255);  text-align: center; color: rgb(75 51 72);">Ingresa a tu
+            espacio</h2>
+          <span class="btn-pink-large" id="push-button-login" style="background-color: #6574a7; ">Ingresar </span>
+
+          <span style="background-color: rgb(255, 255, 255); margin-top: 15px; color: rgb(209 200 208); ">Terminos y
+            condiciones </span>
+          <!-- <img src="images/logo_ae.svg" style="width: 26%; position: absolute; bottom: 0;"> -->
+          <span
+            style="background-color: rgb(255, 255, 255); color: #6574a7ab; position: absolute;bottom: 50px;justify-content: center;align-items: center;text-align: center;">¿Tienes
+            problemas para ingresar a nuestra app? Escríbenos al <a
+              href="https://api.whatsapp.com/send?phone=+526144580049&amp;text=Hola,%20tengo%20problemas%20para%20ingresar%20a%20la%20app%20Dr.%20Luevano"
+              style="font-size: 0.9em; text-decoration: underline; color: #4b3348;">614 458 0049</a></span>
+
+        </div>
+
+      </ons-page>
+    </template>
+
+
+    <!--  L O G I N (correo, contraseña, recuperar ingreso)-->
+    <template id="page_login.html">
+      <ons-page id="page_login">
+        <script type="text/javascript">
+          validate_phpSession();
+
+          var createAlertDialog = function () {
+            var dialog = document.getElementById('my-alert-dialog');
+
+            if (dialog) {
+              dialog.show();
+            } else {
+              ons.createElement('alert-dialog.html', { append: true })
+                .then(function (dialog) {
+                  dialog.show();
+                });
+            }
+          };
+
+          var hideAlertDialog = function () {
+            document
+              .getElementById('my-alert-dialog')
+              .hide();
+          };
+
+        </script>
+        <style>
+          input:focus {
+            border-bottom: 2px solid #3ad29f;
+          }
+        </style>
+        <div class="space_element-index"> </div>
+
+        <div class="box-emergent bg-white" id="login-form">
+          <!--<div class="pink_rectangule" position="left">   </div> -->
+          <span class="error_msg error_login"></span>
+          <form id="login_form" name="login_form" action="#" autocomplete="off" method="POST">
+            <!-- <form id="login_form" name="login_form" action="home.html"  autocomplete="off" > -->
+
+            <p class="p_fontae">Usuario</p>
+            <input name="login_user" id="login_user" form="login_form" class="white-off" type="email" value=""
+              placeholder="Correo" autocomplete="off">
+            <p class="p_fontae">Contraseña</p>
+            <input name="login_password" type="password" id="login_password" class="white-off" value=""
+              placeholder="************" autocomplete="off">
+
+            <div style="padding: 10px; margin-left: -13px;">
+              <section style="display:none;">
+                <input type="checkbox" id="saveSession" name="saveSession" value="Yes"><label for="saveSession"
+                  style="display:inline-block;"><span></span>Recordarme</label>
+              </section>
+              <!-- <section>
+                    <span id="push-recover" class="anchor" data-request="0" style="font-size:.8em;">¿Recuperar acceso?</span>
+                  </section> -->
+            </div>
+
+            <div style="display: flex;justify-content: center;">
+              <button id="submit" class="btn-pink-medium" onclick="validate_phpSession();">INGRESAR</button>
+              <!-- <button id="submit" class="btn-pink-medium" >INGRESAR</button> -->
+
+
+            </div>
+            <br>
+            <br>
+
+            <!--  <div style= "display: flex; text-align: center; justify-content: space-evenly;">
+              <p class="p_font">¿Eres nuevo?</p>
+              <p class="p_font" style="color: #52d7aa;" onclick="createAlertDialog();">Solicita acceso aquí</p>
+              </div> -->
+
+
+
+
+            <span> <span class="btn-back anchor" id="push-return" onclick="myNavigator.popPage()">Regresar</span></span>
+          </form>
+          <!-- <span class="login-info">No tengo una cuenta. <span class="anchor" id="push-button">Registrarme</span></span> -->
+
+          <section style="display: none;">
+            <span id="forget_pass" data-request="0">¿Olvidaste tu contraseña?</span>
+          </section>
+
+        </div>
+
+        <template id="alert-dialog.html">
+          <ons-alert-dialog id="my-alert-dialog" modifier="rowfooter">
+            <div class="alert-dialog-title">Te invitamos a adquirir tu acceso a los siguientes números </div>
+            <div class="alert-dialog-content">
+
+              <img src="data:image/svg+xml,%3csvg%20id='Capa_1'%20data-name='Capa%201'%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20215.09%20295.16'%3e%3cdefs%3e%3cstyle%3e.cls-1{fill:%231d8bae;stroke:%231d8bae;stroke-miterlimit:10;stroke-width:0.25px;}%3c/style%3e%3c/defs%3e%3ctitle%3elogo_ae-1%3c/title%3e%3cpath%20class='cls-1'%20d='M219.1,166.64c-16.75,22.45-38,59.86-37,91.89-11.92-23.35,20-72.44,37-91.89'%20transform='translate(-44.38%20-10.67)'/%3e%3cpath%20class='cls-1'%20d='M44.49,21.17C58,42.42,91.85,83.43,118.26,106.78c3.55,2.69,9,11.07,9.67,14.66-2.26-2.69-7.09-11.07-11.6-14.66C92.17,86.12,54.48,40.93,44.49,21.17'%20transform='translate(-44.38%20-10.67)'/%3e%3cpath%20class='cls-1'%20d='M135,48.71c-17.4-13.47-35.44-26-40.92-32C99.58,26.26,119.23,40,138.56,53.5A26.73,26.73,0,0,1,135,48.71'%20transform='translate(-44.38%20-10.67)'/%3e%3cpath%20class='cls-1'%20d='M151.45,62.18c5.15,3.59,9.66,6.58,14.49,10.18-3.86-3.3-8.05-6.59-12.88-10.18h-1.61'%20transform='translate(-44.38%20-10.67)'/%3e%3cpath%20class='cls-1'%20d='M123.74,29.85a2.39,2.39,0,0,0,0,2.1c1.61,1.49,5.16,1.49,6.77,3.29a18.44,18.44,0,0,1,1.28,3.89c-1,3.29,2.26,2.4,2.58,3.29s-1.29,2.1,1.29,3.6a48.24,48.24,0,0,1,4.19,2.39c4.83,3.29,1.61,5.69,5.48,8.68,1.28,1.2,4.18,2.39,22.55-4.49,1,.3,4.83,9.88-.33,20.65,6.13-7.78,4.19-18.85,1.61-23-10.63,3.59-20,9-23.83,4.78-2.58-3.29.32-3.89-3.87-7.18-1.29-1.2-2.9-2.39-3.54-2.39-2.58-1.2.32-3.3,0-3.89-.33-1.2-4.19-.3-4.19-2.7-.32-1.49-1-3.59-2.26-4.49-2.57-1.19-4.19-1.19-5.15-2.09a1.29,1.29,0,0,1,0-1.5c1.61-3.29,1.61-14.37.32-20a36,36,0,0,1-2.9,19.15'%20transform='translate(-44.38%20-10.67)'/%3e%3cpath%20class='cls-1'%20d='M204.92,248.65c-1.28-40.11,38-64.05,54.45-85.6-17.08,18.26-60.57,48.19-58,87.1,1.61-.3,2.9-.6,3.54-1.5'%20transform='translate(-44.38%20-10.67)'/%3e%3cpath%20class='cls-1'%20d='M99.26,305.82h0c1.29-70.34,12.24-94.28,14.82-110.75a42.39,42.39,0,0,0,0-15.56c-3.55-12.57-10.31-11.37-14.5-20.95-4.83-10.78,9.66-21.85,13.21-25.74,1.61-2.1,6.76-5.69,10.31-14.67-5.48,9-8.06,10.78-10.63,13.17-2.9,3.29-20.94,14.67-15.79,28.14,2.58,6.28,10.31,12,12.89,16.16,2.57,4.49,3.54,7.18,2.57,12.27-7.41,32-15.78,42.5-12.88,117.93'%20transform='translate(-44.38%20-10.67)'/%3e%3c/svg%3e" style="width: 15%;">(614) 458 0049
+              <br>
+              <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'?%3e%3csvg%20width='31px'%20height='43px'%20viewBox='0%200%2031%2043'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3c!--%20Generator:%20Sketch%2052.5%20(67469)%20-%20http://www.bohemiancoding.com/sketch%20--%3e%3ctitle%3elogo_renew%3c/title%3e%3cdesc%3eCreated%20with%20Sketch.%3c/desc%3e%3cg%20id='Symbols'%20stroke='none'%20stroke-width='1'%20fill='none'%20fill-rule='evenodd'%3e%3cg%20id='Menú'%20transform='translate(-305.000000,%20-8.000000)'%3e%3cg%20id='Iconos'%3e%3cg%20transform='translate(34.000000,%208.000000)'%3e%3cg%20id='logo_renew'%20transform='translate(238.000000,%200.000000)'%3e%3crect%20id='Rectangle'%20x='0'%20y='0'%20width='97'%20height='62'%3e%3c/rect%3e%3cpath%20d='M54.9966727,32%20C54.9966727,32%2048.2582041,31.4236956%2044.7928331,20.9640509%20C44.7928331,20.9640509%2042.4499468,14.2699678%2045.8191811,7.39236257%20C49.1884154,0.514757309%2049.1884154,0%2049.1884154,0%20C49.1884154,0%2047.8718771,3.68834802%2051.2535736,8.13652259%20C54.6228079,12.5846972%2057.6653556,18.4741922%2057.9430837,22.512799%20C58.2208119,26.5659533%2057.5202604,29.798853%2054.9966727,32'%20id='Path'%20fill='%23F1DADC'%20fill-rule='nonzero'%3e%3c/path%3e%3cpath%20d='M53.9903866,30.9426002%20C53.9903866,30.9426002%2049.2269149,29.0663376%2045.180225,30.6080894%20C41.1344972,32.1648513%2041.0815804,36.52743%2039.711517,38.4036926%20C38.3414537,40.2799553%2036.0179263,42.5057388%2035,43%20C35,43%2038.7455454,42.1122597%2041.2778535,42.0114776%20C43.8101616,41.8946133%2051.4455709,41.2406017%2052.8156343,36.034241%20C54.1856976,30.8257359%2053.9903866,30.9426002%2053.9903866,30.9426002'%20id='Path'%20fill='%234F3249'%20fill-rule='nonzero'%3e%3c/path%3e%3cg%20id='Group'%20opacity='0.8'%20transform='translate(33.000000,%2028.000000)'%20fill='%23D8CBD1'%20fill-rule='nonzero'%3e%3cg%20id='Path'%3e%3cpath%20d='M20.9934667,2.68434783%20C20.9934667,2.68434783%2016.562,-0.0939130435%2012.4096,0.0652173913%20C8.25626667,0.224347826%207.434,3.79826087%205.6616,5.42608696%20C3.8892,7.05391304%201.14146667,8.68173913%200.0784,8.84086957%20C0.0784,8.84086957%203.77533333,9.33652174%206.1432,10.2208696%20C8.51106667,11.1234783%2015.1704,14.2904348%2018.3484,8.75217391%20C20.6892,4.63043478%2020.9934667,2.68434783%2020.9934667,2.68434783'%3e%3c/path%3e%3c/g%3e%3c/g%3e%3cpath%20d='M58.7808389,28.3634578%20C58.7808389,28.3634578%2059.2800896,27.6588535%2059.8180345,28.2117439%20C60.4324243,28.8196178%2059.3055712,29.4407285%2059.1649505,29.5517139%20C59.0111171,29.6626993%2058.4609032,29.7869214%2058.4609032,29.7869214%20C58.4609032,29.7869214%2057.7955502,29.8979068%2057.4878834,31.2653685%20C57.206642,32.4943532%2055.656983,34.6214028%2055.35026,34.8841021%20C55.0558059,35.1468014%2054.7613519,35.0358161%2055.2992968,33.7793396%20C55.8495107,32.5208268%2056.8480121,30.4630157%2058.7808389,28.3634578'%20id='Path'%20fill='%23D1BD86'%20fill-rule='nonzero'%3e%3c/path%3e%3cpath%20d='M59,29%20C59,29%2062.320331,25.0634361%2061.9747862,18.9441997%20C61.9747862,18.9441997%2061.7499606,17%2060.697821,17%20C59.6456814,17%2060.98356,19.1192364%2061.1031716,19.5503671%20C61.2238908,19.9638767%2062.500856,22.7527166%2059,29'%20id='Path'%20fill='%23D1BD86'%20fill-rule='nonzero'%3e%3c/path%3e%3cpath%20d='M59,29%20C59,29%2062.8145143,25.9344097%2063.9657654,19.4526825%20C63.9657654,19.4526825%2064.2246643,17.360231%2063.3185182,17.0286329%20C62.4113111,16.6983883%2063.0596194,19.3241036%2063.0596194,19.8005221%20C63.0585583,20.278294%2063.505265,23.583447%2059,29'%20id='Path'%20fill='%23D1BD86'%20fill-rule='nonzero'%3e%3c/path%3e%3c/g%3e%3c/g%3e%3c/g%3e%3c/g%3e%3c/g%3e%3c/svg%3e" style="width: 15%; ">(614) 215 5890 y (614) 458 0049
+            </div>
+            <div class="alert-dialog-footer">
+              <!-- <ons-alert-dialog-button onclick="hideAlertDialog()">Cancelar</ons-alert-dialog-button> -->
+              <ons-alert-dialog-button onclick="hideAlertDialog()">Ok</ons-alert-dialog-button>
+            </div>
+          </ons-alert-dialog>
+        </template>
+
+
+
+        <span
+          style="background-color: transparent; color: #6574a7ab; position: absolute;bottom: 50px;justify-content: center;align-items: center;text-align: center;">¿Tienes
+          problemas para ingresar a nuestra app? Escríbenos al <a
+            href="https://api.whatsapp.com/send?phone=+526144580049&amp;text=Hola,%20tengo%20problemas%20para%20ingresar%20a%20la%20app%20Dr.%20Luevano"
+            style="font-size: 0.9em; text-decoration: underline;  color: #4b3348;">614 294 1005</a></span>
+      </ons-page>
+    </template>
+
+
+
+
+  </ons-navigator>
+  <ons-modal direction="up">
+    <!--<div style="text-align: center">
+            <p class="p_font">
+              <ons-icon icon="md-spinner" size="28px" spin></ons-icon> Cargando...
+            </p>
+          </div>-->
+    <div class="circle_progress_container" style="text-align: center;"><ons-progress-circular
+        indeterminate></ons-progress-circular></div>
+
+  </ons-modal>
+
+  <footer>
+  </footer>
+  <script type="text/javascript">
+
+    // ons.disableAutoStatusBarFill();
+
+
+    // $(document).on("init", '#dashboard_page', function (e) {
+    //       $(".tile_handler").on("click", ".imalink", function () {
+    //           var link = $(this).data().href;
+    //           if(link != null){
+    //               document.querySelector("#myNavigator").pushPage('page_login.html', { animation : 'slide' });
+    //           }
+    //       })
+    // });
+
+
+    $(document).ready(function () {
+
+      if (ons.platform.isIPhoneX()) { // Utility function
+        // Add empty attribute to the <html> element
+        // document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
+      }
+
+      validate_phpSession();
+
+      // PRINCIPAL A LOGIN
+      $('#push-button-login').click(function (e) {
+        var options = {
+          animation: 'slide', // What animation to use
+          onTransitionEnd: function () { } // Called when finishing transition animation
+        };
+        document.querySelector('#myNavigator').pushPage("page_login.html", options);
+
+      });
+
+
+    }); // Document ready
+
+  </script>
+  <script src="./js/login.js"></script>
+  <script type="text/javascript">
+    /*
+      var app = {
+        // Application Constructor
+        initialize: function() {
+          this.bindEvents();
+        },
+
+        bindEvents: function() {
+          document.addEventListener('deviceready', this.onDeviceReady, false);
+        },
+        onDeviceReady: function() {
+
+        app.receivedEvent('deviceready');
+            
+        if (!ons.platform.isIPhoneX()) {
+          StatusBar.hide();
+        }   
+          
+        
+
+        },
+        // Update DOM on a Received Event
+        receivedEvent: function(id) {
+          "use strict";
+          
+          console.log('Received Event: ' + id);
+        }
+        };
+
+        app.initialize();
+    */
+
+  </script>
+  <!-- <script type="text/javascript" src="https://debug1.phonegap.com/target/target-script-min.js#c2e41c10-ae44-11e7-bf7a-062ae262fc2e"></script> -->
+</body>
+
+</html>
