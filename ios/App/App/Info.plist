@@ -49,5 +49,15 @@
 	<string>Esta aplicación necesita acceder a tus fotos para que puedas adjuntar imágenes a tus notas médicas</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+
+	<!-- Pushwoosh configurations -->
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
+	<key>Pushwoosh_ALERT_TYPE</key>
+	<string>3</string>
+	<key>Pushwoosh_LOG_LEVEL</key>
+	<string>DEBUG</string>
 </dict>
 </plist>
