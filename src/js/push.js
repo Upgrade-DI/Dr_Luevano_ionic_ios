@@ -1,144 +1,75 @@
-var theToken = 'not_set';  
+import PushNotifications from '@capacitor/push-notifications';
 
-function onPushwooshInitialized(pushNotification) {
+let theToken = 'not_set';
 
-    //if you need push token at a later time you can always get it from Pushwoosh plugin
-    pushNotification.getPushToken(function(token) {
-      console.info('push token: ' + token);
+// Inicializa Pushwoosh con los datos de tu app
+const PUSHWOOSH_CONFIG = {
+  appCode: "DE31D-FA23F", // Tu código de Pushwoosh
+  fcmSenderId: "YOUR_FIREBASE_SENDER_ID", // Tu sender ID de Firebase
+};
+
+async function onPushwooshInitialized() {
+  console.log("Initializing Pushwoosh");
+
+  try {
+    // Inicializa Pushwoosh con tu appCode y fcmSenderId
+    PushNotifications.register()
+      .then(() => {
+        console.log("Pushwoosh SDK initialized successfully.");
+      })
+      .catch((err) => {
+        console.error("Error initializing Pushwoosh SDK:", err);
+      });
+
+    // Solicita permisos para notificaciones push
+    const permissionStatus = await PushNotifications.requestPermissions();
+
+    if (permissionStatus.receive === 'granted') {
+      PushNotifications.register();
+
+      // Obtener token del dispositivo
+      PushNotifications.addListener('registration', (token) => {
+        console.info('Push token: ', token.value);
+        theToken = token.value;
+
+        // Sube el token a tu servidor
+        uploadToken();
+      });
+
+      // Manejo de notificaciones
+      PushNotifications.addListener('pushNotificationReceived', (notification) => {
+        console.log('Push Notification Received:', notification);
+      });
+
+      // Manejo de acciones de notificación
+      PushNotifications.addListener('pushNotificationActionPerformed', (notification) => {
+        console.log('Push Notification Action Performed:', notification);
+      });
+
+    } else {
+      console.error('Permiso para notificaciones denegado.');
     }
-    );
-    
-    //and HWID if you want to communicate with Pushwoosh API
-    pushNotification.getPushwooshHWID(function(token) {
-      console.info('Pushwoosh HWID: ' + token);
-    }
-    ); 
-    
-    //settings tags
-    pushNotification.setTags({
-      tagName: "tagValue",
-      intTagName: 10
-    },
-    function(status) {
-     console.log('setTags success: ' + JSON.stringify(status));
-   },
-   function(status) {
-     console.log('setTags failed');
-   }
-   );
-    
-    pushNotification.getTags(function(status) {
-       console.log('getTags success: ' + JSON.stringify(status));
-     },
-     function(status) {
-       console.log('getTags failed');
-     }
-     );
-    
-    //start geo tracking.
-    //pushNotification.startLocationTracking();
+  } catch (error) {
+    console.error('Error inicializando Pushwoosh: ', error);
   }
+}
 
-  function initPushwoosh() {
-    var pushNotification = cordova.require("pushwoosh-cordova-plugin.PushNotification");
-    
-    //set push notifications handler
-    document.addEventListener('push-notification',
-      function(event) {
-        var message = event.notification.message;
-        var userData = event.notification.userdata;
-
-	  //dump custom data to the console if it exists
-	  if (typeof(userData) != "undefined") {
-		console.warn('user data: ' + JSON.stringify(userData));
-	  }
-	}
-	);
-    
-    //initialize Pushwoosh with projectid: "GOOGLE_PROJECT_ID", appid : "PUSHWOOSH_APP_ID". This will trigger all pending push notifications on start.
-    pushNotification.onDeviceReady({
-    	projectid: "578524963473",
-     	appid: "96698-47E03",
-     	serviceName: "dr-luevano-ios"
-   	});
-	  
-	  
-    //register for push notifications
-    pushNotification.registerDevice(
-      function(status) {
-		  
-		theToken = status.pushToken;
-		the_token = theToken;
-		 
-		// Registro de Token
-	//if( the_token != 'not_set' && token_sent == 0){
-    if(the_patient != null && the_token != 'not_set' && token_sent == 0){
-
-			uploadToken();
-		}else{
-			console.log('Token no enviado: '+token_sent)
-		}
-		  
-        //document.getElementById("pushToken").innerHTML = status.pushToken + "<p>";
-        onPushwooshInitialized(pushNotification);
-		  console.log(status.pushToken);
-      },
-      function(status) {
-        console.log("failed to register: " + status);
-        console.warn(JSON.stringify(['failed to register ', status]));
-      }
-      );
+async function uploadToken() {
+  if (theToken !== 'not_set') {
+    console.log("Uploading token to the server:", theToken);
+    // Agrega aquí tu lógica para enviar el token al servidor
+  } else {
+    console.log("Token no disponible para cargar.");
   }
+}
 
-  var app = {
-    // Application Constructor
-    initialize: function() {
-      this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-      document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicity call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-      initPushwoosh();
-      app.receivedEvent('deviceready');
-		
-		/*universalLinks.subscribe('ul_feedEvent', function (eventData) {
-			// do some work
-			// in eventData you'll see url и and parsed url with schema, host, path and arguments
-			console.log('Did launch application from the link: ' + JSON.stringify(eventData));
-			alert('Did launch application from the link: ' + JSON.stringify(eventData));
-		});		
-		console.log('universal');
-		*/
-		
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-      "use strict";
-		/*var parentElement = document.getElementById(id);
-      	var listeningElement = parentElement.querySelector('.listening');
-      	var receivedElement = parentElement.querySelector('.received');
+// Inicializa Pushwoosh cuando la app esté lista
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOM Content Loaded. Initializing Pushwoosh...');
+  onPushwooshInitialized();
+});
 
-      	listeningElement.setAttribute('style', 'display:none;');
-      	receivedElement.setAttribute('style', 'display:block;');
-
-      	console.log('Received Event: ' + id);*/
-    }
-  };
-
-  app.initialize();
-
-	$(document).on('click','#profile',function(){
-		console.log(theToken);
-    // ons.notification.toast({message: theToken, timeout: 3500});
-
-		//alert("the_token" + theToken);
-	});
+// Para debuggear el token desde un botón (opcional)
+document.querySelector('#profile')?.addEventListener('click', () => {
+  console.log('Push Token:', theToken);
+});
