@@ -1,4 +1,3 @@
-source 'https://github.com/Pushwoosh/pushwoosh-podspec.git'
 source 'https://cdn.cocoapods.org/'
 
 platform :ios, '13.0'
@@ -24,8 +23,8 @@ target 'App' do
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
 
-  # Pushwoosh
-  pod 'Pushwoosh', '~> 6.7.9'
+  # Pushwoosh (usando el repositorio directo desde GitHub)
+  pod 'Pushwoosh', :git => 'https://github.com/Pushwoosh/pushwoosh-ios-sdk.git', :branch => 'master'
 end
 
 post_install do |installer|
