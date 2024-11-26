@@ -19,9 +19,7 @@
 		88E1E5842CF60F9B00C69EC5 /* PushwooshXCFramework.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E5602CF60F9B00C69EC5 /* PushwooshXCFramework.podspec */; };
 		88E1E5852CF60F9B00C69EC5 /* Pushwoosh.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E55B2CF60F9B00C69EC5 /* Pushwoosh.podspec */; };
 		88E1E5862CF60F9B00C69EC5 /* PushwooshVisionXCFramework.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E55F2CF60F9B00C69EC5 /* PushwooshVisionXCFramework.podspec */; };
-		88E1E5872CF60F9B00C69EC5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E57A2CF60F9B00C69EC5 /* Info.plist */; };
 		88E1E5882CF60F9B00C69EC5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E5102CF60F9B00C69EC5 /* Info.plist */; };
-		88E1E5892CF60F9B00C69EC5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E5742CF60F9B00C69EC5 /* PrivacyInfo.xcprivacy */; };
 		88E1E58A2CF60F9B00C69EC5 /* Pushwoosh_mac.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E55D2CF60F9B00C69EC5 /* Pushwoosh_mac.podspec */; };
 		88E1E58B2CF60F9B00C69EC5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E4F92CF60F9B00C69EC5 /* PrivacyInfo.xcprivacy */; };
 		88E1E58C2CF60F9B00C69EC5 /* Pushwoosh.watchOS.dynamic-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E5472CF60F9B00C69EC5 /* Pushwoosh.watchOS.dynamic-Info.plist */; };
@@ -48,13 +46,11 @@
 		88E1E5A12CF60F9B00C69EC5 /* PWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4732CF60F9B00C69EC5 /* PWAppDelegate.m */; };
 		88E1E5A22CF60F9B00C69EC5 /* PWDataManager.ios.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3B62CF60F9B00C69EC5 /* PWDataManager.ios.m */; };
 		88E1E5A32CF60F9B00C69EC5 /* PWMessageDeliveryRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4192CF60F9B00C69EC5 /* PWMessageDeliveryRequest.m */; };
-		88E1E5A42CF60F9B00C69EC5 /* PWGeozonesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5782CF60F9B00C69EC5 /* PWGeozonesManager.m */; };
 		88E1E5A52CF60F9B00C69EC5 /* PWMergeUserRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5282CF60F9B00C69EC5 /* PWMergeUserRequestTest.m */; };
 		88E1E5A62CF60F9B00C69EC5 /* PWPushRuntime.ios.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4E52CF60F9B00C69EC5 /* PWPushRuntime.ios.m */; };
 		88E1E5A72CF60F9B00C69EC5 /* PWUtils.mac.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4D52CF60F9B00C69EC5 /* PWUtils.mac.m */; };
 		88E1E5A82CF60F9B00C69EC5 /* PWBusinessCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3BA2CF60F9B00C69EC5 /* PWBusinessCase.m */; };
 		88E1E5A92CF60F9B00C69EC5 /* PWPushManagerJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4992CF60F9B00C69EC5 /* PWPushManagerJSBridge.m */; };
-		88E1E5AA2CF60F9B00C69EC5 /* PWRegionMonitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E56F2CF60F9B00C69EC5 /* PWRegionMonitoring.m */; };
 		88E1E5AB2CF60F9B00C69EC5 /* PushwooshTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5112CF60F9B00C69EC5 /* PushwooshTest.m */; };
 		88E1E5AC2CF60F9B00C69EC5 /* PWCombinedSetTagsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E40C2CF60F9B00C69EC5 /* PWCombinedSetTagsRequest.m */; };
 		88E1E5AD2CF60F9B00C69EC5 /* PWVersionTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E46E2CF60F9B00C69EC5 /* PWVersionTracking.m */; };
@@ -99,7 +95,6 @@
 		88E1E5D42CF60F9B00C69EC5 /* PWGetConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3EF2CF60F9B00C69EC5 /* PWGetConfigRequest.m */; };
 		88E1E5D52CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS9.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E44F2CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS9.m */; };
 		88E1E5D62CF60F9B00C69EC5 /* PWChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3B12CF60F9B00C69EC5 /* PWChannel.m */; };
-		88E1E5D72CF60F9B00C69EC5 /* PWGeozonesInternalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5762CF60F9B00C69EC5 /* PWGeozonesInternalManager.m */; };
 		88E1E5D82CF60F9B00C69EC5 /* PWSetTagsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4102CF60F9B00C69EC5 /* PWSetTagsRequest.m */; };
 		88E1E5D92CF60F9B00C69EC5 /* PWLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4BA2CF60F9B00C69EC5 /* PWLoadingViewController.m */; };
 		88E1E5DA2CF60F9B00C69EC5 /* PWZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4EC2CF60F9B00C69EC5 /* PWZipArchive.mm */; };
@@ -124,7 +119,6 @@
 		88E1E5ED2CF60F9B00C69EC5 /* PWNetworkModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3E62CF60F9B00C69EC5 /* PWNetworkModule.m */; };
 		88E1E5EE2CF60F9B00C69EC5 /* PWRichMediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4922CF60F9B00C69EC5 /* PWRichMediaManager.m */; };
 		88E1E5EF2CF60F9B00C69EC5 /* PWCacheTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5182CF60F9B00C69EC5 /* PWCacheTest.m */; };
-		88E1E5F02CF60F9B00C69EC5 /* PWRemoveLocationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5672CF60F9B00C69EC5 /* PWRemoveLocationRequest.m */; };
 		88E1E5F12CF60F9B00C69EC5 /* ioapi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4EA2CF60F9B00C69EC5 /* ioapi.cpp */; };
 		88E1E5F22CF60F9B00C69EC5 /* PWGDPRManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4822CF60F9B00C69EC5 /* PWGDPRManager.m */; };
 		88E1E5F32CF60F9B00C69EC5 /* PWMessageDeliveryRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5292CF60F9B00C69EC5 /* PWMessageDeliveryRequestTest.m */; };
@@ -141,7 +135,6 @@
 		88E1E5FE2CF60F9B00C69EC5 /* PWBasePushTrackingRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5152CF60F9B00C69EC5 /* PWBasePushTrackingRequestTest.m */; };
 		88E1E5FF2CF60F9B00C69EC5 /* PWAlphabetUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4D02CF60F9B00C69EC5 /* PWAlphabetUtils.m */; };
 		88E1E6002CF60F9B00C69EC5 /* PWNotificationExtensionManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E52B2CF60F9B00C69EC5 /* PWNotificationExtensionManagerTest.m */; };
-		88E1E6012CF60F9B00C69EC5 /* PWLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E56A2CF60F9B00C69EC5 /* PWLocationHelper.m */; };
 		88E1E6022CF60F9B00C69EC5 /* NSDate+PWDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4CB2CF60F9B00C69EC5 /* NSDate+PWDateUtils.m */; };
 		88E1E6032CF60F9B00C69EC5 /* PWPushNotificationsManager.ios.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4412CF60F9B00C69EC5 /* PWPushNotificationsManager.ios.m */; };
 		88E1E6042CF60F9B00C69EC5 /* PushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4712CF60F9B00C69EC5 /* PushNotificationManager.m */; };
@@ -161,7 +154,6 @@
 		88E1E6122CF60F9B00C69EC5 /* PWShowLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4C32CF60F9B00C69EC5 /* PWShowLoading.m */; };
 		88E1E6132CF60F9B00C69EC5 /* PWInbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4862CF60F9B00C69EC5 /* PWInbox.m */; };
 		88E1E6142CF60F9B00C69EC5 /* PWPostEventRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3F72CF60F9B00C69EC5 /* PWPostEventRequest.m */; };
-		88E1E6152CF60F9B00C69EC5 /* PWGetNearestZoneRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5652CF60F9B00C69EC5 /* PWGetNearestZoneRequest.m */; };
 		88E1E6162CF60F9B00C69EC5 /* PWReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4DF2CF60F9B00C69EC5 /* PWReachability.m */; };
 		88E1E6172CF60F9B00C69EC5 /* PWConfigurationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E51A2CF60F9B00C69EC5 /* PWConfigurationTest.m */; };
 		88E1E6182CF60F9B00C69EC5 /* PWRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4292CF60F9B00C69EC5 /* PWRequest.m */; };
@@ -198,7 +190,6 @@
 		88E1E6372CF60F9B00C69EC5 /* PWModalWindowSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3E32CF60F9B00C69EC5 /* PWModalWindowSettings.m */; };
 		88E1E6382CF60F9B00C69EC5 /* PWRichPushManager.mac.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4AE2CF60F9B00C69EC5 /* PWRichPushManager.mac.m */; };
 		88E1E6392CF60F9B00C69EC5 /* PWInboxMessagesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3D52CF60F9B00C69EC5 /* PWInboxMessagesRequest.m */; };
-		88E1E63A2CF60F9B00C69EC5 /* PWGeozone.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5632CF60F9B00C69EC5 /* PWGeozone.m */; };
 		88E1E63B2CF60F9B00C69EC5 /* PWInboxMessageInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3CC2CF60F9B00C69EC5 /* PWInboxMessageInternal.m */; };
 		88E1E63C2CF60F9B00C69EC5 /* PWResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3C32CF60F9B00C69EC5 /* PWResource.m */; };
 		88E1E63D2CF60F9B00C69EC5 /* PWInboxAllMessagesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3D32CF60F9B00C69EC5 /* PWInboxAllMessagesRequest.m */; };
@@ -208,9 +199,7 @@
 		88E1E6412CF60F9B00C69EC5 /* PWPushNotificationCustomDelegateMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5032CF60F9B00C69EC5 /* PWPushNotificationCustomDelegateMock.m */; };
 		88E1E6422CF60F9B00C69EC5 /* PWBusinessCaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3BC2CF60F9B00C69EC5 /* PWBusinessCaseManager.m */; };
 		88E1E6432CF60F9B00C69EC5 /* PWNotificationAppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4312CF60F9B00C69EC5 /* PWNotificationAppSettings.m */; };
-		88E1E6442CF60F9B00C69EC5 /* PWLocationLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E56C2CF60F9B00C69EC5 /* PWLocationLog.m */; };
 		88E1E6452CF60F9B00C69EC5 /* PWGetConfigRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E51C2CF60F9B00C69EC5 /* PWGetConfigRequestTest.m */; };
-		88E1E6462CF60F9B00C69EC5 /* PWSignificantLocationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5722CF60F9B00C69EC5 /* PWSignificantLocationTracker.m */; };
 		88E1E6472CF60F9B00C69EC5 /* PWUtils.watch.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4DA2CF60F9B00C69EC5 /* PWUtils.watch.m */; };
 		88E1E6482CF60F9B00C69EC5 /* PWHtmlWebViewController.mac.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4AB2CF60F9B00C69EC5 /* PWHtmlWebViewController.mac.m */; };
 		88E1E6492CF60F9B00C69EC5 /* PushwooshLiveActivities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4802CF60F9B00C69EC5 /* PushwooshLiveActivities.swift */; };
@@ -290,20 +279,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 449CC00B2BA9C289003E16DC;
 			remoteInfo = PushwooshVisionOS;
-		};
-		88E1E67B2CF60F9B00C69EC5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 88E1E57E2CF60F9B00C69EC5 /* PushwooshGeozones.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5D0E3126213D42260086AC05;
-			remoteInfo = PushwooshGeozones;
-		};
-		88E1E67D2CF60F9B00C69EC5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 88E1E57E2CF60F9B00C69EC5 /* PushwooshGeozones.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5D0E321B21411F920086AC05;
-			remoteInfo = PushwooshGeozones.dynamic;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -695,31 +670,6 @@
 		88E1E55E2CF60F9B00C69EC5 /* Pushwoosh_vision.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Pushwoosh_vision.podspec; sourceTree = "<group>"; };
 		88E1E55F2CF60F9B00C69EC5 /* PushwooshVisionXCFramework.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushwooshVisionXCFramework.podspec; sourceTree = "<group>"; };
 		88E1E5602CF60F9B00C69EC5 /* PushwooshXCFramework.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushwooshXCFramework.podspec; sourceTree = "<group>"; };
-		88E1E5622CF60F9B00C69EC5 /* PWGeozone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWGeozone.h; sourceTree = "<group>"; };
-		88E1E5632CF60F9B00C69EC5 /* PWGeozone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWGeozone.m; sourceTree = "<group>"; };
-		88E1E5642CF60F9B00C69EC5 /* PWGetNearestZoneRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWGetNearestZoneRequest.h; sourceTree = "<group>"; };
-		88E1E5652CF60F9B00C69EC5 /* PWGetNearestZoneRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWGetNearestZoneRequest.m; sourceTree = "<group>"; };
-		88E1E5662CF60F9B00C69EC5 /* PWRemoveLocationRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWRemoveLocationRequest.h; sourceTree = "<group>"; };
-		88E1E5672CF60F9B00C69EC5 /* PWRemoveLocationRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRemoveLocationRequest.m; sourceTree = "<group>"; };
-		88E1E5692CF60F9B00C69EC5 /* PWLocationHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWLocationHelper.h; sourceTree = "<group>"; };
-		88E1E56A2CF60F9B00C69EC5 /* PWLocationHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWLocationHelper.m; sourceTree = "<group>"; };
-		88E1E56B2CF60F9B00C69EC5 /* PWLocationLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWLocationLog.h; sourceTree = "<group>"; };
-		88E1E56C2CF60F9B00C69EC5 /* PWLocationLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWLocationLog.m; sourceTree = "<group>"; };
-		88E1E56D2CF60F9B00C69EC5 /* PWLocationTrackerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWLocationTrackerProtocol.h; sourceTree = "<group>"; };
-		88E1E56E2CF60F9B00C69EC5 /* PWRegionMonitoring.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWRegionMonitoring.h; sourceTree = "<group>"; };
-		88E1E56F2CF60F9B00C69EC5 /* PWRegionMonitoring.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRegionMonitoring.m; sourceTree = "<group>"; };
-		88E1E5702CF60F9B00C69EC5 /* PWSDKInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWSDKInterface.h; sourceTree = "<group>"; };
-		88E1E5712CF60F9B00C69EC5 /* PWSignificantLocationTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWSignificantLocationTracker.h; sourceTree = "<group>"; };
-		88E1E5722CF60F9B00C69EC5 /* PWSignificantLocationTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWSignificantLocationTracker.m; sourceTree = "<group>"; };
-		88E1E5742CF60F9B00C69EC5 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		88E1E5752CF60F9B00C69EC5 /* PWGeozonesInternalManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWGeozonesInternalManager.h; sourceTree = "<group>"; };
-		88E1E5762CF60F9B00C69EC5 /* PWGeozonesInternalManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWGeozonesInternalManager.m; sourceTree = "<group>"; };
-		88E1E5772CF60F9B00C69EC5 /* PWGeozonesManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWGeozonesManager.h; sourceTree = "<group>"; };
-		88E1E5782CF60F9B00C69EC5 /* PWGeozonesManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWGeozonesManager.m; sourceTree = "<group>"; };
-		88E1E57A2CF60F9B00C69EC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		88E1E57B2CF60F9B00C69EC5 /* PushwooshGeozones.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PushwooshGeozones.h; sourceTree = "<group>"; };
-		88E1E57D2CF60F9B00C69EC5 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		88E1E57E2CF60F9B00C69EC5 /* PushwooshGeozones.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = PushwooshGeozones.xcodeproj; sourceTree = "<group>"; };
 		A91B585A6846C41336A3EB73 /* Pods_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -770,7 +720,6 @@
 				2FAD9762203C412B000D30F8 /* config.xml */,
 				50B271D01FEDC1A000F3C39B /* public */,
 				88E1E5612CF60F9B00C69EC5 /* Pushwoosh */,
-				88E1E57F2CF60F9B00C69EC5 /* PushwooshGeozones */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -1805,70 +1754,6 @@
 			path = Pushwoosh;
 			sourceTree = "<group>";
 		};
-		88E1E5682CF60F9B00C69EC5 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E5622CF60F9B00C69EC5 /* PWGeozone.h */,
-				88E1E5632CF60F9B00C69EC5 /* PWGeozone.m */,
-				88E1E5642CF60F9B00C69EC5 /* PWGetNearestZoneRequest.h */,
-				88E1E5652CF60F9B00C69EC5 /* PWGetNearestZoneRequest.m */,
-				88E1E5662CF60F9B00C69EC5 /* PWRemoveLocationRequest.h */,
-				88E1E5672CF60F9B00C69EC5 /* PWRemoveLocationRequest.m */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		88E1E5732CF60F9B00C69EC5 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E5692CF60F9B00C69EC5 /* PWLocationHelper.h */,
-				88E1E56A2CF60F9B00C69EC5 /* PWLocationHelper.m */,
-				88E1E56B2CF60F9B00C69EC5 /* PWLocationLog.h */,
-				88E1E56C2CF60F9B00C69EC5 /* PWLocationLog.m */,
-				88E1E56D2CF60F9B00C69EC5 /* PWLocationTrackerProtocol.h */,
-				88E1E56E2CF60F9B00C69EC5 /* PWRegionMonitoring.h */,
-				88E1E56F2CF60F9B00C69EC5 /* PWRegionMonitoring.m */,
-				88E1E5702CF60F9B00C69EC5 /* PWSDKInterface.h */,
-				88E1E5712CF60F9B00C69EC5 /* PWSignificantLocationTracker.h */,
-				88E1E5722CF60F9B00C69EC5 /* PWSignificantLocationTracker.m */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		88E1E5792CF60F9B00C69EC5 /* PushwooshGeozones */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E5682CF60F9B00C69EC5 /* Networking */,
-				88E1E5732CF60F9B00C69EC5 /* Service */,
-				88E1E5742CF60F9B00C69EC5 /* PrivacyInfo.xcprivacy */,
-				88E1E5752CF60F9B00C69EC5 /* PWGeozonesInternalManager.h */,
-				88E1E5762CF60F9B00C69EC5 /* PWGeozonesInternalManager.m */,
-				88E1E5772CF60F9B00C69EC5 /* PWGeozonesManager.h */,
-				88E1E5782CF60F9B00C69EC5 /* PWGeozonesManager.m */,
-			);
-			path = PushwooshGeozones;
-			sourceTree = "<group>";
-		};
-		88E1E57C2CF60F9B00C69EC5 /* PushwooshGeozones.dynamic */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E57A2CF60F9B00C69EC5 /* Info.plist */,
-				88E1E57B2CF60F9B00C69EC5 /* PushwooshGeozones.h */,
-			);
-			path = PushwooshGeozones.dynamic;
-			sourceTree = "<group>";
-		};
-		88E1E57F2CF60F9B00C69EC5 /* PushwooshGeozones */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E5792CF60F9B00C69EC5 /* PushwooshGeozones */,
-				88E1E57C2CF60F9B00C69EC5 /* PushwooshGeozones.dynamic */,
-				88E1E57D2CF60F9B00C69EC5 /* module.modulemap */,
-				88E1E57E2CF60F9B00C69EC5 /* PushwooshGeozones.xcodeproj */,
-			);
-			path = PushwooshGeozones;
-			sourceTree = "<group>";
-		};
 		88E1E5802CF60F9B00C69EC5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1880,15 +1765,6 @@
 				88E1E6732CF60F9B00C69EC5 /* Pushwoosh.framework */,
 				88E1E6752CF60F9B00C69EC5 /* PushwooshTests.xctest */,
 				88E1E6772CF60F9B00C69EC5 /* Pushwoosh.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		88E1E5822CF60F9B00C69EC5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E67C2CF60F9B00C69EC5 /* libPushwooshGeozones.a */,
-				88E1E67E2CF60F9B00C69EC5 /* PushwooshGeozones.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1947,10 +1823,6 @@
 				{
 					ProductGroup = 88E1E5802CF60F9B00C69EC5 /* Products */;
 					ProjectRef = 88E1E55C2CF60F9B00C69EC5 /* Pushwoosh.xcodeproj */;
-				},
-				{
-					ProductGroup = 88E1E5822CF60F9B00C69EC5 /* Products */;
-					ProjectRef = 88E1E57E2CF60F9B00C69EC5 /* PushwooshGeozones.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -2017,20 +1889,6 @@
 			remoteRef = 88E1E6762CF60F9B00C69EC5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		88E1E67C2CF60F9B00C69EC5 /* libPushwooshGeozones.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPushwooshGeozones.a;
-			remoteRef = 88E1E67B2CF60F9B00C69EC5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		88E1E67E2CF60F9B00C69EC5 /* PushwooshGeozones.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PushwooshGeozones.framework;
-			remoteRef = 88E1E67D2CF60F9B00C69EC5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -2041,9 +1899,7 @@
 				88E1E5842CF60F9B00C69EC5 /* PushwooshXCFramework.podspec in Resources */,
 				88E1E5852CF60F9B00C69EC5 /* Pushwoosh.podspec in Resources */,
 				88E1E5862CF60F9B00C69EC5 /* PushwooshVisionXCFramework.podspec in Resources */,
-				88E1E5872CF60F9B00C69EC5 /* Info.plist in Resources */,
 				88E1E5882CF60F9B00C69EC5 /* Info.plist in Resources */,
-				88E1E5892CF60F9B00C69EC5 /* PrivacyInfo.xcprivacy in Resources */,
 				88E1E58A2CF60F9B00C69EC5 /* Pushwoosh_mac.podspec in Resources */,
 				88E1E58B2CF60F9B00C69EC5 /* PrivacyInfo.xcprivacy in Resources */,
 				88E1E58C2CF60F9B00C69EC5 /* Pushwoosh.watchOS.dynamic-Info.plist in Resources */,
@@ -2139,13 +1995,11 @@
 				88E1E5A12CF60F9B00C69EC5 /* PWAppDelegate.m in Sources */,
 				88E1E5A22CF60F9B00C69EC5 /* PWDataManager.ios.m in Sources */,
 				88E1E5A32CF60F9B00C69EC5 /* PWMessageDeliveryRequest.m in Sources */,
-				88E1E5A42CF60F9B00C69EC5 /* PWGeozonesManager.m in Sources */,
 				88E1E5A52CF60F9B00C69EC5 /* PWMergeUserRequestTest.m in Sources */,
 				88E1E5A62CF60F9B00C69EC5 /* PWPushRuntime.ios.m in Sources */,
 				88E1E5A72CF60F9B00C69EC5 /* PWUtils.mac.m in Sources */,
 				88E1E5A82CF60F9B00C69EC5 /* PWBusinessCase.m in Sources */,
 				88E1E5A92CF60F9B00C69EC5 /* PWPushManagerJSBridge.m in Sources */,
-				88E1E5AA2CF60F9B00C69EC5 /* PWRegionMonitoring.m in Sources */,
 				88E1E5AB2CF60F9B00C69EC5 /* PushwooshTest.m in Sources */,
 				88E1E5AC2CF60F9B00C69EC5 /* PWCombinedSetTagsRequest.m in Sources */,
 				88E1E5AD2CF60F9B00C69EC5 /* PWVersionTracking.m in Sources */,
@@ -2190,7 +2044,6 @@
 				88E1E5D42CF60F9B00C69EC5 /* PWGetConfigRequest.m in Sources */,
 				88E1E5D52CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS9.m in Sources */,
 				88E1E5D62CF60F9B00C69EC5 /* PWChannel.m in Sources */,
-				88E1E5D72CF60F9B00C69EC5 /* PWGeozonesInternalManager.m in Sources */,
 				88E1E5D82CF60F9B00C69EC5 /* PWSetTagsRequest.m in Sources */,
 				88E1E5D92CF60F9B00C69EC5 /* PWLoadingViewController.m in Sources */,
 				88E1E5DA2CF60F9B00C69EC5 /* PWZipArchive.mm in Sources */,
@@ -2215,7 +2068,6 @@
 				88E1E5ED2CF60F9B00C69EC5 /* PWNetworkModule.m in Sources */,
 				88E1E5EE2CF60F9B00C69EC5 /* PWRichMediaManager.m in Sources */,
 				88E1E5EF2CF60F9B00C69EC5 /* PWCacheTest.m in Sources */,
-				88E1E5F02CF60F9B00C69EC5 /* PWRemoveLocationRequest.m in Sources */,
 				88E1E5F12CF60F9B00C69EC5 /* ioapi.cpp in Sources */,
 				88E1E5F22CF60F9B00C69EC5 /* PWGDPRManager.m in Sources */,
 				88E1E5F32CF60F9B00C69EC5 /* PWMessageDeliveryRequestTest.m in Sources */,
@@ -2232,7 +2084,6 @@
 				88E1E5FE2CF60F9B00C69EC5 /* PWBasePushTrackingRequestTest.m in Sources */,
 				88E1E5FF2CF60F9B00C69EC5 /* PWAlphabetUtils.m in Sources */,
 				88E1E6002CF60F9B00C69EC5 /* PWNotificationExtensionManagerTest.m in Sources */,
-				88E1E6012CF60F9B00C69EC5 /* PWLocationHelper.m in Sources */,
 				88E1E6022CF60F9B00C69EC5 /* NSDate+PWDateUtils.m in Sources */,
 				88E1E6032CF60F9B00C69EC5 /* PWPushNotificationsManager.ios.m in Sources */,
 				88E1E6042CF60F9B00C69EC5 /* PushNotificationManager.m in Sources */,
@@ -2252,7 +2103,6 @@
 				88E1E6122CF60F9B00C69EC5 /* PWShowLoading.m in Sources */,
 				88E1E6132CF60F9B00C69EC5 /* PWInbox.m in Sources */,
 				88E1E6142CF60F9B00C69EC5 /* PWPostEventRequest.m in Sources */,
-				88E1E6152CF60F9B00C69EC5 /* PWGetNearestZoneRequest.m in Sources */,
 				88E1E6162CF60F9B00C69EC5 /* PWReachability.m in Sources */,
 				88E1E6172CF60F9B00C69EC5 /* PWConfigurationTest.m in Sources */,
 				88E1E6182CF60F9B00C69EC5 /* PWRequest.m in Sources */,
@@ -2289,7 +2139,6 @@
 				88E1E6372CF60F9B00C69EC5 /* PWModalWindowSettings.m in Sources */,
 				88E1E6382CF60F9B00C69EC5 /* PWRichPushManager.mac.m in Sources */,
 				88E1E6392CF60F9B00C69EC5 /* PWInboxMessagesRequest.m in Sources */,
-				88E1E63A2CF60F9B00C69EC5 /* PWGeozone.m in Sources */,
 				88E1E63B2CF60F9B00C69EC5 /* PWInboxMessageInternal.m in Sources */,
 				88E1E63C2CF60F9B00C69EC5 /* PWResource.m in Sources */,
 				88E1E63D2CF60F9B00C69EC5 /* PWInboxAllMessagesRequest.m in Sources */,
@@ -2299,9 +2148,7 @@
 				88E1E6412CF60F9B00C69EC5 /* PWPushNotificationCustomDelegateMock.m in Sources */,
 				88E1E6422CF60F9B00C69EC5 /* PWBusinessCaseManager.m in Sources */,
 				88E1E6432CF60F9B00C69EC5 /* PWNotificationAppSettings.m in Sources */,
-				88E1E6442CF60F9B00C69EC5 /* PWLocationLog.m in Sources */,
 				88E1E6452CF60F9B00C69EC5 /* PWGetConfigRequestTest.m in Sources */,
-				88E1E6462CF60F9B00C69EC5 /* PWSignificantLocationTracker.m in Sources */,
 				88E1E6472CF60F9B00C69EC5 /* PWUtils.watch.m in Sources */,
 				88E1E6482CF60F9B00C69EC5 /* PWHtmlWebViewController.mac.m in Sources */,
 				88E1E6492CF60F9B00C69EC5 /* PushwooshLiveActivities.swift in Sources */,
