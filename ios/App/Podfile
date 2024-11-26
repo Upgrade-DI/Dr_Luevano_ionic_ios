@@ -24,7 +24,8 @@ target 'App' do
   pod 'Firebase/Messaging'
 
   # Pushwoosh (usando el repositorio directo desde GitHub)
-  pod 'Pushwoosh', :git => 'https://github.com/Pushwoosh/pushwoosh-ios-sdk.git', :branch => 'master'
+  pod 'Pushwoosh', '~> 6.7.9'
+
 end
 
 post_install do |installer|
