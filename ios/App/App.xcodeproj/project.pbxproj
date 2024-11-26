@@ -2346,6 +2346,7 @@
 					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleAppMeasurement/WithoutAdIdSupport\"",
 					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/PushwooshInboxUIXCFramework\"/**",
 					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/PushwooshXCFramework/Core\"/**",
+					"$(PROJECT_DIR)/App/Pushwoosh/**",
 				);
 				INFOPLIST_FILE = App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
