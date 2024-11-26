@@ -1,4 +1,5 @@
-require_relative '../../node_modules/@capacitor/ios/scripts/pods_helpers'
+source 'https://github.com/Pushwoosh/pushwoosh-podspec.git'
+source 'https://cdn.cocoapods.org/'
 
 platform :ios, '13.0'
 use_frameworks!
@@ -19,9 +20,12 @@ end
 target 'App' do
   capacitor_pods
 
-  # Agregar Firebase y Messaging
-  pod 'Firebase/Core'         # Núcleo de Firebase
-  pod 'Firebase/Messaging'    # Mensajería (Push Notifications)
+  # Firebase
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+
+  # Pushwoosh
+  pod 'Pushwoosh', '~> 6.7.9'
 end
 
 post_install do |installer|
