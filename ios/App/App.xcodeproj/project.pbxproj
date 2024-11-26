@@ -15,6 +15,7 @@
 		504EC30F1FED79650016851F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504EC30E1FED79650016851F /* Assets.xcassets */; };
 		504EC3121FED79650016851F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504EC3101FED79650016851F /* LaunchScreen.storyboard */; };
 		50B271D11FEDC1A000F3C39B /* public in Resources */ = {isa = PBXBuildFile; fileRef = 50B271D01FEDC1A000F3C39B /* public */; };
+		8825269D2CF64C9800A73BE2 /* PushwooshFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E1E66B2CF60F9B00C69EC5 /* PushwooshFramework.framework */; };
 		88E1E39B2CF5296B00C69EC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E39A2CF5296B00C69EC5 /* GoogleService-Info.plist */; };
 		88E1E5842CF60F9B00C69EC5 /* PushwooshXCFramework.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E5602CF60F9B00C69EC5 /* PushwooshXCFramework.podspec */; };
 		88E1E5852CF60F9B00C69EC5 /* Pushwoosh.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E55B2CF60F9B00C69EC5 /* Pushwoosh.podspec */; };
@@ -676,6 +677,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8825269D2CF64C9800A73BE2 /* PushwooshFramework.framework in Frameworks */,
 				88E1E58F2CF60F9B00C69EC5 /* OCMockito.xcframework in Frameworks */,
 				88E1E5902CF60F9B00C69EC5 /* OCHamcrest.xcframework in Frameworks */,
 				88E1E5912CF60F9B00C69EC5 /* libOCMock.a in Frameworks */,
@@ -695,6 +697,7 @@
 				5D9509032026BF495DC85B30 /* Frameworks */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		504EC3051FED79650016851F /* Products */ = {
 			isa = PBXGroup;
@@ -1935,6 +1938,7 @@
 			files = (
 			);
 			inputPaths = (
+				"",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
