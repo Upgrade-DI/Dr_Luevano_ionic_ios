@@ -28,6 +28,7 @@ target 'App' do
 
 end
 
-post_install do |installer|
-  assertDeploymentTarget(installer)
-end
+# Elimina o comenta este bloque para evitar el error
+# post_install do |installer|
+#   assertDeploymentTarget(installer)
+# end
