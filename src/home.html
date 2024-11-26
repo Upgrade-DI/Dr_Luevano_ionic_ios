@@ -28,35 +28,10 @@
     </head>
 <body id="app">
     <script>
-        // Inicializar Pushwoosh
-        Pushwoosh.init({
-            logLevel: 'debug', // Opcional: nivel de log para desarrollo
-            applicationCode: 'AC6CC-06F14', // Tu código de aplicación de Pushwoosh
-            defaultNotificationTitle: 'Armonia Estetica',
-            defaultNotificationImage: 'https://armoniaestetica.com/_images/general/logo2.png',
+       document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM Content Loaded. Initializing Pushwoosh...');
+            onPushwooshInitialized();
         });
-    
-        // Escuchar el evento 'deviceready' para inicializar Pushwoosh correctamente
-        document.addEventListener('deviceready', function () {
-            console.log('Device is ready');
-            
-            // Registrar el dispositivo para recibir notificaciones push
-            Pushwoosh.registerForPushNotifications()
-                .then(token => {
-                    console.log('Pushwoosh device token:', token);
-                })
-                .catch(error => {
-                    console.error('Error registering for Pushwoosh notifications:', error);
-                });
-        });
-    
-        // Verificar el estado del SDK de Pushwoosh
-        console.log('Checking Pushwoosh status...');
-        if (typeof Pushwoosh !== 'undefined') {
-            console.log('Pushwoosh SDK loaded successfully.');
-        } else {
-            console.error('Pushwoosh SDK not loaded.');
-        }
     </script>
     
     

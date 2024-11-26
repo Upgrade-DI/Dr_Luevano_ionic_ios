@@ -1,75 +1,52 @@
-import PushNotifications from '@capacitor/push-notifications';
-
-let theToken = 'not_set';
-
-// Inicializa Pushwoosh con los datos de tu app
 const PUSHWOOSH_CONFIG = {
   appCode: "DE31D-FA23F", // Tu código de Pushwoosh
-  fcmSenderId: "YOUR_FIREBASE_SENDER_ID", // Tu sender ID de Firebase
+  serviceWorkerUrl: "/pushwoosh-service-worker.js", // Asegúrate de que este archivo exista
 };
 
 async function onPushwooshInitialized() {
   console.log("Initializing Pushwoosh");
 
   try {
-    // Inicializa Pushwoosh con tu appCode y fcmSenderId
-    PushNotifications.register()
-      .then(() => {
-        console.log("Pushwoosh SDK initialized successfully.");
-      })
-      .catch((err) => {
-        console.error("Error initializing Pushwoosh SDK:", err);
-      });
+      // Inicializa Pushwoosh
+      await Pushwoosh.init(PUSHWOOSH_CONFIG);
+      console.log("Pushwoosh SDK initialized successfully.");
 
-    // Solicita permisos para notificaciones push
-    const permissionStatus = await PushNotifications.requestPermissions();
+      // Solicitar permiso para notificaciones
+      const isSubscribed = await Pushwoosh.subscribe();
+      if (isSubscribed) {
+          console.log("Subscribed to Pushwoosh notifications.");
+      } else {
+          console.error("Failed to subscribe to Pushwoosh notifications.");
+      }
 
-    if (permissionStatus.receive === 'granted') {
-      PushNotifications.register();
-
-      // Obtener token del dispositivo
-      PushNotifications.addListener('registration', (token) => {
-        console.info('Push token: ', token.value);
-        theToken = token.value;
-
-        // Sube el token a tu servidor
-        uploadToken();
-      });
+      // Obtener HWID del dispositivo
+      const hwid = Pushwoosh.getHWID();
+      console.log("Pushwoosh HWID:", hwid);
 
       // Manejo de notificaciones
-      PushNotifications.addListener('pushNotificationReceived', (notification) => {
-        console.log('Push Notification Received:', notification);
+      Pushwoosh.onNotificationReceived((notification) => {
+          console.log("Push Notification Received:", notification);
       });
 
-      // Manejo de acciones de notificación
-      PushNotifications.addListener('pushNotificationActionPerformed', (notification) => {
-        console.log('Push Notification Action Performed:', notification);
+      Pushwoosh.onNotificationClicked((notification) => {
+          console.log("Push Notification Clicked:", notification);
       });
-
-    } else {
-      console.error('Permiso para notificaciones denegado.');
-    }
   } catch (error) {
-    console.error('Error inicializando Pushwoosh: ', error);
+      console.error("Error initializing Pushwoosh:", error);
   }
 }
 
 async function uploadToken() {
-  if (theToken !== 'not_set') {
-    console.log("Uploading token to the server:", theToken);
-    // Agrega aquí tu lógica para enviar el token al servidor
+  const hwid = Pushwoosh.getHWID();
+  if (hwid) {
+      console.log("Uploading token to the server:", hwid);
+      // Agrega aquí la lógica para enviar el HWID a tu servidor
   } else {
-    console.log("Token no disponible para cargar.");
+      console.log("Token no disponible para cargar.");
   }
 }
 
-// Inicializa Pushwoosh cuando la app esté lista
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOM Content Loaded. Initializing Pushwoosh...');
   onPushwooshInitialized();
-});
-
-// Para debuggear el token desde un botón (opcional)
-document.querySelector('#profile')?.addEventListener('click', () => {
-  console.log('Push Token:', theToken);
 });
