@@ -19,9 +19,7 @@
 		88E1E5842CF60F9B00C69EC5 /* PushwooshXCFramework.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E5602CF60F9B00C69EC5 /* PushwooshXCFramework.podspec */; };
 		88E1E5852CF60F9B00C69EC5 /* Pushwoosh.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E55B2CF60F9B00C69EC5 /* Pushwoosh.podspec */; };
 		88E1E5862CF60F9B00C69EC5 /* PushwooshVisionXCFramework.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E55F2CF60F9B00C69EC5 /* PushwooshVisionXCFramework.podspec */; };
-		88E1E5882CF60F9B00C69EC5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E5102CF60F9B00C69EC5 /* Info.plist */; };
 		88E1E58A2CF60F9B00C69EC5 /* Pushwoosh_mac.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E55D2CF60F9B00C69EC5 /* Pushwoosh_mac.podspec */; };
-		88E1E58B2CF60F9B00C69EC5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E4F92CF60F9B00C69EC5 /* PrivacyInfo.xcprivacy */; };
 		88E1E58C2CF60F9B00C69EC5 /* Pushwoosh.watchOS.dynamic-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E5472CF60F9B00C69EC5 /* Pushwoosh.watchOS.dynamic-Info.plist */; };
 		88E1E58D2CF60F9B00C69EC5 /* Pushwoosh.iOS.dynamic-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E5462CF60F9B00C69EC5 /* Pushwoosh.iOS.dynamic-Info.plist */; };
 		88E1E58E2CF60F9B00C69EC5 /* Pushwoosh_vision.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E55E2CF60F9B00C69EC5 /* Pushwoosh_vision.podspec */; };
@@ -1899,9 +1897,7 @@
 				88E1E5842CF60F9B00C69EC5 /* PushwooshXCFramework.podspec in Resources */,
 				88E1E5852CF60F9B00C69EC5 /* Pushwoosh.podspec in Resources */,
 				88E1E5862CF60F9B00C69EC5 /* PushwooshVisionXCFramework.podspec in Resources */,
-				88E1E5882CF60F9B00C69EC5 /* Info.plist in Resources */,
 				88E1E58A2CF60F9B00C69EC5 /* Pushwoosh_mac.podspec in Resources */,
-				88E1E58B2CF60F9B00C69EC5 /* PrivacyInfo.xcprivacy in Resources */,
 				88E1E58C2CF60F9B00C69EC5 /* Pushwoosh.watchOS.dynamic-Info.plist in Resources */,
 				88E1E58D2CF60F9B00C69EC5 /* Pushwoosh.iOS.dynamic-Info.plist in Resources */,
 				88E1E58E2CF60F9B00C69EC5 /* Pushwoosh_vision.podspec in Resources */,
