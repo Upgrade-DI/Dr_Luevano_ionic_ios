@@ -2321,6 +2321,32 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = ZH5F8P7RXN;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Capacitor\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CapacitorCamera\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CapacitorCordova\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CapacitorSplashScreen\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CordovaPluginsStatic\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreInternal\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseMessaging\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"/**",
+					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
+					"\"${PODS_ROOT}/Pushwoosh/Framework\"/**",
+					"\"${PODS_ROOT}/PushwooshInboxUIXCFramework/XCFramework\"/**",
+					"\"${PODS_ROOT}/PushwooshXCFramework/XCFramework\"/**",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/FirebaseAnalytics/AdIdSupport\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleAppMeasurement/AdIdSupport\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleAppMeasurement/WithoutAdIdSupport\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/PushwooshInboxUIXCFramework\"/**",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/PushwooshXCFramework/Core\"/**",
+				);
 				INFOPLIST_FILE = App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
