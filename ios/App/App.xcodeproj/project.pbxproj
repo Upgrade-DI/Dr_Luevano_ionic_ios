@@ -15,7 +15,7 @@
 		504EC30F1FED79650016851F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504EC30E1FED79650016851F /* Assets.xcassets */; };
 		504EC3121FED79650016851F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504EC3101FED79650016851F /* LaunchScreen.storyboard */; };
 		50B271D11FEDC1A000F3C39B /* public in Resources */ = {isa = PBXBuildFile; fileRef = 50B271D01FEDC1A000F3C39B /* public */; };
-		8825269D2CF64C9800A73BE2 /* PushwooshFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E1E66B2CF60F9B00C69EC5 /* PushwooshFramework.framework */; };
+		882526C42CF7A8C600A73BE2 /* PushwooshFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 882526C32CF7A8C600A73BE2 /* PushwooshFramework */; };
 		88E1E39B2CF5296B00C69EC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E39A2CF5296B00C69EC5 /* GoogleService-Info.plist */; };
 		88E1E5842CF60F9B00C69EC5 /* PushwooshXCFramework.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E5602CF60F9B00C69EC5 /* PushwooshXCFramework.podspec */; };
 		88E1E5852CF60F9B00C69EC5 /* Pushwoosh.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E55B2CF60F9B00C69EC5 /* Pushwoosh.podspec */; };
@@ -223,6 +223,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		882526D32CF7AC0D00A73BE2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88E1E55C2CF60F9B00C69EC5 /* Pushwoosh.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 882526C92CF7A95700A73BE2;
+			remoteInfo = "Dr Luevano";
+		};
 		88E1E6682CF60F9B00C69EC5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 88E1E55C2CF60F9B00C69EC5 /* Pushwoosh.xcodeproj */;
@@ -677,8 +684,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8825269D2CF64C9800A73BE2 /* PushwooshFramework.framework in Frameworks */,
 				88E1E58F2CF60F9B00C69EC5 /* OCMockito.xcframework in Frameworks */,
+				882526C42CF7A8C600A73BE2 /* PushwooshFramework in Frameworks */,
 				88E1E5902CF60F9B00C69EC5 /* OCHamcrest.xcframework in Frameworks */,
 				88E1E5912CF60F9B00C69EC5 /* libOCMock.a in Frameworks */,
 				30315DE57B8F683647E378A8 /* Pods_App.framework in Frameworks */,
@@ -1766,6 +1773,7 @@
 				88E1E6732CF60F9B00C69EC5 /* Pushwoosh.framework */,
 				88E1E6752CF60F9B00C69EC5 /* PushwooshTests.xctest */,
 				88E1E6772CF60F9B00C69EC5 /* Pushwoosh.framework */,
+				882526D42CF7AC0D00A73BE2 /* Dr Luevano.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1818,6 +1826,9 @@
 				Base,
 			);
 			mainGroup = 504EC2FB1FED79650016851F;
+			packageReferences = (
+				882526C22CF7A8C600A73BE2 /* XCRemoteSwiftPackageReference "Pushwoosh-XCFramework" */,
+			);
 			productRefGroup = 504EC3051FED79650016851F /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -1834,6 +1845,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		882526D42CF7AC0D00A73BE2 /* Dr Luevano.appex */ = {
+			isa = PBXReferenceProxy;
+			fileType = "wrapper.app-extension";
+			path = "Dr Luevano.appex";
+			remoteRef = 882526D32CF7AC0D00A73BE2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		88E1E6692CF60F9B00C69EC5 /* libPushwoosh.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -2247,7 +2265,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2302,7 +2320,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -2348,7 +2366,7 @@
 					"$(PROJECT_DIR)/App/Pushwoosh/**",
 				);
 				INFOPLIST_FILE = App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2377,7 +2395,7 @@
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = ZH5F8P7RXN;
 				INFOPLIST_FILE = App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2417,6 +2435,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		882526C22CF7A8C600A73BE2 /* XCRemoteSwiftPackageReference "Pushwoosh-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Pushwoosh/Pushwoosh-XCFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.10;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		882526C32CF7A8C600A73BE2 /* PushwooshFramework */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 882526C22CF7A8C600A73BE2 /* XCRemoteSwiftPackageReference "Pushwoosh-XCFramework" */;
+			productName = PushwooshFramework;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 504EC2FC1FED79650016851F /* Project object */;
 }

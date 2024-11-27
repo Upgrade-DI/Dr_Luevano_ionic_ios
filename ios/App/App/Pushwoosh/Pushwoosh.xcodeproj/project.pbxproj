@@ -1879,6 +1879,7 @@
 		5DC48F3B2047C863005A6822 /* PWBaseRequestTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PWBaseRequestTest.h; path = PushwooshTests/PWBaseRequestTest.h; sourceTree = SOURCE_ROOT; };
 		5DC48F3C2047C863005A6822 /* PWBaseRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PWBaseRequestTest.m; path = PushwooshTests/PWBaseRequestTest.m; sourceTree = SOURCE_ROOT; };
 		5DFE626C23F6B46B00A25AA5 /* PWMessaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWMessaging.h; sourceTree = "<group>"; };
+		882526C92CF7A95700A73BE2 /* Dr Luevano.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Dr Luevano.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9021094026707FDC00F811B4 /* PWServerCommunicationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWServerCommunicationManager.m; sourceTree = "<group>"; };
 		902109482670802F00F811B4 /* PWServerCommunicationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWServerCommunicationManager.h; sourceTree = "<group>"; };
 		972C9AA727F2045800F9ABE8 /* PWNotificationExtensionManagerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationExtensionManagerTest.m; sourceTree = "<group>"; };
@@ -1915,6 +1916,20 @@
 		D6F9155B28B4DB1F00D4FDD0 /* PWInAppPurchaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWInAppPurchaseHelper.h; sourceTree = "<group>"; };
 		D6F9155C28B4DB1F00D4FDD0 /* PWInAppPurchaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWInAppPurchaseHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		882526CE2CF7A95700A73BE2 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 882526C82CF7A95700A73BE2 /* Dr Luevano */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		882526CA2CF7A95700A73BE2 /* Dr Luevano */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (882526CE2CF7A95700A73BE2 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Dr Luevano"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		449CC0082BA9C289003E16DC /* Frameworks */ = {
@@ -1970,6 +1985,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		882526C62CF7A95700A73BE2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C42A20661D06CBB800CC3BCB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1998,6 +2020,7 @@
 				5DA6EBC722E18CAD00097C50 /* libPushwoosh.watchOS.a */,
 				5D4496BF22F01C6B00BD62F4 /* Pushwoosh.framework */,
 				449CC00B2BA9C289003E16DC /* Pushwoosh.framework */,
+				882526C92CF7A95700A73BE2 /* Dr Luevano.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2008,6 +2031,7 @@
 				5D12C21523F54365009A655A /* Pushwoosh */,
 				5D21C42B23F6746100D161F1 /* Supporting_Files */,
 				46FA9E351C7DB1AA00741A11 /* PushwooshTests */,
+				882526CA2CF7A95700A73BE2 /* Dr Luevano */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				467F62A41EB883A400548315 /* Frameworks */,
 				97937A5F262838F700E57C64 /* Recovered References */,
@@ -4111,6 +4135,28 @@
 			productReference = 5DA6EBC722E18CAD00097C50 /* libPushwoosh.watchOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		882526C82CF7A95700A73BE2 /* Dr Luevano */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 882526CF2CF7A95700A73BE2 /* Build configuration list for PBXNativeTarget "Dr Luevano" */;
+			buildPhases = (
+				882526C52CF7A95700A73BE2 /* Sources */,
+				882526C62CF7A95700A73BE2 /* Frameworks */,
+				882526C72CF7A95700A73BE2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				882526CA2CF7A95700A73BE2 /* Dr Luevano */,
+			);
+			name = "Dr Luevano";
+			packageProductDependencies = (
+			);
+			productName = "Dr Luevano";
+			productReference = 882526C92CF7A95700A73BE2 /* Dr Luevano.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C42A20681D06CBB800CC3BCB /* Pushwoosh.mac */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C42A206F1D06CBB800CC3BCB /* Build configuration list for PBXNativeTarget "Pushwoosh.mac" */;
@@ -4153,6 +4199,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				CLASSPREFIX = PW;
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1610;
 				ORGANIZATIONNAME = Pushwoosh;
 				TargetAttributes = {
@@ -4188,6 +4235,9 @@
 						DevelopmentTeam = K422AB2N9V;
 						LastSwiftMigration = 1520;
 						ProvisioningStyle = Automatic;
+					};
+					882526C82CF7A95700A73BE2 = {
+						CreatedOnToolsVersion = 16.1;
 					};
 					C42A20681D06CBB800CC3BCB = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -4225,6 +4275,7 @@
 				C4D612BB1D12C73000720130 /* PushwooshFrameworkMac */,
 				449CC19D2BAC1F39003E16DC /* PushwooshFrameworkVision */,
 				449CC00A2BA9C289003E16DC /* PushwooshVisionOS */,
+				882526C82CF7A95700A73BE2 /* Dr Luevano */,
 			);
 		};
 /* End PBXProject section */
@@ -4261,6 +4312,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		5D4496BD22F01C6B00BD62F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		882526C72CF7A95700A73BE2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -4857,6 +4915,13 @@
 				5DB6E54D23F55EF400421AA4 /* PWNetworkModule.m in Sources */,
 				5DB6E3BE23F55A3000421AA4 /* PWUnregisterDeviceRequest.m in Sources */,
 				97F7D0502771C95F0006692B /* PWUnarchiver.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		882526C52CF7A95700A73BE2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6173,6 +6238,106 @@
 			};
 			name = Release;
 		};
+		882526D02CF7A95700A73BE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZH5F8P7RXN;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Dr Luevano/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Dr Luevano";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Pushwoosh. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "Upgrade-DI.Dr-Luevano";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		882526D12CF7A95700A73BE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = ZH5F8P7RXN;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Dr Luevano/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Dr Luevano";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Pushwoosh. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "Upgrade-DI.Dr-Luevano";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		C42A20701D06CBB800CC3BCB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -6366,6 +6531,15 @@
 			buildConfigurations = (
 				5DA6EBCD22E18CAD00097C50 /* Debug */,
 				5DA6EBCE22E18CAD00097C50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		882526CF2CF7A95700A73BE2 /* Build configuration list for PBXNativeTarget "Dr Luevano" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				882526D02CF7A95700A73BE2 /* Debug */,
+				882526D12CF7A95700A73BE2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
