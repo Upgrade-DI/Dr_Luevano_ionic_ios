@@ -112,9 +112,9 @@ PODS:
   - nanopb/decode (3.30910.0)
   - nanopb/encode (3.30910.0)
   - PromisesObjC (2.4.0)
-  - Pushwoosh (6.7.9):
-    - Pushwoosh/Core (= 6.7.9)
-  - Pushwoosh/Core (6.7.9)
+  - Pushwoosh (6.7.10):
+    - Pushwoosh/Core (= 6.7.10)
+  - Pushwoosh/Core (6.7.10)
   - PushwooshInboxUIXCFramework (6.1.2):
     - PushwooshXCFramework (~> 6.0)
   - PushwooshXCFramework (6.7.4):
@@ -177,10 +177,10 @@ SPEC CHECKSUMS:
   GoogleUtilities: 26a3abef001b6533cf678d3eb38fd3f614b7872d
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
-  Pushwoosh: 1e99b568844d4b11cb13fbc693bf40fa32248b86
+  Pushwoosh: 94beccceaa77d3451cf25d3500616ee7cb1b1e17
   PushwooshInboxUIXCFramework: a6d8528ef5194d188e4574a373020f399255f6c7
   PushwooshXCFramework: 7b7bc5976fe54be9db2b36830f7c0e5b10bcfa7f
 
 PODFILE CHECKSUM: 15d70854598421749afa54ba3d813283ae183326
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.15.2
