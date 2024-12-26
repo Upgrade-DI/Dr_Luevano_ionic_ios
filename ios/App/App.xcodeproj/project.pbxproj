@@ -3,293 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2FAD9763203C412B000D30F8 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2FAD9762203C412B000D30F8 /* config.xml */; };
-		30315DE57B8F683647E378A8 /* Pods_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91B585A6846C41336A3EB73 /* Pods_App.framework */; };
 		50379B232058CBB4000EE86E /* capacitor.config.json in Resources */ = {isa = PBXBuildFile; fileRef = 50379B222058CBB4000EE86E /* capacitor.config.json */; };
 		504EC3081FED79650016851F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504EC3071FED79650016851F /* AppDelegate.swift */; };
 		504EC30D1FED79650016851F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504EC30B1FED79650016851F /* Main.storyboard */; };
 		504EC30F1FED79650016851F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504EC30E1FED79650016851F /* Assets.xcassets */; };
 		504EC3121FED79650016851F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504EC3101FED79650016851F /* LaunchScreen.storyboard */; };
 		50B271D11FEDC1A000F3C39B /* public in Resources */ = {isa = PBXBuildFile; fileRef = 50B271D01FEDC1A000F3C39B /* public */; };
-		882526C42CF7A8C600A73BE2 /* PushwooshFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 882526C32CF7A8C600A73BE2 /* PushwooshFramework */; };
-		88E1E39B2CF5296B00C69EC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E39A2CF5296B00C69EC5 /* GoogleService-Info.plist */; };
-		88E1E5842CF60F9B00C69EC5 /* PushwooshXCFramework.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E5602CF60F9B00C69EC5 /* PushwooshXCFramework.podspec */; };
-		88E1E5852CF60F9B00C69EC5 /* Pushwoosh.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E55B2CF60F9B00C69EC5 /* Pushwoosh.podspec */; };
-		88E1E5862CF60F9B00C69EC5 /* PushwooshVisionXCFramework.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E55F2CF60F9B00C69EC5 /* PushwooshVisionXCFramework.podspec */; };
-		88E1E58A2CF60F9B00C69EC5 /* Pushwoosh_mac.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E55D2CF60F9B00C69EC5 /* Pushwoosh_mac.podspec */; };
-		88E1E58C2CF60F9B00C69EC5 /* Pushwoosh.watchOS.dynamic-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E5472CF60F9B00C69EC5 /* Pushwoosh.watchOS.dynamic-Info.plist */; };
-		88E1E58D2CF60F9B00C69EC5 /* Pushwoosh.iOS.dynamic-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E5462CF60F9B00C69EC5 /* Pushwoosh.iOS.dynamic-Info.plist */; };
-		88E1E58E2CF60F9B00C69EC5 /* Pushwoosh_vision.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88E1E55E2CF60F9B00C69EC5 /* Pushwoosh_vision.podspec */; };
-		88E1E58F2CF60F9B00C69EC5 /* OCMockito.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E1E50A2CF60F9B00C69EC5 /* OCMockito.xcframework */; };
-		88E1E5902CF60F9B00C69EC5 /* OCHamcrest.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E1E5092CF60F9B00C69EC5 /* OCHamcrest.xcframework */; };
-		88E1E5912CF60F9B00C69EC5 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E1E5582CF60F9B00C69EC5 /* libOCMock.a */; };
-		88E1E5922CF60F9B00C69EC5 /* PWUnregisterDeviceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4062CF60F9B00C69EC5 /* PWUnregisterDeviceRequest.m */; };
-		88E1E5932CF60F9B00C69EC5 /* PWPushNotificationManagerCommonTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5302CF60F9B00C69EC5 /* PWPushNotificationManagerCommonTest.m */; };
-		88E1E5942CF60F9B00C69EC5 /* PWRegisterEmailTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5342CF60F9B00C69EC5 /* PWRegisterEmailTest.m */; };
-		88E1E5952CF60F9B00C69EC5 /* PWRichMediaConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4C62CF60F9B00C69EC5 /* PWRichMediaConfig.m */; };
-		88E1E5962CF60F9B00C69EC5 /* PWInboxStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3C92CF60F9B00C69EC5 /* PWInboxStorage.m */; };
-		88E1E5972CF60F9B00C69EC5 /* PWTriggerInAppActionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4242CF60F9B00C69EC5 /* PWTriggerInAppActionRequest.m */; };
-		88E1E5982CF60F9B00C69EC5 /* PWPushNotificationsManager.common.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4402CF60F9B00C69EC5 /* PWPushNotificationsManager.common.m */; };
-		88E1E5992CF60F9B00C69EC5 /* PWRegisterUserRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5372CF60F9B00C69EC5 /* PWRegisterUserRequestTest.m */; };
-		88E1E59A2CF60F9B00C69EC5 /* PWPushRecievedTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5312CF60F9B00C69EC5 /* PWPushRecievedTest.m */; };
-		88E1E59B2CF60F9B00C69EC5 /* PWStartLiveActivityRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3FF2CF60F9B00C69EC5 /* PWStartLiveActivityRequest.m */; };
-		88E1E59C2CF60F9B00C69EC5 /* unzip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4EE2CF60F9B00C69EC5 /* unzip.cpp */; };
-		88E1E59D2CF60F9B00C69EC5 /* PWLiveActivityRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3FD2CF60F9B00C69EC5 /* PWLiveActivityRequest.m */; };
-		88E1E59E2CF60F9B00C69EC5 /* PWDataManager.common.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3B52CF60F9B00C69EC5 /* PWDataManager.common.m */; };
-		88E1E59F2CF60F9B00C69EC5 /* PWNotificationManagerCompatiOS10.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4542CF60F9B00C69EC5 /* PWNotificationManagerCompatiOS10.m */; };
-		88E1E5A02CF60F9B00C69EC5 /* PWUnregisterDeviceRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5412CF60F9B00C69EC5 /* PWUnregisterDeviceRequestTest.m */; };
-		88E1E5A12CF60F9B00C69EC5 /* PWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4732CF60F9B00C69EC5 /* PWAppDelegate.m */; };
-		88E1E5A22CF60F9B00C69EC5 /* PWDataManager.ios.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3B62CF60F9B00C69EC5 /* PWDataManager.ios.m */; };
-		88E1E5A32CF60F9B00C69EC5 /* PWMessageDeliveryRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4192CF60F9B00C69EC5 /* PWMessageDeliveryRequest.m */; };
-		88E1E5A52CF60F9B00C69EC5 /* PWMergeUserRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5282CF60F9B00C69EC5 /* PWMergeUserRequestTest.m */; };
-		88E1E5A62CF60F9B00C69EC5 /* PWPushRuntime.ios.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4E52CF60F9B00C69EC5 /* PWPushRuntime.ios.m */; };
-		88E1E5A72CF60F9B00C69EC5 /* PWUtils.mac.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4D52CF60F9B00C69EC5 /* PWUtils.mac.m */; };
-		88E1E5A82CF60F9B00C69EC5 /* PWBusinessCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3BA2CF60F9B00C69EC5 /* PWBusinessCase.m */; };
-		88E1E5A92CF60F9B00C69EC5 /* PWPushManagerJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4992CF60F9B00C69EC5 /* PWPushManagerJSBridge.m */; };
-		88E1E5AB2CF60F9B00C69EC5 /* PushwooshTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5112CF60F9B00C69EC5 /* PushwooshTest.m */; };
-		88E1E5AC2CF60F9B00C69EC5 /* PWCombinedSetTagsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E40C2CF60F9B00C69EC5 /* PWCombinedSetTagsRequest.m */; };
-		88E1E5AD2CF60F9B00C69EC5 /* PWVersionTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E46E2CF60F9B00C69EC5 /* PWVersionTracking.m */; };
-		88E1E5AE2CF60F9B00C69EC5 /* PWInboxMessageInternal+Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3CE2CF60F9B00C69EC5 /* PWInboxMessageInternal+Status.m */; };
-		88E1E5AF2CF60F9B00C69EC5 /* PWPreferencesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E52F2CF60F9B00C69EC5 /* PWPreferencesTest.m */; };
-		88E1E5B02CF60F9B00C69EC5 /* PWUtils.common.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4F62CF60F9B00C69EC5 /* PWUtils.common.m */; };
-		88E1E5B12CF60F9B00C69EC5 /* PWRichMediaStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4942CF60F9B00C69EC5 /* PWRichMediaStyle.m */; };
-		88E1E5B22CF60F9B00C69EC5 /* PWBaseLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4B12CF60F9B00C69EC5 /* PWBaseLoadingViewController.m */; };
-		88E1E5B32CF60F9B00C69EC5 /* PWTestPurchaseRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E53E2CF60F9B00C69EC5 /* PWTestPurchaseRuntime.m */; };
-		88E1E5B42CF60F9B00C69EC5 /* PWRegisterTestDeviceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4042CF60F9B00C69EC5 /* PWRegisterTestDeviceRequest.m */; };
-		88E1E5B52CF60F9B00C69EC5 /* PWHashDecoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5212CF60F9B00C69EC5 /* PWHashDecoderTest.m */; };
-		88E1E5B62CF60F9B00C69EC5 /* PWUtilsMobile.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4DC2CF60F9B00C69EC5 /* PWUtilsMobile.m */; };
-		88E1E5B72CF60F9B00C69EC5 /* PWRegisterDeviceRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5332CF60F9B00C69EC5 /* PWRegisterDeviceRequestTest.m */; };
-		88E1E5B82CF60F9B00C69EC5 /* PWTestUnarchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E53F2CF60F9B00C69EC5 /* PWTestUnarchiver.m */; };
-		88E1E5B92CF60F9B00C69EC5 /* PWTriggerInAppActionRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5402CF60F9B00C69EC5 /* PWTriggerInAppActionRequestTest.m */; };
-		88E1E5BA2CF60F9B00C69EC5 /* PWNotificationBannerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4362CF60F9B00C69EC5 /* PWNotificationBannerWindow.m */; };
-		88E1E5BB2CF60F9B00C69EC5 /* PWNotificationManagerCompatwatchOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E45D2CF60F9B00C69EC5 /* PWNotificationManagerCompatwatchOS.m */; };
-		88E1E5BC2CF60F9B00C69EC5 /* PWSendPurchaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E53B2CF60F9B00C69EC5 /* PWSendPurchaseTest.m */; };
-		88E1E5BD2CF60F9B00C69EC5 /* PWPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E46A2CF60F9B00C69EC5 /* PWPreferences.m */; };
-		88E1E5BE2CF60F9B00C69EC5 /* PWAppOpenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4222CF60F9B00C69EC5 /* PWAppOpenRequest.m */; };
-		88E1E5BF2CF60F9B00C69EC5 /* PWEasyJSWKDataFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4A02CF60F9B00C69EC5 /* PWEasyJSWKDataFunction.m */; };
-		88E1E5C02CF60F9B00C69EC5 /* PWBasePushTrackingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E41F2CF60F9B00C69EC5 /* PWBasePushTrackingRequest.m */; };
-		88E1E5C12CF60F9B00C69EC5 /* PWNotificationBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4342CF60F9B00C69EC5 /* PWNotificationBannerView.m */; };
-		88E1E5C22CF60F9B00C69EC5 /* PWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4B82CF60F9B00C69EC5 /* PWLoadingView.m */; };
-		88E1E5C32CF60F9B00C69EC5 /* PWRegisterEmailUserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5352CF60F9B00C69EC5 /* PWRegisterEmailUserTest.m */; };
-		88E1E5C42CF60F9B00C69EC5 /* PWGetNearestZoneRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E51D2CF60F9B00C69EC5 /* PWGetNearestZoneRequestTest.m */; };
-		88E1E5C52CF60F9B00C69EC5 /* PWInAppMessagesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3BF2CF60F9B00C69EC5 /* PWInAppMessagesManager.m */; };
-		88E1E5C62CF60F9B00C69EC5 /* PWInAppPurchaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4972CF60F9B00C69EC5 /* PWInAppPurchaseHelper.m */; };
-		88E1E5C72CF60F9B00C69EC5 /* PWPushwooshJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E49B2CF60F9B00C69EC5 /* PWPushwooshJSBridge.m */; };
-		88E1E5C82CF60F9B00C69EC5 /* PWDataManager.mac.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3B72CF60F9B00C69EC5 /* PWDataManager.mac.m */; };
-		88E1E5C92CF60F9B00C69EC5 /* PWRequestsCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E46C2CF60F9B00C69EC5 /* PWRequestsCacheManager.m */; };
-		88E1E5CA2CF60F9B00C69EC5 /* PWInAppStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3C12CF60F9B00C69EC5 /* PWInAppStorage.m */; };
-		88E1E5CB2CF60F9B00C69EC5 /* PWInboxMerge.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3C62CF60F9B00C69EC5 /* PWInboxMerge.m */; };
-		88E1E5CC2CF60F9B00C69EC5 /* PWConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3A02CF60F9B00C69EC5 /* PWConfig.m */; };
-		88E1E5CD2CF60F9B00C69EC5 /* PWGetResourcesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3FA2CF60F9B00C69EC5 /* PWGetResourcesRequest.m */; };
-		88E1E5CE2CF60F9B00C69EC5 /* PWGetTagsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5202CF60F9B00C69EC5 /* PWGetTagsTest.m */; };
-		88E1E5CF2CF60F9B00C69EC5 /* PWGetTagsRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E51F2CF60F9B00C69EC5 /* PWGetTagsRequestTest.m */; };
-		88E1E5D02CF60F9B00C69EC5 /* PWNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E42F2CF60F9B00C69EC5 /* PWNotification.m */; };
-		88E1E5D12CF60F9B00C69EC5 /* PWMessageViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4FB2CF60F9B00C69EC5 /* PWMessageViewControllerTest.m */; };
-		88E1E5D22CF60F9B00C69EC5 /* PWRegisterTestDeviceRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5362CF60F9B00C69EC5 /* PWRegisterTestDeviceRequestTest.m */; };
-		88E1E5D32CF60F9B00C69EC5 /* PWMessageViewController.mac.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4BF2CF60F9B00C69EC5 /* PWMessageViewController.mac.m */; };
-		88E1E5D42CF60F9B00C69EC5 /* PWGetConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3EF2CF60F9B00C69EC5 /* PWGetConfigRequest.m */; };
-		88E1E5D52CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS9.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E44F2CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS9.m */; };
-		88E1E5D62CF60F9B00C69EC5 /* PWChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3B12CF60F9B00C69EC5 /* PWChannel.m */; };
-		88E1E5D82CF60F9B00C69EC5 /* PWSetTagsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4102CF60F9B00C69EC5 /* PWSetTagsRequest.m */; };
-		88E1E5D92CF60F9B00C69EC5 /* PWLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4BA2CF60F9B00C69EC5 /* PWLoadingViewController.m */; };
-		88E1E5DA2CF60F9B00C69EC5 /* PWZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4EC2CF60F9B00C69EC5 /* PWZipArchive.mm */; };
-		88E1E5DB2CF60F9B00C69EC5 /* PWModalWindowConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E48D2CF60F9B00C69EC5 /* PWModalWindowConfiguration.m */; };
-		88E1E5DC2CF60F9B00C69EC5 /* PWNotificationManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E52C2CF60F9B00C69EC5 /* PWNotificationManagerTest.m */; };
-		88E1E5DD2CF60F9B00C69EC5 /* PWRichMediaAnimatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4FC2CF60F9B00C69EC5 /* PWRichMediaAnimatorTest.m */; };
-		88E1E5DE2CF60F9B00C69EC5 /* PWPushNotificationsManager.watch.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4432CF60F9B00C69EC5 /* PWPushNotificationsManager.watch.m */; };
-		88E1E5DF2CF60F9B00C69EC5 /* PWRegisterUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4152CF60F9B00C69EC5 /* PWRegisterUserRequest.m */; };
-		88E1E5E02CF60F9B00C69EC5 /* PWRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3E92CF60F9B00C69EC5 /* PWRequestManager.m */; };
-		88E1E5E12CF60F9B00C69EC5 /* PWNotificationManagerCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4622CF60F9B00C69EC5 /* PWNotificationManagerCompat.m */; };
-		88E1E5E22CF60F9B00C69EC5 /* PWPushStatRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E41C2CF60F9B00C69EC5 /* PWPushStatRequest.m */; };
-		88E1E5E32CF60F9B00C69EC5 /* PWSetEmailTagsRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E53C2CF60F9B00C69EC5 /* PWSetEmailTagsRequestTest.m */; };
-		88E1E5E42CF60F9B00C69EC5 /* NSDictionary+PWDictUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4CD2CF60F9B00C69EC5 /* NSDictionary+PWDictUtils.m */; };
-		88E1E5E52CF60F9B00C69EC5 /* PWNotificationExtensionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4902CF60F9B00C69EC5 /* PWNotificationExtensionManager.m */; };
-		88E1E5E62CF60F9B00C69EC5 /* PWBaseRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5172CF60F9B00C69EC5 /* PWBaseRequestTest.m */; };
-		88E1E5E72CF60F9B00C69EC5 /* PWPushNotificationDelegateMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5052CF60F9B00C69EC5 /* PWPushNotificationDelegateMock.m */; };
-		88E1E5E82CF60F9B00C69EC5 /* PWInlineInAppView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4882CF60F9B00C69EC5 /* PWInlineInAppView.m */; };
-		88E1E5E92CF60F9B00C69EC5 /* PWUserNotificationCenterDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E43C2CF60F9B00C69EC5 /* PWUserNotificationCenterDelegate.m */; };
-		88E1E5EA2CF60F9B00C69EC5 /* PWRichMediaActionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E42B2CF60F9B00C69EC5 /* PWRichMediaActionRequest.m */; };
-		88E1E5EB2CF60F9B00C69EC5 /* PWPushRuntime.mac.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4E72CF60F9B00C69EC5 /* PWPushRuntime.mac.m */; };
-		88E1E5EC2CF60F9B00C69EC5 /* PWBaseInboxRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3D12CF60F9B00C69EC5 /* PWBaseInboxRequest.m */; };
-		88E1E5ED2CF60F9B00C69EC5 /* PWNetworkModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3E62CF60F9B00C69EC5 /* PWNetworkModule.m */; };
-		88E1E5EE2CF60F9B00C69EC5 /* PWRichMediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4922CF60F9B00C69EC5 /* PWRichMediaManager.m */; };
-		88E1E5EF2CF60F9B00C69EC5 /* PWCacheTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5182CF60F9B00C69EC5 /* PWCacheTest.m */; };
-		88E1E5F12CF60F9B00C69EC5 /* ioapi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4EA2CF60F9B00C69EC5 /* ioapi.cpp */; };
-		88E1E5F22CF60F9B00C69EC5 /* PWGDPRManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4822CF60F9B00C69EC5 /* PWGDPRManager.m */; };
-		88E1E5F32CF60F9B00C69EC5 /* PWMessageDeliveryRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5292CF60F9B00C69EC5 /* PWMessageDeliveryRequestTest.m */; };
-		88E1E5F42CF60F9B00C69EC5 /* PWGetTagsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E40E2CF60F9B00C69EC5 /* PWGetTagsRequest.m */; };
-		88E1E5F52CF60F9B00C69EC5 /* PWHtmlWebViewController.ios.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4A92CF60F9B00C69EC5 /* PWHtmlWebViewController.ios.m */; };
-		88E1E5F62CF60F9B00C69EC5 /* PushNotificationManager+Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4FF2CF60F9B00C69EC5 /* PushNotificationManager+Mock.m */; };
-		88E1E5F72CF60F9B00C69EC5 /* PWJSInterfaceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5262CF60F9B00C69EC5 /* PWJSInterfaceTest.m */; };
-		88E1E5F82CF60F9B00C69EC5 /* PWInboxUpdateStatusRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3D72CF60F9B00C69EC5 /* PWInboxUpdateStatusRequest.m */; };
-		88E1E5F92CF60F9B00C69EC5 /* PWRequestManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5382CF60F9B00C69EC5 /* PWRequestManagerTest.m */; };
-		88E1E5FA2CF60F9B00C69EC5 /* WKWebView+PWSynchronousEvaluateJavaScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4A62CF60F9B00C69EC5 /* WKWebView+PWSynchronousEvaluateJavaScript.m */; };
-		88E1E5FB2CF60F9B00C69EC5 /* PWApplicationOpenTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5142CF60F9B00C69EC5 /* PWApplicationOpenTest.m */; };
-		88E1E5FC2CF60F9B00C69EC5 /* PWEasyJSListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E49E2CF60F9B00C69EC5 /* PWEasyJSListener.m */; };
-		88E1E5FD2CF60F9B00C69EC5 /* PWAlphabetUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5122CF60F9B00C69EC5 /* PWAlphabetUtilsTests.m */; };
-		88E1E5FE2CF60F9B00C69EC5 /* PWBasePushTrackingRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5152CF60F9B00C69EC5 /* PWBasePushTrackingRequestTest.m */; };
-		88E1E5FF2CF60F9B00C69EC5 /* PWAlphabetUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4D02CF60F9B00C69EC5 /* PWAlphabetUtils.m */; };
-		88E1E6002CF60F9B00C69EC5 /* PWNotificationExtensionManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E52B2CF60F9B00C69EC5 /* PWNotificationExtensionManagerTest.m */; };
-		88E1E6022CF60F9B00C69EC5 /* NSDate+PWDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4CB2CF60F9B00C69EC5 /* NSDate+PWDateUtils.m */; };
-		88E1E6032CF60F9B00C69EC5 /* PWPushNotificationsManager.ios.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4412CF60F9B00C69EC5 /* PWPushNotificationsManager.ios.m */; };
-		88E1E6042CF60F9B00C69EC5 /* PushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4712CF60F9B00C69EC5 /* PushNotificationManager.m */; };
-		88E1E6052CF60F9B00C69EC5 /* PWDataManagerCommonTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E51B2CF60F9B00C69EC5 /* PWDataManagerCommonTest.m */; };
-		88E1E6062CF60F9B00C69EC5 /* PWPushStatRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5322CF60F9B00C69EC5 /* PWPushStatRequestTest.m */; };
-		88E1E6072CF60F9B00C69EC5 /* PWMessageTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E52A2CF60F9B00C69EC5 /* PWMessageTest.m */; };
-		88E1E6082CF60F9B00C69EC5 /* PWRegisterEmailUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3F42CF60F9B00C69EC5 /* PWRegisterEmailUser.m */; };
-		88E1E6092CF60F9B00C69EC5 /* PWUnarchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4F32CF60F9B00C69EC5 /* PWUnarchiver.m */; };
-		88E1E60A2CF60F9B00C69EC5 /* PWInteractionDisabledWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4B72CF60F9B00C69EC5 /* PWInteractionDisabledWindow.m */; };
-		88E1E60B2CF60F9B00C69EC5 /* PWNotificationManagerCompatmacOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4582CF60F9B00C69EC5 /* PWNotificationManagerCompatmacOS.m */; };
-		88E1E60C2CF60F9B00C69EC5 /* WKUserScript+PWInterfacesScriptGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4A42CF60F9B00C69EC5 /* WKUserScript+PWInterfacesScriptGenerator.m */; };
-		88E1E60D2CF60F9B00C69EC5 /* PWPostEventRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E52D2CF60F9B00C69EC5 /* PWPostEventRequestTest.m */; };
-		88E1E60E2CF60F9B00C69EC5 /* PWMergeUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4132CF60F9B00C69EC5 /* PWMergeUserRequest.m */; };
-		88E1E60F2CF60F9B00C69EC5 /* PWPlatformModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4642CF60F9B00C69EC5 /* PWPlatformModule.m */; };
-		88E1E6102CF60F9B00C69EC5 /* PushwooshLiveActivitiesImplementationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3DD2CF60F9B00C69EC5 /* PushwooshLiveActivitiesImplementationSetup.swift */; };
-		88E1E6112CF60F9B00C69EC5 /* PWResourceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E53A2CF60F9B00C69EC5 /* PWResourceTest.m */; };
-		88E1E6122CF60F9B00C69EC5 /* PWShowLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4C32CF60F9B00C69EC5 /* PWShowLoading.m */; };
-		88E1E6132CF60F9B00C69EC5 /* PWInbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4862CF60F9B00C69EC5 /* PWInbox.m */; };
-		88E1E6142CF60F9B00C69EC5 /* PWPostEventRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3F72CF60F9B00C69EC5 /* PWPostEventRequest.m */; };
-		88E1E6162CF60F9B00C69EC5 /* PWReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4DF2CF60F9B00C69EC5 /* PWReachability.m */; };
-		88E1E6172CF60F9B00C69EC5 /* PWConfigurationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E51A2CF60F9B00C69EC5 /* PWConfigurationTest.m */; };
-		88E1E6182CF60F9B00C69EC5 /* PWRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4292CF60F9B00C69EC5 /* PWRequest.m */; };
-		88E1E6192CF60F9B00C69EC5 /* PWSetEmailTagsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4092CF60F9B00C69EC5 /* PWSetEmailTagsRequest.m */; };
-		88E1E61A2CF60F9B00C69EC5 /* PWSendPurchaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3AE2CF60F9B00C69EC5 /* PWSendPurchaseRequest.m */; };
-		88E1E61B2CF60F9B00C69EC5 /* PWServerCommunicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3EC2CF60F9B00C69EC5 /* PWServerCommunicationManager.m */; };
-		88E1E61C2CF60F9B00C69EC5 /* PWNotificationCenterDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E48E2CF60F9B00C69EC5 /* PWNotificationCenterDelegateProxy.m */; };
-		88E1E61D2CF60F9B00C69EC5 /* PWModalWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3E12CF60F9B00C69EC5 /* PWModalWindow.m */; };
-		88E1E61E2CF60F9B00C69EC5 /* PWGetResourcesRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E51E2CF60F9B00C69EC5 /* PWGetResourcesRequestTest.m */; };
-		88E1E61F2CF60F9B00C69EC5 /* PWInAppPurchaseHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5232CF60F9B00C69EC5 /* PWInAppPurchaseHelperTest.m */; };
-		88E1E6202CF60F9B00C69EC5 /* PWAppLifecycleTrackingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3A42CF60F9B00C69EC5 /* PWAppLifecycleTrackingManager.m */; };
-		88E1E6212CF60F9B00C69EC5 /* PWRegisterDeviceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4022CF60F9B00C69EC5 /* PWRegisterDeviceRequest.m */; };
-		88E1E6222CF60F9B00C69EC5 /* PWSetTagsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E53D2CF60F9B00C69EC5 /* PWSetTagsTest.m */; };
-		88E1E6232CF60F9B00C69EC5 /* PWPushNotificationsManager.mac.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4422CF60F9B00C69EC5 /* PWPushNotificationsManager.mac.m */; };
-		88E1E6242CF60F9B00C69EC5 /* PushwooshLiveActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3DE2CF60F9B00C69EC5 /* PushwooshLiveActivityAttributes.swift */; };
-		88E1E6252CF60F9B00C69EC5 /* PWInAppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4842CF60F9B00C69EC5 /* PWInAppManager.m */; };
-		88E1E6262CF60F9B00C69EC5 /* PWAppDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5132CF60F9B00C69EC5 /* PWAppDelegateTest.m */; };
-		88E1E6272CF60F9B00C69EC5 /* PWRichPushManager.ios.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4AD2CF60F9B00C69EC5 /* PWRichPushManager.ios.m */; };
-		88E1E6282CF60F9B00C69EC5 /* PWCachedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4272CF60F9B00C69EC5 /* PWCachedRequest.m */; };
-		88E1E6292CF60F9B00C69EC5 /* PWPurchaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3AC2CF60F9B00C69EC5 /* PWPurchaseManager.m */; };
-		88E1E62A2CF60F9B00C69EC5 /* zip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4F02CF60F9B00C69EC5 /* zip.cpp */; };
-		88E1E62B2CF60F9B00C69EC5 /* PWLiveActivityRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5272CF60F9B00C69EC5 /* PWLiveActivityRequestTest.m */; };
-		88E1E62C2CF60F9B00C69EC5 /* PWLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E48A2CF60F9B00C69EC5 /* PWLog.m */; };
-		88E1E62D2CF60F9B00C69EC5 /* PWMessageViewController.ios.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4BD2CF60F9B00C69EC5 /* PWMessageViewController.ios.m */; };
-		88E1E62E2CF60F9B00C69EC5 /* PWWebClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4C82CF60F9B00C69EC5 /* PWWebClient.m */; };
-		88E1E62F2CF60F9B00C69EC5 /* PWCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4682CF60F9B00C69EC5 /* PWCache.m */; };
-		88E1E6302CF60F9B00C69EC5 /* PWBundleMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5012CF60F9B00C69EC5 /* PWBundleMock.m */; };
-		88E1E6312CF60F9B00C69EC5 /* PWNotificationManagerCompatiOS8.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E44C2CF60F9B00C69EC5 /* PWNotificationManagerCompatiOS8.m */; };
-		88E1E6322CF60F9B00C69EC5 /* PWRegisterEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3F22CF60F9B00C69EC5 /* PWRegisterEmail.m */; };
-		88E1E6332CF60F9B00C69EC5 /* PWEasyJSWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4A22CF60F9B00C69EC5 /* PWEasyJSWKWebView.m */; };
-		88E1E6342CF60F9B00C69EC5 /* PWRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5392CF60F9B00C69EC5 /* PWRequestTest.m */; };
-		88E1E6352CF60F9B00C69EC5 /* PWUtils.ios.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4D82CF60F9B00C69EC5 /* PWUtils.ios.m */; };
-		88E1E6362CF60F9B00C69EC5 /* PWInboxMessageInternalTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5242CF60F9B00C69EC5 /* PWInboxMessageInternalTest.m */; };
-		88E1E6372CF60F9B00C69EC5 /* PWModalWindowSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3E32CF60F9B00C69EC5 /* PWModalWindowSettings.m */; };
-		88E1E6382CF60F9B00C69EC5 /* PWRichPushManager.mac.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4AE2CF60F9B00C69EC5 /* PWRichPushManager.mac.m */; };
-		88E1E6392CF60F9B00C69EC5 /* PWInboxMessagesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3D52CF60F9B00C69EC5 /* PWInboxMessagesRequest.m */; };
-		88E1E63B2CF60F9B00C69EC5 /* PWInboxMessageInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3CC2CF60F9B00C69EC5 /* PWInboxMessageInternal.m */; };
-		88E1E63C2CF60F9B00C69EC5 /* PWResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3C32CF60F9B00C69EC5 /* PWResource.m */; };
-		88E1E63D2CF60F9B00C69EC5 /* PWInboxAllMessagesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3D32CF60F9B00C69EC5 /* PWInboxAllMessagesRequest.m */; };
-		88E1E63E2CF60F9B00C69EC5 /* PWInAppMessagesManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5222CF60F9B00C69EC5 /* PWInAppMessagesManagerTest.m */; };
-		88E1E63F2CF60F9B00C69EC5 /* PWScreenTrackingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3A72CF60F9B00C69EC5 /* PWScreenTrackingManager.m */; };
-		88E1E6402CF60F9B00C69EC5 /* PWRequestManagerMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5072CF60F9B00C69EC5 /* PWRequestManagerMock.m */; };
-		88E1E6412CF60F9B00C69EC5 /* PWPushNotificationCustomDelegateMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5032CF60F9B00C69EC5 /* PWPushNotificationCustomDelegateMock.m */; };
-		88E1E6422CF60F9B00C69EC5 /* PWBusinessCaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3BC2CF60F9B00C69EC5 /* PWBusinessCaseManager.m */; };
-		88E1E6432CF60F9B00C69EC5 /* PWNotificationAppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4312CF60F9B00C69EC5 /* PWNotificationAppSettings.m */; };
-		88E1E6452CF60F9B00C69EC5 /* PWGetConfigRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E51C2CF60F9B00C69EC5 /* PWGetConfigRequestTest.m */; };
-		88E1E6472CF60F9B00C69EC5 /* PWUtils.watch.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4DA2CF60F9B00C69EC5 /* PWUtils.watch.m */; };
-		88E1E6482CF60F9B00C69EC5 /* PWHtmlWebViewController.mac.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4AB2CF60F9B00C69EC5 /* PWHtmlWebViewController.mac.m */; };
-		88E1E6492CF60F9B00C69EC5 /* PushwooshLiveActivities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4802CF60F9B00C69EC5 /* PushwooshLiveActivities.swift */; };
-		88E1E64A2CF60F9B00C69EC5 /* PWNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4382CF60F9B00C69EC5 /* PWNotificationCenter.m */; };
-		88E1E64B2CF60F9B00C69EC5 /* PWNotificationCategoryBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4602CF60F9B00C69EC5 /* PWNotificationCategoryBuilder.m */; };
-		88E1E64C2CF60F9B00C69EC5 /* PWRichMediaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4C12CF60F9B00C69EC5 /* PWRichMediaView.m */; };
-		88E1E64D2CF60F9B00C69EC5 /* PWButtonExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4B32CF60F9B00C69EC5 /* PWButtonExt.m */; };
-		88E1E64E2CF60F9B00C69EC5 /* PWTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E50D2CF60F9B00C69EC5 /* PWTestUtils.m */; };
-		88E1E64F2CF60F9B00C69EC5 /* PWInboxServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5252CF60F9B00C69EC5 /* PWInboxServiceTest.m */; };
-		88E1E6502CF60F9B00C69EC5 /* PWPurchaseRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4E22CF60F9B00C69EC5 /* PWPurchaseRuntime.m */; };
-		88E1E6512CF60F9B00C69EC5 /* PWPostEventTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E52E2CF60F9B00C69EC5 /* PWPostEventTest.m */; };
-		88E1E6522CF60F9B00C69EC5 /* Pushwoosh.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E47E2CF60F9B00C69EC5 /* Pushwoosh.m */; };
-		88E1E6532CF60F9B00C69EC5 /* PWConfigTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E5192CF60F9B00C69EC5 /* PWConfigTest.m */; };
-		88E1E6542CF60F9B00C69EC5 /* PWInteractionDisabledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4B52CF60F9B00C69EC5 /* PWInteractionDisabledView.m */; };
-		88E1E6552CF60F9B00C69EC5 /* PWHashDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4D22CF60F9B00C69EC5 /* PWHashDecoder.m */; };
-		88E1E6562CF60F9B00C69EC5 /* PWInteractivePush.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4472CF60F9B00C69EC5 /* PWInteractivePush.m */; };
-		88E1E6572CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS10.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E4522CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS10.m */; };
-		88E1E6582CF60F9B00C69EC5 /* PWNotificationCategoryBuilderwatchOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E45B2CF60F9B00C69EC5 /* PWNotificationCategoryBuilderwatchOS.m */; };
-		88E1E6592CF60F9B00C69EC5 /* APNSPayloadTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E50F2CF60F9B00C69EC5 /* APNSPayloadTest.m */; };
-		88E1E65A2CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS8.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E44A2CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS8.m */; };
-		88E1E65B2CF60F9B00C69EC5 /* PWInboxService.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1E3DA2CF60F9B00C69EC5 /* PWInboxService.m */; };
+		A084ECDBA7D38E1E42DFC39D /* Pods_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF277DCFFFF123FFC6DF26C7 /* Pods_App.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		882526D32CF7AC0D00A73BE2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 88E1E55C2CF60F9B00C69EC5 /* Pushwoosh.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 882526C92CF7A95700A73BE2;
-			remoteInfo = "Dr Luevano";
-		};
-		88E1E6682CF60F9B00C69EC5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 88E1E55C2CF60F9B00C69EC5 /* Pushwoosh.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = Pushwoosh.ios;
-		};
-		88E1E66A2CF60F9B00C69EC5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 88E1E55C2CF60F9B00C69EC5 /* Pushwoosh.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 467EB9371DFEC23A00506823;
-			remoteInfo = PushwooshiOS;
-		};
-		88E1E66C2CF60F9B00C69EC5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 88E1E55C2CF60F9B00C69EC5 /* Pushwoosh.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C42A20691D06CBB800CC3BCB;
-			remoteInfo = Pushwoosh.mac;
-		};
-		88E1E66E2CF60F9B00C69EC5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 88E1E55C2CF60F9B00C69EC5 /* Pushwoosh.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 467F61F21EB87F3300548315;
-			remoteInfo = PushwooshMac;
-		};
-		88E1E6702CF60F9B00C69EC5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 88E1E55C2CF60F9B00C69EC5 /* Pushwoosh.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5DA6EBC722E18CAD00097C50;
-			remoteInfo = Pushwoosh.watchOS;
-		};
-		88E1E6722CF60F9B00C69EC5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 88E1E55C2CF60F9B00C69EC5 /* Pushwoosh.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5D4496BF22F01C6B00BD62F4;
-			remoteInfo = Pushwoosh.watchOS.dynamic;
-		};
-		88E1E6742CF60F9B00C69EC5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 88E1E55C2CF60F9B00C69EC5 /* Pushwoosh.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 46FA9E341C7DB1AA00741A11;
-			remoteInfo = PushwooshTests;
-		};
-		88E1E6762CF60F9B00C69EC5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 88E1E55C2CF60F9B00C69EC5 /* Pushwoosh.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 449CC00B2BA9C289003E16DC;
-			remoteInfo = PushwooshVisionOS;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		2C912109EE8B63351F18DB9F /* Pods-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.debug.xcconfig"; path = "Target Support Files/Pods-App/Pods-App.debug.xcconfig"; sourceTree = "<group>"; };
 		2FAD9762203C412B000D30F8 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
 		50379B222058CBB4000EE86E /* capacitor.config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = capacitor.config.json; sourceTree = "<group>"; };
 		504EC3041FED79650016851F /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,384 +27,9 @@
 		504EC3111FED79650016851F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		504EC3131FED79650016851F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B271D01FEDC1A000F3C39B /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; path = public; sourceTree = "<group>"; };
-		5B8CDBE54F3B3F7DE6E55802 /* Pods-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.release.xcconfig"; path = "Target Support Files/Pods-App/Pods-App.release.xcconfig"; sourceTree = "<group>"; };
-		88925C4F2CECF93A00389790 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
-		88E1E39A2CF5296B00C69EC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		88E1E39C2CF60F9B00C69EC5 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		88E1E39E2CF60F9B00C69EC5 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		88E1E39F2CF60F9B00C69EC5 /* PWConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWConfig.h; sourceTree = "<group>"; };
-		88E1E3A02CF60F9B00C69EC5 /* PWConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWConfig.m; sourceTree = "<group>"; };
-		88E1E3A12CF60F9B00C69EC5 /* PWSupportedOrientations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWSupportedOrientations.h; sourceTree = "<group>"; };
-		88E1E3A32CF60F9B00C69EC5 /* PWAppLifecycleTrackingManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWAppLifecycleTrackingManager.h; sourceTree = "<group>"; };
-		88E1E3A42CF60F9B00C69EC5 /* PWAppLifecycleTrackingManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWAppLifecycleTrackingManager.m; sourceTree = "<group>"; };
-		88E1E3A62CF60F9B00C69EC5 /* PWScreenTrackingManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWScreenTrackingManager.h; sourceTree = "<group>"; };
-		88E1E3A72CF60F9B00C69EC5 /* PWScreenTrackingManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWScreenTrackingManager.m; sourceTree = "<group>"; };
-		88E1E3AB2CF60F9B00C69EC5 /* PWPurchaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWPurchaseManager.h; sourceTree = "<group>"; };
-		88E1E3AC2CF60F9B00C69EC5 /* PWPurchaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPurchaseManager.m; sourceTree = "<group>"; };
-		88E1E3AD2CF60F9B00C69EC5 /* PWSendPurchaseRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWSendPurchaseRequest.h; sourceTree = "<group>"; };
-		88E1E3AE2CF60F9B00C69EC5 /* PWSendPurchaseRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWSendPurchaseRequest.m; sourceTree = "<group>"; };
-		88E1E3B02CF60F9B00C69EC5 /* PWChannel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWChannel.h; sourceTree = "<group>"; };
-		88E1E3B12CF60F9B00C69EC5 /* PWChannel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWChannel.m; sourceTree = "<group>"; };
-		88E1E3B32CF60F9B00C69EC5 /* PWDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWDataManager.h; sourceTree = "<group>"; };
-		88E1E3B42CF60F9B00C69EC5 /* PWDataManager.common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWDataManager.common.h; sourceTree = "<group>"; };
-		88E1E3B52CF60F9B00C69EC5 /* PWDataManager.common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWDataManager.common.m; sourceTree = "<group>"; };
-		88E1E3B62CF60F9B00C69EC5 /* PWDataManager.ios.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWDataManager.ios.m; sourceTree = "<group>"; };
-		88E1E3B72CF60F9B00C69EC5 /* PWDataManager.mac.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWDataManager.mac.m; sourceTree = "<group>"; };
-		88E1E3B92CF60F9B00C69EC5 /* PWBusinessCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWBusinessCase.h; sourceTree = "<group>"; };
-		88E1E3BA2CF60F9B00C69EC5 /* PWBusinessCase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWBusinessCase.m; sourceTree = "<group>"; };
-		88E1E3BB2CF60F9B00C69EC5 /* PWBusinessCaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWBusinessCaseManager.h; sourceTree = "<group>"; };
-		88E1E3BC2CF60F9B00C69EC5 /* PWBusinessCaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWBusinessCaseManager.m; sourceTree = "<group>"; };
-		88E1E3BE2CF60F9B00C69EC5 /* PWInAppMessagesManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWInAppMessagesManager.h; sourceTree = "<group>"; };
-		88E1E3BF2CF60F9B00C69EC5 /* PWInAppMessagesManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInAppMessagesManager.m; sourceTree = "<group>"; };
-		88E1E3C02CF60F9B00C69EC5 /* PWInAppStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWInAppStorage.h; sourceTree = "<group>"; };
-		88E1E3C12CF60F9B00C69EC5 /* PWInAppStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInAppStorage.m; sourceTree = "<group>"; };
-		88E1E3C22CF60F9B00C69EC5 /* PWResource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWResource.h; sourceTree = "<group>"; };
-		88E1E3C32CF60F9B00C69EC5 /* PWResource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWResource.m; sourceTree = "<group>"; };
-		88E1E3C52CF60F9B00C69EC5 /* PWInboxMerge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWInboxMerge.h; sourceTree = "<group>"; };
-		88E1E3C62CF60F9B00C69EC5 /* PWInboxMerge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInboxMerge.m; sourceTree = "<group>"; };
-		88E1E3C82CF60F9B00C69EC5 /* PWInboxStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWInboxStorage.h; sourceTree = "<group>"; };
-		88E1E3C92CF60F9B00C69EC5 /* PWInboxStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInboxStorage.m; sourceTree = "<group>"; };
-		88E1E3CB2CF60F9B00C69EC5 /* PWInboxMessageInternal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWInboxMessageInternal.h; sourceTree = "<group>"; };
-		88E1E3CC2CF60F9B00C69EC5 /* PWInboxMessageInternal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInboxMessageInternal.m; sourceTree = "<group>"; };
-		88E1E3CD2CF60F9B00C69EC5 /* PWInboxMessageInternal+Status.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PWInboxMessageInternal+Status.h"; sourceTree = "<group>"; };
-		88E1E3CE2CF60F9B00C69EC5 /* PWInboxMessageInternal+Status.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PWInboxMessageInternal+Status.m"; sourceTree = "<group>"; };
-		88E1E3D02CF60F9B00C69EC5 /* PWBaseInboxRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWBaseInboxRequest.h; sourceTree = "<group>"; };
-		88E1E3D12CF60F9B00C69EC5 /* PWBaseInboxRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWBaseInboxRequest.m; sourceTree = "<group>"; };
-		88E1E3D22CF60F9B00C69EC5 /* PWInboxAllMessagesRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWInboxAllMessagesRequest.h; sourceTree = "<group>"; };
-		88E1E3D32CF60F9B00C69EC5 /* PWInboxAllMessagesRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInboxAllMessagesRequest.m; sourceTree = "<group>"; };
-		88E1E3D42CF60F9B00C69EC5 /* PWInboxMessagesRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWInboxMessagesRequest.h; sourceTree = "<group>"; };
-		88E1E3D52CF60F9B00C69EC5 /* PWInboxMessagesRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInboxMessagesRequest.m; sourceTree = "<group>"; };
-		88E1E3D62CF60F9B00C69EC5 /* PWInboxUpdateStatusRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWInboxUpdateStatusRequest.h; sourceTree = "<group>"; };
-		88E1E3D72CF60F9B00C69EC5 /* PWInboxUpdateStatusRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInboxUpdateStatusRequest.m; sourceTree = "<group>"; };
-		88E1E3D92CF60F9B00C69EC5 /* PWInboxService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWInboxService.h; sourceTree = "<group>"; };
-		88E1E3DA2CF60F9B00C69EC5 /* PWInboxService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInboxService.m; sourceTree = "<group>"; };
-		88E1E3DD2CF60F9B00C69EC5 /* PushwooshLiveActivitiesImplementationSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushwooshLiveActivitiesImplementationSetup.swift; sourceTree = "<group>"; };
-		88E1E3DE2CF60F9B00C69EC5 /* PushwooshLiveActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushwooshLiveActivityAttributes.swift; sourceTree = "<group>"; };
-		88E1E3E02CF60F9B00C69EC5 /* PWModalWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWModalWindow.h; sourceTree = "<group>"; };
-		88E1E3E12CF60F9B00C69EC5 /* PWModalWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWModalWindow.m; sourceTree = "<group>"; };
-		88E1E3E22CF60F9B00C69EC5 /* PWModalWindowSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWModalWindowSettings.h; sourceTree = "<group>"; };
-		88E1E3E32CF60F9B00C69EC5 /* PWModalWindowSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWModalWindowSettings.m; sourceTree = "<group>"; };
-		88E1E3E52CF60F9B00C69EC5 /* PWNetworkModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNetworkModule.h; sourceTree = "<group>"; };
-		88E1E3E62CF60F9B00C69EC5 /* PWNetworkModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNetworkModule.m; sourceTree = "<group>"; };
-		88E1E3E82CF60F9B00C69EC5 /* PWRequestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWRequestManager.h; sourceTree = "<group>"; };
-		88E1E3E92CF60F9B00C69EC5 /* PWRequestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRequestManager.m; sourceTree = "<group>"; };
-		88E1E3EB2CF60F9B00C69EC5 /* PWServerCommunicationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWServerCommunicationManager.h; sourceTree = "<group>"; };
-		88E1E3EC2CF60F9B00C69EC5 /* PWServerCommunicationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWServerCommunicationManager.m; sourceTree = "<group>"; };
-		88E1E3EE2CF60F9B00C69EC5 /* PWGetConfigRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWGetConfigRequest.h; sourceTree = "<group>"; };
-		88E1E3EF2CF60F9B00C69EC5 /* PWGetConfigRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWGetConfigRequest.m; sourceTree = "<group>"; };
-		88E1E3F12CF60F9B00C69EC5 /* PWRegisterEmail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWRegisterEmail.h; sourceTree = "<group>"; };
-		88E1E3F22CF60F9B00C69EC5 /* PWRegisterEmail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRegisterEmail.m; sourceTree = "<group>"; };
-		88E1E3F32CF60F9B00C69EC5 /* PWRegisterEmailUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWRegisterEmailUser.h; sourceTree = "<group>"; };
-		88E1E3F42CF60F9B00C69EC5 /* PWRegisterEmailUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRegisterEmailUser.m; sourceTree = "<group>"; };
-		88E1E3F62CF60F9B00C69EC5 /* PWPostEventRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWPostEventRequest.h; sourceTree = "<group>"; };
-		88E1E3F72CF60F9B00C69EC5 /* PWPostEventRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPostEventRequest.m; sourceTree = "<group>"; };
-		88E1E3F92CF60F9B00C69EC5 /* PWGetResourcesRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWGetResourcesRequest.h; sourceTree = "<group>"; };
-		88E1E3FA2CF60F9B00C69EC5 /* PWGetResourcesRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWGetResourcesRequest.m; sourceTree = "<group>"; };
-		88E1E3FC2CF60F9B00C69EC5 /* PWLiveActivityRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWLiveActivityRequest.h; sourceTree = "<group>"; };
-		88E1E3FD2CF60F9B00C69EC5 /* PWLiveActivityRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWLiveActivityRequest.m; sourceTree = "<group>"; };
-		88E1E3FE2CF60F9B00C69EC5 /* PWStartLiveActivityRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWStartLiveActivityRequest.h; sourceTree = "<group>"; };
-		88E1E3FF2CF60F9B00C69EC5 /* PWStartLiveActivityRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWStartLiveActivityRequest.m; sourceTree = "<group>"; };
-		88E1E4012CF60F9B00C69EC5 /* PWRegisterDeviceRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWRegisterDeviceRequest.h; sourceTree = "<group>"; };
-		88E1E4022CF60F9B00C69EC5 /* PWRegisterDeviceRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRegisterDeviceRequest.m; sourceTree = "<group>"; };
-		88E1E4032CF60F9B00C69EC5 /* PWRegisterTestDeviceRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWRegisterTestDeviceRequest.h; sourceTree = "<group>"; };
-		88E1E4042CF60F9B00C69EC5 /* PWRegisterTestDeviceRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRegisterTestDeviceRequest.m; sourceTree = "<group>"; };
-		88E1E4052CF60F9B00C69EC5 /* PWUnregisterDeviceRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWUnregisterDeviceRequest.h; sourceTree = "<group>"; };
-		88E1E4062CF60F9B00C69EC5 /* PWUnregisterDeviceRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWUnregisterDeviceRequest.m; sourceTree = "<group>"; };
-		88E1E4082CF60F9B00C69EC5 /* PWSetEmailTagsRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWSetEmailTagsRequest.h; sourceTree = "<group>"; };
-		88E1E4092CF60F9B00C69EC5 /* PWSetEmailTagsRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWSetEmailTagsRequest.m; sourceTree = "<group>"; };
-		88E1E40B2CF60F9B00C69EC5 /* PWCombinedSetTagsRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWCombinedSetTagsRequest.h; sourceTree = "<group>"; };
-		88E1E40C2CF60F9B00C69EC5 /* PWCombinedSetTagsRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWCombinedSetTagsRequest.m; sourceTree = "<group>"; };
-		88E1E40D2CF60F9B00C69EC5 /* PWGetTagsRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWGetTagsRequest.h; sourceTree = "<group>"; };
-		88E1E40E2CF60F9B00C69EC5 /* PWGetTagsRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWGetTagsRequest.m; sourceTree = "<group>"; };
-		88E1E40F2CF60F9B00C69EC5 /* PWSetTagsRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWSetTagsRequest.h; sourceTree = "<group>"; };
-		88E1E4102CF60F9B00C69EC5 /* PWSetTagsRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWSetTagsRequest.m; sourceTree = "<group>"; };
-		88E1E4122CF60F9B00C69EC5 /* PWMergeUserRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWMergeUserRequest.h; sourceTree = "<group>"; };
-		88E1E4132CF60F9B00C69EC5 /* PWMergeUserRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWMergeUserRequest.m; sourceTree = "<group>"; };
-		88E1E4142CF60F9B00C69EC5 /* PWRegisterUserRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWRegisterUserRequest.h; sourceTree = "<group>"; };
-		88E1E4152CF60F9B00C69EC5 /* PWRegisterUserRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRegisterUserRequest.m; sourceTree = "<group>"; };
-		88E1E4182CF60F9B00C69EC5 /* PWMessageDeliveryRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWMessageDeliveryRequest.h; sourceTree = "<group>"; };
-		88E1E4192CF60F9B00C69EC5 /* PWMessageDeliveryRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWMessageDeliveryRequest.m; sourceTree = "<group>"; };
-		88E1E41B2CF60F9B00C69EC5 /* PWPushStatRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWPushStatRequest.h; sourceTree = "<group>"; };
-		88E1E41C2CF60F9B00C69EC5 /* PWPushStatRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPushStatRequest.m; sourceTree = "<group>"; };
-		88E1E41E2CF60F9B00C69EC5 /* PWBasePushTrackingRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWBasePushTrackingRequest.h; sourceTree = "<group>"; };
-		88E1E41F2CF60F9B00C69EC5 /* PWBasePushTrackingRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWBasePushTrackingRequest.m; sourceTree = "<group>"; };
-		88E1E4212CF60F9B00C69EC5 /* PWAppOpenRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWAppOpenRequest.h; sourceTree = "<group>"; };
-		88E1E4222CF60F9B00C69EC5 /* PWAppOpenRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWAppOpenRequest.m; sourceTree = "<group>"; };
-		88E1E4232CF60F9B00C69EC5 /* PWTriggerInAppActionRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWTriggerInAppActionRequest.h; sourceTree = "<group>"; };
-		88E1E4242CF60F9B00C69EC5 /* PWTriggerInAppActionRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWTriggerInAppActionRequest.m; sourceTree = "<group>"; };
-		88E1E4262CF60F9B00C69EC5 /* PWCachedRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWCachedRequest.h; sourceTree = "<group>"; };
-		88E1E4272CF60F9B00C69EC5 /* PWCachedRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWCachedRequest.m; sourceTree = "<group>"; };
-		88E1E4282CF60F9B00C69EC5 /* PWRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWRequest.h; sourceTree = "<group>"; };
-		88E1E4292CF60F9B00C69EC5 /* PWRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRequest.m; sourceTree = "<group>"; };
-		88E1E42A2CF60F9B00C69EC5 /* PWRichMediaActionRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWRichMediaActionRequest.h; sourceTree = "<group>"; };
-		88E1E42B2CF60F9B00C69EC5 /* PWRichMediaActionRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRichMediaActionRequest.m; sourceTree = "<group>"; };
-		88E1E42E2CF60F9B00C69EC5 /* PWNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNotification.h; sourceTree = "<group>"; };
-		88E1E42F2CF60F9B00C69EC5 /* PWNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotification.m; sourceTree = "<group>"; };
-		88E1E4302CF60F9B00C69EC5 /* PWNotificationAppSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNotificationAppSettings.h; sourceTree = "<group>"; };
-		88E1E4312CF60F9B00C69EC5 /* PWNotificationAppSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationAppSettings.m; sourceTree = "<group>"; };
-		88E1E4322CF60F9B00C69EC5 /* PWNotificationAppSettings_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNotificationAppSettings_Private.h; sourceTree = "<group>"; };
-		88E1E4332CF60F9B00C69EC5 /* PWNotificationBannerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNotificationBannerView.h; sourceTree = "<group>"; };
-		88E1E4342CF60F9B00C69EC5 /* PWNotificationBannerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationBannerView.m; sourceTree = "<group>"; };
-		88E1E4352CF60F9B00C69EC5 /* PWNotificationBannerWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNotificationBannerWindow.h; sourceTree = "<group>"; };
-		88E1E4362CF60F9B00C69EC5 /* PWNotificationBannerWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationBannerWindow.m; sourceTree = "<group>"; };
-		88E1E4372CF60F9B00C69EC5 /* PWNotificationCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNotificationCenter.h; sourceTree = "<group>"; };
-		88E1E4382CF60F9B00C69EC5 /* PWNotificationCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationCenter.m; sourceTree = "<group>"; };
-		88E1E43B2CF60F9B00C69EC5 /* PWUserNotificationCenterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWUserNotificationCenterDelegate.h; sourceTree = "<group>"; };
-		88E1E43C2CF60F9B00C69EC5 /* PWUserNotificationCenterDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWUserNotificationCenterDelegate.m; sourceTree = "<group>"; };
-		88E1E43E2CF60F9B00C69EC5 /* PWPushNotificationsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWPushNotificationsManager.h; sourceTree = "<group>"; };
-		88E1E43F2CF60F9B00C69EC5 /* PWPushNotificationsManager.common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWPushNotificationsManager.common.h; sourceTree = "<group>"; };
-		88E1E4402CF60F9B00C69EC5 /* PWPushNotificationsManager.common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPushNotificationsManager.common.m; sourceTree = "<group>"; };
-		88E1E4412CF60F9B00C69EC5 /* PWPushNotificationsManager.ios.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPushNotificationsManager.ios.m; sourceTree = "<group>"; };
-		88E1E4422CF60F9B00C69EC5 /* PWPushNotificationsManager.mac.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPushNotificationsManager.mac.m; sourceTree = "<group>"; };
-		88E1E4432CF60F9B00C69EC5 /* PWPushNotificationsManager.watch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPushNotificationsManager.watch.m; sourceTree = "<group>"; };
-		88E1E4442CF60F9B00C69EC5 /* PWPushNotificationsManager+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PWPushNotificationsManager+Internal.h"; sourceTree = "<group>"; };
-		88E1E4462CF60F9B00C69EC5 /* PWInteractivePush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWInteractivePush.h; sourceTree = "<group>"; };
-		88E1E4472CF60F9B00C69EC5 /* PWInteractivePush.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInteractivePush.m; sourceTree = "<group>"; };
-		88E1E4492CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS8.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNotificationCategoryBuilderiOS8.h; sourceTree = "<group>"; };
-		88E1E44A2CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS8.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationCategoryBuilderiOS8.m; sourceTree = "<group>"; };
-		88E1E44B2CF60F9B00C69EC5 /* PWNotificationManagerCompatiOS8.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNotificationManagerCompatiOS8.h; sourceTree = "<group>"; };
-		88E1E44C2CF60F9B00C69EC5 /* PWNotificationManagerCompatiOS8.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationManagerCompatiOS8.m; sourceTree = "<group>"; };
-		88E1E44E2CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS9.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNotificationCategoryBuilderiOS9.h; sourceTree = "<group>"; };
-		88E1E44F2CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS9.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationCategoryBuilderiOS9.m; sourceTree = "<group>"; };
-		88E1E4512CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS10.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNotificationCategoryBuilderiOS10.h; sourceTree = "<group>"; };
-		88E1E4522CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS10.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationCategoryBuilderiOS10.m; sourceTree = "<group>"; };
-		88E1E4532CF60F9B00C69EC5 /* PWNotificationManagerCompatiOS10.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNotificationManagerCompatiOS10.h; sourceTree = "<group>"; };
-		88E1E4542CF60F9B00C69EC5 /* PWNotificationManagerCompatiOS10.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationManagerCompatiOS10.m; sourceTree = "<group>"; };
-		88E1E4572CF60F9B00C69EC5 /* PWNotificationManagerCompatmacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNotificationManagerCompatmacOS.h; sourceTree = "<group>"; };
-		88E1E4582CF60F9B00C69EC5 /* PWNotificationManagerCompatmacOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationManagerCompatmacOS.m; sourceTree = "<group>"; };
-		88E1E45A2CF60F9B00C69EC5 /* PWNotificationCategoryBuilderwatchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNotificationCategoryBuilderwatchOS.h; sourceTree = "<group>"; };
-		88E1E45B2CF60F9B00C69EC5 /* PWNotificationCategoryBuilderwatchOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationCategoryBuilderwatchOS.m; sourceTree = "<group>"; };
-		88E1E45C2CF60F9B00C69EC5 /* PWNotificationManagerCompatwatchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNotificationManagerCompatwatchOS.h; sourceTree = "<group>"; };
-		88E1E45D2CF60F9B00C69EC5 /* PWNotificationManagerCompatwatchOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationManagerCompatwatchOS.m; sourceTree = "<group>"; };
-		88E1E45F2CF60F9B00C69EC5 /* PWNotificationCategoryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNotificationCategoryBuilder.h; sourceTree = "<group>"; };
-		88E1E4602CF60F9B00C69EC5 /* PWNotificationCategoryBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationCategoryBuilder.m; sourceTree = "<group>"; };
-		88E1E4612CF60F9B00C69EC5 /* PWNotificationManagerCompat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNotificationManagerCompat.h; sourceTree = "<group>"; };
-		88E1E4622CF60F9B00C69EC5 /* PWNotificationManagerCompat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationManagerCompat.m; sourceTree = "<group>"; };
-		88E1E4632CF60F9B00C69EC5 /* PWPlatformModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWPlatformModule.h; sourceTree = "<group>"; };
-		88E1E4642CF60F9B00C69EC5 /* PWPlatformModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPlatformModule.m; sourceTree = "<group>"; };
-		88E1E4672CF60F9B00C69EC5 /* PWCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWCache.h; sourceTree = "<group>"; };
-		88E1E4682CF60F9B00C69EC5 /* PWCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWCache.m; sourceTree = "<group>"; };
-		88E1E4692CF60F9B00C69EC5 /* PWPreferences.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWPreferences.h; sourceTree = "<group>"; };
-		88E1E46A2CF60F9B00C69EC5 /* PWPreferences.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPreferences.m; sourceTree = "<group>"; };
-		88E1E46B2CF60F9B00C69EC5 /* PWRequestsCacheManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWRequestsCacheManager.h; sourceTree = "<group>"; };
-		88E1E46C2CF60F9B00C69EC5 /* PWRequestsCacheManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRequestsCacheManager.m; sourceTree = "<group>"; };
-		88E1E46D2CF60F9B00C69EC5 /* PWVersionTracking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWVersionTracking.h; sourceTree = "<group>"; };
-		88E1E46E2CF60F9B00C69EC5 /* PWVersionTracking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWVersionTracking.m; sourceTree = "<group>"; };
-		88E1E4702CF60F9B00C69EC5 /* PushNotificationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PushNotificationManager.h; sourceTree = "<group>"; };
-		88E1E4712CF60F9B00C69EC5 /* PushNotificationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PushNotificationManager.m; sourceTree = "<group>"; };
-		88E1E4722CF60F9B00C69EC5 /* PWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWAppDelegate.h; sourceTree = "<group>"; };
-		88E1E4732CF60F9B00C69EC5 /* PWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWAppDelegate.m; sourceTree = "<group>"; };
-		88E1E4752CF60F9B00C69EC5 /* Pushwoosh+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pushwoosh+Internal.h"; sourceTree = "<group>"; };
-		88E1E4762CF60F9B00C69EC5 /* PWGDPRManager+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PWGDPRManager+Internal.h"; sourceTree = "<group>"; };
-		88E1E4772CF60F9B00C69EC5 /* PWInAppManager+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PWInAppManager+Internal.h"; sourceTree = "<group>"; };
-		88E1E4782CF60F9B00C69EC5 /* PWInbox+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PWInbox+Internal.h"; sourceTree = "<group>"; };
-		88E1E4792CF60F9B00C69EC5 /* PWLog+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PWLog+Internal.h"; sourceTree = "<group>"; };
-		88E1E47A2CF60F9B00C69EC5 /* PWMessage+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PWMessage+Internal.h"; sourceTree = "<group>"; };
-		88E1E47B2CF60F9B00C69EC5 /* PWNotificationCenterDelegateProxy+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PWNotificationCenterDelegateProxy+Internal.h"; sourceTree = "<group>"; };
-		88E1E47C2CF60F9B00C69EC5 /* PWRichMedia+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PWRichMedia+Internal.h"; sourceTree = "<group>"; };
-		88E1E47E2CF60F9B00C69EC5 /* Pushwoosh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pushwoosh.m; sourceTree = "<group>"; };
-		88E1E47F2CF60F9B00C69EC5 /* PushwooshFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PushwooshFramework.h; sourceTree = "<group>"; };
-		88E1E4802CF60F9B00C69EC5 /* PushwooshLiveActivities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushwooshLiveActivities.swift; sourceTree = "<group>"; };
-		88E1E4812CF60F9B00C69EC5 /* PWGDPRManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWGDPRManager.h; sourceTree = "<group>"; };
-		88E1E4822CF60F9B00C69EC5 /* PWGDPRManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWGDPRManager.m; sourceTree = "<group>"; };
-		88E1E4832CF60F9B00C69EC5 /* PWInAppManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWInAppManager.h; sourceTree = "<group>"; };
-		88E1E4842CF60F9B00C69EC5 /* PWInAppManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInAppManager.m; sourceTree = "<group>"; };
-		88E1E4852CF60F9B00C69EC5 /* PWInbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWInbox.h; sourceTree = "<group>"; };
-		88E1E4862CF60F9B00C69EC5 /* PWInbox.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInbox.m; sourceTree = "<group>"; };
-		88E1E4872CF60F9B00C69EC5 /* PWInlineInAppView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWInlineInAppView.h; sourceTree = "<group>"; };
-		88E1E4882CF60F9B00C69EC5 /* PWInlineInAppView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInlineInAppView.m; sourceTree = "<group>"; };
-		88E1E4892CF60F9B00C69EC5 /* PWLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWLog.h; sourceTree = "<group>"; };
-		88E1E48A2CF60F9B00C69EC5 /* PWLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWLog.m; sourceTree = "<group>"; };
-		88E1E48B2CF60F9B00C69EC5 /* PWMessaging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWMessaging.h; sourceTree = "<group>"; };
-		88E1E48C2CF60F9B00C69EC5 /* PWModalWindowConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWModalWindowConfiguration.h; sourceTree = "<group>"; };
-		88E1E48D2CF60F9B00C69EC5 /* PWModalWindowConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWModalWindowConfiguration.m; sourceTree = "<group>"; };
-		88E1E48E2CF60F9B00C69EC5 /* PWNotificationCenterDelegateProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationCenterDelegateProxy.m; sourceTree = "<group>"; };
-		88E1E48F2CF60F9B00C69EC5 /* PWNotificationExtensionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWNotificationExtensionManager.h; sourceTree = "<group>"; };
-		88E1E4902CF60F9B00C69EC5 /* PWNotificationExtensionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationExtensionManager.m; sourceTree = "<group>"; };
-		88E1E4912CF60F9B00C69EC5 /* PWRichMediaManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWRichMediaManager.h; sourceTree = "<group>"; };
-		88E1E4922CF60F9B00C69EC5 /* PWRichMediaManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRichMediaManager.m; sourceTree = "<group>"; };
-		88E1E4932CF60F9B00C69EC5 /* PWRichMediaStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWRichMediaStyle.h; sourceTree = "<group>"; };
-		88E1E4942CF60F9B00C69EC5 /* PWRichMediaStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRichMediaStyle.m; sourceTree = "<group>"; };
-		88E1E4962CF60F9B00C69EC5 /* PWInAppPurchaseHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWInAppPurchaseHelper.h; sourceTree = "<group>"; };
-		88E1E4972CF60F9B00C69EC5 /* PWInAppPurchaseHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInAppPurchaseHelper.m; sourceTree = "<group>"; };
-		88E1E4982CF60F9B00C69EC5 /* PWPushManagerJSBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWPushManagerJSBridge.h; sourceTree = "<group>"; };
-		88E1E4992CF60F9B00C69EC5 /* PWPushManagerJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPushManagerJSBridge.m; sourceTree = "<group>"; };
-		88E1E49A2CF60F9B00C69EC5 /* PWPushwooshJSBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWPushwooshJSBridge.h; sourceTree = "<group>"; };
-		88E1E49B2CF60F9B00C69EC5 /* PWPushwooshJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPushwooshJSBridge.m; sourceTree = "<group>"; };
-		88E1E49D2CF60F9B00C69EC5 /* PWEasyJSListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWEasyJSListener.h; sourceTree = "<group>"; };
-		88E1E49E2CF60F9B00C69EC5 /* PWEasyJSListener.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWEasyJSListener.m; sourceTree = "<group>"; };
-		88E1E49F2CF60F9B00C69EC5 /* PWEasyJSWKDataFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWEasyJSWKDataFunction.h; sourceTree = "<group>"; };
-		88E1E4A02CF60F9B00C69EC5 /* PWEasyJSWKDataFunction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWEasyJSWKDataFunction.m; sourceTree = "<group>"; };
-		88E1E4A12CF60F9B00C69EC5 /* PWEasyJSWKWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWEasyJSWKWebView.h; sourceTree = "<group>"; };
-		88E1E4A22CF60F9B00C69EC5 /* PWEasyJSWKWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWEasyJSWKWebView.m; sourceTree = "<group>"; };
-		88E1E4A32CF60F9B00C69EC5 /* WKUserScript+PWInterfacesScriptGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WKUserScript+PWInterfacesScriptGenerator.h"; sourceTree = "<group>"; };
-		88E1E4A42CF60F9B00C69EC5 /* WKUserScript+PWInterfacesScriptGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WKUserScript+PWInterfacesScriptGenerator.m"; sourceTree = "<group>"; };
-		88E1E4A52CF60F9B00C69EC5 /* WKWebView+PWSynchronousEvaluateJavaScript.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WKWebView+PWSynchronousEvaluateJavaScript.h"; sourceTree = "<group>"; };
-		88E1E4A62CF60F9B00C69EC5 /* WKWebView+PWSynchronousEvaluateJavaScript.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WKWebView+PWSynchronousEvaluateJavaScript.m"; sourceTree = "<group>"; };
-		88E1E4A82CF60F9B00C69EC5 /* PWHtmlWebViewController.ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWHtmlWebViewController.ios.h; sourceTree = "<group>"; };
-		88E1E4A92CF60F9B00C69EC5 /* PWHtmlWebViewController.ios.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWHtmlWebViewController.ios.m; sourceTree = "<group>"; };
-		88E1E4AA2CF60F9B00C69EC5 /* PWHtmlWebViewController.mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWHtmlWebViewController.mac.h; sourceTree = "<group>"; };
-		88E1E4AB2CF60F9B00C69EC5 /* PWHtmlWebViewController.mac.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWHtmlWebViewController.mac.m; sourceTree = "<group>"; };
-		88E1E4AC2CF60F9B00C69EC5 /* PWRichPushManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWRichPushManager.h; sourceTree = "<group>"; };
-		88E1E4AD2CF60F9B00C69EC5 /* PWRichPushManager.ios.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRichPushManager.ios.m; sourceTree = "<group>"; };
-		88E1E4AE2CF60F9B00C69EC5 /* PWRichPushManager.mac.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRichPushManager.mac.m; sourceTree = "<group>"; };
-		88E1E4B02CF60F9B00C69EC5 /* PWBaseLoadingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWBaseLoadingViewController.h; sourceTree = "<group>"; };
-		88E1E4B12CF60F9B00C69EC5 /* PWBaseLoadingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWBaseLoadingViewController.m; sourceTree = "<group>"; };
-		88E1E4B22CF60F9B00C69EC5 /* PWButtonExt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWButtonExt.h; sourceTree = "<group>"; };
-		88E1E4B32CF60F9B00C69EC5 /* PWButtonExt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWButtonExt.m; sourceTree = "<group>"; };
-		88E1E4B42CF60F9B00C69EC5 /* PWInteractionDisabledView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWInteractionDisabledView.h; sourceTree = "<group>"; };
-		88E1E4B52CF60F9B00C69EC5 /* PWInteractionDisabledView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInteractionDisabledView.m; sourceTree = "<group>"; };
-		88E1E4B62CF60F9B00C69EC5 /* PWInteractionDisabledWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWInteractionDisabledWindow.h; sourceTree = "<group>"; };
-		88E1E4B72CF60F9B00C69EC5 /* PWInteractionDisabledWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInteractionDisabledWindow.m; sourceTree = "<group>"; };
-		88E1E4B82CF60F9B00C69EC5 /* PWLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWLoadingView.m; sourceTree = "<group>"; };
-		88E1E4B92CF60F9B00C69EC5 /* PWLoadingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWLoadingViewController.h; sourceTree = "<group>"; };
-		88E1E4BA2CF60F9B00C69EC5 /* PWLoadingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWLoadingViewController.m; sourceTree = "<group>"; };
-		88E1E4BB2CF60F9B00C69EC5 /* PWMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWMessageViewController.h; sourceTree = "<group>"; };
-		88E1E4BC2CF60F9B00C69EC5 /* PWMessageViewController.ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWMessageViewController.ios.h; sourceTree = "<group>"; };
-		88E1E4BD2CF60F9B00C69EC5 /* PWMessageViewController.ios.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWMessageViewController.ios.m; sourceTree = "<group>"; };
-		88E1E4BE2CF60F9B00C69EC5 /* PWMessageViewController.mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWMessageViewController.mac.h; sourceTree = "<group>"; };
-		88E1E4BF2CF60F9B00C69EC5 /* PWMessageViewController.mac.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWMessageViewController.mac.m; sourceTree = "<group>"; };
-		88E1E4C02CF60F9B00C69EC5 /* PWRichMediaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWRichMediaView.h; sourceTree = "<group>"; };
-		88E1E4C12CF60F9B00C69EC5 /* PWRichMediaView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRichMediaView.m; sourceTree = "<group>"; };
-		88E1E4C22CF60F9B00C69EC5 /* PWShowLoading.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWShowLoading.h; sourceTree = "<group>"; };
-		88E1E4C32CF60F9B00C69EC5 /* PWShowLoading.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWShowLoading.m; sourceTree = "<group>"; };
-		88E1E4C52CF60F9B00C69EC5 /* PWRichMediaConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWRichMediaConfig.h; sourceTree = "<group>"; };
-		88E1E4C62CF60F9B00C69EC5 /* PWRichMediaConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRichMediaConfig.m; sourceTree = "<group>"; };
-		88E1E4C72CF60F9B00C69EC5 /* PWWebClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWWebClient.h; sourceTree = "<group>"; };
-		88E1E4C82CF60F9B00C69EC5 /* PWWebClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWWebClient.m; sourceTree = "<group>"; };
-		88E1E4CA2CF60F9B00C69EC5 /* NSDate+PWDateUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+PWDateUtils.h"; sourceTree = "<group>"; };
-		88E1E4CB2CF60F9B00C69EC5 /* NSDate+PWDateUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PWDateUtils.m"; sourceTree = "<group>"; };
-		88E1E4CC2CF60F9B00C69EC5 /* NSDictionary+PWDictUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+PWDictUtils.h"; sourceTree = "<group>"; };
-		88E1E4CD2CF60F9B00C69EC5 /* NSDictionary+PWDictUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+PWDictUtils.m"; sourceTree = "<group>"; };
-		88E1E4CF2CF60F9B00C69EC5 /* PWAlphabetUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWAlphabetUtils.h; sourceTree = "<group>"; };
-		88E1E4D02CF60F9B00C69EC5 /* PWAlphabetUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWAlphabetUtils.m; sourceTree = "<group>"; };
-		88E1E4D12CF60F9B00C69EC5 /* PWHashDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWHashDecoder.h; sourceTree = "<group>"; };
-		88E1E4D22CF60F9B00C69EC5 /* PWHashDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWHashDecoder.m; sourceTree = "<group>"; };
-		88E1E4D42CF60F9B00C69EC5 /* PWUtils.mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWUtils.mac.h; sourceTree = "<group>"; };
-		88E1E4D52CF60F9B00C69EC5 /* PWUtils.mac.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWUtils.mac.m; sourceTree = "<group>"; };
-		88E1E4D72CF60F9B00C69EC5 /* PWUtils.ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWUtils.ios.h; sourceTree = "<group>"; };
-		88E1E4D82CF60F9B00C69EC5 /* PWUtils.ios.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWUtils.ios.m; sourceTree = "<group>"; };
-		88E1E4D92CF60F9B00C69EC5 /* PWUtils.watch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWUtils.watch.h; sourceTree = "<group>"; };
-		88E1E4DA2CF60F9B00C69EC5 /* PWUtils.watch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWUtils.watch.m; sourceTree = "<group>"; };
-		88E1E4DB2CF60F9B00C69EC5 /* PWUtilsMobile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWUtilsMobile.h; sourceTree = "<group>"; };
-		88E1E4DC2CF60F9B00C69EC5 /* PWUtilsMobile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWUtilsMobile.m; sourceTree = "<group>"; };
-		88E1E4DE2CF60F9B00C69EC5 /* PWReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWReachability.h; sourceTree = "<group>"; };
-		88E1E4DF2CF60F9B00C69EC5 /* PWReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWReachability.m; sourceTree = "<group>"; };
-		88E1E4E12CF60F9B00C69EC5 /* PWPurchaseRuntime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWPurchaseRuntime.h; sourceTree = "<group>"; };
-		88E1E4E22CF60F9B00C69EC5 /* PWPurchaseRuntime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPurchaseRuntime.m; sourceTree = "<group>"; };
-		88E1E4E32CF60F9B00C69EC5 /* PWPushRuntime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWPushRuntime.h; sourceTree = "<group>"; };
-		88E1E4E42CF60F9B00C69EC5 /* PWPushRuntime.ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWPushRuntime.ios.h; sourceTree = "<group>"; };
-		88E1E4E52CF60F9B00C69EC5 /* PWPushRuntime.ios.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPushRuntime.ios.m; sourceTree = "<group>"; };
-		88E1E4E62CF60F9B00C69EC5 /* PWPushRuntime.mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWPushRuntime.mac.h; sourceTree = "<group>"; };
-		88E1E4E72CF60F9B00C69EC5 /* PWPushRuntime.mac.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPushRuntime.mac.m; sourceTree = "<group>"; };
-		88E1E4E92CF60F9B00C69EC5 /* ioapi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
-		88E1E4EA2CF60F9B00C69EC5 /* ioapi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ioapi.cpp; sourceTree = "<group>"; };
-		88E1E4EB2CF60F9B00C69EC5 /* PWZipArchive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWZipArchive.h; sourceTree = "<group>"; };
-		88E1E4EC2CF60F9B00C69EC5 /* PWZipArchive.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PWZipArchive.mm; sourceTree = "<group>"; };
-		88E1E4ED2CF60F9B00C69EC5 /* unzip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
-		88E1E4EE2CF60F9B00C69EC5 /* unzip.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = unzip.cpp; sourceTree = "<group>"; };
-		88E1E4EF2CF60F9B00C69EC5 /* zip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
-		88E1E4F02CF60F9B00C69EC5 /* zip.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = zip.cpp; sourceTree = "<group>"; };
-		88E1E4F22CF60F9B00C69EC5 /* PWUnarchiver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWUnarchiver.h; sourceTree = "<group>"; };
-		88E1E4F32CF60F9B00C69EC5 /* PWUnarchiver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWUnarchiver.m; sourceTree = "<group>"; };
-		88E1E4F42CF60F9B00C69EC5 /* PWUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWUtils.h; sourceTree = "<group>"; };
-		88E1E4F52CF60F9B00C69EC5 /* PWUtils.common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWUtils.common.h; sourceTree = "<group>"; };
-		88E1E4F62CF60F9B00C69EC5 /* PWUtils.common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWUtils.common.m; sourceTree = "<group>"; };
-		88E1E4F72CF60F9B00C69EC5 /* PWUtils+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PWUtils+Internal.h"; sourceTree = "<group>"; };
-		88E1E4F92CF60F9B00C69EC5 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		88E1E4FB2CF60F9B00C69EC5 /* PWMessageViewControllerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWMessageViewControllerTest.m; sourceTree = "<group>"; };
-		88E1E4FC2CF60F9B00C69EC5 /* PWRichMediaAnimatorTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRichMediaAnimatorTest.m; sourceTree = "<group>"; };
-		88E1E4FE2CF60F9B00C69EC5 /* PushNotificationManager+Mock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PushNotificationManager+Mock.h"; sourceTree = "<group>"; };
-		88E1E4FF2CF60F9B00C69EC5 /* PushNotificationManager+Mock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PushNotificationManager+Mock.m"; sourceTree = "<group>"; };
-		88E1E5002CF60F9B00C69EC5 /* PWBundleMock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWBundleMock.h; sourceTree = "<group>"; };
-		88E1E5012CF60F9B00C69EC5 /* PWBundleMock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWBundleMock.m; sourceTree = "<group>"; };
-		88E1E5022CF60F9B00C69EC5 /* PWPushNotificationCustomDelegateMock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWPushNotificationCustomDelegateMock.h; sourceTree = "<group>"; };
-		88E1E5032CF60F9B00C69EC5 /* PWPushNotificationCustomDelegateMock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPushNotificationCustomDelegateMock.m; sourceTree = "<group>"; };
-		88E1E5042CF60F9B00C69EC5 /* PWPushNotificationDelegateMock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWPushNotificationDelegateMock.h; sourceTree = "<group>"; };
-		88E1E5052CF60F9B00C69EC5 /* PWPushNotificationDelegateMock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPushNotificationDelegateMock.m; sourceTree = "<group>"; };
-		88E1E5062CF60F9B00C69EC5 /* PWRequestManagerMock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWRequestManagerMock.h; sourceTree = "<group>"; };
-		88E1E5072CF60F9B00C69EC5 /* PWRequestManagerMock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRequestManagerMock.m; sourceTree = "<group>"; };
-		88E1E5092CF60F9B00C69EC5 /* OCHamcrest.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OCHamcrest.xcframework; sourceTree = "<group>"; };
-		88E1E50A2CF60F9B00C69EC5 /* OCMockito.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OCMockito.xcframework; sourceTree = "<group>"; };
-		88E1E50C2CF60F9B00C69EC5 /* PWTestUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWTestUtils.h; sourceTree = "<group>"; };
-		88E1E50D2CF60F9B00C69EC5 /* PWTestUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWTestUtils.m; sourceTree = "<group>"; };
-		88E1E50F2CF60F9B00C69EC5 /* APNSPayloadTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APNSPayloadTest.m; sourceTree = "<group>"; };
-		88E1E5102CF60F9B00C69EC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		88E1E5112CF60F9B00C69EC5 /* PushwooshTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PushwooshTest.m; sourceTree = "<group>"; };
-		88E1E5122CF60F9B00C69EC5 /* PWAlphabetUtilsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWAlphabetUtilsTests.m; sourceTree = "<group>"; };
-		88E1E5132CF60F9B00C69EC5 /* PWAppDelegateTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWAppDelegateTest.m; sourceTree = "<group>"; };
-		88E1E5142CF60F9B00C69EC5 /* PWApplicationOpenTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWApplicationOpenTest.m; sourceTree = "<group>"; };
-		88E1E5152CF60F9B00C69EC5 /* PWBasePushTrackingRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWBasePushTrackingRequestTest.m; sourceTree = "<group>"; };
-		88E1E5162CF60F9B00C69EC5 /* PWBaseRequestTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWBaseRequestTest.h; sourceTree = "<group>"; };
-		88E1E5172CF60F9B00C69EC5 /* PWBaseRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWBaseRequestTest.m; sourceTree = "<group>"; };
-		88E1E5182CF60F9B00C69EC5 /* PWCacheTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWCacheTest.m; sourceTree = "<group>"; };
-		88E1E5192CF60F9B00C69EC5 /* PWConfigTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWConfigTest.m; sourceTree = "<group>"; };
-		88E1E51A2CF60F9B00C69EC5 /* PWConfigurationTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWConfigurationTest.m; sourceTree = "<group>"; };
-		88E1E51B2CF60F9B00C69EC5 /* PWDataManagerCommonTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWDataManagerCommonTest.m; sourceTree = "<group>"; };
-		88E1E51C2CF60F9B00C69EC5 /* PWGetConfigRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWGetConfigRequestTest.m; sourceTree = "<group>"; };
-		88E1E51D2CF60F9B00C69EC5 /* PWGetNearestZoneRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWGetNearestZoneRequestTest.m; sourceTree = "<group>"; };
-		88E1E51E2CF60F9B00C69EC5 /* PWGetResourcesRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWGetResourcesRequestTest.m; sourceTree = "<group>"; };
-		88E1E51F2CF60F9B00C69EC5 /* PWGetTagsRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWGetTagsRequestTest.m; sourceTree = "<group>"; };
-		88E1E5202CF60F9B00C69EC5 /* PWGetTagsTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWGetTagsTest.m; sourceTree = "<group>"; };
-		88E1E5212CF60F9B00C69EC5 /* PWHashDecoderTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWHashDecoderTest.m; sourceTree = "<group>"; };
-		88E1E5222CF60F9B00C69EC5 /* PWInAppMessagesManagerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInAppMessagesManagerTest.m; sourceTree = "<group>"; };
-		88E1E5232CF60F9B00C69EC5 /* PWInAppPurchaseHelperTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInAppPurchaseHelperTest.m; sourceTree = "<group>"; };
-		88E1E5242CF60F9B00C69EC5 /* PWInboxMessageInternalTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInboxMessageInternalTest.m; sourceTree = "<group>"; };
-		88E1E5252CF60F9B00C69EC5 /* PWInboxServiceTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWInboxServiceTest.m; sourceTree = "<group>"; };
-		88E1E5262CF60F9B00C69EC5 /* PWJSInterfaceTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWJSInterfaceTest.m; sourceTree = "<group>"; };
-		88E1E5272CF60F9B00C69EC5 /* PWLiveActivityRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWLiveActivityRequestTest.m; sourceTree = "<group>"; };
-		88E1E5282CF60F9B00C69EC5 /* PWMergeUserRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWMergeUserRequestTest.m; sourceTree = "<group>"; };
-		88E1E5292CF60F9B00C69EC5 /* PWMessageDeliveryRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWMessageDeliveryRequestTest.m; sourceTree = "<group>"; };
-		88E1E52A2CF60F9B00C69EC5 /* PWMessageTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWMessageTest.m; sourceTree = "<group>"; };
-		88E1E52B2CF60F9B00C69EC5 /* PWNotificationExtensionManagerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationExtensionManagerTest.m; sourceTree = "<group>"; };
-		88E1E52C2CF60F9B00C69EC5 /* PWNotificationManagerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWNotificationManagerTest.m; sourceTree = "<group>"; };
-		88E1E52D2CF60F9B00C69EC5 /* PWPostEventRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPostEventRequestTest.m; sourceTree = "<group>"; };
-		88E1E52E2CF60F9B00C69EC5 /* PWPostEventTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPostEventTest.m; sourceTree = "<group>"; };
-		88E1E52F2CF60F9B00C69EC5 /* PWPreferencesTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPreferencesTest.m; sourceTree = "<group>"; };
-		88E1E5302CF60F9B00C69EC5 /* PWPushNotificationManagerCommonTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPushNotificationManagerCommonTest.m; sourceTree = "<group>"; };
-		88E1E5312CF60F9B00C69EC5 /* PWPushRecievedTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPushRecievedTest.m; sourceTree = "<group>"; };
-		88E1E5322CF60F9B00C69EC5 /* PWPushStatRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWPushStatRequestTest.m; sourceTree = "<group>"; };
-		88E1E5332CF60F9B00C69EC5 /* PWRegisterDeviceRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRegisterDeviceRequestTest.m; sourceTree = "<group>"; };
-		88E1E5342CF60F9B00C69EC5 /* PWRegisterEmailTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRegisterEmailTest.m; sourceTree = "<group>"; };
-		88E1E5352CF60F9B00C69EC5 /* PWRegisterEmailUserTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRegisterEmailUserTest.m; sourceTree = "<group>"; };
-		88E1E5362CF60F9B00C69EC5 /* PWRegisterTestDeviceRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRegisterTestDeviceRequestTest.m; sourceTree = "<group>"; };
-		88E1E5372CF60F9B00C69EC5 /* PWRegisterUserRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRegisterUserRequestTest.m; sourceTree = "<group>"; };
-		88E1E5382CF60F9B00C69EC5 /* PWRequestManagerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRequestManagerTest.m; sourceTree = "<group>"; };
-		88E1E5392CF60F9B00C69EC5 /* PWRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWRequestTest.m; sourceTree = "<group>"; };
-		88E1E53A2CF60F9B00C69EC5 /* PWResourceTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWResourceTest.m; sourceTree = "<group>"; };
-		88E1E53B2CF60F9B00C69EC5 /* PWSendPurchaseTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWSendPurchaseTest.m; sourceTree = "<group>"; };
-		88E1E53C2CF60F9B00C69EC5 /* PWSetEmailTagsRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWSetEmailTagsRequestTest.m; sourceTree = "<group>"; };
-		88E1E53D2CF60F9B00C69EC5 /* PWSetTagsTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWSetTagsTest.m; sourceTree = "<group>"; };
-		88E1E53E2CF60F9B00C69EC5 /* PWTestPurchaseRuntime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWTestPurchaseRuntime.m; sourceTree = "<group>"; };
-		88E1E53F2CF60F9B00C69EC5 /* PWTestUnarchiver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWTestUnarchiver.m; sourceTree = "<group>"; };
-		88E1E5402CF60F9B00C69EC5 /* PWTriggerInAppActionRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWTriggerInAppActionRequestTest.m; sourceTree = "<group>"; };
-		88E1E5412CF60F9B00C69EC5 /* PWUnregisterDeviceRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWUnregisterDeviceRequestTest.m; sourceTree = "<group>"; };
-		88E1E5432CF60F9B00C69EC5 /* Pushwoosh_prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pushwoosh_prefix.pch; sourceTree = "<group>"; };
-		88E1E5442CF60F9B00C69EC5 /* Pushwoosh_watchOS_dynamic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pushwoosh_watchOS_dynamic.h; sourceTree = "<group>"; };
-		88E1E5452CF60F9B00C69EC5 /* Pushwoosh.ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pushwoosh.ios-Bridging-Header.h"; sourceTree = "<group>"; };
-		88E1E5462CF60F9B00C69EC5 /* Pushwoosh.iOS.dynamic-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pushwoosh.iOS.dynamic-Info.plist"; sourceTree = "<group>"; };
-		88E1E5472CF60F9B00C69EC5 /* Pushwoosh.watchOS.dynamic-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pushwoosh.watchOS.dynamic-Info.plist"; sourceTree = "<group>"; };
-		88E1E5492CF60F9B00C69EC5 /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
-		88E1E54A2CF60F9B00C69EC5 /* OCMArg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
-		88E1E54B2CF60F9B00C69EC5 /* OCMConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
-		88E1E54C2CF60F9B00C69EC5 /* OCMFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMFunctions.h; sourceTree = "<group>"; };
-		88E1E54D2CF60F9B00C69EC5 /* OCMLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMLocation.h; sourceTree = "<group>"; };
-		88E1E54E2CF60F9B00C69EC5 /* OCMMacroState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMMacroState.h; sourceTree = "<group>"; };
-		88E1E54F2CF60F9B00C69EC5 /* OCMock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
-		88E1E5502CF60F9B00C69EC5 /* OCMockMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMockMacros.h; sourceTree = "<group>"; };
-		88E1E5512CF60F9B00C69EC5 /* OCMockObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
-		88E1E5522CF60F9B00C69EC5 /* OCMQuantifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMQuantifier.h; sourceTree = "<group>"; };
-		88E1E5532CF60F9B00C69EC5 /* OCMRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMRecorder.h; sourceTree = "<group>"; };
-		88E1E5542CF60F9B00C69EC5 /* OCMStubRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMStubRecorder.h; sourceTree = "<group>"; };
-		88E1E5552CF60F9B00C69EC5 /* OCMVerifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMVerifier.h; sourceTree = "<group>"; };
-		88E1E5582CF60F9B00C69EC5 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
-		88E1E55B2CF60F9B00C69EC5 /* Pushwoosh.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Pushwoosh.podspec; sourceTree = "<group>"; };
-		88E1E55C2CF60F9B00C69EC5 /* Pushwoosh.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Pushwoosh.xcodeproj; sourceTree = "<group>"; };
-		88E1E55D2CF60F9B00C69EC5 /* Pushwoosh_mac.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Pushwoosh_mac.podspec; sourceTree = "<group>"; };
-		88E1E55E2CF60F9B00C69EC5 /* Pushwoosh_vision.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Pushwoosh_vision.podspec; sourceTree = "<group>"; };
-		88E1E55F2CF60F9B00C69EC5 /* PushwooshVisionXCFramework.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushwooshVisionXCFramework.podspec; sourceTree = "<group>"; };
-		88E1E5602CF60F9B00C69EC5 /* PushwooshXCFramework.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushwooshXCFramework.podspec; sourceTree = "<group>"; };
-		A91B585A6846C41336A3EB73 /* Pods_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF277DCFFFF123FFC6DF26C7 /* Pods_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF51FD2D460BCFE21FA515B2 /* Pods-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.release.xcconfig"; path = "Pods/Target Support Files/Pods-App/Pods-App.release.xcconfig"; sourceTree = "<group>"; };
+		FC68EB0AF532CFC21C3344DD /* Pods-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App/Pods-App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -684,27 +37,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88E1E58F2CF60F9B00C69EC5 /* OCMockito.xcframework in Frameworks */,
-				882526C42CF7A8C600A73BE2 /* PushwooshFramework in Frameworks */,
-				88E1E5902CF60F9B00C69EC5 /* OCHamcrest.xcframework in Frameworks */,
-				88E1E5912CF60F9B00C69EC5 /* libOCMock.a in Frameworks */,
-				30315DE57B8F683647E378A8 /* Pods_App.framework in Frameworks */,
+				A084ECDBA7D38E1E42DFC39D /* Pods_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27E2DDA53C4D2A4D1A88CE4A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF277DCFFFF123FFC6DF26C7 /* Pods_App.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		504EC2FB1FED79650016851F = {
 			isa = PBXGroup;
 			children = (
 				504EC3061FED79650016851F /* App */,
 				504EC3051FED79650016851F /* Products */,
-				7B346CB7FC5368E0D2B28D93 /* Pods */,
-				5D9509032026BF495DC85B30 /* Frameworks */,
+				7F8756D8B27F46E3366F6CEA /* Pods */,
+				27E2DDA53C4D2A4D1A88CE4A /* Frameworks */,
 			);
 			sourceTree = "<group>";
-			usesTabs = 0;
 		};
 		504EC3051FED79650016851F /* Products */ = {
 			isa = PBXGroup;
@@ -717,8 +73,6 @@
 		504EC3061FED79650016851F /* App */ = {
 			isa = PBXGroup;
 			children = (
-				88E1E39A2CF5296B00C69EC5 /* GoogleService-Info.plist */,
-				88925C4F2CECF93A00389790 /* App.entitlements */,
 				50379B222058CBB4000EE86E /* capacitor.config.json */,
 				504EC3071FED79650016851F /* AppDelegate.swift */,
 				504EC30B1FED79650016851F /* Main.storyboard */,
@@ -727,1055 +81,17 @@
 				504EC3131FED79650016851F /* Info.plist */,
 				2FAD9762203C412B000D30F8 /* config.xml */,
 				50B271D01FEDC1A000F3C39B /* public */,
-				88E1E5612CF60F9B00C69EC5 /* Pushwoosh */,
 			);
 			path = App;
 			sourceTree = "<group>";
 		};
-		5D9509032026BF495DC85B30 /* Frameworks */ = {
+		7F8756D8B27F46E3366F6CEA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A91B585A6846C41336A3EB73 /* Pods_App.framework */,
+				FC68EB0AF532CFC21C3344DD /* Pods-App.debug.xcconfig */,
+				AF51FD2D460BCFE21FA515B2 /* Pods-App.release.xcconfig */,
 			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7B346CB7FC5368E0D2B28D93 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				2C912109EE8B63351F18DB9F /* Pods-App.debug.xcconfig */,
-				5B8CDBE54F3B3F7DE6E55802 /* Pods-App.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		88E1E39D2CF60F9B00C69EC5 /* modulemap */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E39C2CF60F9B00C69EC5 /* module.modulemap */,
-			);
-			path = modulemap;
-			sourceTree = "<group>";
-		};
-		88E1E3A22CF60F9B00C69EC5 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E39E2CF60F9B00C69EC5 /* Constants.h */,
-				88E1E39F2CF60F9B00C69EC5 /* PWConfig.h */,
-				88E1E3A02CF60F9B00C69EC5 /* PWConfig.m */,
-				88E1E3A12CF60F9B00C69EC5 /* PWSupportedOrientations.h */,
-			);
-			path = Configuration;
-			sourceTree = "<group>";
-		};
-		88E1E3A52CF60F9B00C69EC5 /* PWAppLifecycleTrackingManager */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3A32CF60F9B00C69EC5 /* PWAppLifecycleTrackingManager.h */,
-				88E1E3A42CF60F9B00C69EC5 /* PWAppLifecycleTrackingManager.m */,
-			);
-			path = PWAppLifecycleTrackingManager;
-			sourceTree = "<group>";
-		};
-		88E1E3A82CF60F9B00C69EC5 /* PWScreenTrackingManager */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3A62CF60F9B00C69EC5 /* PWScreenTrackingManager.h */,
-				88E1E3A72CF60F9B00C69EC5 /* PWScreenTrackingManager.m */,
-			);
-			path = PWScreenTrackingManager;
-			sourceTree = "<group>";
-		};
-		88E1E3A92CF60F9B00C69EC5 /* Embedded Events */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3A52CF60F9B00C69EC5 /* PWAppLifecycleTrackingManager */,
-				88E1E3A82CF60F9B00C69EC5 /* PWScreenTrackingManager */,
-			);
-			path = "Embedded Events";
-			sourceTree = "<group>";
-		};
-		88E1E3AA2CF60F9B00C69EC5 /* Automation */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3A92CF60F9B00C69EC5 /* Embedded Events */,
-			);
-			path = Automation;
-			sourceTree = "<group>";
-		};
-		88E1E3AF2CF60F9B00C69EC5 /* Purchases */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3AB2CF60F9B00C69EC5 /* PWPurchaseManager.h */,
-				88E1E3AC2CF60F9B00C69EC5 /* PWPurchaseManager.m */,
-				88E1E3AD2CF60F9B00C69EC5 /* PWSendPurchaseRequest.h */,
-				88E1E3AE2CF60F9B00C69EC5 /* PWSendPurchaseRequest.m */,
-			);
-			path = Purchases;
-			sourceTree = "<group>";
-		};
-		88E1E3B22CF60F9B00C69EC5 /* Segmentation */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3B02CF60F9B00C69EC5 /* PWChannel.h */,
-				88E1E3B12CF60F9B00C69EC5 /* PWChannel.m */,
-			);
-			path = Segmentation;
-			sourceTree = "<group>";
-		};
-		88E1E3B82CF60F9B00C69EC5 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3AA2CF60F9B00C69EC5 /* Automation */,
-				88E1E3AF2CF60F9B00C69EC5 /* Purchases */,
-				88E1E3B22CF60F9B00C69EC5 /* Segmentation */,
-				88E1E3B32CF60F9B00C69EC5 /* PWDataManager.h */,
-				88E1E3B42CF60F9B00C69EC5 /* PWDataManager.common.h */,
-				88E1E3B52CF60F9B00C69EC5 /* PWDataManager.common.m */,
-				88E1E3B62CF60F9B00C69EC5 /* PWDataManager.ios.m */,
-				88E1E3B72CF60F9B00C69EC5 /* PWDataManager.mac.m */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		88E1E3BD2CF60F9B00C69EC5 /* Business Cases */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3B92CF60F9B00C69EC5 /* PWBusinessCase.h */,
-				88E1E3BA2CF60F9B00C69EC5 /* PWBusinessCase.m */,
-				88E1E3BB2CF60F9B00C69EC5 /* PWBusinessCaseManager.h */,
-				88E1E3BC2CF60F9B00C69EC5 /* PWBusinessCaseManager.m */,
-			);
-			path = "Business Cases";
-			sourceTree = "<group>";
-		};
-		88E1E3C42CF60F9B00C69EC5 /* In-App Messages */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3BD2CF60F9B00C69EC5 /* Business Cases */,
-				88E1E3BE2CF60F9B00C69EC5 /* PWInAppMessagesManager.h */,
-				88E1E3BF2CF60F9B00C69EC5 /* PWInAppMessagesManager.m */,
-				88E1E3C02CF60F9B00C69EC5 /* PWInAppStorage.h */,
-				88E1E3C12CF60F9B00C69EC5 /* PWInAppStorage.m */,
-				88E1E3C22CF60F9B00C69EC5 /* PWResource.h */,
-				88E1E3C32CF60F9B00C69EC5 /* PWResource.m */,
-			);
-			path = "In-App Messages";
-			sourceTree = "<group>";
-		};
-		88E1E3C72CF60F9B00C69EC5 /* PWInboxMerge */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3C52CF60F9B00C69EC5 /* PWInboxMerge.h */,
-				88E1E3C62CF60F9B00C69EC5 /* PWInboxMerge.m */,
-			);
-			path = PWInboxMerge;
-			sourceTree = "<group>";
-		};
-		88E1E3CA2CF60F9B00C69EC5 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3C72CF60F9B00C69EC5 /* PWInboxMerge */,
-				88E1E3C82CF60F9B00C69EC5 /* PWInboxStorage.h */,
-				88E1E3C92CF60F9B00C69EC5 /* PWInboxStorage.m */,
-			);
-			path = Database;
-			sourceTree = "<group>";
-		};
-		88E1E3CF2CF60F9B00C69EC5 /* Objects */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3CB2CF60F9B00C69EC5 /* PWInboxMessageInternal.h */,
-				88E1E3CC2CF60F9B00C69EC5 /* PWInboxMessageInternal.m */,
-				88E1E3CD2CF60F9B00C69EC5 /* PWInboxMessageInternal+Status.h */,
-				88E1E3CE2CF60F9B00C69EC5 /* PWInboxMessageInternal+Status.m */,
-			);
-			path = Objects;
-			sourceTree = "<group>";
-		};
-		88E1E3D82CF60F9B00C69EC5 /* Requests */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3D02CF60F9B00C69EC5 /* PWBaseInboxRequest.h */,
-				88E1E3D12CF60F9B00C69EC5 /* PWBaseInboxRequest.m */,
-				88E1E3D22CF60F9B00C69EC5 /* PWInboxAllMessagesRequest.h */,
-				88E1E3D32CF60F9B00C69EC5 /* PWInboxAllMessagesRequest.m */,
-				88E1E3D42CF60F9B00C69EC5 /* PWInboxMessagesRequest.h */,
-				88E1E3D52CF60F9B00C69EC5 /* PWInboxMessagesRequest.m */,
-				88E1E3D62CF60F9B00C69EC5 /* PWInboxUpdateStatusRequest.h */,
-				88E1E3D72CF60F9B00C69EC5 /* PWInboxUpdateStatusRequest.m */,
-			);
-			path = Requests;
-			sourceTree = "<group>";
-		};
-		88E1E3DB2CF60F9B00C69EC5 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3CF2CF60F9B00C69EC5 /* Objects */,
-				88E1E3D82CF60F9B00C69EC5 /* Requests */,
-				88E1E3D92CF60F9B00C69EC5 /* PWInboxService.h */,
-				88E1E3DA2CF60F9B00C69EC5 /* PWInboxService.m */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		88E1E3DC2CF60F9B00C69EC5 /* Inbox */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3CA2CF60F9B00C69EC5 /* Database */,
-				88E1E3DB2CF60F9B00C69EC5 /* Networking */,
-			);
-			path = Inbox;
-			sourceTree = "<group>";
-		};
-		88E1E3DF2CF60F9B00C69EC5 /* Live Activities Swift */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3DD2CF60F9B00C69EC5 /* PushwooshLiveActivitiesImplementationSetup.swift */,
-				88E1E3DE2CF60F9B00C69EC5 /* PushwooshLiveActivityAttributes.swift */,
-			);
-			path = "Live Activities Swift";
-			sourceTree = "<group>";
-		};
-		88E1E3E42CF60F9B00C69EC5 /* Modal Window */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3E02CF60F9B00C69EC5 /* PWModalWindow.h */,
-				88E1E3E12CF60F9B00C69EC5 /* PWModalWindow.m */,
-				88E1E3E22CF60F9B00C69EC5 /* PWModalWindowSettings.h */,
-				88E1E3E32CF60F9B00C69EC5 /* PWModalWindowSettings.m */,
-			);
-			path = "Modal Window";
-			sourceTree = "<group>";
-		};
-		88E1E3E72CF60F9B00C69EC5 /* PWNetworkModule */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3E52CF60F9B00C69EC5 /* PWNetworkModule.h */,
-				88E1E3E62CF60F9B00C69EC5 /* PWNetworkModule.m */,
-			);
-			path = PWNetworkModule;
-			sourceTree = "<group>";
-		};
-		88E1E3EA2CF60F9B00C69EC5 /* PWRequestManager */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3E82CF60F9B00C69EC5 /* PWRequestManager.h */,
-				88E1E3E92CF60F9B00C69EC5 /* PWRequestManager.m */,
-			);
-			path = PWRequestManager;
-			sourceTree = "<group>";
-		};
-		88E1E3ED2CF60F9B00C69EC5 /* PWServerCommunicationManager */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3EB2CF60F9B00C69EC5 /* PWServerCommunicationManager.h */,
-				88E1E3EC2CF60F9B00C69EC5 /* PWServerCommunicationManager.m */,
-			);
-			path = PWServerCommunicationManager;
-			sourceTree = "<group>";
-		};
-		88E1E3F02CF60F9B00C69EC5 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3EE2CF60F9B00C69EC5 /* PWGetConfigRequest.h */,
-				88E1E3EF2CF60F9B00C69EC5 /* PWGetConfigRequest.m */,
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
-		88E1E3F52CF60F9B00C69EC5 /* Email */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3F12CF60F9B00C69EC5 /* PWRegisterEmail.h */,
-				88E1E3F22CF60F9B00C69EC5 /* PWRegisterEmail.m */,
-				88E1E3F32CF60F9B00C69EC5 /* PWRegisterEmailUser.h */,
-				88E1E3F42CF60F9B00C69EC5 /* PWRegisterEmailUser.m */,
-			);
-			path = Email;
-			sourceTree = "<group>";
-		};
-		88E1E3F82CF60F9B00C69EC5 /* Events */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3F62CF60F9B00C69EC5 /* PWPostEventRequest.h */,
-				88E1E3F72CF60F9B00C69EC5 /* PWPostEventRequest.m */,
-			);
-			path = Events;
-			sourceTree = "<group>";
-		};
-		88E1E3FB2CF60F9B00C69EC5 /* In-Apps */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3F92CF60F9B00C69EC5 /* PWGetResourcesRequest.h */,
-				88E1E3FA2CF60F9B00C69EC5 /* PWGetResourcesRequest.m */,
-			);
-			path = "In-Apps";
-			sourceTree = "<group>";
-		};
-		88E1E4002CF60F9B00C69EC5 /* Live Activity */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3FC2CF60F9B00C69EC5 /* PWLiveActivityRequest.h */,
-				88E1E3FD2CF60F9B00C69EC5 /* PWLiveActivityRequest.m */,
-				88E1E3FE2CF60F9B00C69EC5 /* PWStartLiveActivityRequest.h */,
-				88E1E3FF2CF60F9B00C69EC5 /* PWStartLiveActivityRequest.m */,
-			);
-			path = "Live Activity";
-			sourceTree = "<group>";
-		};
-		88E1E4072CF60F9B00C69EC5 /* Registration */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4012CF60F9B00C69EC5 /* PWRegisterDeviceRequest.h */,
-				88E1E4022CF60F9B00C69EC5 /* PWRegisterDeviceRequest.m */,
-				88E1E4032CF60F9B00C69EC5 /* PWRegisterTestDeviceRequest.h */,
-				88E1E4042CF60F9B00C69EC5 /* PWRegisterTestDeviceRequest.m */,
-				88E1E4052CF60F9B00C69EC5 /* PWUnregisterDeviceRequest.h */,
-				88E1E4062CF60F9B00C69EC5 /* PWUnregisterDeviceRequest.m */,
-			);
-			path = Registration;
-			sourceTree = "<group>";
-		};
-		88E1E40A2CF60F9B00C69EC5 /* Email Tags */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4082CF60F9B00C69EC5 /* PWSetEmailTagsRequest.h */,
-				88E1E4092CF60F9B00C69EC5 /* PWSetEmailTagsRequest.m */,
-			);
-			path = "Email Tags";
-			sourceTree = "<group>";
-		};
-		88E1E4112CF60F9B00C69EC5 /* Tags */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E40B2CF60F9B00C69EC5 /* PWCombinedSetTagsRequest.h */,
-				88E1E40C2CF60F9B00C69EC5 /* PWCombinedSetTagsRequest.m */,
-				88E1E40D2CF60F9B00C69EC5 /* PWGetTagsRequest.h */,
-				88E1E40E2CF60F9B00C69EC5 /* PWGetTagsRequest.m */,
-				88E1E40F2CF60F9B00C69EC5 /* PWSetTagsRequest.h */,
-				88E1E4102CF60F9B00C69EC5 /* PWSetTagsRequest.m */,
-			);
-			path = Tags;
-			sourceTree = "<group>";
-		};
-		88E1E4162CF60F9B00C69EC5 /* User */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4122CF60F9B00C69EC5 /* PWMergeUserRequest.h */,
-				88E1E4132CF60F9B00C69EC5 /* PWMergeUserRequest.m */,
-				88E1E4142CF60F9B00C69EC5 /* PWRegisterUserRequest.h */,
-				88E1E4152CF60F9B00C69EC5 /* PWRegisterUserRequest.m */,
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
-		88E1E4172CF60F9B00C69EC5 /* Segmentation */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E40A2CF60F9B00C69EC5 /* Email Tags */,
-				88E1E4112CF60F9B00C69EC5 /* Tags */,
-				88E1E4162CF60F9B00C69EC5 /* User */,
-			);
-			path = Segmentation;
-			sourceTree = "<group>";
-		};
-		88E1E41A2CF60F9B00C69EC5 /* Message Delivery */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4182CF60F9B00C69EC5 /* PWMessageDeliveryRequest.h */,
-				88E1E4192CF60F9B00C69EC5 /* PWMessageDeliveryRequest.m */,
-			);
-			path = "Message Delivery";
-			sourceTree = "<group>";
-		};
-		88E1E41D2CF60F9B00C69EC5 /* Push Stat */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E41B2CF60F9B00C69EC5 /* PWPushStatRequest.h */,
-				88E1E41C2CF60F9B00C69EC5 /* PWPushStatRequest.m */,
-			);
-			path = "Push Stat";
-			sourceTree = "<group>";
-		};
-		88E1E4202CF60F9B00C69EC5 /* Push Tracking */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E41A2CF60F9B00C69EC5 /* Message Delivery */,
-				88E1E41D2CF60F9B00C69EC5 /* Push Stat */,
-				88E1E41E2CF60F9B00C69EC5 /* PWBasePushTrackingRequest.h */,
-				88E1E41F2CF60F9B00C69EC5 /* PWBasePushTrackingRequest.m */,
-			);
-			path = "Push Tracking";
-			sourceTree = "<group>";
-		};
-		88E1E4252CF60F9B00C69EC5 /* Statistics */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4202CF60F9B00C69EC5 /* Push Tracking */,
-				88E1E4212CF60F9B00C69EC5 /* PWAppOpenRequest.h */,
-				88E1E4222CF60F9B00C69EC5 /* PWAppOpenRequest.m */,
-				88E1E4232CF60F9B00C69EC5 /* PWTriggerInAppActionRequest.h */,
-				88E1E4242CF60F9B00C69EC5 /* PWTriggerInAppActionRequest.m */,
-			);
-			path = Statistics;
-			sourceTree = "<group>";
-		};
-		88E1E42C2CF60F9B00C69EC5 /* Requests */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3F02CF60F9B00C69EC5 /* Config */,
-				88E1E3F52CF60F9B00C69EC5 /* Email */,
-				88E1E3F82CF60F9B00C69EC5 /* Events */,
-				88E1E3FB2CF60F9B00C69EC5 /* In-Apps */,
-				88E1E4002CF60F9B00C69EC5 /* Live Activity */,
-				88E1E4072CF60F9B00C69EC5 /* Registration */,
-				88E1E4172CF60F9B00C69EC5 /* Segmentation */,
-				88E1E4252CF60F9B00C69EC5 /* Statistics */,
-				88E1E4262CF60F9B00C69EC5 /* PWCachedRequest.h */,
-				88E1E4272CF60F9B00C69EC5 /* PWCachedRequest.m */,
-				88E1E4282CF60F9B00C69EC5 /* PWRequest.h */,
-				88E1E4292CF60F9B00C69EC5 /* PWRequest.m */,
-				88E1E42A2CF60F9B00C69EC5 /* PWRichMediaActionRequest.h */,
-				88E1E42B2CF60F9B00C69EC5 /* PWRichMediaActionRequest.m */,
-			);
-			path = Requests;
-			sourceTree = "<group>";
-		};
-		88E1E42D2CF60F9B00C69EC5 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3E72CF60F9B00C69EC5 /* PWNetworkModule */,
-				88E1E3EA2CF60F9B00C69EC5 /* PWRequestManager */,
-				88E1E3ED2CF60F9B00C69EC5 /* PWServerCommunicationManager */,
-				88E1E42C2CF60F9B00C69EC5 /* Requests */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		88E1E4392CF60F9B00C69EC5 /* PWNotificationsUI */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E42E2CF60F9B00C69EC5 /* PWNotification.h */,
-				88E1E42F2CF60F9B00C69EC5 /* PWNotification.m */,
-				88E1E4302CF60F9B00C69EC5 /* PWNotificationAppSettings.h */,
-				88E1E4312CF60F9B00C69EC5 /* PWNotificationAppSettings.m */,
-				88E1E4322CF60F9B00C69EC5 /* PWNotificationAppSettings_Private.h */,
-				88E1E4332CF60F9B00C69EC5 /* PWNotificationBannerView.h */,
-				88E1E4342CF60F9B00C69EC5 /* PWNotificationBannerView.m */,
-				88E1E4352CF60F9B00C69EC5 /* PWNotificationBannerWindow.h */,
-				88E1E4362CF60F9B00C69EC5 /* PWNotificationBannerWindow.m */,
-				88E1E4372CF60F9B00C69EC5 /* PWNotificationCenter.h */,
-				88E1E4382CF60F9B00C69EC5 /* PWNotificationCenter.m */,
-			);
-			path = PWNotificationsUI;
-			sourceTree = "<group>";
-		};
-		88E1E43A2CF60F9B00C69EC5 /* < iOS 10 */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4392CF60F9B00C69EC5 /* PWNotificationsUI */,
-			);
-			path = "< iOS 10";
-			sourceTree = "<group>";
-		};
-		88E1E43D2CF60F9B00C69EC5 /* Handling */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E43A2CF60F9B00C69EC5 /* < iOS 10 */,
-				88E1E43B2CF60F9B00C69EC5 /* PWUserNotificationCenterDelegate.h */,
-				88E1E43C2CF60F9B00C69EC5 /* PWUserNotificationCenterDelegate.m */,
-			);
-			path = Handling;
-			sourceTree = "<group>";
-		};
-		88E1E4452CF60F9B00C69EC5 /* PWPushNotificationsManager */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E43E2CF60F9B00C69EC5 /* PWPushNotificationsManager.h */,
-				88E1E43F2CF60F9B00C69EC5 /* PWPushNotificationsManager.common.h */,
-				88E1E4402CF60F9B00C69EC5 /* PWPushNotificationsManager.common.m */,
-				88E1E4412CF60F9B00C69EC5 /* PWPushNotificationsManager.ios.m */,
-				88E1E4422CF60F9B00C69EC5 /* PWPushNotificationsManager.mac.m */,
-				88E1E4432CF60F9B00C69EC5 /* PWPushNotificationsManager.watch.m */,
-				88E1E4442CF60F9B00C69EC5 /* PWPushNotificationsManager+Internal.h */,
-			);
-			path = PWPushNotificationsManager;
-			sourceTree = "<group>";
-		};
-		88E1E4482CF60F9B00C69EC5 /* Interactive Push */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4462CF60F9B00C69EC5 /* PWInteractivePush.h */,
-				88E1E4472CF60F9B00C69EC5 /* PWInteractivePush.m */,
-			);
-			path = "Interactive Push";
-			sourceTree = "<group>";
-		};
-		88E1E44D2CF60F9B00C69EC5 /* iOS 8 */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4492CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS8.h */,
-				88E1E44A2CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS8.m */,
-				88E1E44B2CF60F9B00C69EC5 /* PWNotificationManagerCompatiOS8.h */,
-				88E1E44C2CF60F9B00C69EC5 /* PWNotificationManagerCompatiOS8.m */,
-			);
-			path = "iOS 8";
-			sourceTree = "<group>";
-		};
-		88E1E4502CF60F9B00C69EC5 /* iOS 9 */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E44E2CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS9.h */,
-				88E1E44F2CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS9.m */,
-			);
-			path = "iOS 9";
-			sourceTree = "<group>";
-		};
-		88E1E4552CF60F9B00C69EC5 /* iOS 10 */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4512CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS10.h */,
-				88E1E4522CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS10.m */,
-				88E1E4532CF60F9B00C69EC5 /* PWNotificationManagerCompatiOS10.h */,
-				88E1E4542CF60F9B00C69EC5 /* PWNotificationManagerCompatiOS10.m */,
-			);
-			path = "iOS 10";
-			sourceTree = "<group>";
-		};
-		88E1E4562CF60F9B00C69EC5 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E44D2CF60F9B00C69EC5 /* iOS 8 */,
-				88E1E4502CF60F9B00C69EC5 /* iOS 9 */,
-				88E1E4552CF60F9B00C69EC5 /* iOS 10 */,
-			);
-			path = iOS;
-			sourceTree = "<group>";
-		};
-		88E1E4592CF60F9B00C69EC5 /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4572CF60F9B00C69EC5 /* PWNotificationManagerCompatmacOS.h */,
-				88E1E4582CF60F9B00C69EC5 /* PWNotificationManagerCompatmacOS.m */,
-			);
-			path = macOS;
-			sourceTree = "<group>";
-		};
-		88E1E45E2CF60F9B00C69EC5 /* watchOS */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E45A2CF60F9B00C69EC5 /* PWNotificationCategoryBuilderwatchOS.h */,
-				88E1E45B2CF60F9B00C69EC5 /* PWNotificationCategoryBuilderwatchOS.m */,
-				88E1E45C2CF60F9B00C69EC5 /* PWNotificationManagerCompatwatchOS.h */,
-				88E1E45D2CF60F9B00C69EC5 /* PWNotificationManagerCompatwatchOS.m */,
-			);
-			path = watchOS;
-			sourceTree = "<group>";
-		};
-		88E1E4652CF60F9B00C69EC5 /* Registration */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4482CF60F9B00C69EC5 /* Interactive Push */,
-				88E1E4562CF60F9B00C69EC5 /* iOS */,
-				88E1E4592CF60F9B00C69EC5 /* macOS */,
-				88E1E45E2CF60F9B00C69EC5 /* watchOS */,
-				88E1E45F2CF60F9B00C69EC5 /* PWNotificationCategoryBuilder.h */,
-				88E1E4602CF60F9B00C69EC5 /* PWNotificationCategoryBuilder.m */,
-				88E1E4612CF60F9B00C69EC5 /* PWNotificationManagerCompat.h */,
-				88E1E4622CF60F9B00C69EC5 /* PWNotificationManagerCompat.m */,
-				88E1E4632CF60F9B00C69EC5 /* PWPlatformModule.h */,
-				88E1E4642CF60F9B00C69EC5 /* PWPlatformModule.m */,
-			);
-			path = Registration;
-			sourceTree = "<group>";
-		};
-		88E1E4662CF60F9B00C69EC5 /* Notifications */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E43D2CF60F9B00C69EC5 /* Handling */,
-				88E1E4452CF60F9B00C69EC5 /* PWPushNotificationsManager */,
-				88E1E4652CF60F9B00C69EC5 /* Registration */,
-			);
-			path = Notifications;
-			sourceTree = "<group>";
-		};
-		88E1E46F2CF60F9B00C69EC5 /* Persistence */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4672CF60F9B00C69EC5 /* PWCache.h */,
-				88E1E4682CF60F9B00C69EC5 /* PWCache.m */,
-				88E1E4692CF60F9B00C69EC5 /* PWPreferences.h */,
-				88E1E46A2CF60F9B00C69EC5 /* PWPreferences.m */,
-				88E1E46B2CF60F9B00C69EC5 /* PWRequestsCacheManager.h */,
-				88E1E46C2CF60F9B00C69EC5 /* PWRequestsCacheManager.m */,
-				88E1E46D2CF60F9B00C69EC5 /* PWVersionTracking.h */,
-				88E1E46E2CF60F9B00C69EC5 /* PWVersionTracking.m */,
-			);
-			path = Persistence;
-			sourceTree = "<group>";
-		};
-		88E1E4742CF60F9B00C69EC5 /* Deprecated */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4702CF60F9B00C69EC5 /* PushNotificationManager.h */,
-				88E1E4712CF60F9B00C69EC5 /* PushNotificationManager.m */,
-				88E1E4722CF60F9B00C69EC5 /* PWAppDelegate.h */,
-				88E1E4732CF60F9B00C69EC5 /* PWAppDelegate.m */,
-			);
-			path = Deprecated;
-			sourceTree = "<group>";
-		};
-		88E1E47D2CF60F9B00C69EC5 /* Internal_Interfaces */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4752CF60F9B00C69EC5 /* Pushwoosh+Internal.h */,
-				88E1E4762CF60F9B00C69EC5 /* PWGDPRManager+Internal.h */,
-				88E1E4772CF60F9B00C69EC5 /* PWInAppManager+Internal.h */,
-				88E1E4782CF60F9B00C69EC5 /* PWInbox+Internal.h */,
-				88E1E4792CF60F9B00C69EC5 /* PWLog+Internal.h */,
-				88E1E47A2CF60F9B00C69EC5 /* PWMessage+Internal.h */,
-				88E1E47B2CF60F9B00C69EC5 /* PWNotificationCenterDelegateProxy+Internal.h */,
-				88E1E47C2CF60F9B00C69EC5 /* PWRichMedia+Internal.h */,
-			);
-			path = Internal_Interfaces;
-			sourceTree = "<group>";
-		};
-		88E1E4952CF60F9B00C69EC5 /* Public */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4742CF60F9B00C69EC5 /* Deprecated */,
-				88E1E47D2CF60F9B00C69EC5 /* Internal_Interfaces */,
-				88E1E47E2CF60F9B00C69EC5 /* Pushwoosh.m */,
-				88E1E47F2CF60F9B00C69EC5 /* PushwooshFramework.h */,
-				88E1E4802CF60F9B00C69EC5 /* PushwooshLiveActivities.swift */,
-				88E1E4812CF60F9B00C69EC5 /* PWGDPRManager.h */,
-				88E1E4822CF60F9B00C69EC5 /* PWGDPRManager.m */,
-				88E1E4832CF60F9B00C69EC5 /* PWInAppManager.h */,
-				88E1E4842CF60F9B00C69EC5 /* PWInAppManager.m */,
-				88E1E4852CF60F9B00C69EC5 /* PWInbox.h */,
-				88E1E4862CF60F9B00C69EC5 /* PWInbox.m */,
-				88E1E4872CF60F9B00C69EC5 /* PWInlineInAppView.h */,
-				88E1E4882CF60F9B00C69EC5 /* PWInlineInAppView.m */,
-				88E1E4892CF60F9B00C69EC5 /* PWLog.h */,
-				88E1E48A2CF60F9B00C69EC5 /* PWLog.m */,
-				88E1E48B2CF60F9B00C69EC5 /* PWMessaging.h */,
-				88E1E48C2CF60F9B00C69EC5 /* PWModalWindowConfiguration.h */,
-				88E1E48D2CF60F9B00C69EC5 /* PWModalWindowConfiguration.m */,
-				88E1E48E2CF60F9B00C69EC5 /* PWNotificationCenterDelegateProxy.m */,
-				88E1E48F2CF60F9B00C69EC5 /* PWNotificationExtensionManager.h */,
-				88E1E4902CF60F9B00C69EC5 /* PWNotificationExtensionManager.m */,
-				88E1E4912CF60F9B00C69EC5 /* PWRichMediaManager.h */,
-				88E1E4922CF60F9B00C69EC5 /* PWRichMediaManager.m */,
-				88E1E4932CF60F9B00C69EC5 /* PWRichMediaStyle.h */,
-				88E1E4942CF60F9B00C69EC5 /* PWRichMediaStyle.m */,
-			);
-			path = Public;
-			sourceTree = "<group>";
-		};
-		88E1E49C2CF60F9B00C69EC5 /* Javascript Bridge */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4962CF60F9B00C69EC5 /* PWInAppPurchaseHelper.h */,
-				88E1E4972CF60F9B00C69EC5 /* PWInAppPurchaseHelper.m */,
-				88E1E4982CF60F9B00C69EC5 /* PWPushManagerJSBridge.h */,
-				88E1E4992CF60F9B00C69EC5 /* PWPushManagerJSBridge.m */,
-				88E1E49A2CF60F9B00C69EC5 /* PWPushwooshJSBridge.h */,
-				88E1E49B2CF60F9B00C69EC5 /* PWPushwooshJSBridge.m */,
-			);
-			path = "Javascript Bridge";
-			sourceTree = "<group>";
-		};
-		88E1E4A72CF60F9B00C69EC5 /* PWEasyJSWKWebView */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E49D2CF60F9B00C69EC5 /* PWEasyJSListener.h */,
-				88E1E49E2CF60F9B00C69EC5 /* PWEasyJSListener.m */,
-				88E1E49F2CF60F9B00C69EC5 /* PWEasyJSWKDataFunction.h */,
-				88E1E4A02CF60F9B00C69EC5 /* PWEasyJSWKDataFunction.m */,
-				88E1E4A12CF60F9B00C69EC5 /* PWEasyJSWKWebView.h */,
-				88E1E4A22CF60F9B00C69EC5 /* PWEasyJSWKWebView.m */,
-				88E1E4A32CF60F9B00C69EC5 /* WKUserScript+PWInterfacesScriptGenerator.h */,
-				88E1E4A42CF60F9B00C69EC5 /* WKUserScript+PWInterfacesScriptGenerator.m */,
-				88E1E4A52CF60F9B00C69EC5 /* WKWebView+PWSynchronousEvaluateJavaScript.h */,
-				88E1E4A62CF60F9B00C69EC5 /* WKWebView+PWSynchronousEvaluateJavaScript.m */,
-			);
-			path = PWEasyJSWKWebView;
-			sourceTree = "<group>";
-		};
-		88E1E4AF2CF60F9B00C69EC5 /* Remote Page */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4A82CF60F9B00C69EC5 /* PWHtmlWebViewController.ios.h */,
-				88E1E4A92CF60F9B00C69EC5 /* PWHtmlWebViewController.ios.m */,
-				88E1E4AA2CF60F9B00C69EC5 /* PWHtmlWebViewController.mac.h */,
-				88E1E4AB2CF60F9B00C69EC5 /* PWHtmlWebViewController.mac.m */,
-				88E1E4AC2CF60F9B00C69EC5 /* PWRichPushManager.h */,
-				88E1E4AD2CF60F9B00C69EC5 /* PWRichPushManager.ios.m */,
-				88E1E4AE2CF60F9B00C69EC5 /* PWRichPushManager.mac.m */,
-			);
-			path = "Remote Page";
-			sourceTree = "<group>";
-		};
-		88E1E4C42CF60F9B00C69EC5 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4B02CF60F9B00C69EC5 /* PWBaseLoadingViewController.h */,
-				88E1E4B12CF60F9B00C69EC5 /* PWBaseLoadingViewController.m */,
-				88E1E4B22CF60F9B00C69EC5 /* PWButtonExt.h */,
-				88E1E4B32CF60F9B00C69EC5 /* PWButtonExt.m */,
-				88E1E4B42CF60F9B00C69EC5 /* PWInteractionDisabledView.h */,
-				88E1E4B52CF60F9B00C69EC5 /* PWInteractionDisabledView.m */,
-				88E1E4B62CF60F9B00C69EC5 /* PWInteractionDisabledWindow.h */,
-				88E1E4B72CF60F9B00C69EC5 /* PWInteractionDisabledWindow.m */,
-				88E1E4B82CF60F9B00C69EC5 /* PWLoadingView.m */,
-				88E1E4B92CF60F9B00C69EC5 /* PWLoadingViewController.h */,
-				88E1E4BA2CF60F9B00C69EC5 /* PWLoadingViewController.m */,
-				88E1E4BB2CF60F9B00C69EC5 /* PWMessageViewController.h */,
-				88E1E4BC2CF60F9B00C69EC5 /* PWMessageViewController.ios.h */,
-				88E1E4BD2CF60F9B00C69EC5 /* PWMessageViewController.ios.m */,
-				88E1E4BE2CF60F9B00C69EC5 /* PWMessageViewController.mac.h */,
-				88E1E4BF2CF60F9B00C69EC5 /* PWMessageViewController.mac.m */,
-				88E1E4C02CF60F9B00C69EC5 /* PWRichMediaView.h */,
-				88E1E4C12CF60F9B00C69EC5 /* PWRichMediaView.m */,
-				88E1E4C22CF60F9B00C69EC5 /* PWShowLoading.h */,
-				88E1E4C32CF60F9B00C69EC5 /* PWShowLoading.m */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		88E1E4C92CF60F9B00C69EC5 /* Rich Media */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E49C2CF60F9B00C69EC5 /* Javascript Bridge */,
-				88E1E4A72CF60F9B00C69EC5 /* PWEasyJSWKWebView */,
-				88E1E4AF2CF60F9B00C69EC5 /* Remote Page */,
-				88E1E4C42CF60F9B00C69EC5 /* UI */,
-				88E1E4C52CF60F9B00C69EC5 /* PWRichMediaConfig.h */,
-				88E1E4C62CF60F9B00C69EC5 /* PWRichMediaConfig.m */,
-				88E1E4C72CF60F9B00C69EC5 /* PWWebClient.h */,
-				88E1E4C82CF60F9B00C69EC5 /* PWWebClient.m */,
-			);
-			path = "Rich Media";
-			sourceTree = "<group>";
-		};
-		88E1E4CE2CF60F9B00C69EC5 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4CA2CF60F9B00C69EC5 /* NSDate+PWDateUtils.h */,
-				88E1E4CB2CF60F9B00C69EC5 /* NSDate+PWDateUtils.m */,
-				88E1E4CC2CF60F9B00C69EC5 /* NSDictionary+PWDictUtils.h */,
-				88E1E4CD2CF60F9B00C69EC5 /* NSDictionary+PWDictUtils.m */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		88E1E4D32CF60F9B00C69EC5 /* Hash Decoder */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4CF2CF60F9B00C69EC5 /* PWAlphabetUtils.h */,
-				88E1E4D02CF60F9B00C69EC5 /* PWAlphabetUtils.m */,
-				88E1E4D12CF60F9B00C69EC5 /* PWHashDecoder.h */,
-				88E1E4D22CF60F9B00C69EC5 /* PWHashDecoder.m */,
-			);
-			path = "Hash Decoder";
-			sourceTree = "<group>";
-		};
-		88E1E4D62CF60F9B00C69EC5 /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4D42CF60F9B00C69EC5 /* PWUtils.mac.h */,
-				88E1E4D52CF60F9B00C69EC5 /* PWUtils.mac.m */,
-			);
-			path = macOS;
-			sourceTree = "<group>";
-		};
-		88E1E4DD2CF60F9B00C69EC5 /* Mobile */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4D72CF60F9B00C69EC5 /* PWUtils.ios.h */,
-				88E1E4D82CF60F9B00C69EC5 /* PWUtils.ios.m */,
-				88E1E4D92CF60F9B00C69EC5 /* PWUtils.watch.h */,
-				88E1E4DA2CF60F9B00C69EC5 /* PWUtils.watch.m */,
-				88E1E4DB2CF60F9B00C69EC5 /* PWUtilsMobile.h */,
-				88E1E4DC2CF60F9B00C69EC5 /* PWUtilsMobile.m */,
-			);
-			path = Mobile;
-			sourceTree = "<group>";
-		};
-		88E1E4E02CF60F9B00C69EC5 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4DE2CF60F9B00C69EC5 /* PWReachability.h */,
-				88E1E4DF2CF60F9B00C69EC5 /* PWReachability.m */,
-			);
-			path = Reachability;
-			sourceTree = "<group>";
-		};
-		88E1E4E82CF60F9B00C69EC5 /* Runtime */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4E12CF60F9B00C69EC5 /* PWPurchaseRuntime.h */,
-				88E1E4E22CF60F9B00C69EC5 /* PWPurchaseRuntime.m */,
-				88E1E4E32CF60F9B00C69EC5 /* PWPushRuntime.h */,
-				88E1E4E42CF60F9B00C69EC5 /* PWPushRuntime.ios.h */,
-				88E1E4E52CF60F9B00C69EC5 /* PWPushRuntime.ios.m */,
-				88E1E4E62CF60F9B00C69EC5 /* PWPushRuntime.mac.h */,
-				88E1E4E72CF60F9B00C69EC5 /* PWPushRuntime.mac.m */,
-			);
-			path = Runtime;
-			sourceTree = "<group>";
-		};
-		88E1E4F12CF60F9B00C69EC5 /* Zip */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4E92CF60F9B00C69EC5 /* ioapi.h */,
-				88E1E4EA2CF60F9B00C69EC5 /* ioapi.cpp */,
-				88E1E4EB2CF60F9B00C69EC5 /* PWZipArchive.h */,
-				88E1E4EC2CF60F9B00C69EC5 /* PWZipArchive.mm */,
-				88E1E4ED2CF60F9B00C69EC5 /* unzip.h */,
-				88E1E4EE2CF60F9B00C69EC5 /* unzip.cpp */,
-				88E1E4EF2CF60F9B00C69EC5 /* zip.h */,
-				88E1E4F02CF60F9B00C69EC5 /* zip.cpp */,
-			);
-			path = Zip;
-			sourceTree = "<group>";
-		};
-		88E1E4F82CF60F9B00C69EC5 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4CE2CF60F9B00C69EC5 /* Extensions */,
-				88E1E4D32CF60F9B00C69EC5 /* Hash Decoder */,
-				88E1E4D62CF60F9B00C69EC5 /* macOS */,
-				88E1E4DD2CF60F9B00C69EC5 /* Mobile */,
-				88E1E4E02CF60F9B00C69EC5 /* Reachability */,
-				88E1E4E82CF60F9B00C69EC5 /* Runtime */,
-				88E1E4F12CF60F9B00C69EC5 /* Zip */,
-				88E1E4F22CF60F9B00C69EC5 /* PWUnarchiver.h */,
-				88E1E4F32CF60F9B00C69EC5 /* PWUnarchiver.m */,
-				88E1E4F42CF60F9B00C69EC5 /* PWUtils.h */,
-				88E1E4F52CF60F9B00C69EC5 /* PWUtils.common.h */,
-				88E1E4F62CF60F9B00C69EC5 /* PWUtils.common.m */,
-				88E1E4F72CF60F9B00C69EC5 /* PWUtils+Internal.h */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		88E1E4FA2CF60F9B00C69EC5 /* Pushwoosh */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E3A22CF60F9B00C69EC5 /* Configuration */,
-				88E1E3B82CF60F9B00C69EC5 /* Data */,
-				88E1E3C42CF60F9B00C69EC5 /* In-App Messages */,
-				88E1E3DC2CF60F9B00C69EC5 /* Inbox */,
-				88E1E3DF2CF60F9B00C69EC5 /* Live Activities Swift */,
-				88E1E3E42CF60F9B00C69EC5 /* Modal Window */,
-				88E1E42D2CF60F9B00C69EC5 /* Network */,
-				88E1E4662CF60F9B00C69EC5 /* Notifications */,
-				88E1E46F2CF60F9B00C69EC5 /* Persistence */,
-				88E1E4952CF60F9B00C69EC5 /* Public */,
-				88E1E4C92CF60F9B00C69EC5 /* Rich Media */,
-				88E1E4F82CF60F9B00C69EC5 /* Utils */,
-				88E1E4F92CF60F9B00C69EC5 /* PrivacyInfo.xcprivacy */,
-			);
-			path = Pushwoosh;
-			sourceTree = "<group>";
-		};
-		88E1E4FD2CF60F9B00C69EC5 /* InApp */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4FB2CF60F9B00C69EC5 /* PWMessageViewControllerTest.m */,
-				88E1E4FC2CF60F9B00C69EC5 /* PWRichMediaAnimatorTest.m */,
-			);
-			path = InApp;
-			sourceTree = "<group>";
-		};
-		88E1E5082CF60F9B00C69EC5 /* Mock */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4FE2CF60F9B00C69EC5 /* PushNotificationManager+Mock.h */,
-				88E1E4FF2CF60F9B00C69EC5 /* PushNotificationManager+Mock.m */,
-				88E1E5002CF60F9B00C69EC5 /* PWBundleMock.h */,
-				88E1E5012CF60F9B00C69EC5 /* PWBundleMock.m */,
-				88E1E5022CF60F9B00C69EC5 /* PWPushNotificationCustomDelegateMock.h */,
-				88E1E5032CF60F9B00C69EC5 /* PWPushNotificationCustomDelegateMock.m */,
-				88E1E5042CF60F9B00C69EC5 /* PWPushNotificationDelegateMock.h */,
-				88E1E5052CF60F9B00C69EC5 /* PWPushNotificationDelegateMock.m */,
-				88E1E5062CF60F9B00C69EC5 /* PWRequestManagerMock.h */,
-				88E1E5072CF60F9B00C69EC5 /* PWRequestManagerMock.m */,
-			);
-			path = Mock;
-			sourceTree = "<group>";
-		};
-		88E1E50B2CF60F9B00C69EC5 /* OCMockito */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E5092CF60F9B00C69EC5 /* OCHamcrest.xcframework */,
-				88E1E50A2CF60F9B00C69EC5 /* OCMockito.xcframework */,
-			);
-			path = OCMockito;
-			sourceTree = "<group>";
-		};
-		88E1E50E2CF60F9B00C69EC5 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E50C2CF60F9B00C69EC5 /* PWTestUtils.h */,
-				88E1E50D2CF60F9B00C69EC5 /* PWTestUtils.m */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		88E1E5422CF60F9B00C69EC5 /* PushwooshTests */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E4FD2CF60F9B00C69EC5 /* InApp */,
-				88E1E5082CF60F9B00C69EC5 /* Mock */,
-				88E1E50B2CF60F9B00C69EC5 /* OCMockito */,
-				88E1E50E2CF60F9B00C69EC5 /* Utils */,
-				88E1E50F2CF60F9B00C69EC5 /* APNSPayloadTest.m */,
-				88E1E5102CF60F9B00C69EC5 /* Info.plist */,
-				88E1E5112CF60F9B00C69EC5 /* PushwooshTest.m */,
-				88E1E5122CF60F9B00C69EC5 /* PWAlphabetUtilsTests.m */,
-				88E1E5132CF60F9B00C69EC5 /* PWAppDelegateTest.m */,
-				88E1E5142CF60F9B00C69EC5 /* PWApplicationOpenTest.m */,
-				88E1E5152CF60F9B00C69EC5 /* PWBasePushTrackingRequestTest.m */,
-				88E1E5162CF60F9B00C69EC5 /* PWBaseRequestTest.h */,
-				88E1E5172CF60F9B00C69EC5 /* PWBaseRequestTest.m */,
-				88E1E5182CF60F9B00C69EC5 /* PWCacheTest.m */,
-				88E1E5192CF60F9B00C69EC5 /* PWConfigTest.m */,
-				88E1E51A2CF60F9B00C69EC5 /* PWConfigurationTest.m */,
-				88E1E51B2CF60F9B00C69EC5 /* PWDataManagerCommonTest.m */,
-				88E1E51C2CF60F9B00C69EC5 /* PWGetConfigRequestTest.m */,
-				88E1E51D2CF60F9B00C69EC5 /* PWGetNearestZoneRequestTest.m */,
-				88E1E51E2CF60F9B00C69EC5 /* PWGetResourcesRequestTest.m */,
-				88E1E51F2CF60F9B00C69EC5 /* PWGetTagsRequestTest.m */,
-				88E1E5202CF60F9B00C69EC5 /* PWGetTagsTest.m */,
-				88E1E5212CF60F9B00C69EC5 /* PWHashDecoderTest.m */,
-				88E1E5222CF60F9B00C69EC5 /* PWInAppMessagesManagerTest.m */,
-				88E1E5232CF60F9B00C69EC5 /* PWInAppPurchaseHelperTest.m */,
-				88E1E5242CF60F9B00C69EC5 /* PWInboxMessageInternalTest.m */,
-				88E1E5252CF60F9B00C69EC5 /* PWInboxServiceTest.m */,
-				88E1E5262CF60F9B00C69EC5 /* PWJSInterfaceTest.m */,
-				88E1E5272CF60F9B00C69EC5 /* PWLiveActivityRequestTest.m */,
-				88E1E5282CF60F9B00C69EC5 /* PWMergeUserRequestTest.m */,
-				88E1E5292CF60F9B00C69EC5 /* PWMessageDeliveryRequestTest.m */,
-				88E1E52A2CF60F9B00C69EC5 /* PWMessageTest.m */,
-				88E1E52B2CF60F9B00C69EC5 /* PWNotificationExtensionManagerTest.m */,
-				88E1E52C2CF60F9B00C69EC5 /* PWNotificationManagerTest.m */,
-				88E1E52D2CF60F9B00C69EC5 /* PWPostEventRequestTest.m */,
-				88E1E52E2CF60F9B00C69EC5 /* PWPostEventTest.m */,
-				88E1E52F2CF60F9B00C69EC5 /* PWPreferencesTest.m */,
-				88E1E5302CF60F9B00C69EC5 /* PWPushNotificationManagerCommonTest.m */,
-				88E1E5312CF60F9B00C69EC5 /* PWPushRecievedTest.m */,
-				88E1E5322CF60F9B00C69EC5 /* PWPushStatRequestTest.m */,
-				88E1E5332CF60F9B00C69EC5 /* PWRegisterDeviceRequestTest.m */,
-				88E1E5342CF60F9B00C69EC5 /* PWRegisterEmailTest.m */,
-				88E1E5352CF60F9B00C69EC5 /* PWRegisterEmailUserTest.m */,
-				88E1E5362CF60F9B00C69EC5 /* PWRegisterTestDeviceRequestTest.m */,
-				88E1E5372CF60F9B00C69EC5 /* PWRegisterUserRequestTest.m */,
-				88E1E5382CF60F9B00C69EC5 /* PWRequestManagerTest.m */,
-				88E1E5392CF60F9B00C69EC5 /* PWRequestTest.m */,
-				88E1E53A2CF60F9B00C69EC5 /* PWResourceTest.m */,
-				88E1E53B2CF60F9B00C69EC5 /* PWSendPurchaseTest.m */,
-				88E1E53C2CF60F9B00C69EC5 /* PWSetEmailTagsRequestTest.m */,
-				88E1E53D2CF60F9B00C69EC5 /* PWSetTagsTest.m */,
-				88E1E53E2CF60F9B00C69EC5 /* PWTestPurchaseRuntime.m */,
-				88E1E53F2CF60F9B00C69EC5 /* PWTestUnarchiver.m */,
-				88E1E5402CF60F9B00C69EC5 /* PWTriggerInAppActionRequestTest.m */,
-				88E1E5412CF60F9B00C69EC5 /* PWUnregisterDeviceRequestTest.m */,
-			);
-			path = PushwooshTests;
-			sourceTree = "<group>";
-		};
-		88E1E5482CF60F9B00C69EC5 /* Supporting_Files */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E5432CF60F9B00C69EC5 /* Pushwoosh_prefix.pch */,
-				88E1E5442CF60F9B00C69EC5 /* Pushwoosh_watchOS_dynamic.h */,
-				88E1E5452CF60F9B00C69EC5 /* Pushwoosh.ios-Bridging-Header.h */,
-				88E1E5462CF60F9B00C69EC5 /* Pushwoosh.iOS.dynamic-Info.plist */,
-				88E1E5472CF60F9B00C69EC5 /* Pushwoosh.watchOS.dynamic-Info.plist */,
-			);
-			path = Supporting_Files;
-			sourceTree = "<group>";
-		};
-		88E1E5562CF60F9B00C69EC5 /* OCMock */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E5492CF60F9B00C69EC5 /* NSNotificationCenter+OCMAdditions.h */,
-				88E1E54A2CF60F9B00C69EC5 /* OCMArg.h */,
-				88E1E54B2CF60F9B00C69EC5 /* OCMConstraint.h */,
-				88E1E54C2CF60F9B00C69EC5 /* OCMFunctions.h */,
-				88E1E54D2CF60F9B00C69EC5 /* OCMLocation.h */,
-				88E1E54E2CF60F9B00C69EC5 /* OCMMacroState.h */,
-				88E1E54F2CF60F9B00C69EC5 /* OCMock.h */,
-				88E1E5502CF60F9B00C69EC5 /* OCMockMacros.h */,
-				88E1E5512CF60F9B00C69EC5 /* OCMockObject.h */,
-				88E1E5522CF60F9B00C69EC5 /* OCMQuantifier.h */,
-				88E1E5532CF60F9B00C69EC5 /* OCMRecorder.h */,
-				88E1E5542CF60F9B00C69EC5 /* OCMStubRecorder.h */,
-				88E1E5552CF60F9B00C69EC5 /* OCMVerifier.h */,
-			);
-			path = OCMock;
-			sourceTree = "<group>";
-		};
-		88E1E5572CF60F9B00C69EC5 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E5562CF60F9B00C69EC5 /* OCMock */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		88E1E5592CF60F9B00C69EC5 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E5582CF60F9B00C69EC5 /* libOCMock.a */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		88E1E55A2CF60F9B00C69EC5 /* usr */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E5572CF60F9B00C69EC5 /* include */,
-				88E1E5592CF60F9B00C69EC5 /* lib */,
-			);
-			path = usr;
-			sourceTree = "<group>";
-		};
-		88E1E5612CF60F9B00C69EC5 /* Pushwoosh */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E39D2CF60F9B00C69EC5 /* modulemap */,
-				88E1E4FA2CF60F9B00C69EC5 /* Pushwoosh */,
-				88E1E5422CF60F9B00C69EC5 /* PushwooshTests */,
-				88E1E5482CF60F9B00C69EC5 /* Supporting_Files */,
-				88E1E55A2CF60F9B00C69EC5 /* usr */,
-				88E1E55B2CF60F9B00C69EC5 /* Pushwoosh.podspec */,
-				88E1E55C2CF60F9B00C69EC5 /* Pushwoosh.xcodeproj */,
-				88E1E55D2CF60F9B00C69EC5 /* Pushwoosh_mac.podspec */,
-				88E1E55E2CF60F9B00C69EC5 /* Pushwoosh_vision.podspec */,
-				88E1E55F2CF60F9B00C69EC5 /* PushwooshVisionXCFramework.podspec */,
-				88E1E5602CF60F9B00C69EC5 /* PushwooshXCFramework.podspec */,
-			);
-			path = Pushwoosh;
-			sourceTree = "<group>";
-		};
-		88E1E5802CF60F9B00C69EC5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				88E1E6692CF60F9B00C69EC5 /* libPushwoosh.a */,
-				88E1E66B2CF60F9B00C69EC5 /* PushwooshFramework.framework */,
-				88E1E66D2CF60F9B00C69EC5 /* libPushwoosh.a */,
-				88E1E66F2CF60F9B00C69EC5 /* Pushwoosh.framework */,
-				88E1E6712CF60F9B00C69EC5 /* libPushwoosh.watchOS.a */,
-				88E1E6732CF60F9B00C69EC5 /* Pushwoosh.framework */,
-				88E1E6752CF60F9B00C69EC5 /* PushwooshTests.xctest */,
-				88E1E6772CF60F9B00C69EC5 /* Pushwoosh.framework */,
-				882526D42CF7AC0D00A73BE2 /* Dr Luevano.appex */,
-			);
-			name = Products;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1785,12 +101,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 504EC3161FED79650016851F /* Build configuration list for PBXNativeTarget "App" */;
 			buildPhases = (
-				E80E53C44F8B2822BF110444 /* [CP] Check Pods Manifest.lock */,
+				6634F4EFEBD30273BCE97C65 /* [CP] Check Pods Manifest.lock */,
 				504EC3001FED79650016851F /* Sources */,
 				504EC3011FED79650016851F /* Frameworks */,
 				504EC3021FED79650016851F /* Resources */,
-				DD984A51C3D90EC5B7ECA846 /* [CP] Embed Pods Frameworks */,
-				309B9388356B189D6A01AE8A /* [CP] Copy Pods Resources */,
+				9592DBEFFC6D2A0C8D5DEB22 /* [CP] Embed Pods Frameworks */,
+				9D7699E1AF94B97F2590C45E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1826,17 +142,8 @@
 				Base,
 			);
 			mainGroup = 504EC2FB1FED79650016851F;
-			packageReferences = (
-				882526C22CF7A8C600A73BE2 /* XCRemoteSwiftPackageReference "Pushwoosh-XCFramework" */,
-			);
 			productRefGroup = 504EC3051FED79650016851F /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 88E1E5802CF60F9B00C69EC5 /* Products */;
-					ProjectRef = 88E1E55C2CF60F9B00C69EC5 /* Pushwoosh.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				504EC3031FED79650016851F /* App */,
@@ -1844,113 +151,42 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		882526D42CF7AC0D00A73BE2 /* Dr Luevano.appex */ = {
-			isa = PBXReferenceProxy;
-			fileType = "wrapper.app-extension";
-			path = "Dr Luevano.appex";
-			remoteRef = 882526D32CF7AC0D00A73BE2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		88E1E6692CF60F9B00C69EC5 /* libPushwoosh.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPushwoosh.a;
-			remoteRef = 88E1E6682CF60F9B00C69EC5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		88E1E66B2CF60F9B00C69EC5 /* PushwooshFramework.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PushwooshFramework.framework;
-			remoteRef = 88E1E66A2CF60F9B00C69EC5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		88E1E66D2CF60F9B00C69EC5 /* libPushwoosh.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPushwoosh.a;
-			remoteRef = 88E1E66C2CF60F9B00C69EC5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		88E1E66F2CF60F9B00C69EC5 /* Pushwoosh.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Pushwoosh.framework;
-			remoteRef = 88E1E66E2CF60F9B00C69EC5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		88E1E6712CF60F9B00C69EC5 /* libPushwoosh.watchOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPushwoosh.watchOS.a;
-			remoteRef = 88E1E6702CF60F9B00C69EC5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		88E1E6732CF60F9B00C69EC5 /* Pushwoosh.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Pushwoosh.framework;
-			remoteRef = 88E1E6722CF60F9B00C69EC5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		88E1E6752CF60F9B00C69EC5 /* PushwooshTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PushwooshTests.xctest;
-			remoteRef = 88E1E6742CF60F9B00C69EC5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		88E1E6772CF60F9B00C69EC5 /* Pushwoosh.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Pushwoosh.framework;
-			remoteRef = 88E1E6762CF60F9B00C69EC5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		504EC3021FED79650016851F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88E1E5842CF60F9B00C69EC5 /* PushwooshXCFramework.podspec in Resources */,
-				88E1E5852CF60F9B00C69EC5 /* Pushwoosh.podspec in Resources */,
-				88E1E5862CF60F9B00C69EC5 /* PushwooshVisionXCFramework.podspec in Resources */,
-				88E1E58A2CF60F9B00C69EC5 /* Pushwoosh_mac.podspec in Resources */,
-				88E1E58C2CF60F9B00C69EC5 /* Pushwoosh.watchOS.dynamic-Info.plist in Resources */,
-				88E1E58D2CF60F9B00C69EC5 /* Pushwoosh.iOS.dynamic-Info.plist in Resources */,
-				88E1E58E2CF60F9B00C69EC5 /* Pushwoosh_vision.podspec in Resources */,
 				504EC3121FED79650016851F /* LaunchScreen.storyboard in Resources */,
 				50B271D11FEDC1A000F3C39B /* public in Resources */,
 				504EC30F1FED79650016851F /* Assets.xcassets in Resources */,
 				50379B232058CBB4000EE86E /* capacitor.config.json in Resources */,
 				504EC30D1FED79650016851F /* Main.storyboard in Resources */,
 				2FAD9763203C412B000D30F8 /* config.xml in Resources */,
-				88E1E39B2CF5296B00C69EC5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		309B9388356B189D6A01AE8A /* [CP] Copy Pods Resources */ = {
+		6634F4EFEBD30273BCE97C65 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-App-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-App/Pods-App-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DD984A51C3D90EC5B7ECA846 /* [CP] Embed Pods Frameworks */ = {
+		9592DBEFFC6D2A0C8D5DEB22 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1965,26 +201,19 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-App/Pods-App-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E80E53C44F8B2822BF110444 /* [CP] Check Pods Manifest.lock */ = {
+		9D7699E1AF94B97F2590C45E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-App-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-App/Pods-App-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1994,199 +223,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88E1E5922CF60F9B00C69EC5 /* PWUnregisterDeviceRequest.m in Sources */,
-				88E1E5932CF60F9B00C69EC5 /* PWPushNotificationManagerCommonTest.m in Sources */,
-				88E1E5942CF60F9B00C69EC5 /* PWRegisterEmailTest.m in Sources */,
-				88E1E5952CF60F9B00C69EC5 /* PWRichMediaConfig.m in Sources */,
-				88E1E5962CF60F9B00C69EC5 /* PWInboxStorage.m in Sources */,
-				88E1E5972CF60F9B00C69EC5 /* PWTriggerInAppActionRequest.m in Sources */,
-				88E1E5982CF60F9B00C69EC5 /* PWPushNotificationsManager.common.m in Sources */,
-				88E1E5992CF60F9B00C69EC5 /* PWRegisterUserRequestTest.m in Sources */,
-				88E1E59A2CF60F9B00C69EC5 /* PWPushRecievedTest.m in Sources */,
-				88E1E59B2CF60F9B00C69EC5 /* PWStartLiveActivityRequest.m in Sources */,
-				88E1E59C2CF60F9B00C69EC5 /* unzip.cpp in Sources */,
-				88E1E59D2CF60F9B00C69EC5 /* PWLiveActivityRequest.m in Sources */,
-				88E1E59E2CF60F9B00C69EC5 /* PWDataManager.common.m in Sources */,
-				88E1E59F2CF60F9B00C69EC5 /* PWNotificationManagerCompatiOS10.m in Sources */,
-				88E1E5A02CF60F9B00C69EC5 /* PWUnregisterDeviceRequestTest.m in Sources */,
-				88E1E5A12CF60F9B00C69EC5 /* PWAppDelegate.m in Sources */,
-				88E1E5A22CF60F9B00C69EC5 /* PWDataManager.ios.m in Sources */,
-				88E1E5A32CF60F9B00C69EC5 /* PWMessageDeliveryRequest.m in Sources */,
-				88E1E5A52CF60F9B00C69EC5 /* PWMergeUserRequestTest.m in Sources */,
-				88E1E5A62CF60F9B00C69EC5 /* PWPushRuntime.ios.m in Sources */,
-				88E1E5A72CF60F9B00C69EC5 /* PWUtils.mac.m in Sources */,
-				88E1E5A82CF60F9B00C69EC5 /* PWBusinessCase.m in Sources */,
-				88E1E5A92CF60F9B00C69EC5 /* PWPushManagerJSBridge.m in Sources */,
-				88E1E5AB2CF60F9B00C69EC5 /* PushwooshTest.m in Sources */,
-				88E1E5AC2CF60F9B00C69EC5 /* PWCombinedSetTagsRequest.m in Sources */,
-				88E1E5AD2CF60F9B00C69EC5 /* PWVersionTracking.m in Sources */,
-				88E1E5AE2CF60F9B00C69EC5 /* PWInboxMessageInternal+Status.m in Sources */,
-				88E1E5AF2CF60F9B00C69EC5 /* PWPreferencesTest.m in Sources */,
-				88E1E5B02CF60F9B00C69EC5 /* PWUtils.common.m in Sources */,
-				88E1E5B12CF60F9B00C69EC5 /* PWRichMediaStyle.m in Sources */,
-				88E1E5B22CF60F9B00C69EC5 /* PWBaseLoadingViewController.m in Sources */,
-				88E1E5B32CF60F9B00C69EC5 /* PWTestPurchaseRuntime.m in Sources */,
-				88E1E5B42CF60F9B00C69EC5 /* PWRegisterTestDeviceRequest.m in Sources */,
-				88E1E5B52CF60F9B00C69EC5 /* PWHashDecoderTest.m in Sources */,
-				88E1E5B62CF60F9B00C69EC5 /* PWUtilsMobile.m in Sources */,
-				88E1E5B72CF60F9B00C69EC5 /* PWRegisterDeviceRequestTest.m in Sources */,
-				88E1E5B82CF60F9B00C69EC5 /* PWTestUnarchiver.m in Sources */,
-				88E1E5B92CF60F9B00C69EC5 /* PWTriggerInAppActionRequestTest.m in Sources */,
-				88E1E5BA2CF60F9B00C69EC5 /* PWNotificationBannerWindow.m in Sources */,
-				88E1E5BB2CF60F9B00C69EC5 /* PWNotificationManagerCompatwatchOS.m in Sources */,
-				88E1E5BC2CF60F9B00C69EC5 /* PWSendPurchaseTest.m in Sources */,
-				88E1E5BD2CF60F9B00C69EC5 /* PWPreferences.m in Sources */,
-				88E1E5BE2CF60F9B00C69EC5 /* PWAppOpenRequest.m in Sources */,
-				88E1E5BF2CF60F9B00C69EC5 /* PWEasyJSWKDataFunction.m in Sources */,
-				88E1E5C02CF60F9B00C69EC5 /* PWBasePushTrackingRequest.m in Sources */,
-				88E1E5C12CF60F9B00C69EC5 /* PWNotificationBannerView.m in Sources */,
-				88E1E5C22CF60F9B00C69EC5 /* PWLoadingView.m in Sources */,
-				88E1E5C32CF60F9B00C69EC5 /* PWRegisterEmailUserTest.m in Sources */,
-				88E1E5C42CF60F9B00C69EC5 /* PWGetNearestZoneRequestTest.m in Sources */,
-				88E1E5C52CF60F9B00C69EC5 /* PWInAppMessagesManager.m in Sources */,
-				88E1E5C62CF60F9B00C69EC5 /* PWInAppPurchaseHelper.m in Sources */,
-				88E1E5C72CF60F9B00C69EC5 /* PWPushwooshJSBridge.m in Sources */,
-				88E1E5C82CF60F9B00C69EC5 /* PWDataManager.mac.m in Sources */,
-				88E1E5C92CF60F9B00C69EC5 /* PWRequestsCacheManager.m in Sources */,
-				88E1E5CA2CF60F9B00C69EC5 /* PWInAppStorage.m in Sources */,
-				88E1E5CB2CF60F9B00C69EC5 /* PWInboxMerge.m in Sources */,
-				88E1E5CC2CF60F9B00C69EC5 /* PWConfig.m in Sources */,
-				88E1E5CD2CF60F9B00C69EC5 /* PWGetResourcesRequest.m in Sources */,
-				88E1E5CE2CF60F9B00C69EC5 /* PWGetTagsTest.m in Sources */,
-				88E1E5CF2CF60F9B00C69EC5 /* PWGetTagsRequestTest.m in Sources */,
-				88E1E5D02CF60F9B00C69EC5 /* PWNotification.m in Sources */,
-				88E1E5D12CF60F9B00C69EC5 /* PWMessageViewControllerTest.m in Sources */,
-				88E1E5D22CF60F9B00C69EC5 /* PWRegisterTestDeviceRequestTest.m in Sources */,
-				88E1E5D32CF60F9B00C69EC5 /* PWMessageViewController.mac.m in Sources */,
-				88E1E5D42CF60F9B00C69EC5 /* PWGetConfigRequest.m in Sources */,
-				88E1E5D52CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS9.m in Sources */,
-				88E1E5D62CF60F9B00C69EC5 /* PWChannel.m in Sources */,
-				88E1E5D82CF60F9B00C69EC5 /* PWSetTagsRequest.m in Sources */,
-				88E1E5D92CF60F9B00C69EC5 /* PWLoadingViewController.m in Sources */,
-				88E1E5DA2CF60F9B00C69EC5 /* PWZipArchive.mm in Sources */,
-				88E1E5DB2CF60F9B00C69EC5 /* PWModalWindowConfiguration.m in Sources */,
-				88E1E5DC2CF60F9B00C69EC5 /* PWNotificationManagerTest.m in Sources */,
-				88E1E5DD2CF60F9B00C69EC5 /* PWRichMediaAnimatorTest.m in Sources */,
-				88E1E5DE2CF60F9B00C69EC5 /* PWPushNotificationsManager.watch.m in Sources */,
-				88E1E5DF2CF60F9B00C69EC5 /* PWRegisterUserRequest.m in Sources */,
-				88E1E5E02CF60F9B00C69EC5 /* PWRequestManager.m in Sources */,
-				88E1E5E12CF60F9B00C69EC5 /* PWNotificationManagerCompat.m in Sources */,
-				88E1E5E22CF60F9B00C69EC5 /* PWPushStatRequest.m in Sources */,
-				88E1E5E32CF60F9B00C69EC5 /* PWSetEmailTagsRequestTest.m in Sources */,
-				88E1E5E42CF60F9B00C69EC5 /* NSDictionary+PWDictUtils.m in Sources */,
-				88E1E5E52CF60F9B00C69EC5 /* PWNotificationExtensionManager.m in Sources */,
-				88E1E5E62CF60F9B00C69EC5 /* PWBaseRequestTest.m in Sources */,
-				88E1E5E72CF60F9B00C69EC5 /* PWPushNotificationDelegateMock.m in Sources */,
-				88E1E5E82CF60F9B00C69EC5 /* PWInlineInAppView.m in Sources */,
-				88E1E5E92CF60F9B00C69EC5 /* PWUserNotificationCenterDelegate.m in Sources */,
-				88E1E5EA2CF60F9B00C69EC5 /* PWRichMediaActionRequest.m in Sources */,
-				88E1E5EB2CF60F9B00C69EC5 /* PWPushRuntime.mac.m in Sources */,
-				88E1E5EC2CF60F9B00C69EC5 /* PWBaseInboxRequest.m in Sources */,
-				88E1E5ED2CF60F9B00C69EC5 /* PWNetworkModule.m in Sources */,
-				88E1E5EE2CF60F9B00C69EC5 /* PWRichMediaManager.m in Sources */,
-				88E1E5EF2CF60F9B00C69EC5 /* PWCacheTest.m in Sources */,
-				88E1E5F12CF60F9B00C69EC5 /* ioapi.cpp in Sources */,
-				88E1E5F22CF60F9B00C69EC5 /* PWGDPRManager.m in Sources */,
-				88E1E5F32CF60F9B00C69EC5 /* PWMessageDeliveryRequestTest.m in Sources */,
-				88E1E5F42CF60F9B00C69EC5 /* PWGetTagsRequest.m in Sources */,
-				88E1E5F52CF60F9B00C69EC5 /* PWHtmlWebViewController.ios.m in Sources */,
-				88E1E5F62CF60F9B00C69EC5 /* PushNotificationManager+Mock.m in Sources */,
-				88E1E5F72CF60F9B00C69EC5 /* PWJSInterfaceTest.m in Sources */,
-				88E1E5F82CF60F9B00C69EC5 /* PWInboxUpdateStatusRequest.m in Sources */,
-				88E1E5F92CF60F9B00C69EC5 /* PWRequestManagerTest.m in Sources */,
-				88E1E5FA2CF60F9B00C69EC5 /* WKWebView+PWSynchronousEvaluateJavaScript.m in Sources */,
-				88E1E5FB2CF60F9B00C69EC5 /* PWApplicationOpenTest.m in Sources */,
-				88E1E5FC2CF60F9B00C69EC5 /* PWEasyJSListener.m in Sources */,
-				88E1E5FD2CF60F9B00C69EC5 /* PWAlphabetUtilsTests.m in Sources */,
-				88E1E5FE2CF60F9B00C69EC5 /* PWBasePushTrackingRequestTest.m in Sources */,
-				88E1E5FF2CF60F9B00C69EC5 /* PWAlphabetUtils.m in Sources */,
-				88E1E6002CF60F9B00C69EC5 /* PWNotificationExtensionManagerTest.m in Sources */,
-				88E1E6022CF60F9B00C69EC5 /* NSDate+PWDateUtils.m in Sources */,
-				88E1E6032CF60F9B00C69EC5 /* PWPushNotificationsManager.ios.m in Sources */,
-				88E1E6042CF60F9B00C69EC5 /* PushNotificationManager.m in Sources */,
-				88E1E6052CF60F9B00C69EC5 /* PWDataManagerCommonTest.m in Sources */,
-				88E1E6062CF60F9B00C69EC5 /* PWPushStatRequestTest.m in Sources */,
-				88E1E6072CF60F9B00C69EC5 /* PWMessageTest.m in Sources */,
-				88E1E6082CF60F9B00C69EC5 /* PWRegisterEmailUser.m in Sources */,
-				88E1E6092CF60F9B00C69EC5 /* PWUnarchiver.m in Sources */,
-				88E1E60A2CF60F9B00C69EC5 /* PWInteractionDisabledWindow.m in Sources */,
-				88E1E60B2CF60F9B00C69EC5 /* PWNotificationManagerCompatmacOS.m in Sources */,
-				88E1E60C2CF60F9B00C69EC5 /* WKUserScript+PWInterfacesScriptGenerator.m in Sources */,
-				88E1E60D2CF60F9B00C69EC5 /* PWPostEventRequestTest.m in Sources */,
-				88E1E60E2CF60F9B00C69EC5 /* PWMergeUserRequest.m in Sources */,
-				88E1E60F2CF60F9B00C69EC5 /* PWPlatformModule.m in Sources */,
-				88E1E6102CF60F9B00C69EC5 /* PushwooshLiveActivitiesImplementationSetup.swift in Sources */,
-				88E1E6112CF60F9B00C69EC5 /* PWResourceTest.m in Sources */,
-				88E1E6122CF60F9B00C69EC5 /* PWShowLoading.m in Sources */,
-				88E1E6132CF60F9B00C69EC5 /* PWInbox.m in Sources */,
-				88E1E6142CF60F9B00C69EC5 /* PWPostEventRequest.m in Sources */,
-				88E1E6162CF60F9B00C69EC5 /* PWReachability.m in Sources */,
-				88E1E6172CF60F9B00C69EC5 /* PWConfigurationTest.m in Sources */,
-				88E1E6182CF60F9B00C69EC5 /* PWRequest.m in Sources */,
-				88E1E6192CF60F9B00C69EC5 /* PWSetEmailTagsRequest.m in Sources */,
-				88E1E61A2CF60F9B00C69EC5 /* PWSendPurchaseRequest.m in Sources */,
-				88E1E61B2CF60F9B00C69EC5 /* PWServerCommunicationManager.m in Sources */,
-				88E1E61C2CF60F9B00C69EC5 /* PWNotificationCenterDelegateProxy.m in Sources */,
-				88E1E61D2CF60F9B00C69EC5 /* PWModalWindow.m in Sources */,
-				88E1E61E2CF60F9B00C69EC5 /* PWGetResourcesRequestTest.m in Sources */,
-				88E1E61F2CF60F9B00C69EC5 /* PWInAppPurchaseHelperTest.m in Sources */,
-				88E1E6202CF60F9B00C69EC5 /* PWAppLifecycleTrackingManager.m in Sources */,
-				88E1E6212CF60F9B00C69EC5 /* PWRegisterDeviceRequest.m in Sources */,
-				88E1E6222CF60F9B00C69EC5 /* PWSetTagsTest.m in Sources */,
-				88E1E6232CF60F9B00C69EC5 /* PWPushNotificationsManager.mac.m in Sources */,
-				88E1E6242CF60F9B00C69EC5 /* PushwooshLiveActivityAttributes.swift in Sources */,
-				88E1E6252CF60F9B00C69EC5 /* PWInAppManager.m in Sources */,
-				88E1E6262CF60F9B00C69EC5 /* PWAppDelegateTest.m in Sources */,
-				88E1E6272CF60F9B00C69EC5 /* PWRichPushManager.ios.m in Sources */,
-				88E1E6282CF60F9B00C69EC5 /* PWCachedRequest.m in Sources */,
-				88E1E6292CF60F9B00C69EC5 /* PWPurchaseManager.m in Sources */,
-				88E1E62A2CF60F9B00C69EC5 /* zip.cpp in Sources */,
-				88E1E62B2CF60F9B00C69EC5 /* PWLiveActivityRequestTest.m in Sources */,
-				88E1E62C2CF60F9B00C69EC5 /* PWLog.m in Sources */,
-				88E1E62D2CF60F9B00C69EC5 /* PWMessageViewController.ios.m in Sources */,
-				88E1E62E2CF60F9B00C69EC5 /* PWWebClient.m in Sources */,
-				88E1E62F2CF60F9B00C69EC5 /* PWCache.m in Sources */,
-				88E1E6302CF60F9B00C69EC5 /* PWBundleMock.m in Sources */,
-				88E1E6312CF60F9B00C69EC5 /* PWNotificationManagerCompatiOS8.m in Sources */,
-				88E1E6322CF60F9B00C69EC5 /* PWRegisterEmail.m in Sources */,
-				88E1E6332CF60F9B00C69EC5 /* PWEasyJSWKWebView.m in Sources */,
-				88E1E6342CF60F9B00C69EC5 /* PWRequestTest.m in Sources */,
-				88E1E6352CF60F9B00C69EC5 /* PWUtils.ios.m in Sources */,
-				88E1E6362CF60F9B00C69EC5 /* PWInboxMessageInternalTest.m in Sources */,
-				88E1E6372CF60F9B00C69EC5 /* PWModalWindowSettings.m in Sources */,
-				88E1E6382CF60F9B00C69EC5 /* PWRichPushManager.mac.m in Sources */,
-				88E1E6392CF60F9B00C69EC5 /* PWInboxMessagesRequest.m in Sources */,
-				88E1E63B2CF60F9B00C69EC5 /* PWInboxMessageInternal.m in Sources */,
-				88E1E63C2CF60F9B00C69EC5 /* PWResource.m in Sources */,
-				88E1E63D2CF60F9B00C69EC5 /* PWInboxAllMessagesRequest.m in Sources */,
-				88E1E63E2CF60F9B00C69EC5 /* PWInAppMessagesManagerTest.m in Sources */,
-				88E1E63F2CF60F9B00C69EC5 /* PWScreenTrackingManager.m in Sources */,
-				88E1E6402CF60F9B00C69EC5 /* PWRequestManagerMock.m in Sources */,
-				88E1E6412CF60F9B00C69EC5 /* PWPushNotificationCustomDelegateMock.m in Sources */,
-				88E1E6422CF60F9B00C69EC5 /* PWBusinessCaseManager.m in Sources */,
-				88E1E6432CF60F9B00C69EC5 /* PWNotificationAppSettings.m in Sources */,
-				88E1E6452CF60F9B00C69EC5 /* PWGetConfigRequestTest.m in Sources */,
-				88E1E6472CF60F9B00C69EC5 /* PWUtils.watch.m in Sources */,
-				88E1E6482CF60F9B00C69EC5 /* PWHtmlWebViewController.mac.m in Sources */,
-				88E1E6492CF60F9B00C69EC5 /* PushwooshLiveActivities.swift in Sources */,
-				88E1E64A2CF60F9B00C69EC5 /* PWNotificationCenter.m in Sources */,
-				88E1E64B2CF60F9B00C69EC5 /* PWNotificationCategoryBuilder.m in Sources */,
-				88E1E64C2CF60F9B00C69EC5 /* PWRichMediaView.m in Sources */,
-				88E1E64D2CF60F9B00C69EC5 /* PWButtonExt.m in Sources */,
-				88E1E64E2CF60F9B00C69EC5 /* PWTestUtils.m in Sources */,
-				88E1E64F2CF60F9B00C69EC5 /* PWInboxServiceTest.m in Sources */,
-				88E1E6502CF60F9B00C69EC5 /* PWPurchaseRuntime.m in Sources */,
-				88E1E6512CF60F9B00C69EC5 /* PWPostEventTest.m in Sources */,
-				88E1E6522CF60F9B00C69EC5 /* Pushwoosh.m in Sources */,
-				88E1E6532CF60F9B00C69EC5 /* PWConfigTest.m in Sources */,
-				88E1E6542CF60F9B00C69EC5 /* PWInteractionDisabledView.m in Sources */,
-				88E1E6552CF60F9B00C69EC5 /* PWHashDecoder.m in Sources */,
-				88E1E6562CF60F9B00C69EC5 /* PWInteractivePush.m in Sources */,
-				88E1E6572CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS10.m in Sources */,
-				88E1E6582CF60F9B00C69EC5 /* PWNotificationCategoryBuilderwatchOS.m in Sources */,
-				88E1E6592CF60F9B00C69EC5 /* APNSPayloadTest.m in Sources */,
-				88E1E65A2CF60F9B00C69EC5 /* PWNotificationCategoryBuilderiOS8.m in Sources */,
-				88E1E65B2CF60F9B00C69EC5 /* PWInboxService.m in Sources */,
 				504EC3081FED79650016851F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2247,10 +283,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/App/Pushwoosh/**",
-					"$(PROJECT_DIR)/App/PushwooshGeozones/**",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2265,7 +297,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2308,10 +340,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/App/Pushwoosh/**",
-					"$(PROJECT_DIR)/App/PushwooshGeozones/**",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2320,62 +348,25 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		504EC3171FED79650016851F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C912109EE8B63351F18DB9F /* Pods-App.debug.xcconfig */;
+			baseConfigurationReference = FC68EB0AF532CFC21C3344DD /* Pods-App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = ZH5F8P7RXN;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Capacitor\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/CapacitorCamera\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/CapacitorCordova\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/CapacitorSplashScreen\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/CordovaPluginsStatic\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreInternal\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseMessaging\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb\"",
-					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"/**",
-					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
-					"\"${PODS_ROOT}/Pushwoosh/Framework\"/**",
-					"\"${PODS_ROOT}/PushwooshInboxUIXCFramework/XCFramework\"/**",
-					"\"${PODS_ROOT}/PushwooshXCFramework/XCFramework\"/**",
-					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/FirebaseAnalytics/AdIdSupport\"",
-					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleAppMeasurement/AdIdSupport\"",
-					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleAppMeasurement/WithoutAdIdSupport\"",
-					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/PushwooshInboxUIXCFramework\"/**",
-					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/PushwooshXCFramework/Core\"/**",
-					"$(PROJECT_DIR)/App/Pushwoosh/**",
-				);
+				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/App/Pushwoosh/usr/lib",
-				);
-				MARKETING_VERSION = 1.0.84;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.armoniaesttica.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2387,24 +378,15 @@
 		};
 		504EC3181FED79650016851F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B8CDBE54F3B3F7DE6E55802 /* Pods-App.release.xcconfig */;
+			baseConfigurationReference = AF51FD2D460BCFE21FA515B2 /* Pods-App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = ZH5F8P7RXN;
+				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/App/Pushwoosh/usr/lib",
-				);
-				MARKETING_VERSION = 1.0.84;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.armoniaesttica.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
@@ -2435,25 +417,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		882526C22CF7A8C600A73BE2 /* XCRemoteSwiftPackageReference "Pushwoosh-XCFramework" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Pushwoosh/Pushwoosh-XCFramework";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.7.10;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		882526C32CF7A8C600A73BE2 /* PushwooshFramework */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 882526C22CF7A8C600A73BE2 /* XCRemoteSwiftPackageReference "Pushwoosh-XCFramework" */;
-			productName = PushwooshFramework;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 504EC2FC1FED79650016851F /* Project object */;
 }
