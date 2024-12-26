@@ -1,6 +1,5 @@
 const PUSHWOOSH_CONFIG = {
   appCode: "DE31D-FA23F", // Tu código de Pushwoosh
-  serviceWorkerUrl: "/pushwoosh-service-worker.js", // Asegúrate de que este archivo exista
 };
 
 async function onPushwooshInitialized() {
