@@ -15,21 +15,21 @@
   <link href="./css/customico.css" rel="stylesheet" type="text/css" />
 
   <script>
-    Pushwoosh.init({
-      logLevel: 'debug', // Opcional, solo para desarrollo
-      applicationCode: 'DE31D-FA23F',
-      defaultNotificationTitle: 'Armonia Estetica',
-      defaultNotificationImage: 'https://armoniaestetica.com/_images/general/logo2.png',
-    });
+    // Pushwoosh.init({
+    //   logLevel: 'debug', // Opcional, solo para desarrollo
+    //   applicationCode: 'DE31D-FA23F',
+    //   defaultNotificationTitle: 'Armonia Estetica',
+    //   defaultNotificationImage: 'https://armoniaestetica.com/_images/general/logo2.png',
+    // });
 
-    // Registra el dispositivo para recibir notificaciones
-    Pushwoosh.registerForPushNotifications()
-      .then(token => {
-        console.log('Pushwoosh device token:', token);
-      })
-      .catch(error => {
-        console.error('Error registering for Pushwoosh notifications:', error);
-      });
+    // // Registra el dispositivo para recibir notificaciones
+    // Pushwoosh.registerForPushNotifications()
+    //   .then(token => {
+    //     console.log('Pushwoosh device token:', token);
+    //   })
+    //   .catch(error => {
+    //     console.error('Error registering for Pushwoosh notifications:', error);
+    //   });
 
     if (!window.setImmediate) {
       window.setImmediate = function(fn) {
