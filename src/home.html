@@ -23,6 +23,30 @@
         <script src="https://cdn.pushwoosh.com/webpush/v3/pushwoosh-web-notifications.js"></script>
         <script type="text/javascript" src="./js/push.js"></script>
 
+        <script>
+            Pushwoosh.init({
+              logLevel: 'debug', // Opcional, solo para desarrollo
+              applicationCode: 'DE31D-FA23F',
+              defaultNotificationTitle: 'Armonia Estetica',
+              defaultNotificationImage: 'https://armoniaestetica.com/_images/general/logo2.png',
+            });
+        
+            // Registra el dispositivo para recibir notificaciones
+            Pushwoosh.registerForPushNotifications()
+              .then(token => {
+                console.log('Pushwoosh device token:', token);
+              })
+              .catch(error => {
+                console.error('Error registering for Pushwoosh notifications:', error);
+              });
+        
+            // if (!window.setImmediate) {
+            //   window.setImmediate = function(fn) {
+            //     setTimeout(fn, 0);
+            //   };
+            // }
+          </script>
+
 
         <title>Dr. Luevano</title>
     </head>
