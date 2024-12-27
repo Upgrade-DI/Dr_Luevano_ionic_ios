@@ -13,15 +13,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@capacitor/android": "^5.0.0",
-    "@capacitor/camera": "^5.0.0",
-    "@capacitor/core": "^5.0.0",
-    "@capacitor/ios": "^5.0.0",
-    "@capacitor/splash-screen": "^5.0.0",
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/camera": "^6.1.0",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/ios": "^6.1.2",
+    "@capacitor/push-notifications": "^6.0.2",
+    "@capacitor/splash-screen": "^6.0.2",
+    "capacitor": "github:ionic-team/capacitor#main",
     "pushwoosh-cordova-plugin": "^8.3.33"
   },
   "devDependencies": {
-    "@capacitor/cli": "^5.0.0",
+    "@capacitor/cli": "^6.1.2",
     "vite": "^5.4.11"
   },
   "author": "",

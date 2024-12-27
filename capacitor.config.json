@@ -3,6 +3,9 @@
   "appName": "Dr. Luevano",
   "bundledWebRuntime": false,
   "webDir": "src",
+  "ios": {
+    "path": "ios"
+  },
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 2000
