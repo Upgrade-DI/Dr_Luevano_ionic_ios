@@ -1,5 +1,9 @@
 const PUSHWOOSH_CONFIG = {
-  appCode: "DE31D-FA23F", // Tu código de Pushwoosh
+  applicationCode: "DE31D-FA23F",
+  safariWebsitePushID: "web.com.armoniaestetica", // Reemplaza con tu ID real si es necesario
+  defaultNotificationTitle: "Armonia Estetica",
+  defaultNotificationImage: "https://armoniaestetica.com/_images/general/logo2.png",
+  logLevel: "debug" // Cambia a 'error' en producción
 };
 
 async function onPushwooshInitialized() {
@@ -10,42 +14,48 @@ async function onPushwooshInitialized() {
       await Pushwoosh.init(PUSHWOOSH_CONFIG);
       console.log("Pushwoosh SDK initialized successfully.");
 
-      // Solicitar permiso para notificaciones
-      const isSubscribed = await Pushwoosh.subscribe();
-      if (isSubscribed) {
+      // Registrar para notificaciones push
+      const status = await Pushwoosh.registerForPushNotifications();
+      if (status.isSubscribed) {
           console.log("Subscribed to Pushwoosh notifications.");
+          const pushToken = await Pushwoosh.getPushToken();
+          console.log("Pushwoosh device token:", pushToken);
+          await uploadToken(pushToken);
       } else {
-          console.error("Failed to subscribe to Pushwoosh notifications.");
+          console.log("Not subscribed to Pushwoosh notifications.");
       }
 
       // Obtener HWID del dispositivo
-      const hwid = Pushwoosh.getHWID();
+      const hwid = await Pushwoosh.getHWID();
       console.log("Pushwoosh HWID:", hwid);
 
       // Manejo de notificaciones
-      Pushwoosh.onNotificationReceived((notification) => {
+      Pushwoosh.onPushReceived((notification) => {
           console.log("Push Notification Received:", notification);
       });
 
-      Pushwoosh.onNotificationClicked((notification) => {
+      Pushwoosh.onPushDelivered((notification) => {
           console.log("Push Notification Clicked:", notification);
       });
+
   } catch (error) {
       console.error("Error initializing Pushwoosh:", error);
   }
 }
 
-async function uploadToken() {
-  const hwid = Pushwoosh.getHWID();
-  if (hwid) {
-      console.log("Uploading token to the server:", hwid);
-      // Agrega aquí la lógica para enviar el HWID a tu servidor
+async function uploadToken(token) {
+  if (token) {
+      console.log("Uploading token to the server:", token);
+      // Agrega aquí la lógica para enviar el token a tu servidor
+      // Por ejemplo:
+      // await fetch('/api/register-push-token', {
+      //     method: 'POST',
+      //     headers: { 'Content-Type': 'application/json' },
+      //     body: JSON.stringify({ token })
+      // });
   } else {
       console.log("Token no disponible para cargar.");
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM Content Loaded. Initializing Pushwoosh...');
-  onPushwooshInitialized();
-});
+// No es necesario agregar otro event listener aquí, ya que se llama desde index.html
