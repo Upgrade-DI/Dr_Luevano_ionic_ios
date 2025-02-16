@@ -8,11 +8,11 @@
   },
   "plugins": {
     "SplashScreen": {
-      "launchShowDuration": 2000
+      "launchShowDuration": 3000
     },
     "Pushwoosh": {
-      "appCode": "DE31D-FA23F",
-      "fcmSenderId": "YOUR_FIREBASE_SENDER_ID"
+      "APP_ID": "DE31D-FA23F",
+      "FCM_SENDER_ID": "YOUR_FIREBASE_SENDER_ID"
     }
   },
   "server": {

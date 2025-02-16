@@ -1,5 +1,14 @@
 // LOGIN JS - SUDI V3 | Mayo 2015 | Upgrade Diseño Interactivo
 
+import { SplashScreen } from '@capacitor/splash-screen';
+
+// Espera a que todo esté cargado
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    SplashScreen.hide();
+  }, 3000); // Extiende el tiempo si es necesario
+});
+
 // CONFIGURABLE
 
 var debugMode = false;
