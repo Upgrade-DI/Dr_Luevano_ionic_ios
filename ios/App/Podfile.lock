@@ -50,7 +50,7 @@ SPEC CHECKSUMS:
   CapacitorCamera: 81ce64062cd82b82cc75a79616fda4bd09d7f643
   CapacitorCordova: f48c89f96c319101cd2f0ce8a2b7449b5fb8b3dd
   CapacitorPushNotifications: ccd797926c030acad3d5498ef452c735c90a2c89
-  CapacitorSplashScreen: 96a4961f80a9de21e618dd439e2583d8509c2092
+  CapacitorSplashScreen: 250df9ef8014fac5c7c1fd231f0f8b1d8f0b5624
   CordovaPluginsStatic: 96a4961f80a9de21e618dd439e2583d8509c2092
   PushwooshInboxUIXCFramework: a6d8528ef5194d188e4574a373020f399255f6c7
   PushwooshXCFramework: 7b7bc5976fe54be9db2b36830f7c0e5b10bcfa7f
