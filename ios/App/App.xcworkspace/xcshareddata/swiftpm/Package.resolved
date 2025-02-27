@@ -1,0 +1,15 @@
+{
+  "originHash" : "8f2024c4425567ad9fe81142a3e1b45bb96dd73a44dafa0a8d1c5f700e1b130e",
+  "pins" : [
+    {
+      "identity" : "pushwoosh-xcframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Pushwoosh/Pushwoosh-XCFramework",
+      "state" : {
+        "revision" : "037943407c6b9cdabc3f7996760ec35a4f939894",
+        "version" : "6.7.14"
+      }
+    }
+  ],
+  "version" : 3
+}
