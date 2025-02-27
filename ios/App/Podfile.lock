@@ -46,15 +46,15 @@ EXTERNAL SOURCES:
     :path: "../capacitor-cordova-ios-plugins"
 
 SPEC CHECKSUMS:
-  Capacitor: 679f9673fdf30597493a6362a5d5bf233d46abc2
-  CapacitorCamera: 81ce64062cd82b82cc75a79616fda4bd09d7f643
+  Capacitor: 69c7f687aabb8d85e543497411e40638b5cc08c0
+  CapacitorCamera: c2924acc75205066d2282b799a31f6eab35a28a1
   CapacitorCordova: f48c89f96c319101cd2f0ce8a2b7449b5fb8b3dd
-  CapacitorPushNotifications: ccd797926c030acad3d5498ef452c735c90a2c89
-  CapacitorSplashScreen: 250df9ef8014fac5c7c1fd231f0f8b1d8f0b5624
-  CordovaPluginsStatic: 96a4961f80a9de21e618dd439e2583d8509c2092
+  CapacitorPushNotifications: 88f40c5f06dfe54f2c0619173e11ecbff8661a2f
+  CapacitorSplashScreen: b46e61cc4345d73d510530b0c845a30e3602db40
+  CordovaPluginsStatic: cb344588671b0e00b61d623d85c44acb5afab500
   PushwooshInboxUIXCFramework: a6d8528ef5194d188e4574a373020f399255f6c7
   PushwooshXCFramework: 7b7bc5976fe54be9db2b36830f7c0e5b10bcfa7f
 
 PODFILE CHECKSUM: af544c5776795724bf251e4dac66910878abf046
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

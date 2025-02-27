@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -61,7 +61,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		C43C05182D6156E2001E4FFA /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		C43C05182D6156E2001E4FFA /* Exceptions for "ArmoniaNoti" folder in "ArmoniaNoti" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -71,7 +71,14 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		C43C05112D6156E2001E4FFA /* ArmoniaNoti */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (C43C05182D6156E2001E4FFA /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ArmoniaNoti; sourceTree = "<group>"; };
+		C43C05112D6156E2001E4FFA /* ArmoniaNoti */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C43C05182D6156E2001E4FFA /* Exceptions for "ArmoniaNoti" folder in "ArmoniaNoti" target */,
+			);
+			path = ArmoniaNoti;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,8 +195,6 @@
 				C43C05112D6156E2001E4FFA /* ArmoniaNoti */,
 			);
 			name = ArmoniaNoti;
-			packageProductDependencies = (
-			);
 			productName = ArmoniaNoti;
 			productReference = C43C05102D6156E2001E4FFA /* ArmoniaNoti.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -215,7 +220,6 @@
 				};
 			};
 			buildConfigurationList = 504EC2FF1FED79650016851F /* Build configuration list for PBXProject "App" */;
-			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -226,6 +230,7 @@
 			packageReferences = (
 				C43C05092D61552A001E4FFA /* XCRemoteSwiftPackageReference "Pushwoosh-XCFramework" */,
 			);
+			preferredProjectObjectVersion = 77;
 			productRefGroup = 504EC3051FED79650016851F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -265,10 +270,10 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
 			name = "[CP] Copy Pods Resources";
-			outputPaths = (
+			outputFileListPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -298,10 +303,10 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
+			outputFileListPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
