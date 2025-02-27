@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -61,7 +61,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		C4B1E6C12D711F29007B4918 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		C4B1E6C12D711F29007B4918 /* Exceptions for "ArmoniaNoti" folder in "ArmoniaNoti" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -71,7 +71,14 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		C4B1E6BA2D711F29007B4918 /* ArmoniaNoti */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (C4B1E6C12D711F29007B4918 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ArmoniaNoti; sourceTree = "<group>"; };
+		C4B1E6BA2D711F29007B4918 /* ArmoniaNoti */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C4B1E6C12D711F29007B4918 /* Exceptions for "ArmoniaNoti" folder in "ArmoniaNoti" target */,
+			);
+			path = ArmoniaNoti;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,7 +220,6 @@
 				};
 			};
 			buildConfigurationList = 504EC2FF1FED79650016851F /* Build configuration list for PBXProject "App" */;
-			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -224,6 +230,7 @@
 			packageReferences = (
 				C4B1E6B12D711CD6007B4918 /* XCRemoteSwiftPackageReference "Pushwoosh-XCFramework" */,
 			);
+			preferredProjectObjectVersion = 77;
 			productRefGroup = 504EC3051FED79650016851F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -514,7 +521,7 @@
 				INFOPLIST_FILE = ArmoniaNoti/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ArmoniaNoti;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -552,7 +559,7 @@
 				INFOPLIST_FILE = ArmoniaNoti/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ArmoniaNoti;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

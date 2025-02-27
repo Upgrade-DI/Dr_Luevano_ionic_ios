@@ -9,7 +9,6 @@
 	<key>com.apple.security.application-groups</key>
 	<array>
 		<string>group.ArmoniaNoti</string>
-		<string>group.armonia</string>
 	</array>
 </dict>
 </plist>
