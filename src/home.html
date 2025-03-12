@@ -943,123 +943,95 @@ var appDebug = false;
   var global_mail = null;  
   var global_pass = null;
 
-console.log('Checking Capacitor availability:');
-if (window.Capacitor) {
-    console.log('✅ Capacitor is available');
-    console.log('Capacitor version:', window.Capacitor.VERSION);
-    console.log('Capacitor platform:', window.Capacitor.getPlatform());
+// Initialize Pushwoosh
+function initPushwoosh() {
+    console.log('Initializing Pushwoosh...');
     
-    // Check Plugins object
-    if (window.Capacitor.Plugins) {
-        console.log('✅ Capacitor.Plugins is available');
-        console.log('Available plugins:', Object.keys(window.Capacitor.Plugins));
-    } else {
-        console.log('❌ Capacitor.Plugins is NOT available');
-    }
-} else {
-    console.log('❌ Capacitor is NOT available');
+    document.addEventListener('deviceready', function() {
+        if (window.Pushwoosh) {
+            console.log('Pushwoosh plugin found');
+            
+            // Initialize Pushwoosh
+            window.Pushwoosh.init({
+                // Your Pushwoosh app ID
+                "pw_appid": "YOUR_PUSHWOOSH_APP_ID",
+                // Your FCM project number (Android only)
+                "android_project_number": "YOUR_FCM_PROJECT_NUMBER",
+                // Optional: iOS alert settings
+                "alert": true,
+                "badge": true,
+                "sound": true
+            });
+            
+            // Register for push notifications
+            window.Pushwoosh.registerDevice(
+                function(status) {
+                    // Success callback
+                    console.log('Pushwoosh register success: ' + status.deviceToken);
+                    the_token = status.deviceToken;
+                    
+                    // Upload token to your server
+                    if (the_patient) {
+                        uploadToken();
+                    }
+                },
+                function(status) {
+                    // Error callback
+                    console.error('Pushwoosh register failed: ' + status);
+                }
+            );
+        } else if (window.pushwoosh) {
+            // Alternative way to access Pushwoosh
+            console.log('Alternative Pushwoosh plugin found');
+            
+            window.pushwoosh.registerDevice(
+                function(token) {
+                    console.log('Pushwoosh register success: ' + token);
+                    the_token = token;
+                    
+                    if (the_patient) {
+                        uploadToken();
+                    }
+                },
+                function(error) {
+                    console.error('Pushwoosh register failed: ' + error);
+                }
+            );
+        } else {
+            console.log('Pushwoosh plugin not found');
+        }
+    }, false);
 }
 
-// Function to initialize push notifications
-function initPushNotifications() {
-    if (!window.Capacitor || !window.Capacitor.Plugins.PushNotifications) {
-        console.log('Push notifications not available');
+// Upload token to server
+function uploadToken() {
+    if (!the_token || !the_patient) {
+        console.log('Token or patient not available');
         return;
     }
     
-    // Request permission
-    window.Capacitor.Plugins.PushNotifications.requestPermissions().then(function(permStatus) {
-        if (permStatus.receive === 'granted') {
-            // Register with FCM/APNS
-            window.Capacitor.Plugins.PushNotifications.register().then(function() {
-                console.log('Push registration success');
-            });
-            
-            // Setup listeners
-            setupPushListeners();
-        } else {
-            console.log('Push notification permission denied');
-        }
-    }).catch(function(error) {
-        console.error('Error requesting push permissions:', error);
-    });
-}
-
-// Setup push notification listeners
-function setupPushListeners() {
-    // On registration success
-    window.Capacitor.Plugins.PushNotifications.addListener('registration', function(token) {
-        console.log('Push registration success, token:', token.value);
-        
-        // Update global token variable
-        the_token = token.value;
-        
-        // Try to send token if user is authenticated
-        if (typeof the_patient !== 'undefined' && the_patient !== null && token_sent === 0) {
-            uploadToken();
-        } else {
-            // Save token for later
-            localStorage.setItem('pendingPushToken', token.value);
-        }
-    });
+    console.log('Uploading token to server:', the_token);
     
-    // On registration error
-    window.Capacitor.Plugins.PushNotifications.addListener('registrationError', function(error) {
-        console.error('Push registration failed:', error);
-    });
-    
-    // On push notification received
-    window.Capacitor.Plugins.PushNotifications.addListener('pushNotificationReceived', function(notification) {
-        console.log('Push notification received:', notification);
-    });
-}
-
-// Function to upload token to server
-function uploadToken(type=null) {
-    console.log("Uploading token to server:", the_token);
-    
-    // AJAX - Load Records
     $.ajax({
         async: true,
         url: rootPath+'/_sudiv3/ar_engine/token_device.php',
         type: 'POST',
-        data: {the_patient: the_patient, token: the_token}
+        data: {
+            the_patient: the_patient,
+            token: the_token
+        }
     }).done(function(data) {
         console.log('Token upload result:', data);
         token_sent = 1;
     }).fail(function(error) {
-        console.error('Error uploading token:', error);
+        console.error('Token upload error:', error);
     });
 }
 
-// Check for pending token
-function checkPendingToken() {
-    const pendingToken = localStorage.getItem('pendingPushToken');
-    
-    if (pendingToken && typeof the_patient !== 'undefined' && the_patient !== null && token_sent === 0) {
-        console.log('Found pending token, sending to server');
-        
-        // Update global token variable
-        the_token = pendingToken;
-        
-        // Send token to server
-        uploadToken();
-        
-        // Clear pending token
-        localStorage.removeItem('pendingPushToken');
-    }
-}
-
-// Initialize when device is ready
-document.addEventListener('deviceready', function() {
-    initPushNotifications();
-}, false);
-
-// Check for pending token when app starts
+// Initialize when the page loads
 document.addEventListener('DOMContentLoaded', function() {
-    checkPendingToken();
+    initPushwoosh();
 });
-
 
     $(document).ready(function() {
         var myNavigator = document.querySelector('ons-navigator');
