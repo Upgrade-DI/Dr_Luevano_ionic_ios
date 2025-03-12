@@ -1,144 +1,131 @@
-var theToken = 'not_set';  
+import { Capacitor } from '@capacitor/core';
+import { PushNotifications } from '@capacitor/push-notifications';
 
-function onPushwooshInitialized(pushNotification) {
+// Global variables
+var theToken = 'not_set';
+var the_token = 'not_set'; // Keep both variables for compatibility
+var token_sent = 0;
 
-    //if you need push token at a later time you can always get it from Pushwoosh plugin
-    pushNotification.getPushToken(function(token) {
-      console.info('push token: ' + token);
-    }
-    );
-    
-    //and HWID if you want to communicate with Pushwoosh API
-    pushNotification.getPushwooshHWID(function(token) {
-      console.info('Pushwoosh HWID: ' + token);
-    }
-    ); 
-    
-    //settings tags
-    pushNotification.setTags({
-      tagName: "tagValue",
-      intTagName: 10
-    },
-    function(status) {
-     console.log('setTags success: ' + JSON.stringify(status));
-   },
-   function(status) {
-     console.log('setTags failed');
-   }
-   );
-    
-    pushNotification.getTags(function(status) {
-       console.log('getTags success: ' + JSON.stringify(status));
-     },
-     function(status) {
-       console.log('getTags failed');
-     }
-     );
-    
-    //start geo tracking.
-    //pushNotification.startLocationTracking();
+// Initialize push notifications with Capacitor
+async function initPushNotifications() {
+  // Check if running on a native platform
+  if (!Capacitor.isNativePlatform()) {
+    console.log('Push notifications not available on web');
+    return;
   }
 
-  function initPushwoosh() {
-    var pushNotification = cordova.require("pushwoosh-cordova-plugin.PushNotification");
+  try {
+    // Request permission to use push notifications
+    const permStatus = await PushNotifications.requestPermissions();
     
-    //set push notifications handler
-    document.addEventListener('push-notification',
-      function(event) {
-        var message = event.notification.message;
-        var userData = event.notification.userdata;
-
-	  //dump custom data to the console if it exists
-	  if (typeof(userData) != "undefined") {
-		console.warn('user data: ' + JSON.stringify(userData));
-	  }
-	}
-	);
-    
-    //initialize Pushwoosh with projectid: "GOOGLE_PROJECT_ID", appid : "PUSHWOOSH_APP_ID". This will trigger all pending push notifications on start.
-    pushNotification.onDeviceReady({
-    	projectid: "578524963473",
-     	appid: "96698-47E03",
-     	serviceName: "dr-luevano-ios"
-   	});
-	  
-	  
-    //register for push notifications
-    pushNotification.registerDevice(
-      function(status) {
-		  
-		theToken = status.pushToken;
-		the_token = theToken;
-		 
-		// Registro de Token
-	//if( the_token != 'not_set' && token_sent == 0){
-    if(the_patient != null && the_token != 'not_set' && token_sent == 0){
-
-			uploadToken();
-		}else{
-			console.log('Token no enviado: '+token_sent)
-		}
-		  
-        //document.getElementById("pushToken").innerHTML = status.pushToken + "<p>";
-        onPushwooshInitialized(pushNotification);
-		  console.log(status.pushToken);
-      },
-      function(status) {
-        console.log("failed to register: " + status);
-        console.warn(JSON.stringify(['failed to register ', status]));
-      }
-      );
-  }
-
-  var app = {
-    // Application Constructor
-    initialize: function() {
-      this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-      document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicity call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-      initPushwoosh();
-      app.receivedEvent('deviceready');
-		
-		/*universalLinks.subscribe('ul_feedEvent', function (eventData) {
-			// do some work
-			// in eventData you'll see url и and parsed url with schema, host, path and arguments
-			console.log('Did launch application from the link: ' + JSON.stringify(eventData));
-			alert('Did launch application from the link: ' + JSON.stringify(eventData));
-		});		
-		console.log('universal');
-		*/
-		
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-      "use strict";
-		/*var parentElement = document.getElementById(id);
-      	var listeningElement = parentElement.querySelector('.listening');
-      	var receivedElement = parentElement.querySelector('.received');
-
-      	listeningElement.setAttribute('style', 'display:none;');
-      	receivedElement.setAttribute('style', 'display:block;');
-
-      	console.log('Received Event: ' + id);*/
+    if (permStatus.receive === 'granted') {
+      // Register with FCM/APNS
+      await PushNotifications.register();
+      
+      // Setup event listeners
+      setupPushListeners();
+    } else {
+      console.log('Push notification permission denied');
     }
-  };
+  } catch (error) {
+    console.error('Error initializing push notifications:', error);
+  }
+}
 
-  app.initialize();
+// Setup event listeners for push notifications
+function setupPushListeners() {
+  // On registration success
+  PushNotifications.addListener('registration', (token) => {
+    console.log('Push registration success, token:', token.value);
+    
+    // Update global variables
+    theToken = token.value;
+    the_token = token.value;
+    
+    // Try to send token to server if user is authenticated
+    if (typeof the_patient !== 'undefined' && the_patient !== null && token_sent === 0) {
+      uploadToken();
+    } else {
+      console.log('Token not sent. User not authenticated or token already sent.');
+      // Save token for later
+      localStorage.setItem('pendingPushToken', token.value);
+    }
+  });
+  
+  // On registration error
+  PushNotifications.addListener('registrationError', (error) => {
+    console.error('Push registration failed:', error);
+  });
+  
+  // On push notification received
+  PushNotifications.addListener('pushNotificationReceived', (notification) => {
+    console.log('Push notification received:', notification);
+  });
+  
+  // On push notification action performed
+  PushNotifications.addListener('pushNotificationActionPerformed', (action) => {
+    console.log('Push notification action performed:', action);
+  });
+}
 
-	$(document).on('click','#profile',function(){
-		console.log(theToken);
-    // ons.notification.toast({message: theToken, timeout: 3500});
+// Check for pending token when user logs in
+function checkPendingToken() {
+  const pendingToken = localStorage.getItem('pendingPushToken');
+  
+  if (pendingToken && typeof the_patient !== 'undefined' && the_patient !== null && token_sent === 0) {
+    console.log('Found pending token, sending to server');
+    
+    // Update global variables
+    theToken = pendingToken;
+    the_token = pendingToken;
+    
+    // Send token to server
+    uploadToken();
+    
+    // Clear pending token
+    localStorage.removeItem('pendingPushToken');
+  }
+}
 
-		//alert("the_token" + theToken);
-	});
+// Function to upload token to server (keep your existing function)
+function uploadToken(type=null) {
+  console.log("Uploading token to server:", the_token);
+  
+  // AJAX - Load Records
+  $.ajax({
+    async: true,
+    url: rootPath+'/_sudiv3/ar_engine/token_device.php',
+    type: 'POST',
+    data: {the_patient: the_patient, token: the_token}
+  }).done(function(data) {
+    console.log('Token upload result:', data);
+    token_sent = 1;
+  }).fail(function(error) {
+    console.error('Error uploading token:', error);
+  });
+}
+
+// Initialize when device is ready
+document.addEventListener('deviceready', function() {
+  initPushNotifications();
+}, false);
+
+// Check for pending token when app starts
+document.addEventListener('DOMContentLoaded', function() {
+  checkPendingToken();
+});
+
+// Function to call after successful login
+function onLoginSuccess(patientId) {
+  the_patient = patientId;
+  checkPendingToken();
+}
+
+// Export functions and variables
+export {
+  theToken,
+  the_token,
+  initPushNotifications,
+  uploadToken,
+  onLoginSuccess
+};

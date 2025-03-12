@@ -1167,31 +1167,31 @@ picPath = 'https://armoniaestetica.com/_sudiv3/';
 
 
 
-        // @function - Upload Token Device  
-            // Función que carga ID del dispositivo 
-        function uploadToken(type=null){
-            // console.log("cargando token...");           
-            // AJAX - Load Records
-            $.ajax({
+    //     // @function - Upload Token Device  
+    //         // Función que carga ID del dispositivo 
+    //     function uploadToken(type=null){
+    //         // console.log("cargando token...");           
+    //         // AJAX - Load Records
+    //         $.ajax({
                 
-                beforeSend: function(){ 
-                    //Antes de enviar la solicitud
-                },
+    //             beforeSend: function(){ 
+    //                 //Antes de enviar la solicitud
+    //             },
 
-                //dataType: 'json',
-                async: true,
-                url: rootPath+'/_sudiv3/ar_engine/token_device.php',
-                type: 'POST',
-                data: {the_patient : the_patient, token : the_token }
-                }).done(function(data){
+    //             //dataType: 'json',
+    //             async: true,
+    //             url: rootPath+'/_sudiv3/ar_engine/token_device.php',
+    //             type: 'POST',
+    //             data: {the_patient : the_patient, token : the_token }
+    //             }).done(function(data){
                 
-                    // console.log('resultado: ' + data);
-                    //ons.notification.toast({message: data, timeout: 5500});
+    //                 // console.log('resultado: ' + data);
+    //                 //ons.notification.toast({message: data, timeout: 5500});
 
-                    token_sent = 1;
-                }); // AJAX - Load Records
+    //                 token_sent = 1;
+    //             }); // AJAX - Load Records
     
-    }
+    // }
 
          
 // console.log('rootPath'+ rootPath);
