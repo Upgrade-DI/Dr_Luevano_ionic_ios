@@ -935,7 +935,7 @@
 var the_client = null;  
 var token_sent = 0;
 var the_token = null;
-var appDebug = false;
+var appDebug = true;
 
 
 //variables del paciente
@@ -943,64 +943,73 @@ var appDebug = false;
   var global_mail = null;  
   var global_pass = null;
 
+// Global variables
+var the_token = null;
+var token_sent = 0;
+
 // Initialize Pushwoosh
 function initPushwoosh() {
     console.log('Initializing Pushwoosh...');
     
-    document.addEventListener('deviceready', function() {
-        if (window.Pushwoosh) {
-            console.log('Pushwoosh plugin found');
-            
-            // Initialize Pushwoosh
-            window.Pushwoosh.init({
-                // Your Pushwoosh app ID
-                "pw_appid": "YOUR_PUSHWOOSH_APP_ID",
-                // Your FCM project number (Android only)
-                "android_project_number": "YOUR_FCM_PROJECT_NUMBER",
-                // Optional: iOS alert settings
-                "alert": true,
-                "badge": true,
-                "sound": true
-            });
-            
-            // Register for push notifications
-            window.Pushwoosh.registerDevice(
-                function(status) {
-                    // Success callback
-                    console.log('Pushwoosh register success: ' + status.deviceToken);
-                    the_token = status.deviceToken;
-                    
-                    // Upload token to your server
-                    if (the_patient) {
-                        uploadToken();
-                    }
-                },
-                function(status) {
-                    // Error callback
-                    console.error('Pushwoosh register failed: ' + status);
+    // Check if we're running in a native environment
+    if (window.Capacitor && window.Capacitor.getPlatform() === 'web') {
+        console.log('Push notifications not available on web');
+        return;
+    }
+    
+    // Wait for deviceready event
+    document.addEventListener('deviceready', onDeviceReady, false);
+}
+
+function onDeviceReady() {
+    console.log('Device is ready, checking for Pushwoosh plugin');
+    
+    // Try different ways to access Pushwoosh
+    if (typeof Pushwoosh !== 'undefined') {
+        console.log('Found Pushwoosh global object');
+        initializePushwooshPlugin(Pushwoosh);
+    } else if (window.Pushwoosh) {
+        console.log('Found Pushwoosh in window object');
+        initializePushwooshPlugin(window.Pushwoosh);
+    } else if (window.cordova && window.cordova.plugins && window.cordova.plugins.Pushwoosh) {
+        console.log('Found Pushwoosh in Cordova plugins');
+        initializePushwooshPlugin(window.cordova.plugins.Pushwoosh);
+    } else {
+        console.error('Pushwoosh plugin not found. Make sure it is properly installed.');
+        console.log('Available plugins:', window.Capacitor ? Object.keys(window.Capacitor.Plugins) : 'Capacitor not available');
+    }
+}
+
+function initializePushwooshPlugin(pwInstance) {
+    try {
+        console.log('Initializing Pushwoosh instance');
+        
+        pwInstance.init({
+            "pw_appid": "DE31D-FA23F", // Replace with your Pushwoosh App ID
+            "alert": true,
+            "badge": true,
+            "sound": true
+        });
+
+        pwInstance.registerDevice(
+            function(status) {
+                console.log('Successfully registered with Pushwoosh, token:', status.deviceToken);
+                the_token = status.deviceToken;
+                
+                // Only try to upload if we have both token and patient
+                if (the_patient) {
+                    uploadToken();
+                } else {
+                    console.log('Patient ID not available yet, token will be uploaded later');
                 }
-            );
-        } else if (window.pushwoosh) {
-            // Alternative way to access Pushwoosh
-            console.log('Alternative Pushwoosh plugin found');
-            
-            window.pushwoosh.registerDevice(
-                function(token) {
-                    console.log('Pushwoosh register success: ' + token);
-                    the_token = token;
-                    
-                    if (the_patient) {
-                        uploadToken();
-                    }
-                },
-                function(error) {
-                    console.error('Pushwoosh register failed: ' + error);
-                }
-            );
-        } else {
-            console.log('Pushwoosh plugin not found');
-        }
-    }, false);
+            },
+            function(status) {
+                console.error('Failed to register with Pushwoosh:', status);
+            }
+        );
+    } catch (error) {
+        console.error('Error initializing Pushwoosh:', error);
+    }
 }
 
 // Upload token to server
@@ -1021,15 +1030,16 @@ function uploadToken() {
             token: the_token
         }
     }).done(function(data) {
-        console.log('Token upload result:', data);
+        console.log('Token upload successful:', data);
         token_sent = 1;
     }).fail(function(error) {
-        console.error('Token upload error:', error);
+        console.error('Token upload failed:', error);
     });
 }
 
 // Initialize when the page loads
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, will initialize Pushwoosh');
     initPushwoosh();
 });
 
