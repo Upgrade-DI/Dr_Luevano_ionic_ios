@@ -23,6 +23,9 @@
         <!-- <script type="text/javascript" src="cordova.js"></script> -->
         <script type="text/javascript" src="./js/push.js"></script>
 
+        <script src="https://unpkg.com/@capacitor/core@latest/dist/capacitor.js"></script>
+        <script src="https://unpkg.com/@capacitor/push-notifications@latest/dist/plugin.js"></script>
+
 
         <title>Dr. Luevano</title>
     </head>
@@ -944,105 +947,105 @@ var appDebug = false;
   var global_mail = null;  
   var global_pass = null;
 
-    // Function to initialize push notifications
-    function initPushNotifications() {
-        if (!window.Capacitor || !window.Capacitor.Plugins.PushNotifications) {
-            console.log('Push notifications not available');
-            return;
+// Function to initialize push notifications
+function initPushNotifications() {
+    if (!window.Capacitor || !window.Capacitor.Plugins.PushNotifications) {
+        console.log('Push notifications not available');
+        return;
+    }
+    
+    // Request permission
+    window.Capacitor.Plugins.PushNotifications.requestPermissions().then(function(permStatus) {
+        if (permStatus.receive === 'granted') {
+            // Register with FCM/APNS
+            window.Capacitor.Plugins.PushNotifications.register().then(function() {
+                console.log('Push registration success');
+            });
+            
+            // Setup listeners
+            setupPushListeners();
+        } else {
+            console.log('Push notification permission denied');
         }
-        
-        // Request permission
-        window.Capacitor.Plugins.PushNotifications.requestPermissions().then(function(permStatus) {
-            if (permStatus.receive === 'granted') {
-                // Register with FCM/APNS
-                window.Capacitor.Plugins.PushNotifications.register().then(function() {
-                    console.log('Push registration success');
-                });
-                
-                // Setup listeners
-                setupPushListeners();
-            } else {
-                console.log('Push notification permission denied');
-            }
-        }).catch(function(error) {
-            console.error('Error requesting push permissions:', error);
-        });
-    }
-
-    // Setup push notification listeners
-    function setupPushListeners() {
-        // On registration success
-        window.Capacitor.Plugins.PushNotifications.addListener('registration', function(token) {
-            console.log('Push registration success, token:', token.value);
-            
-            // Update global token variable
-            the_token = token.value;
-            
-            // Try to send token if user is authenticated
-            if (typeof the_patient !== 'undefined' && the_patient !== null && token_sent === 0) {
-                uploadToken();
-            } else {
-                // Save token for later
-                localStorage.setItem('pendingPushToken', token.value);
-            }
-        });
-        
-        // On registration error
-        window.Capacitor.Plugins.PushNotifications.addListener('registrationError', function(error) {
-            console.error('Push registration failed:', error);
-        });
-        
-        // On push notification received
-        window.Capacitor.Plugins.PushNotifications.addListener('pushNotificationReceived', function(notification) {
-            console.log('Push notification received:', notification);
-        });
-    }
-
-    // Function to upload token to server
-    function uploadToken(type=null) {
-        console.log("Uploading token to server:", the_token);
-        
-        // AJAX - Load Records
-        $.ajax({
-            async: true,
-            url: rootPath+'/_sudiv3/ar_engine/token_device.php',
-            type: 'POST',
-            data: {the_patient: the_patient, token: the_token}
-        }).done(function(data) {
-            console.log('Token upload result:', data);
-            token_sent = 1;
-        }).fail(function(error) {
-            console.error('Error uploading token:', error);
-        });
-    }
-
-    // Check for pending token
-    function checkPendingToken() {
-        const pendingToken = localStorage.getItem('pendingPushToken');
-        
-        if (pendingToken && typeof the_patient !== 'undefined' && the_patient !== null && token_sent === 0) {
-            console.log('Found pending token, sending to server');
-            
-            // Update global token variable
-            the_token = pendingToken;
-            
-            // Send token to server
-            uploadToken();
-            
-            // Clear pending token
-            localStorage.removeItem('pendingPushToken');
-        }
-    }
-
-    // Initialize when device is ready
-    document.addEventListener('deviceready', function() {
-        initPushNotifications();
-    }, false);
-
-    // Check for pending token when app starts
-    document.addEventListener('DOMContentLoaded', function() {
-        checkPendingToken();
+    }).catch(function(error) {
+        console.error('Error requesting push permissions:', error);
     });
+}
+
+// Setup push notification listeners
+function setupPushListeners() {
+    // On registration success
+    window.Capacitor.Plugins.PushNotifications.addListener('registration', function(token) {
+        console.log('Push registration success, token:', token.value);
+        
+        // Update global token variable
+        the_token = token.value;
+        
+        // Try to send token if user is authenticated
+        if (typeof the_patient !== 'undefined' && the_patient !== null && token_sent === 0) {
+            uploadToken();
+        } else {
+            // Save token for later
+            localStorage.setItem('pendingPushToken', token.value);
+        }
+    });
+    
+    // On registration error
+    window.Capacitor.Plugins.PushNotifications.addListener('registrationError', function(error) {
+        console.error('Push registration failed:', error);
+    });
+    
+    // On push notification received
+    window.Capacitor.Plugins.PushNotifications.addListener('pushNotificationReceived', function(notification) {
+        console.log('Push notification received:', notification);
+    });
+}
+
+// Function to upload token to server
+function uploadToken(type=null) {
+    console.log("Uploading token to server:", the_token);
+    
+    // AJAX - Load Records
+    $.ajax({
+        async: true,
+        url: rootPath+'/_sudiv3/ar_engine/token_device.php',
+        type: 'POST',
+        data: {the_patient: the_patient, token: the_token}
+    }).done(function(data) {
+        console.log('Token upload result:', data);
+        token_sent = 1;
+    }).fail(function(error) {
+        console.error('Error uploading token:', error);
+    });
+}
+
+// Check for pending token
+function checkPendingToken() {
+    const pendingToken = localStorage.getItem('pendingPushToken');
+    
+    if (pendingToken && typeof the_patient !== 'undefined' && the_patient !== null && token_sent === 0) {
+        console.log('Found pending token, sending to server');
+        
+        // Update global token variable
+        the_token = pendingToken;
+        
+        // Send token to server
+        uploadToken();
+        
+        // Clear pending token
+        localStorage.removeItem('pendingPushToken');
+    }
+}
+
+// Initialize when device is ready
+document.addEventListener('deviceready', function() {
+    initPushNotifications();
+}, false);
+
+// Check for pending token when app starts
+document.addEventListener('DOMContentLoaded', function() {
+    checkPendingToken();
+});
 
 
     $(document).ready(function() {
@@ -1341,7 +1344,7 @@ function getPatient(){
                 
                 if(the_patient != '' || the_patient != null){
                     setTimeout(function(){      
-                        PushNotificationHandler.uploadToken();
+                        uploadToken();
                     }, 500);
                 }else{
                     // console.log('Token no enviado: '+token_sent);
