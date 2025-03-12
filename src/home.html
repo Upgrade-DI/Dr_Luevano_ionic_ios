@@ -1241,19 +1241,13 @@ function getPatient(){
                 // console.log('user client ' + data.patient[0].pat_system);
                 // console.log('user PHOTO ' + data.patient[0].pat_photo);
                 
-                    //Igualar variables
-                    the_patient = data.patient[0].pat_id;
-
-// TOKEN
-                    if(the_patient != '' || the_patient != null){
-                        
+                if(the_patient != '' || the_patient != null){
                     setTimeout(function(){      
-                        uploadToken();
+                        PushNotificationHandler.uploadToken();
                     }, 500);
-
-                    }else{
-                        // console.log('Token no enviado: '+token_sent);
-                    }
+                }else{
+                    // console.log('Token no enviado: '+token_sent);
+                }
 //END TOKEN
 
 /* AQUI SE DEFINEN LOS PRIVILEGIOS DEL MENÚ TABBAR*/
