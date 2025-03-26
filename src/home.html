@@ -942,165 +942,169 @@ var appDebug = true;
   var global_mail = null;  
   var global_pass = null;
 
-// Initialize Pushwoosh
+// Inicializar Pushwoosh
 function initPushwoosh() {
-    console.log('Initializing Pushwoosh...');
+    console.log('Inicializando Pushwoosh...');
     
-    // Check if we're running in a native environment
-    if (window.Capacitor) {
-        if (window.Capacitor.getPlatform() === 'web') {
-            console.log('Push notifications not available on web');
-            return;
-        }
+    // Obtener el ID del paciente si está disponible
+    if (typeof getPatient === 'function') {
+        the_patient = getPatient();
+        console.log('ID de paciente obtenido:', the_patient);
+    } else {
+        console.log('Función getPatient no disponible');
     }
     
-    // For Cordova, wait for deviceready event
-    if (document.addEventListener) {
+    // Para Capacitor, no necesitamos esperar el evento deviceready
+    // Podemos inicializar directamente
+    if (window.Capacitor) {
+        console.log('Ejecutando en Capacitor, inicializando Pushwoosh directamente');
+        onDeviceReady();
+    } else {
+        // Para Cordova, esperar el evento deviceready
         document.addEventListener('deviceready', onDeviceReady, false);
-        // If deviceready doesn't fire within 3 seconds, try to initialize anyway
+        
+        // Si deviceready no se dispara en 3 segundos, intentar inicializar de todos modos
         setTimeout(function() {
             if (!token_sent) {
-                console.log('deviceready event timeout, trying to initialize anyway');
+                console.log('Timeout del evento deviceready, intentando inicializar de todos modos');
                 onDeviceReady();
             }
         }, 3000);
-    } else {
-        // Fallback for environments without event listeners
-        onDeviceReady();
     }
 }
 
 function onDeviceReady() {
-    console.log('Device is ready, checking for Pushwoosh plugin');
+    console.log('Dispositivo listo, buscando plugin de Pushwoosh');
     
-    // Try different ways to access Pushwoosh
+    // Intentar diferentes formas de acceder a Pushwoosh
     var pwInstance = null;
     
     try {
-        // Check all possible locations of the Pushwoosh plugin
+        // Verificar todas las posibles ubicaciones del plugin de Pushwoosh
         if (typeof Pushwoosh !== 'undefined') {
-            console.log('Found Pushwoosh global object');
+            console.log('Encontrado objeto global Pushwoosh');
             pwInstance = Pushwoosh;
         } else if (window.Pushwoosh) {
-            console.log('Found Pushwoosh in window object');
+            console.log('Encontrado Pushwoosh en objeto window');
             pwInstance = window.Pushwoosh;
         } else if (window.cordova && window.cordova.plugins && window.cordova.plugins.pushwoosh) {
-            console.log('Found Pushwoosh in Cordova plugins (lowercase)');
+            console.log('Encontrado Pushwoosh en plugins de Cordova (minúsculas)');
             pwInstance = window.cordova.plugins.pushwoosh;
         } else if (window.cordova && window.cordova.plugins && window.cordova.plugins.Pushwoosh) {
-            console.log('Found Pushwoosh in Cordova plugins');
+            console.log('Encontrado Pushwoosh en plugins de Cordova');
             pwInstance = window.cordova.plugins.Pushwoosh;
         } else if (window.PushNotification) {
-            // Some implementations use PushNotification instead
-            console.log('Found PushNotification object, trying to use it');
+            // Algunas implementaciones usan PushNotification en su lugar
+            console.log('Encontrado objeto PushNotification, intentando usarlo');
             pwInstance = window.PushNotification;
         }
         
         if (pwInstance) {
             initializePushwooshPlugin(pwInstance);
         } else {
-            console.error('Pushwoosh plugin not found. Make sure it is properly installed.');
+            console.error('Plugin de Pushwoosh no encontrado. Asegúrate de que está correctamente instalado.');
             logAvailablePlugins();
         }
     } catch (error) {
-        console.error('Error in onDeviceReady:', error);
+        console.error('Error en onDeviceReady:', error);
         logAvailablePlugins();
     }
 }
 
 function logAvailablePlugins() {
-    console.log('Available plugins:');
+    console.log('Plugins disponibles:');
     
     if (window.Capacitor && window.Capacitor.Plugins) {
-        console.log('Capacitor plugins:', Object.keys(window.Capacitor.Plugins));
+        console.log('Plugins de Capacitor:', Object.keys(window.Capacitor.Plugins));
     }
     
     if (window.cordova && window.cordova.plugins) {
-        console.log('Cordova plugins:', Object.keys(window.cordova.plugins));
+        console.log('Plugins de Cordova:', Object.keys(window.cordova.plugins));
     }
 }
 
 function initializePushwooshPlugin(pwInstance) {
     try {
-        console.log('Initializing Pushwoosh instance');
+        console.log('Inicializando instancia de Pushwoosh');
         
-        // Get the patient ID if available
-        if (typeof getPatient === 'function') {
-            the_patient = getPatient();
-            console.log('Patient ID retrieved:', the_patient);
-        } else {
-            console.log('getPatient function not available');
-        }
-        
-        // Initialize with your app ID
+        // Inicializar con tu App ID
         pwInstance.init({
-            "pw_appid": "DE31D-FA23F", // Your Pushwoosh App ID
+            "pw_appid": "DE31D-FA23F", // Tu App ID de Pushwoosh
             "alert": true,
             "badge": true,
             "sound": true
         });
 
-        // Register the device
+        // Registrar el dispositivo
         pwInstance.registerDevice(
             function(status) {
-                console.log('Successfully registered with Pushwoosh, token:', status.deviceToken);
+                console.log('Registrado exitosamente con Pushwoosh, token:', status.deviceToken);
                 the_token = status.deviceToken;
                 
-                // Try to upload the token
+                // Intentar subir el token
                 if (the_token) {
-                    // If we have the patient ID, upload immediately
+                    // Si tenemos el ID del paciente, subir inmediatamente
                     if (the_patient) {
                         uploadToken();
                     } else {
-                        // Otherwise, set up a retry mechanism
-                        console.log('Patient ID not available yet, will retry later');
+                        // De lo contrario, configurar un mecanismo de reintento
+                        console.log('ID de paciente no disponible aún, se reintentará más tarde');
                         checkAndUploadToken();
                     }
                 }
             },
             function(status) {
-                console.error('Failed to register with Pushwoosh:', status);
+                console.error('Error al registrar con Pushwoosh:', status);
             }
         );
+        
+        // Configurar manejadores de eventos para notificaciones
+        pwInstance.onPushReceived(function(pushNotification) {
+            console.log('Notificación push recibida:', pushNotification);
+        });
+        
+        pwInstance.onPushOpened(function(pushNotification) {
+            console.log('Notificación push abierta:', pushNotification);
+        });
     } catch (error) {
-        console.error('Error initializing Pushwoosh:', error);
+        console.error('Error al inicializar Pushwoosh:', error);
     }
 }
 
-// Retry mechanism to check for patient ID and upload token
+// Mecanismo de reintento para verificar el ID del paciente y subir el token
 function checkAndUploadToken() {
     if (token_sent) {
-        return; // Already sent successfully
+        return; // Ya enviado exitosamente
     }
     
-    // Try to get patient ID if not already available
+    // Intentar obtener el ID del paciente si aún no está disponible
     if (!the_patient && typeof getPatient === 'function') {
         the_patient = getPatient();
-        console.log('Retry: Patient ID retrieved:', the_patient);
+        console.log('Reintento: ID de paciente obtenido:', the_patient);
     }
     
-    // If we have both token and patient, upload
+    // Si tenemos tanto el token como el paciente, subir
     if (the_token && the_patient) {
         uploadToken();
     } else {
-        console.log('Still missing ' + (!the_token ? 'token' : 'patient ID') + ', will retry in 2 seconds');
+        console.log('Aún falta ' + (!the_token ? 'token' : 'ID de paciente') + ', se reintentará en 2 segundos');
         setTimeout(checkAndUploadToken, 2000);
     }
 }
 
-// Upload token to server
+// Subir token al servidor
 function uploadToken() {
     if (!the_token || !the_patient) {
-        console.log('Token or patient not available for upload');
+        console.log('Token o ID de paciente no disponible para subir');
         return;
     }
     
     if (token_sent) {
-        console.log('Token already sent, skipping upload');
+        console.log('Token ya enviado, omitiendo subida');
         return;
     }
     
-    console.log('Uploading token to server. Token:', the_token, 'Patient:', the_patient);
+    console.log('Subiendo token al servidor. Token:', the_token, 'Paciente:', the_patient);
     
     $.ajax({
         async: true,
@@ -1110,32 +1114,32 @@ function uploadToken() {
             the_patient: the_patient,
             token: the_token
         },
-        timeout: 10000 // 10 second timeout
+        timeout: 10000 // 10 segundos de timeout
     }).done(function(data) {
-        console.log('Token upload successful:', data);
+        console.log('Subida de token exitosa:', data);
         token_sent = 1;
     }).fail(function(error) {
-        console.error('Token upload failed:', error);
-        // Retry after 5 seconds
+        console.error('Error en la subida del token:', error);
+        // Reintentar después de 5 segundos
         setTimeout(function() {
             if (!token_sent) {
-                console.log('Retrying token upload...');
+                console.log('Reintentando subida de token...');
                 uploadToken();
             }
         }, 5000);
     });
 }
 
-// Initialize when the page loads
+// Inicializar cuando la página carga
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, will initialize Pushwoosh');
-    initPushwoosh();
+    console.log('DOM cargado, se inicializará Pushwoosh');
+    setTimeout(initPushwoosh, 500); // Pequeño retraso para asegurar que todo esté cargado
 });
 
-// Fallback initialization if DOMContentLoaded doesn't fire
+// Inicialización de respaldo si DOMContentLoaded no se dispara
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    console.log('Document already loaded, initializing Pushwoosh immediately');
-    setTimeout(initPushwoosh, 1);
+    console.log('Documento ya cargado, inicializando Pushwoosh inmediatamente');
+    setTimeout(initPushwoosh, 1000);
 }
 
     $(document).ready(function() {
