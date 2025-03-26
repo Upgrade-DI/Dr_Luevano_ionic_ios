@@ -975,16 +975,10 @@ function initNotifications() {
     
     // Solicitar permiso para usar notificaciones push
     PushNotifications.requestPermissions().then(result => {
-        if (result.granted) {
-            console.log('Permiso de notificaciones concedido');
             
             // Registrar con Apple / Google para recibir push via APNS/FCM
             PushNotifications.register();
-            
-            console.log('Dispositivo registrado para notificaciones push');
-        } else {
-            console.log('Permiso de notificación push denegado');
-        }
+         
     }).catch(error => {
         console.error('Error al solicitar permisos de notificación:', error);
     });
