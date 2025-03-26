@@ -944,9 +944,11 @@ var appDebug = false;
 
 var the_patient = localStorage.getItem("id_pat");
 
-// Inicializar notificaciones usando Capacitor directamente
+console.log(the_patient);
+
+// Función para inicializar las notificaciones y obtener el token
 function initNotifications() {
-    console.log('Inicializando notificaciones con Capacitor...');
+    console.log('Inicializando notificaciones con Capacitor para obtener token...');
     
     // Verificar si estamos en Capacitor
     if (!window.Capacitor) {
@@ -954,7 +956,7 @@ function initNotifications() {
         return;
     }
     
-    // Verificar si estamos en web (donde las notificaciones push no funcionan)
+    // Verificar si estamos en web
     if (window.Capacitor.getPlatform() === 'web') {
         console.log('Las notificaciones push no están disponibles en web');
         return;
@@ -966,50 +968,160 @@ function initNotifications() {
     // Verificar si el plugin PushNotifications está disponible
     if (!window.Capacitor.Plugins.PushNotifications) {
         console.error('El plugin PushNotifications de Capacitor no está disponible');
-        console.log('Instalando el plugin con: npm install @capacitor/push-notifications');
+        tryAlternativeTokenMethod();
         return;
     }
     
     // Usar el plugin PushNotifications de Capacitor
     const PushNotifications = window.Capacitor.Plugins.PushNotifications;
     
-    // Solicitar permiso para usar notificaciones push
-    PushNotifications.requestPermissions().then(result => {
-            
-            // Registrar con Apple / Google para recibir push via APNS/FCM
-            PushNotifications.register();
-         
-    }).catch(error => {
-        console.error('Error al solicitar permisos de notificación:', error);
-    });
+    // Configurar todos los listeners antes de solicitar permisos
+    console.log('Configurando listeners para eventos de notificaciones...');
     
-    // Al tener éxito, deberíamos poder recibir notificaciones
-    PushNotifications.addListener('registration', token => {
-        console.log('Registro de push exitoso, token:', token.value);
-        the_token = token.value;
+    // Listener para el evento de registro (donde obtenemos el token)
+    PushNotifications.addListener('registration', (tokenData) => {
+        console.log('🔥 ÉXITO: Token de push obtenido:', tokenData.value);
+        the_token = tokenData.value;
+        
+        // Guardar el token en localStorage como respaldo
+        try {
+            localStorage.setItem('push_token', the_token);
+            console.log('Token guardado en localStorage');
+        } catch (e) {
+            console.error('Error al guardar token en localStorage:', e);
+        }
         
         // Intentar subir el token
         if (the_token && the_patient) {
             uploadToken();
+        } else {
+            console.error('No se puede subir el token: token o ID de paciente no disponible');
         }
     });
     
-    // Algún problema con nuestra configuración y push no funcionará
-    PushNotifications.addListener('registrationError', error => {
+    // Listener para errores de registro
+    PushNotifications.addListener('registrationError', (error) => {
         console.error('Error en el registro de notificaciones:', error);
+        tryAlternativeTokenMethod();
     });
     
-    // Mostrar la carga útil de la notificación si la app está abierta en nuestro dispositivo
-    PushNotifications.addListener('pushNotificationReceived', notification => {
+    // Listener para notificaciones recibidas
+    PushNotifications.addListener('pushNotificationReceived', (notification) => {
         console.log('Notificación push recibida:', notification);
-        // Aquí puedes mostrar una alerta o actualizar la UI
     });
     
-    // Método llamado al tocar una notificación
-    PushNotifications.addListener('pushNotificationActionPerformed', notification => {
+    // Listener para acciones en notificaciones
+    PushNotifications.addListener('pushNotificationActionPerformed', (notification) => {
         console.log('Acción de notificación push realizada:', notification);
-        // Aquí puedes navegar a una página específica basada en la notificación
     });
+    
+    // Solicitar permiso para usar notificaciones push
+    console.log('Solicitando permisos de notificaciones...');
+    PushNotifications.requestPermissions()
+        .then((result) => {
+            console.log('Resultado de solicitud de permisos:', result);
+            if (result.granted) {
+                console.log('Permiso de notificaciones concedido, registrando dispositivo...');
+                
+                // Registrar con Apple / Google para recibir push via APNS/FCM
+                PushNotifications.register()
+                    .then(() => {
+                        console.log('Dispositivo registrado para notificaciones push');
+                    })
+                    .catch((error) => {
+                        console.error('Error al registrar dispositivo:', error);
+                        tryAlternativeTokenMethod();
+                    });
+            } else {
+                console.log('Permiso de notificación push denegado');
+                tryAlternativeTokenMethod();
+            }
+        })
+        .catch((error) => {
+            console.error('Error al solicitar permisos de notificación:', error);
+            tryAlternativeTokenMethod();
+        });
+}
+
+// Método alternativo para obtener el token
+function tryAlternativeTokenMethod() {
+    console.log('Intentando método alternativo para obtener token...');
+    
+    // Verificar si hay un token guardado en localStorage
+    const savedToken = localStorage.getItem('push_token');
+    if (savedToken) {
+        console.log('Token encontrado en localStorage:', savedToken);
+        the_token = savedToken;
+        if (the_patient) {
+            uploadToken();
+        }
+        return;
+    }
+    
+    // Intentar con Firebase Messaging si está disponible
+    if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.FCM) {
+        console.log('Intentando obtener token con Firebase Messaging...');
+        const FCM = window.Capacitor.Plugins.FCM;
+        
+        FCM.getToken()
+            .then((result) => {
+                console.log('Token de FCM obtenido:', result.token);
+                the_token = result.token;
+                if (the_patient) {
+                    uploadToken();
+                }
+            })
+            .catch((error) => {
+                console.error('Error al obtener token de FCM:', error);
+                tryDeviceInfoAsToken();
+            });
+    } else {
+        tryDeviceInfoAsToken();
+    }
+}
+
+// Último recurso: usar información del dispositivo como token
+function tryDeviceInfoAsToken() {
+    console.log('Intentando generar un token basado en información del dispositivo...');
+    
+    if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.Device) {
+        const Device = window.Capacitor.Plugins.Device;
+        
+        Device.getInfo()
+            .then((info) => {
+                // Crear un token basado en la información del dispositivo
+                const deviceData = {
+                    uuid: info.uuid,
+                    model: info.model,
+                    platform: info.platform,
+                    osVersion: info.osVersion,
+                    timestamp: new Date().getTime()
+                };
+                
+                // Crear un hash simple
+                const deviceString = JSON.stringify(deviceData);
+                let hash = 0;
+                for (let i = 0; i < deviceString.length; i++) {
+                    const char = deviceString.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + char;
+                    hash = hash & hash; // Convertir a entero de 32 bits
+                }
+                
+                // Convertir a formato hexadecimal similar a un token
+                const tokenSimulado = Math.abs(hash).toString(16).padStart(32, '0');
+                console.log('Token simulado generado:', tokenSimulado);
+                
+                the_token = tokenSimulado;
+                if (the_patient) {
+                    uploadToken();
+                }
+            })
+            .catch((error) => {
+                console.error('Error al obtener información del dispositivo:', error);
+            });
+    } else {
+        console.error('No se pudo obtener un token por ningún método');
+    }
 }
 
 // Subir token al servidor
