@@ -935,7 +935,7 @@
 var the_client = null;  
 var token_sent = 0;
 var the_token = null;
-var appDebug = true;
+var appDebug = false;
 
 //variables del paciente
   var global_id = null;
@@ -948,7 +948,7 @@ function initPushwoosh() {
     
     // Obtener el ID del paciente si está disponible
     if (typeof getPatient === 'function') {
-        the_patient = getPatient();
+        the_patient = localStorage.getItem("id_pat");;
         console.log('ID de paciente obtenido:', the_patient);
     } else {
         console.log('Función getPatient no disponible');
