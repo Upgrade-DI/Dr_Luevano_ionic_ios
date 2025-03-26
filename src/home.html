@@ -942,154 +942,80 @@ var appDebug = false;
   var global_mail = null;  
   var global_pass = null;
 
-// Inicializar Pushwoosh
-function initPushwoosh() {
-    console.log('Inicializando Pushwoosh...');
-    
-    // Obtener el ID del paciente si está disponible
-    if (typeof getPatient === 'function') {
-        the_patient = localStorage.getItem("id_pat");;
-        console.log('ID de paciente obtenido:', the_patient);
-    } else {
-        console.log('Función getPatient no disponible');
-    }
-    
-    // Para Capacitor, no necesitamos esperar el evento deviceready
-    // Podemos inicializar directamente
-    if (window.Capacitor) {
-        console.log('Ejecutando en Capacitor, inicializando Pushwoosh directamente');
-        onDeviceReady();
-    } else {
-        // Para Cordova, esperar el evento deviceready
-        document.addEventListener('deviceready', onDeviceReady, false);
-        
-        // Si deviceready no se dispara en 3 segundos, intentar inicializar de todos modos
-        setTimeout(function() {
-            if (!token_sent) {
-                console.log('Timeout del evento deviceready, intentando inicializar de todos modos');
-                onDeviceReady();
-            }
-        }, 3000);
-    }
-}
+var the_patient = localStorage.getItem("id_pat");
 
-function onDeviceReady() {
-    console.log('Dispositivo listo, buscando plugin de Pushwoosh');
+// Inicializar notificaciones usando Capacitor directamente
+function initNotifications() {
+    console.log('Inicializando notificaciones con Capacitor...');
     
-    // Intentar diferentes formas de acceder a Pushwoosh
-    var pwInstance = null;
+    // Verificar si estamos en Capacitor
+    if (!window.Capacitor) {
+        console.error('Capacitor no está disponible');
+        return;
+    }
     
-    try {
-        // Verificar todas las posibles ubicaciones del plugin de Pushwoosh
-        if (typeof Pushwoosh !== 'undefined') {
-            console.log('Encontrado objeto global Pushwoosh');
-            pwInstance = Pushwoosh;
-        } else if (window.Pushwoosh) {
-            console.log('Encontrado Pushwoosh en objeto window');
-            pwInstance = window.Pushwoosh;
-        } else if (window.cordova && window.cordova.plugins && window.cordova.plugins.pushwoosh) {
-            console.log('Encontrado Pushwoosh en plugins de Cordova (minúsculas)');
-            pwInstance = window.cordova.plugins.pushwoosh;
-        } else if (window.cordova && window.cordova.plugins && window.cordova.plugins.Pushwoosh) {
-            console.log('Encontrado Pushwoosh en plugins de Cordova');
-            pwInstance = window.cordova.plugins.Pushwoosh;
-        } else if (window.PushNotification) {
-            // Algunas implementaciones usan PushNotification en su lugar
-            console.log('Encontrado objeto PushNotification, intentando usarlo');
-            pwInstance = window.PushNotification;
-        }
-        
-        if (pwInstance) {
-            initializePushwooshPlugin(pwInstance);
+    // Verificar si estamos en web (donde las notificaciones push no funcionan)
+    if (window.Capacitor.getPlatform() === 'web') {
+        console.log('Las notificaciones push no están disponibles en web');
+        return;
+    }
+    
+    // Verificar los plugins disponibles
+    console.log('Plugins de Capacitor disponibles:', Object.keys(window.Capacitor.Plugins));
+    
+    // Verificar si el plugin PushNotifications está disponible
+    if (!window.Capacitor.Plugins.PushNotifications) {
+        console.error('El plugin PushNotifications de Capacitor no está disponible');
+        console.log('Instalando el plugin con: npm install @capacitor/push-notifications');
+        return;
+    }
+    
+    // Usar el plugin PushNotifications de Capacitor
+    const PushNotifications = window.Capacitor.Plugins.PushNotifications;
+    
+    // Solicitar permiso para usar notificaciones push
+    PushNotifications.requestPermissions().then(result => {
+        if (result.granted) {
+            console.log('Permiso de notificaciones concedido');
+            
+            // Registrar con Apple / Google para recibir push via APNS/FCM
+            PushNotifications.register();
+            
+            console.log('Dispositivo registrado para notificaciones push');
         } else {
-            console.error('Plugin de Pushwoosh no encontrado. Asegúrate de que está correctamente instalado.');
-            logAvailablePlugins();
+            console.log('Permiso de notificación push denegado');
         }
-    } catch (error) {
-        console.error('Error en onDeviceReady:', error);
-        logAvailablePlugins();
-    }
-}
-
-function logAvailablePlugins() {
-    console.log('Plugins disponibles:');
+    }).catch(error => {
+        console.error('Error al solicitar permisos de notificación:', error);
+    });
     
-    if (window.Capacitor && window.Capacitor.Plugins) {
-        console.log('Plugins de Capacitor:', Object.keys(window.Capacitor.Plugins));
-    }
-    
-    if (window.cordova && window.cordova.plugins) {
-        console.log('Plugins de Cordova:', Object.keys(window.cordova.plugins));
-    }
-}
-
-function initializePushwooshPlugin(pwInstance) {
-    try {
-        console.log('Inicializando instancia de Pushwoosh');
+    // Al tener éxito, deberíamos poder recibir notificaciones
+    PushNotifications.addListener('registration', token => {
+        console.log('Registro de push exitoso, token:', token.value);
+        the_token = token.value;
         
-        // Inicializar con tu App ID
-        pwInstance.init({
-            "pw_appid": "DE31D-FA23F", // Tu App ID de Pushwoosh
-            "alert": true,
-            "badge": true,
-            "sound": true
-        });
-
-        // Registrar el dispositivo
-        pwInstance.registerDevice(
-            function(status) {
-                console.log('Registrado exitosamente con Pushwoosh, token:', status.deviceToken);
-                the_token = status.deviceToken;
-                
-                // Intentar subir el token
-                if (the_token) {
-                    // Si tenemos el ID del paciente, subir inmediatamente
-                    if (the_patient) {
-                        uploadToken();
-                    } else {
-                        // De lo contrario, configurar un mecanismo de reintento
-                        console.log('ID de paciente no disponible aún, se reintentará más tarde');
-                        checkAndUploadToken();
-                    }
-                }
-            },
-            function(status) {
-                console.error('Error al registrar con Pushwoosh:', status);
-            }
-        );
-        
-        // Configurar manejadores de eventos para notificaciones
-        pwInstance.onPushReceived(function(pushNotification) {
-            console.log('Notificación push recibida:', pushNotification);
-        });
-        
-        pwInstance.onPushOpened(function(pushNotification) {
-            console.log('Notificación push abierta:', pushNotification);
-        });
-    } catch (error) {
-        console.error('Error al inicializar Pushwoosh:', error);
-    }
-}
-
-// Mecanismo de reintento para verificar el ID del paciente y subir el token
-function checkAndUploadToken() {
-    if (token_sent) {
-        return; // Ya enviado exitosamente
-    }
+        // Intentar subir el token
+        if (the_token && the_patient) {
+            uploadToken();
+        }
+    });
     
-    // Intentar obtener el ID del paciente si aún no está disponible
-    if (!the_patient && typeof getPatient === 'function') {
-        the_patient = getPatient();
-        console.log('Reintento: ID de paciente obtenido:', the_patient);
-    }
+    // Algún problema con nuestra configuración y push no funcionará
+    PushNotifications.addListener('registrationError', error => {
+        console.error('Error en el registro de notificaciones:', error);
+    });
     
-    // Si tenemos tanto el token como el paciente, subir
-    if (the_token && the_patient) {
-        uploadToken();
-    } else {
-        console.log('Aún falta ' + (!the_token ? 'token' : 'ID de paciente') + ', se reintentará en 2 segundos');
-        setTimeout(checkAndUploadToken, 2000);
-    }
+    // Mostrar la carga útil de la notificación si la app está abierta en nuestro dispositivo
+    PushNotifications.addListener('pushNotificationReceived', notification => {
+        console.log('Notificación push recibida:', notification);
+        // Aquí puedes mostrar una alerta o actualizar la UI
+    });
+    
+    // Método llamado al tocar una notificación
+    PushNotifications.addListener('pushNotificationActionPerformed', notification => {
+        console.log('Acción de notificación push realizada:', notification);
+        // Aquí puedes navegar a una página específica basada en la notificación
+    });
 }
 
 // Subir token al servidor
@@ -1132,14 +1058,14 @@ function uploadToken() {
 
 // Inicializar cuando la página carga
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM cargado, se inicializará Pushwoosh');
-    setTimeout(initPushwoosh, 500); // Pequeño retraso para asegurar que todo esté cargado
+    console.log('DOM cargado, se inicializarán las notificaciones');
+    setTimeout(initNotifications, 1000); // Retraso para asegurar que todo esté cargado
 });
 
 // Inicialización de respaldo si DOMContentLoaded no se dispara
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    console.log('Documento ya cargado, inicializando Pushwoosh inmediatamente');
-    setTimeout(initPushwoosh, 1000);
+    console.log('Documento ya cargado, inicializando notificaciones inmediatamente');
+    setTimeout(initNotifications, 1500);
 }
 
     $(document).ready(function() {
