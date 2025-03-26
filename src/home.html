@@ -937,46 +937,86 @@ var token_sent = 0;
 var the_token = null;
 var appDebug = true;
 
-
 //variables del paciente
   var global_id = null;
   var global_mail = null;  
   var global_pass = null;
-
-// Global variables
-var the_token = null;
-var token_sent = 0;
 
 // Initialize Pushwoosh
 function initPushwoosh() {
     console.log('Initializing Pushwoosh...');
     
     // Check if we're running in a native environment
-    if (window.Capacitor && window.Capacitor.getPlatform() === 'web') {
-        console.log('Push notifications not available on web');
-        return;
+    if (window.Capacitor) {
+        if (window.Capacitor.getPlatform() === 'web') {
+            console.log('Push notifications not available on web');
+            return;
+        }
     }
     
-    // Wait for deviceready event
-    document.addEventListener('deviceready', onDeviceReady, false);
+    // For Cordova, wait for deviceready event
+    if (document.addEventListener) {
+        document.addEventListener('deviceready', onDeviceReady, false);
+        // If deviceready doesn't fire within 3 seconds, try to initialize anyway
+        setTimeout(function() {
+            if (!token_sent) {
+                console.log('deviceready event timeout, trying to initialize anyway');
+                onDeviceReady();
+            }
+        }, 3000);
+    } else {
+        // Fallback for environments without event listeners
+        onDeviceReady();
+    }
 }
 
 function onDeviceReady() {
     console.log('Device is ready, checking for Pushwoosh plugin');
     
     // Try different ways to access Pushwoosh
-    if (typeof Pushwoosh !== 'undefined') {
-        console.log('Found Pushwoosh global object');
-        initializePushwooshPlugin(Pushwoosh);
-    } else if (window.Pushwoosh) {
-        console.log('Found Pushwoosh in window object');
-        initializePushwooshPlugin(window.Pushwoosh);
-    } else if (window.cordova && window.cordova.plugins && window.cordova.plugins.Pushwoosh) {
-        console.log('Found Pushwoosh in Cordova plugins');
-        initializePushwooshPlugin(window.cordova.plugins.Pushwoosh);
-    } else {
-        console.error('Pushwoosh plugin not found. Make sure it is properly installed.');
-        console.log('Available plugins:', window.Capacitor ? Object.keys(window.Capacitor.Plugins) : 'Capacitor not available');
+    var pwInstance = null;
+    
+    try {
+        // Check all possible locations of the Pushwoosh plugin
+        if (typeof Pushwoosh !== 'undefined') {
+            console.log('Found Pushwoosh global object');
+            pwInstance = Pushwoosh;
+        } else if (window.Pushwoosh) {
+            console.log('Found Pushwoosh in window object');
+            pwInstance = window.Pushwoosh;
+        } else if (window.cordova && window.cordova.plugins && window.cordova.plugins.pushwoosh) {
+            console.log('Found Pushwoosh in Cordova plugins (lowercase)');
+            pwInstance = window.cordova.plugins.pushwoosh;
+        } else if (window.cordova && window.cordova.plugins && window.cordova.plugins.Pushwoosh) {
+            console.log('Found Pushwoosh in Cordova plugins');
+            pwInstance = window.cordova.plugins.Pushwoosh;
+        } else if (window.PushNotification) {
+            // Some implementations use PushNotification instead
+            console.log('Found PushNotification object, trying to use it');
+            pwInstance = window.PushNotification;
+        }
+        
+        if (pwInstance) {
+            initializePushwooshPlugin(pwInstance);
+        } else {
+            console.error('Pushwoosh plugin not found. Make sure it is properly installed.');
+            logAvailablePlugins();
+        }
+    } catch (error) {
+        console.error('Error in onDeviceReady:', error);
+        logAvailablePlugins();
+    }
+}
+
+function logAvailablePlugins() {
+    console.log('Available plugins:');
+    
+    if (window.Capacitor && window.Capacitor.Plugins) {
+        console.log('Capacitor plugins:', Object.keys(window.Capacitor.Plugins));
+    }
+    
+    if (window.cordova && window.cordova.plugins) {
+        console.log('Cordova plugins:', Object.keys(window.cordova.plugins));
     }
 }
 
@@ -984,23 +1024,38 @@ function initializePushwooshPlugin(pwInstance) {
     try {
         console.log('Initializing Pushwoosh instance');
         
+        // Get the patient ID if available
+        if (typeof getPatient === 'function') {
+            the_patient = getPatient();
+            console.log('Patient ID retrieved:', the_patient);
+        } else {
+            console.log('getPatient function not available');
+        }
+        
+        // Initialize with your app ID
         pwInstance.init({
-            "pw_appid": "DE31D-FA23F", // Replace with your Pushwoosh App ID
+            "pw_appid": "DE31D-FA23F", // Your Pushwoosh App ID
             "alert": true,
             "badge": true,
             "sound": true
         });
 
+        // Register the device
         pwInstance.registerDevice(
             function(status) {
                 console.log('Successfully registered with Pushwoosh, token:', status.deviceToken);
                 the_token = status.deviceToken;
                 
-                // Only try to upload if we have both token and patient
-                if (the_patient) {
-                    uploadToken();
-                } else {
-                    console.log('Patient ID not available yet, token will be uploaded later');
+                // Try to upload the token
+                if (the_token) {
+                    // If we have the patient ID, upload immediately
+                    if (the_patient) {
+                        uploadToken();
+                    } else {
+                        // Otherwise, set up a retry mechanism
+                        console.log('Patient ID not available yet, will retry later');
+                        checkAndUploadToken();
+                    }
                 }
             },
             function(status) {
@@ -1012,14 +1067,40 @@ function initializePushwooshPlugin(pwInstance) {
     }
 }
 
+// Retry mechanism to check for patient ID and upload token
+function checkAndUploadToken() {
+    if (token_sent) {
+        return; // Already sent successfully
+    }
+    
+    // Try to get patient ID if not already available
+    if (!the_patient && typeof getPatient === 'function') {
+        the_patient = getPatient();
+        console.log('Retry: Patient ID retrieved:', the_patient);
+    }
+    
+    // If we have both token and patient, upload
+    if (the_token && the_patient) {
+        uploadToken();
+    } else {
+        console.log('Still missing ' + (!the_token ? 'token' : 'patient ID') + ', will retry in 2 seconds');
+        setTimeout(checkAndUploadToken, 2000);
+    }
+}
+
 // Upload token to server
 function uploadToken() {
     if (!the_token || !the_patient) {
-        console.log('Token or patient not available');
+        console.log('Token or patient not available for upload');
         return;
     }
     
-    console.log('Uploading token to server:', the_token);
+    if (token_sent) {
+        console.log('Token already sent, skipping upload');
+        return;
+    }
+    
+    console.log('Uploading token to server. Token:', the_token, 'Patient:', the_patient);
     
     $.ajax({
         async: true,
@@ -1028,12 +1109,20 @@ function uploadToken() {
         data: {
             the_patient: the_patient,
             token: the_token
-        }
+        },
+        timeout: 10000 // 10 second timeout
     }).done(function(data) {
         console.log('Token upload successful:', data);
         token_sent = 1;
     }).fail(function(error) {
         console.error('Token upload failed:', error);
+        // Retry after 5 seconds
+        setTimeout(function() {
+            if (!token_sent) {
+                console.log('Retrying token upload...');
+                uploadToken();
+            }
+        }, 5000);
     });
 }
 
@@ -1042,6 +1131,12 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded, will initialize Pushwoosh');
     initPushwoosh();
 });
+
+// Fallback initialization if DOMContentLoaded doesn't fire
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    console.log('Document already loaded, initializing Pushwoosh immediately');
+    setTimeout(initPushwoosh, 1);
+}
 
     $(document).ready(function() {
         var myNavigator = document.querySelector('ons-navigator');
