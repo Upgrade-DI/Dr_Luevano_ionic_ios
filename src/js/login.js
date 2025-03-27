@@ -48,6 +48,18 @@ var root_app_path = 'connectMySql_develop.php';
 
 				localStorage.setItem("id_pat", id_pat);
 		 		var cookieId = localStorage.getItem("id_pat");
+
+				 if (window.Capacitor && window.Capacitor.isNative) {
+					// Método 1: Usando un evento personalizado
+					const event = new CustomEvent('patientIdChanged', { 
+						detail: { patientId: id_pat } 
+					});
+					document.dispatchEvent(event);
+					
+					// Método 2: Llamar a una función global que el código nativo puede interceptar
+					window.patientIdChanged = id_pat;
+				}
+				
 		 		(debugMode) ? console.log(cookieId) : '';
 
 				localStorage.setItem("mail_pat", mail_pat);
