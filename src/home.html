@@ -942,10 +942,11 @@ var appDebug = false;
   var global_mail = null;  
   var global_pass = null;
 
-var id_paciente = localStorage.getItem("id_pat");
-        
-        // Función para inicializar las notificaciones push
-        async function initializePushNotifications() {
+var the_patient = localStorage.getItem("id_pat");
+
+
+// Función para inicializar las notificaciones push
+async function initializePushNotifications() {
             try {
                 // Verificar si Capacitor está disponible
                 if (!window.Capacitor) {
@@ -983,10 +984,10 @@ var id_paciente = localStorage.getItem("id_pat");
                 // Escuchar el evento de registro exitoso
                 PushNotifications.addListener('registration', (token) => {
                     console.log('Token de push obtenido:', token.value);
-                    the_token = token.value;
+                    pushToken = token.value;
                     
                     // Guardar el token en localStorage para uso posterior
-                    localStorage.setItem('the_token', token.value);
+                    localStorage.setItem('pushToken', token.value);
                     
                     // Mostrar el token en la UI
                     displayToken(token.value);
@@ -1092,12 +1093,12 @@ var id_paciente = localStorage.getItem("id_pat");
 
         // Función para copiar el token al portapapeles
         function copyTokenToClipboard() {
-            if (!the_token) {
+            if (!pushToken) {
                 showStatus('No hay token para copiar', 'error');
                 return;
             }
             
-            navigator.clipboard.writeText(the_token)
+            navigator.clipboard.writeText(pushToken)
                 .then(() => {
                     showStatus('Token copiado al portapapeles', 'success');
                     
@@ -1117,9 +1118,9 @@ var id_paciente = localStorage.getItem("id_pat");
 
         // Función para verificar si ya tenemos un token guardado
         function checkExistingToken() {
-            const savedToken = localStorage.getItem('the_token');
+            const savedToken = localStorage.getItem('pushToken');
             if (savedToken) {
-                the_token = savedToken;
+                pushToken = savedToken;
                 displayToken(savedToken);
                 showStatus('Token recuperado de almacenamiento local', 'success');
                 
@@ -1162,11 +1163,35 @@ var id_paciente = localStorage.getItem("id_pat");
             }
         });
 
+        // Función para simular un token (solo para pruebas en navegador)
+        function simulateToken() {
+            if (window.Capacitor && Capacitor.isNativePlatform()) {
+                return; // No simular en dispositivos reales
+            }
+            
+            const mockToken = 'SIMULADO_' + Math.random().toString(36).substring(2, 15);
+            pushToken = mockToken;
+            localStorage.setItem('pushToken', mockToken);
+            displayToken(mockToken);
+            showStatus('Token simulado generado (solo para pruebas)', 'success');
+        }
+
+        // Añadir botón de simulación solo en navegador
+        if (window.Capacitor && !Capacitor.isNativePlatform()) {
+            document.addEventListener('DOMContentLoaded', () => {
+                const simButton = document.createElement('button');
+                simButton.textContent = 'Simular Token (Solo Pruebas)';
+                simButton.style.backgroundColor = '#ff9800';
+                simButton.addEventListener('click', simulateToken);
+                document.body.insertBefore(simButton, document.getElementById('tokenContainer'));
+            });
+        }
+
+
 
 
 
     $(document).ready(function() {
-        onUserLogin(id_paciente);
         var myNavigator = document.querySelector('ons-navigator');
 
      
@@ -1461,9 +1486,9 @@ function getPatient(){
                 // console.log('user PHOTO ' + data.patient[0].pat_photo);
                 
                 if(the_patient != '' || the_patient != null){
-                    // setTimeout(function(){      
-                    //     uploadToken();
-                    // }, 500);
+                    setTimeout(function(){      
+                        sendTokenToServer();
+                    }, 500);
                 }else{
                     // console.log('Token no enviado: '+token_sent);
                 }
