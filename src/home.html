@@ -932,19 +932,46 @@
 </ons-navigator>   
     <script type="text/javascript">
 
+// Variables globales
 var the_client = null;  
 var token_sent = 0;
 var the_token = null;
-var appDebug = false;
-var pushToken = null; // Esta variable faltaba
+var appDebug = true; // Activar para ver botones de depuración
+var pushToken = null;
 
-//variables del paciente
+// Variables del paciente
 var global_id = null;
 var global_mail = null;  
 var global_pass = null;
 
+// Obtener el ID del paciente del localStorage
 var the_patient = localStorage.getItem("id_pat");
+console.log('ID del paciente al iniciar:', the_patient);
 
+// Función para verificar el estado del localStorage
+function checkLocalStorageState() {
+    console.log('--- Estado del localStorage ---');
+    console.log('id_pat:', localStorage.getItem('id_pat'));
+    console.log('pushToken:', localStorage.getItem('pushToken'));
+    console.log('tokenSent:', localStorage.getItem('tokenSent'));
+    console.log('---------------------------');
+    
+    // Actualizar la visualización del ID del paciente
+    updatePatientIdDisplay();
+}
+
+// Función para actualizar la visualización del ID del paciente
+function updatePatientIdDisplay() {
+    const patientIdDisplay = document.getElementById('patientIdDisplay');
+    const patientId = localStorage.getItem('id_pat');
+    
+    if (patientId && patientId !== 'null' && patientId !== '0') {
+        patientIdDisplay.textContent = patientId;
+    } else {
+        patientIdDisplay.textContent = 'No disponible';
+        document.getElementById('manualIdContainer').style.display = 'block';
+    }
+}
 
 // Función para inicializar las notificaciones push
 async function initializePushNotifications() {
@@ -997,6 +1024,14 @@ async function initializePushNotifications() {
         // Escuchar el evento de registro exitoso
         PushNotifications.addListener('registration', (token) => {
             console.log('Token de push obtenido:', token.value);
+            
+            // Verificar que el token sea válido
+            if (!token.value || token.value === 'undefined') {
+                console.error('Token inválido recibido del dispositivo');
+                showStatus('Error: Token inválido recibido del dispositivo', 'error');
+                return;
+            }
+            
             pushToken = token.value;
             the_token = token.value; // También actualizar the_token para mantener compatibilidad
             
@@ -1007,13 +1042,20 @@ async function initializePushNotifications() {
             displayToken(token.value);
             showStatus('Token de push obtenido correctamente', 'success');
             
-            // Si tienes un ID de paciente, enviar el token al servidor
-            const patientId = localStorage.getItem('id_pat');
-            if (patientId) {
-                sendTokenToServer(token.value, patientId);
-            } else {
-                showStatus('No se encontró ID de paciente. El token no se enviará al servidor.', 'error');
+            // Obtener el ID del paciente
+            let patientId = localStorage.getItem('id_pat');
+            console.log('ID de paciente obtenido del localStorage:', patientId);
+            
+            // Verificar que el ID del paciente sea válido
+            if (!patientId || patientId === 'null' || patientId === null || patientId === '0' || patientId === 0) {
+                console.error('ID de paciente no válido:', patientId);
+                showStatus('No se encontró ID de paciente válido. El token no se enviará al servidor.', 'error');
+                document.getElementById('manualIdContainer').style.display = 'block';
+                return;
             }
+            
+            // Enviar el token al servidor
+            sendTokenToServer(token.value, patientId);
         });
 
         // Escuchar errores de registro
@@ -1085,6 +1127,29 @@ function sendTokenToServer(token, patientId) {
     console.log('Enviando token al servidor para paciente:', patientId);
     showStatus('Enviando token al servidor...', 'success');
     
+    // Verificar que tengamos un token válido
+    if (!token || token === 'undefined' || token === undefined) {
+        console.error('Token inválido:', token);
+        showStatus('Error: Token inválido o no disponible', 'error');
+        return;
+    }
+    
+    // Verificar que tengamos un ID de paciente válido
+    if (!patientId || patientId === 'null' || patientId === null || patientId === '0' || patientId === 0) {
+        console.error('ID de paciente inválido:', patientId);
+        showStatus('Error: ID de paciente inválido o no disponible', 'error');
+        
+        // Intentar obtener el ID de paciente nuevamente
+        patientId = localStorage.getItem("id_pat");
+        console.log('Intentando obtener ID de paciente nuevamente:', patientId);
+        
+        if (!patientId || patientId === 'null' || patientId === null || patientId === '0' || patientId === 0) {
+            showStatus('No se pudo obtener un ID de paciente válido', 'error');
+            document.getElementById('manualIdContainer').style.display = 'block';
+            return;
+        }
+    }
+    
     // Verificar si el token ya fue enviado
     if (localStorage.getItem('tokenSent') === 'true') {
         console.log('Token ya enviado anteriormente');
@@ -1094,6 +1159,10 @@ function sendTokenToServer(token, patientId) {
     
     // Crear la URL para la solicitud
     const serverURL = 'https://armoniaestetica.com/_sudiv3/ar_engine/token_device.php';
+    
+    console.log('Enviando datos al servidor:');
+    console.log('- Token:', token);
+    console.log('- ID Paciente:', patientId);
     
     // Crear los parámetros
     const formData = new FormData();
@@ -1110,6 +1179,7 @@ function sendTokenToServer(token, patientId) {
             console.log('Token enviado exitosamente al servidor');
             showStatus('Token enviado exitosamente al servidor', 'success');
             localStorage.setItem('tokenSent', 'true');
+            token_sent = 1;
             return response.text();
         }
         throw new Error('Error del servidor: ' + response.status);
@@ -1162,15 +1232,46 @@ function checkExistingToken() {
         
         // Verificar si ya fue enviado
         if (localStorage.getItem('tokenSent') === 'true') {
+            token_sent = 1;
             showStatus('Este token ya fue enviado al servidor', 'success');
         } else {
             // Intentar enviar si tenemos ID de paciente
             const patientId = localStorage.getItem('id_pat');
-            if (patientId) {
+            if (patientId && patientId !== 'null' && patientId !== '0') {
                 sendTokenToServer(savedToken, patientId);
             }
         }
     }
+}
+
+// Función para simular un token (solo para pruebas en navegador)
+function simulateToken() {
+    if (window.Capacitor && Capacitor.isNativePlatform()) {
+        return; // No simular en dispositivos reales
+    }
+    
+    const mockToken = 'SIMULADO_' + Math.random().toString(36).substring(2, 15);
+    pushToken = mockToken;
+    the_token = mockToken; // También actualizar the_token para mantener compatibilidad
+    localStorage.setItem('pushToken', mockToken);
+    displayToken(mockToken);
+    showStatus('Token simulado generado (solo para pruebas)', 'success');
+}
+
+// Función para limpiar todos los datos almacenados
+function clearAllData() {
+    localStorage.removeItem('pushToken');
+    localStorage.removeItem('tokenSent');
+    pushToken = null;
+    the_token = null;
+    token_sent = 0;
+    
+    // No eliminar el ID del paciente a menos que sea necesario
+    // localStorage.removeItem('id_pat');
+    
+    document.getElementById('tokenContainer').style.display = 'none';
+    showStatus('Datos de token eliminados', 'success');
+    checkLocalStorageState();
 }
 
 // Inicializar cuando el documento esté listo
@@ -1178,6 +1279,9 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM cargado, inicializando...');
     
     try {
+        // Verificar el estado del localStorage
+        checkLocalStorageState();
+        
         // Verificar si ya tenemos un token
         checkExistingToken();
         
@@ -1201,6 +1305,41 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Botón copyTokenBtn no encontrado');
         }
         
+        // Configurar el botón para enviar el token manualmente
+        const sendTokenBtn = document.getElementById('sendTokenBtn');
+        if (sendTokenBtn) {
+            sendTokenBtn.addEventListener('click', () => {
+                const patientId = localStorage.getItem('id_pat');
+                if (pushToken && patientId) {
+                    sendTokenToServer(pushToken, patientId);
+                } else {
+                    showStatus('No hay token o ID de paciente disponible', 'error');
+                }
+            });
+        }
+        
+        // Configurar el botón para guardar el ID del paciente
+        const savePatientIdBtn = document.getElementById('savePatientIdBtn');
+        if (savePatientIdBtn) {
+            savePatientIdBtn.addEventListener('click', () => {
+                const manualId = document.getElementById('manualPatientId').value.trim();
+                if (manualId) {
+                    localStorage.setItem('id_pat', manualId);
+                    the_patient = manualId;
+                    showStatus('ID de paciente guardado: ' + manualId, 'success');
+                    document.getElementById('manualIdContainer').style.display = 'none';
+                    updatePatientIdDisplay();
+                    
+                    // Si ya tenemos un token, intentar enviarlo
+                    if (pushToken) {
+                        sendTokenToServer(pushToken, manualId);
+                    }
+                } else {
+                    showStatus('Por favor ingresa un ID válido', 'error');
+                }
+            });
+        }
+        
         // Si estamos en un dispositivo nativo, inicializar automáticamente
         if (window.Capacitor && Capacitor.isNativePlatform()) {
             // Opcional: inicializar automáticamente
@@ -1209,46 +1348,42 @@ document.addEventListener('DOMContentLoaded', () => {
             showStatus('Dispositivo nativo detectado. Haz clic en "Solicitar Notificaciones Push" para comenzar.', 'success');
         } else {
             showStatus('No estamos en un dispositivo nativo. Las notificaciones push no funcionarán.', 'error');
-        }
-    } catch (error) {
-        console.error('Error durante la inicialización:', error);
-    }
-});
-
-// Función para simular un token (solo para pruebas en navegador)
-function simulateToken() {
-    if (window.Capacitor && Capacitor.isNativePlatform()) {
-        return; // No simular en dispositivos reales
-    }
-    
-    const mockToken = 'SIMULADO_' + Math.random().toString(36).substring(2, 15);
-    pushToken = mockToken;
-    the_token = mockToken; // También actualizar the_token para mantener compatibilidad
-    localStorage.setItem('pushToken', mockToken);
-    displayToken(mockToken);
-    showStatus('Token simulado generado (solo para pruebas)', 'success');
-}
-
-// Añadir botón de simulación solo en navegador
-if (window.Capacitor && !Capacitor.isNativePlatform()) {
-    document.addEventListener('DOMContentLoaded', () => {
-        try {
-            const tokenContainer = document.getElementById('tokenContainer');
-            if (!tokenContainer) {
-                console.error('Elemento tokenContainer no encontrado');
-                return;
-            }
             
+            // Añadir botón de simulación
             const simButton = document.createElement('button');
             simButton.textContent = 'Simular Token (Solo Pruebas)';
-            simButton.style.backgroundColor = '#ff9800';
+            simButton.className = 'sim-btn';
             simButton.addEventListener('click', simulateToken);
-            document.body.insertBefore(simButton, tokenContainer);
-        } catch (error) {
-            console.error('Error al crear botón de simulación:', error);
+            document.body.insertBefore(simButton, document.getElementById('tokenContainer'));
         }
-    });
-}
+        
+        // Añadir botones de depuración si está habilitado
+        if (appDebug) {
+            // Botón para verificar estado
+            const debugBtn = document.createElement('button');
+            debugBtn.textContent = 'Verificar Estado';
+            debugBtn.className = 'debug-btn';
+            debugBtn.addEventListener('click', () => {
+                checkLocalStorageState();
+                showStatus('Estado verificado, revisa la consola', 'success');
+            });
+            document.body.appendChild(debugBtn);
+            
+            // Botón para limpiar datos
+            const clearBtn = document.createElement('button');
+            clearBtn.textContent = 'Limpiar Datos';
+            clearBtn.style.backgroundColor = '#f44336';
+            clearBtn.style.color = 'white';
+            clearBtn.style.marginLeft = '10px';
+            clearBtn.addEventListener('click', clearAllData);
+            document.body.appendChild(clearBtn);
+        }
+        
+    } catch (error) {
+        console.error('Error durante la inicialización:', error);
+        showStatus('Error durante la inicialización: ' + error.message, 'error');
+    }
+});
 
 
 
