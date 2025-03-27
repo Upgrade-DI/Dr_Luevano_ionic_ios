@@ -943,6 +943,225 @@ var appDebug = false;
   var global_pass = null;
 
 var id_paciente = localStorage.getItem("id_pat");
+        
+        // Función para inicializar las notificaciones push
+        async function initializePushNotifications() {
+            try {
+                // Verificar si Capacitor está disponible
+                if (!window.Capacitor) {
+                    showStatus('Error: Capacitor no está disponible. ¿Estás ejecutando en un dispositivo nativo?', 'error');
+                    return;
+                }
+
+                // Verificar si estamos en un dispositivo nativo
+                if (!Capacitor.isNativePlatform()) {
+                    showStatus('Esta función solo está disponible en dispositivos móviles nativos', 'error');
+                    return;
+                }
+
+                console.log('Inicializando notificaciones push');
+                showStatus('Inicializando notificaciones push...', 'success');
+
+                // Obtener el plugin de notificaciones push
+                const PushNotifications = Capacitor.Plugins.PushNotifications;
+                
+                // Solicitar permiso para usar notificaciones push
+                const permissionResult = await PushNotifications.requestPermissions();
+                
+                if (permissionResult.receive === 'granted') {
+                    // Registrarse con Apple / Google para recibir push via APNS/FCM
+                    await PushNotifications.register();
+                    console.log('Permiso concedido, registrando para notificaciones push');
+                    showStatus('Permiso concedido, registrando para notificaciones push...', 'success');
+                } else {
+                    // Mostrar error
+                    console.error('Permiso de notificaciones denegado');
+                    showStatus('Permiso de notificaciones denegado', 'error');
+                    return;
+                }
+
+                // Escuchar el evento de registro exitoso
+                PushNotifications.addListener('registration', (token) => {
+                    console.log('Token de push obtenido:', token.value);
+                    the_token = token.value;
+                    
+                    // Guardar el token en localStorage para uso posterior
+                    localStorage.setItem('the_token', token.value);
+                    
+                    // Mostrar el token en la UI
+                    displayToken(token.value);
+                    showStatus('Token de push obtenido correctamente', 'success');
+                    
+                    // Si tienes un ID de paciente, enviar el token al servidor
+                    const patientId = localStorage.getItem('id_pat');
+                    if (patientId) {
+                        sendTokenToServer(token.value, patientId);
+                    } else {
+                        showStatus('No se encontró ID de paciente. El token no se enviará al servidor.', 'error');
+                    }
+                });
+
+                // Escuchar errores de registro
+                PushNotifications.addListener('registrationError', (error) => {
+                    console.error('Error en el registro de push:', error);
+                    showStatus('Error al registrar para notificaciones: ' + JSON.stringify(error), 'error');
+                });
+
+                // Escuchar notificaciones recibidas
+                PushNotifications.addListener('pushNotificationReceived', (notification) => {
+                    console.log('Notificación recibida:', notification);
+                    showStatus('Notificación recibida: ' + JSON.stringify(notification), 'success');
+                });
+
+                // Escuchar acciones realizadas en notificaciones
+                PushNotifications.addListener('pushNotificationActionPerformed', (notification) => {
+                    console.log('Acción realizada en notificación:', notification);
+                    showStatus('Acción realizada en notificación: ' + JSON.stringify(notification), 'success');
+                });
+                
+            } catch (error) {
+                console.error('Error al inicializar notificaciones push:', error);
+                showStatus('Error al inicializar notificaciones push: ' + error.message, 'error');
+            }
+        }
+
+        // Función para mostrar el token en la interfaz de usuario
+        function displayToken(token) {
+            const tokenContainer = document.getElementById('tokenContainer');
+            const tokenText = document.getElementById('tokenText');
+            
+            tokenText.textContent = token;
+            tokenContainer.style.display = 'block';
+        }
+
+        // Función para mostrar mensajes de estado
+        function showStatus(message, type) {
+            const statusContainer = document.getElementById('statusContainer');
+            
+            statusContainer.textContent = message;
+            statusContainer.className = 'status ' + type;
+            statusContainer.style.display = 'block';
+            
+            // Opcional: hacer scroll hasta el mensaje
+            statusContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Función para enviar el token al servidor
+        function sendTokenToServer(token, patientId) {
+            console.log('Enviando token al servidor para paciente:', patientId);
+            showStatus('Enviando token al servidor...', 'success');
+            
+            // Verificar si el token ya fue enviado
+            if (localStorage.getItem('tokenSent') === 'true') {
+                console.log('Token ya enviado anteriormente');
+                showStatus('Token ya enviado anteriormente', 'success');
+                return;
+            }
+            
+            // Crear la URL para la solicitud
+            const serverURL = 'https://armoniaestetica.com/_sudiv3/ar_engine/token_device.php';
+            
+            // Crear los parámetros
+            const formData = new FormData();
+            formData.append('the_patient', patientId);
+            formData.append('token', token);
+            
+            // Realizar la solicitud
+            fetch(serverURL, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Token enviado exitosamente al servidor');
+                    showStatus('Token enviado exitosamente al servidor', 'success');
+                    localStorage.setItem('tokenSent', 'true');
+                    return response.text();
+                }
+                throw new Error('Error del servidor: ' + response.status);
+            })
+            .then(data => {
+                console.log('Respuesta del servidor:', data);
+                showStatus('Respuesta del servidor: ' + data, 'success');
+            })
+            .catch(error => {
+                console.error('Error al enviar token:', error);
+                showStatus('Error al enviar token: ' + error.message, 'error');
+            });
+        }
+
+        // Función para copiar el token al portapapeles
+        function copyTokenToClipboard() {
+            if (!the_token) {
+                showStatus('No hay token para copiar', 'error');
+                return;
+            }
+            
+            navigator.clipboard.writeText(the_token)
+                .then(() => {
+                    showStatus('Token copiado al portapapeles', 'success');
+                    
+                    // Cambiar texto del botón temporalmente
+                    const copyBtn = document.getElementById('copyTokenBtn');
+                    const originalText = copyBtn.textContent;
+                    copyBtn.textContent = '¡Copiado!';
+                    
+                    setTimeout(() => {
+                        copyBtn.textContent = originalText;
+                    }, 2000);
+                })
+                .catch(err => {
+                    showStatus('Error al copiar: ' + err.message, 'error');
+                });
+        }
+
+        // Función para verificar si ya tenemos un token guardado
+        function checkExistingToken() {
+            const savedToken = localStorage.getItem('the_token');
+            if (savedToken) {
+                the_token = savedToken;
+                displayToken(savedToken);
+                showStatus('Token recuperado de almacenamiento local', 'success');
+                
+                // Verificar si ya fue enviado
+                if (localStorage.getItem('tokenSent') === 'true') {
+                    showStatus('Este token ya fue enviado al servidor', 'success');
+                } else {
+                    // Intentar enviar si tenemos ID de paciente
+                    const patientId = localStorage.getItem('id_pat');
+                    if (patientId) {
+                        sendTokenToServer(savedToken, patientId);
+                    }
+                }
+            }
+        }
+
+        // Inicializar cuando el documento esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            // Verificar si ya tenemos un token
+            checkExistingToken();
+            
+            // Configurar el botón para solicitar notificaciones
+            document.getElementById('requestPushBtn').addEventListener('click', () => {
+                initializePushNotifications();
+            });
+            
+            // Configurar el botón para copiar el token
+            document.getElementById('copyTokenBtn').addEventListener('click', () => {
+                copyTokenToClipboard();
+            });
+            
+            // Si estamos en un dispositivo nativo, inicializar automáticamente
+            if (window.Capacitor && Capacitor.isNativePlatform()) {
+                // Opcional: inicializar automáticamente
+                // initializePushNotifications();
+                
+                showStatus('Dispositivo nativo detectado. Haz clic en "Solicitar Notificaciones Push" para comenzar.', 'success');
+            } else {
+                showStatus('No estamos en un dispositivo nativo. Las notificaciones push no funcionarán.', 'error');
+            }
+        });
+
 
 
 
@@ -1242,9 +1461,9 @@ function getPatient(){
                 // console.log('user PHOTO ' + data.patient[0].pat_photo);
                 
                 if(the_patient != '' || the_patient != null){
-                    setTimeout(function(){      
-                        uploadToken();
-                    }, 500);
+                    // setTimeout(function(){      
+                    //     uploadToken();
+                    // }, 500);
                 }else{
                     // console.log('Token no enviado: '+token_sent);
                 }
