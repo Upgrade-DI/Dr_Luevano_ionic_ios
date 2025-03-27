@@ -936,257 +936,319 @@ var the_client = null;
 var token_sent = 0;
 var the_token = null;
 var appDebug = false;
+var pushToken = null; // Esta variable faltaba
 
 //variables del paciente
-  var global_id = null;
-  var global_mail = null;  
-  var global_pass = null;
+var global_id = null;
+var global_mail = null;  
+var global_pass = null;
 
 var the_patient = localStorage.getItem("id_pat");
 
 
 // Función para inicializar las notificaciones push
 async function initializePushNotifications() {
-            try {
-                // Verificar si Capacitor está disponible
-                if (!window.Capacitor) {
-                    showStatus('Error: Capacitor no está disponible. ¿Estás ejecutando en un dispositivo nativo?', 'error');
-                    return;
-                }
-
-                // Verificar si estamos en un dispositivo nativo
-                if (!Capacitor.isNativePlatform()) {
-                    showStatus('Esta función solo está disponible en dispositivos móviles nativos', 'error');
-                    return;
-                }
-
-                console.log('Inicializando notificaciones push');
-                showStatus('Inicializando notificaciones push...', 'success');
-
-                // Obtener el plugin de notificaciones push
-                const PushNotifications = Capacitor.Plugins.PushNotifications;
-                
-                // Solicitar permiso para usar notificaciones push
-                const permissionResult = await PushNotifications.requestPermissions();
-                
-                if (permissionResult.receive === 'granted') {
-                    // Registrarse con Apple / Google para recibir push via APNS/FCM
-                    await PushNotifications.register();
-                    console.log('Permiso concedido, registrando para notificaciones push');
-                    showStatus('Permiso concedido, registrando para notificaciones push...', 'success');
-                } else {
-                    // Mostrar error
-                    console.error('Permiso de notificaciones denegado');
-                    showStatus('Permiso de notificaciones denegado', 'error');
-                    return;
-                }
-
-                // Escuchar el evento de registro exitoso
-                PushNotifications.addListener('registration', (token) => {
-                    console.log('Token de push obtenido:', token.value);
-                    pushToken = token.value;
-                    
-                    // Guardar el token en localStorage para uso posterior
-                    localStorage.setItem('pushToken', token.value);
-                    
-                    // Mostrar el token en la UI
-                    displayToken(token.value);
-                    showStatus('Token de push obtenido correctamente', 'success');
-                    
-                    // Si tienes un ID de paciente, enviar el token al servidor
-                    const patientId = localStorage.getItem('id_pat');
-                    if (patientId) {
-                        sendTokenToServer(token.value, patientId);
-                    } else {
-                        showStatus('No se encontró ID de paciente. El token no se enviará al servidor.', 'error');
-                    }
-                });
-
-                // Escuchar errores de registro
-                PushNotifications.addListener('registrationError', (error) => {
-                    console.error('Error en el registro de push:', error);
-                    showStatus('Error al registrar para notificaciones: ' + JSON.stringify(error), 'error');
-                });
-
-                // Escuchar notificaciones recibidas
-                PushNotifications.addListener('pushNotificationReceived', (notification) => {
-                    console.log('Notificación recibida:', notification);
-                    showStatus('Notificación recibida: ' + JSON.stringify(notification), 'success');
-                });
-
-                // Escuchar acciones realizadas en notificaciones
-                PushNotifications.addListener('pushNotificationActionPerformed', (notification) => {
-                    console.log('Acción realizada en notificación:', notification);
-                    showStatus('Acción realizada en notificación: ' + JSON.stringify(notification), 'success');
-                });
-                
-            } catch (error) {
-                console.error('Error al inicializar notificaciones push:', error);
-                showStatus('Error al inicializar notificaciones push: ' + error.message, 'error');
-            }
+    try {
+        // Verificar si Capacitor está disponible
+        if (!window.Capacitor) {
+            console.error('Error: Capacitor no está disponible');
+            showStatus('Error: Capacitor no está disponible. ¿Estás ejecutando en un dispositivo nativo?', 'error');
+            return;
         }
 
-        // Función para mostrar el token en la interfaz de usuario
-        function displayToken(token) {
-            const tokenContainer = document.getElementById('tokenContainer');
-            const tokenText = document.getElementById('tokenText');
-            
-            tokenText.textContent = token;
-            tokenContainer.style.display = 'block';
+        // Verificar si estamos en un dispositivo nativo
+        if (!Capacitor.isNativePlatform()) {
+            console.error('No estamos en un dispositivo nativo');
+            showStatus('Esta función solo está disponible en dispositivos móviles nativos', 'error');
+            return;
         }
 
-        // Función para mostrar mensajes de estado
-        function showStatus(message, type) {
-            const statusContainer = document.getElementById('statusContainer');
+        console.log('Inicializando notificaciones push');
+        showStatus('Inicializando notificaciones push...', 'success');
+
+        // Obtener el plugin de notificaciones push
+        const PushNotifications = Capacitor.Plugins.PushNotifications;
+        
+        if (!PushNotifications) {
+            console.error('El plugin PushNotifications no está disponible');
+            showStatus('Error: Plugin de notificaciones push no disponible', 'error');
+            return;
+        }
+        
+        // Solicitar permiso para usar notificaciones push
+        console.log('Solicitando permisos...');
+        const permissionResult = await PushNotifications.requestPermissions();
+        console.log('Resultado de permisos:', permissionResult);
+        
+        if (permissionResult.receive === 'granted') {
+            // Registrarse con Apple / Google para recibir push via APNS/FCM
+            console.log('Permiso concedido, registrando para notificaciones push');
+            showStatus('Permiso concedido, registrando para notificaciones push...', 'success');
             
-            statusContainer.textContent = message;
-            statusContainer.className = 'status ' + type;
-            statusContainer.style.display = 'block';
-            
-            // Opcional: hacer scroll hasta el mensaje
-            statusContainer.scrollIntoView({ behavior: 'smooth' });
+            await PushNotifications.register();
+            console.log('Registro iniciado');
+        } else {
+            // Mostrar error
+            console.error('Permiso de notificaciones denegado');
+            showStatus('Permiso de notificaciones denegado', 'error');
+            return;
         }
 
-        // Función para enviar el token al servidor
-        function sendTokenToServer(token, patientId) {
-            console.log('Enviando token al servidor para paciente:', patientId);
-            showStatus('Enviando token al servidor...', 'success');
+        // Escuchar el evento de registro exitoso
+        PushNotifications.addListener('registration', (token) => {
+            console.log('Token de push obtenido:', token.value);
+            pushToken = token.value;
+            the_token = token.value; // También actualizar the_token para mantener compatibilidad
             
-            // Verificar si el token ya fue enviado
-            if (localStorage.getItem('tokenSent') === 'true') {
-                console.log('Token ya enviado anteriormente');
-                showStatus('Token ya enviado anteriormente', 'success');
-                return;
-            }
+            // Guardar el token en localStorage para uso posterior
+            localStorage.setItem('pushToken', token.value);
             
-            // Crear la URL para la solicitud
-            const serverURL = 'https://armoniaestetica.com/_sudiv3/ar_engine/token_device.php';
+            // Mostrar el token en la UI
+            displayToken(token.value);
+            showStatus('Token de push obtenido correctamente', 'success');
             
-            // Crear los parámetros
-            const formData = new FormData();
-            formData.append('the_patient', patientId);
-            formData.append('token', token);
-            
-            // Realizar la solicitud
-            fetch(serverURL, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log('Token enviado exitosamente al servidor');
-                    showStatus('Token enviado exitosamente al servidor', 'success');
-                    localStorage.setItem('tokenSent', 'true');
-                    return response.text();
-                }
-                throw new Error('Error del servidor: ' + response.status);
-            })
-            .then(data => {
-                console.log('Respuesta del servidor:', data);
-                showStatus('Respuesta del servidor: ' + data, 'success');
-            })
-            .catch(error => {
-                console.error('Error al enviar token:', error);
-                showStatus('Error al enviar token: ' + error.message, 'error');
-            });
-        }
-
-        // Función para copiar el token al portapapeles
-        function copyTokenToClipboard() {
-            if (!pushToken) {
-                showStatus('No hay token para copiar', 'error');
-                return;
-            }
-            
-            navigator.clipboard.writeText(pushToken)
-                .then(() => {
-                    showStatus('Token copiado al portapapeles', 'success');
-                    
-                    // Cambiar texto del botón temporalmente
-                    const copyBtn = document.getElementById('copyTokenBtn');
-                    const originalText = copyBtn.textContent;
-                    copyBtn.textContent = '¡Copiado!';
-                    
-                    setTimeout(() => {
-                        copyBtn.textContent = originalText;
-                    }, 2000);
-                })
-                .catch(err => {
-                    showStatus('Error al copiar: ' + err.message, 'error');
-                });
-        }
-
-        // Función para verificar si ya tenemos un token guardado
-        function checkExistingToken() {
-            const savedToken = localStorage.getItem('pushToken');
-            if (savedToken) {
-                pushToken = savedToken;
-                displayToken(savedToken);
-                showStatus('Token recuperado de almacenamiento local', 'success');
-                
-                // Verificar si ya fue enviado
-                if (localStorage.getItem('tokenSent') === 'true') {
-                    showStatus('Este token ya fue enviado al servidor', 'success');
-                } else {
-                    // Intentar enviar si tenemos ID de paciente
-                    const patientId = localStorage.getItem('id_pat');
-                    if (patientId) {
-                        sendTokenToServer(savedToken, patientId);
-                    }
-                }
-            }
-        }
-
-        // Inicializar cuando el documento esté listo
-        document.addEventListener('DOMContentLoaded', () => {
-            // Verificar si ya tenemos un token
-            checkExistingToken();
-            
-            // Configurar el botón para solicitar notificaciones
-            document.getElementById('requestPushBtn').addEventListener('click', () => {
-                initializePushNotifications();
-            });
-            
-            // Configurar el botón para copiar el token
-            document.getElementById('copyTokenBtn').addEventListener('click', () => {
-                copyTokenToClipboard();
-            });
-            
-            // Si estamos en un dispositivo nativo, inicializar automáticamente
-            if (window.Capacitor && Capacitor.isNativePlatform()) {
-                // Opcional: inicializar automáticamente
-                // initializePushNotifications();
-                
-                showStatus('Dispositivo nativo detectado. Haz clic en "Solicitar Notificaciones Push" para comenzar.', 'success');
+            // Si tienes un ID de paciente, enviar el token al servidor
+            const patientId = localStorage.getItem('id_pat');
+            if (patientId) {
+                sendTokenToServer(token.value, patientId);
             } else {
-                showStatus('No estamos en un dispositivo nativo. Las notificaciones push no funcionarán.', 'error');
+                showStatus('No se encontró ID de paciente. El token no se enviará al servidor.', 'error');
             }
         });
 
-        // Función para simular un token (solo para pruebas en navegador)
-        function simulateToken() {
-            if (window.Capacitor && Capacitor.isNativePlatform()) {
-                return; // No simular en dispositivos reales
+        // Escuchar errores de registro
+        PushNotifications.addListener('registrationError', (error) => {
+            console.error('Error en el registro de push:', error);
+            showStatus('Error al registrar para notificaciones: ' + JSON.stringify(error), 'error');
+        });
+
+        // Escuchar notificaciones recibidas
+        PushNotifications.addListener('pushNotificationReceived', (notification) => {
+            console.log('Notificación recibida:', notification);
+            showStatus('Notificación recibida: ' + JSON.stringify(notification), 'success');
+        });
+
+        // Escuchar acciones realizadas en notificaciones
+        PushNotifications.addListener('pushNotificationActionPerformed', (notification) => {
+            console.log('Acción realizada en notificación:', notification);
+            showStatus('Acción realizada en notificación: ' + JSON.stringify(notification), 'success');
+        });
+        
+    } catch (error) {
+        console.error('Error al inicializar notificaciones push:', error);
+        showStatus('Error al inicializar notificaciones push: ' + error.message, 'error');
+    }
+}
+
+// Función para mostrar el token en la interfaz de usuario
+function displayToken(token) {
+    try {
+        const tokenContainer = document.getElementById('tokenContainer');
+        const tokenText = document.getElementById('tokenText');
+        
+        if (!tokenContainer || !tokenText) {
+            console.error('Elementos de UI no encontrados');
+            return;
+        }
+        
+        tokenText.textContent = token;
+        tokenContainer.style.display = 'block';
+    } catch (error) {
+        console.error('Error al mostrar token:', error);
+    }
+}
+
+// Función para mostrar mensajes de estado
+function showStatus(message, type) {
+    try {
+        console.log(`[Status ${type}]: ${message}`);
+        
+        const statusContainer = document.getElementById('statusContainer');
+        if (!statusContainer) {
+            console.error('Elemento statusContainer no encontrado');
+            return;
+        }
+        
+        statusContainer.textContent = message;
+        statusContainer.className = 'status ' + type;
+        statusContainer.style.display = 'block';
+        
+        // Opcional: hacer scroll hasta el mensaje
+        statusContainer.scrollIntoView({ behavior: 'smooth' });
+    } catch (error) {
+        console.error('Error al mostrar estado:', error);
+    }
+}
+
+// Función para enviar el token al servidor
+function sendTokenToServer(token, patientId) {
+    console.log('Enviando token al servidor para paciente:', patientId);
+    showStatus('Enviando token al servidor...', 'success');
+    
+    // Verificar si el token ya fue enviado
+    if (localStorage.getItem('tokenSent') === 'true') {
+        console.log('Token ya enviado anteriormente');
+        showStatus('Token ya enviado anteriormente', 'success');
+        return;
+    }
+    
+    // Crear la URL para la solicitud
+    const serverURL = 'https://armoniaestetica.com/_sudiv3/ar_engine/token_device.php';
+    
+    // Crear los parámetros
+    const formData = new FormData();
+    formData.append('the_patient', patientId);
+    formData.append('token', token);
+    
+    // Realizar la solicitud
+    fetch(serverURL, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Token enviado exitosamente al servidor');
+            showStatus('Token enviado exitosamente al servidor', 'success');
+            localStorage.setItem('tokenSent', 'true');
+            return response.text();
+        }
+        throw new Error('Error del servidor: ' + response.status);
+    })
+    .then(data => {
+        console.log('Respuesta del servidor:', data);
+        showStatus('Respuesta del servidor: ' + data, 'success');
+    })
+    .catch(error => {
+        console.error('Error al enviar token:', error);
+        showStatus('Error al enviar token: ' + error.message, 'error');
+    });
+}
+
+// Función para copiar el token al portapapeles
+function copyTokenToClipboard() {
+    if (!pushToken) {
+        showStatus('No hay token para copiar', 'error');
+        return;
+    }
+    
+    navigator.clipboard.writeText(pushToken)
+        .then(() => {
+            showStatus('Token copiado al portapapeles', 'success');
+            
+            // Cambiar texto del botón temporalmente
+            const copyBtn = document.getElementById('copyTokenBtn');
+            if (copyBtn) {
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = '¡Copiado!';
+                
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                }, 2000);
+            }
+        })
+        .catch(err => {
+            showStatus('Error al copiar: ' + err.message, 'error');
+        });
+}
+
+// Función para verificar si ya tenemos un token guardado
+function checkExistingToken() {
+    const savedToken = localStorage.getItem('pushToken');
+    if (savedToken) {
+        pushToken = savedToken;
+        the_token = savedToken; // También actualizar the_token para mantener compatibilidad
+        displayToken(savedToken);
+        showStatus('Token recuperado de almacenamiento local', 'success');
+        
+        // Verificar si ya fue enviado
+        if (localStorage.getItem('tokenSent') === 'true') {
+            showStatus('Este token ya fue enviado al servidor', 'success');
+        } else {
+            // Intentar enviar si tenemos ID de paciente
+            const patientId = localStorage.getItem('id_pat');
+            if (patientId) {
+                sendTokenToServer(savedToken, patientId);
+            }
+        }
+    }
+}
+
+// Inicializar cuando el documento esté listo
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM cargado, inicializando...');
+    
+    try {
+        // Verificar si ya tenemos un token
+        checkExistingToken();
+        
+        // Configurar el botón para solicitar notificaciones
+        const requestPushBtn = document.getElementById('requestPushBtn');
+        if (requestPushBtn) {
+            requestPushBtn.addEventListener('click', () => {
+                initializePushNotifications();
+            });
+        } else {
+            console.error('Botón requestPushBtn no encontrado');
+        }
+        
+        // Configurar el botón para copiar el token
+        const copyTokenBtn = document.getElementById('copyTokenBtn');
+        if (copyTokenBtn) {
+            copyTokenBtn.addEventListener('click', () => {
+                copyTokenToClipboard();
+            });
+        } else {
+            console.error('Botón copyTokenBtn no encontrado');
+        }
+        
+        // Si estamos en un dispositivo nativo, inicializar automáticamente
+        if (window.Capacitor && Capacitor.isNativePlatform()) {
+            // Opcional: inicializar automáticamente
+            // initializePushNotifications();
+            
+            showStatus('Dispositivo nativo detectado. Haz clic en "Solicitar Notificaciones Push" para comenzar.', 'success');
+        } else {
+            showStatus('No estamos en un dispositivo nativo. Las notificaciones push no funcionarán.', 'error');
+        }
+    } catch (error) {
+        console.error('Error durante la inicialización:', error);
+    }
+});
+
+// Función para simular un token (solo para pruebas en navegador)
+function simulateToken() {
+    if (window.Capacitor && Capacitor.isNativePlatform()) {
+        return; // No simular en dispositivos reales
+    }
+    
+    const mockToken = 'SIMULADO_' + Math.random().toString(36).substring(2, 15);
+    pushToken = mockToken;
+    the_token = mockToken; // También actualizar the_token para mantener compatibilidad
+    localStorage.setItem('pushToken', mockToken);
+    displayToken(mockToken);
+    showStatus('Token simulado generado (solo para pruebas)', 'success');
+}
+
+// Añadir botón de simulación solo en navegador
+if (window.Capacitor && !Capacitor.isNativePlatform()) {
+    document.addEventListener('DOMContentLoaded', () => {
+        try {
+            const tokenContainer = document.getElementById('tokenContainer');
+            if (!tokenContainer) {
+                console.error('Elemento tokenContainer no encontrado');
+                return;
             }
             
-            const mockToken = 'SIMULADO_' + Math.random().toString(36).substring(2, 15);
-            pushToken = mockToken;
-            localStorage.setItem('pushToken', mockToken);
-            displayToken(mockToken);
-            showStatus('Token simulado generado (solo para pruebas)', 'success');
+            const simButton = document.createElement('button');
+            simButton.textContent = 'Simular Token (Solo Pruebas)';
+            simButton.style.backgroundColor = '#ff9800';
+            simButton.addEventListener('click', simulateToken);
+            document.body.insertBefore(simButton, tokenContainer);
+        } catch (error) {
+            console.error('Error al crear botón de simulación:', error);
         }
-
-        // Añadir botón de simulación solo en navegador
-        if (window.Capacitor && !Capacitor.isNativePlatform()) {
-            document.addEventListener('DOMContentLoaded', () => {
-                const simButton = document.createElement('button');
-                simButton.textContent = 'Simular Token (Solo Pruebas)';
-                simButton.style.backgroundColor = '#ff9800';
-                simButton.addEventListener('click', simulateToken);
-                document.body.insertBefore(simButton, document.getElementById('tokenContainer'));
-            });
-        }
-
+    });
+}
 
 
 
