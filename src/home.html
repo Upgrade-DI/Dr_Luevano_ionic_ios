@@ -955,23 +955,17 @@ document.addEventListener('deviceready', function () {
 
     const pushwoosh = window.plugins.pushwoosh;
 
-    // Inicializa Pushwoosh
     pushwoosh.onDeviceReady({
-      pw_appid: "DE31D-FA23F", // ✔️ Tu App ID real de Pushwoosh
-      projectid: "XXXXXXXXXXXX", // ✔️ Tu Project ID de Firebase (obligatorio en Android)
-      serviceName: "" // ✔️ Déjalo así para usar FCM por defecto
+      pw_appid: "DE31D-FA23F", // tu ID real de Pushwoosh
+      serviceName: "" // usa FCM por default
     });
 
-    // Solicita notificaciones push
     pushwoosh.registerDevice(
       function (status) {
-        const pushToken = status.pushToken;
-        console.log("✅ Device registered. Push token:", pushToken);
-
-        // Aquí puedes enviarlo a tu backend si lo deseas
+        console.log("✅ Token obtenido:", status.pushToken);
       },
       function (error) {
-        console.error("❌ Error registrando dispositivo:", error);
+        console.error("❌ Error obteniendo token:", error);
       }
     );
   } else {
