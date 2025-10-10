@@ -938,13 +938,162 @@ var token_sent = 0;
 var the_token = null;
 var appDebug = false;
 
+<<<<<<< ours
 
 //variables del paciente
   var global_id = null;
   var global_mail = null;  
   var global_pass = null;
+=======
+// Variables del paciente
+var global_id = null;
+var global_mail = null;
+var global_pass = null;
 
+// Obtener el ID del paciente del localStorage
+var the_patient = localStorage.getItem("id_pat");
+var pendingPushTokenKey = 'pendingPushToken';
+>>>>>>> theirs
 
+function cachePendingPushToken(token) {
+    if (!token) {
+        return;
+    }
+
+    try {
+        localStorage.setItem(pendingPushTokenKey, token);
+        console.log('🔄 Token almacenado en espera de sesión activa.');
+    } catch (error) {
+        console.warn('No fue posible almacenar el token de notificaciones:', error);
+    }
+}
+
+function clearPendingPushToken() {
+    try {
+        localStorage.removeItem(pendingPushTokenKey);
+    } catch (error) {
+        console.warn('No fue posible limpiar el token pendiente:', error);
+    }
+}
+
+function flushPendingPushToken() {
+    var pendingToken = null;
+
+    try {
+        pendingToken = localStorage.getItem(pendingPushTokenKey);
+    } catch (error) {
+        console.warn('No fue posible leer el token pendiente:', error);
+    }
+
+    if (!pendingToken) {
+        return;
+    }
+
+    console.log('📤 Token pendiente detectado, intentando enviarlo.');
+    window.sendPushToken(pendingToken);
+}
+
+window.sendPushToken = function (token) {
+    if (!token) {
+        return;
+    }
+
+    pushToken = token;
+    the_token = token;
+
+    var handler = window.PushNotificationHandler;
+    if (handler) {
+        handler.theToken = token;
+    }
+
+    var currentPatient = the_patient;
+    if (!currentPatient) {
+        currentPatient = localStorage.getItem('id_pat');
+        if (currentPatient) {
+            the_patient = currentPatient;
+        }
+    }
+
+    if (!currentPatient) {
+        token_sent = 0;
+        if (handler) {
+            handler.token_sent = 0;
+        }
+        cachePendingPushToken(token);
+        return;
+    }
+
+    if (token_sent) {
+        console.log('ℹ️ El token ya fue enviado previamente en esta sesión.');
+        return;
+    }
+
+    var apiRootPath = (typeof rootPath !== 'undefined' && rootPath) ? rootPath : (window.rootPath || '');
+
+    $.ajax({
+        async: true,
+        url: apiRootPath + '/_sudiv3/ar_engine/token_device.php',
+        type: 'POST',
+        data: {
+            the_patient: currentPatient,
+            token: token
+        }
+    })
+    .done(function (data) {
+        console.log('✅ Token enviado correctamente:', data);
+        token_sent = 1;
+        if (handler) {
+            handler.token_sent = 1;
+        }
+        clearPendingPushToken();
+    })
+    .fail(function (error) {
+        console.error('❌ Error al enviar el token de notificaciones:', error);
+        token_sent = 0;
+        if (handler) {
+            handler.token_sent = 0;
+        }
+        cachePendingPushToken(token);
+    });
+};
+
+<<<<<<< ours
+=======
+document.addEventListener('deviceready', function () {
+  flushPendingPushToken();
+
+  if (window.plugins && window.plugins.pushwoosh) {
+    console.log('✅ Pushwoosh Cordova plugin disponible');
+
+    const pushwoosh = window.plugins.pushwoosh;
+
+    pushwoosh.onDeviceReady({
+      pw_appid: "DE31D-FA23F", // tu ID real de Pushwoosh
+      serviceName: "" // usa FCM por default
+    });
+
+    pushwoosh.registerDevice(
+      function (status) {
+        if (status && status.pushToken) {
+          console.log("✅ Token obtenido:", status.pushToken);
+          window.sendPushToken(status.pushToken);
+        }
+      },
+      function (error) {
+        console.error("❌ Error obteniendo token:", error);
+      }
+    );
+  } else {
+    console.warn('ℹ️ Pushwoosh Cordova plugin no está disponible, se utilizará Capacitor/Firebase.');
+  }
+
+  if (window.PushNotificationHandler && typeof window.PushNotificationHandler.checkPendingToken === 'function') {
+    window.PushNotificationHandler.checkPendingToken();
+  }
+});
+>>>>>>> theirs
+
+flushPendingPushToken();
 
 
     $(document).ready(function() {
@@ -1241,6 +1390,7 @@ function getPatient(){
                 // console.log('user client ' + data.patient[0].pat_system);
                 // console.log('user PHOTO ' + data.patient[0].pat_photo);
                 
+<<<<<<< ours
                     //Igualar variables
                     the_patient = data.patient[0].pat_id;
 
@@ -1254,6 +1404,19 @@ function getPatient(){
                     }else{
                         // console.log('Token no enviado: '+token_sent);
                     }
+=======
+                if (the_patient) {
+                    setTimeout(function(){
+                        if (pushToken) {
+                            window.sendPushToken(pushToken);
+                        } else {
+                            flushPendingPushToken();
+                        }
+                    }, 500);
+                } else {
+                    // console.log('Token no enviado: '+token_sent);
+                }
+>>>>>>> theirs
 //END TOKEN
 
 /* AQUI SE DEFINEN LOS PRIVILEGIOS DEL MENÚ TABBAR*/

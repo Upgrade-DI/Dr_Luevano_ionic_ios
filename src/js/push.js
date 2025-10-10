@@ -1,3 +1,4 @@
+<<<<<<< ours
 var theToken = 'not_set';  
 
 function onPushwooshInitialized(pushNotification) {
@@ -142,3 +143,165 @@ function onPushwooshInitialized(pushNotification) {
 
 		//alert("the_token" + theToken);
 	});
+=======
+(function () {
+  const capacitor = window.Capacitor || {};
+  const plugins = capacitor.Plugins || {};
+  const PushNotifications = plugins.PushNotifications;
+
+  const isNativePlatform = (() => {
+    if (typeof capacitor.isNativePlatform === 'function') {
+      return capacitor.isNativePlatform();
+    }
+    if (typeof capacitor.getPlatform === 'function') {
+      return capacitor.getPlatform() !== 'web';
+    }
+    return capacitor.platform && capacitor.platform !== 'web';
+  })();
+
+  function cachePendingToken(token) {
+    if (!token) {
+      return;
+    }
+    try {
+      localStorage.setItem('pendingPushToken', token);
+    } catch (error) {
+      console.warn('Unable to cache pending push token:', error);
+    }
+  }
+
+  window.PushNotificationHandler = {
+    theToken: 'not_set',
+    token_sent: 0,
+
+    async initPushNotifications() {
+      if (!isNativePlatform) {
+        console.log('Push notifications are only available on native platforms.');
+        return;
+      }
+
+      if (!PushNotifications) {
+        console.warn('Capacitor PushNotifications plugin not available.');
+        return;
+      }
+
+      try {
+        const permStatus = await PushNotifications.requestPermissions();
+        if (permStatus.receive !== 'granted') {
+          console.warn('Push notification permission denied:', permStatus);
+          return;
+        }
+
+        this.setupPushListeners();
+        await PushNotifications.register();
+      } catch (error) {
+        console.error('Error initializing push notifications:', error);
+      }
+    },
+
+    setupPushListeners() {
+      if (!PushNotifications) {
+        return;
+      }
+
+      PushNotifications.addListener('registration', (token) => {
+        console.log('Push registration success, token:', token.value);
+        this.handleToken(token.value);
+      });
+
+      PushNotifications.addListener('registrationError', (error) => {
+        console.error('Push registration failed:', error);
+      });
+
+      PushNotifications.addListener('pushNotificationReceived', (notification) => {
+        console.log('Push notification received:', notification);
+      });
+    },
+
+    handleToken(tokenValue) {
+      if (!tokenValue) {
+        return;
+      }
+
+      this.theToken = tokenValue;
+      window.the_token = tokenValue;
+
+      if (typeof window.sendPushToken === 'function') {
+        window.sendPushToken(tokenValue);
+      } else if (typeof window.the_patient !== 'undefined' && window.the_patient !== null) {
+        this.uploadToken();
+      } else {
+        cachePendingToken(tokenValue);
+      }
+    },
+
+    uploadToken(type = null) {
+      if (!this.theToken || !window.the_patient) {
+        cachePendingToken(this.theToken);
+        return;
+      }
+
+      if (typeof window.sendPushToken === 'function') {
+        window.sendPushToken(this.theToken);
+        return;
+      }
+
+      console.log('Uploading token to server:', this.theToken);
+
+      $.ajax({
+        async: true,
+        url: window.rootPath + '/_sudiv3/ar_engine/token_device.php',
+        type: 'POST',
+        data: {
+          the_patient: window.the_patient,
+          token: this.theToken,
+        },
+      })
+        .done((data) => {
+          console.log('Token upload result:', data);
+          this.token_sent = 1;
+        })
+        .fail((error) => {
+          console.error('Error uploading token:', error);
+          this.token_sent = 0;
+          cachePendingToken(this.theToken);
+        });
+    },
+
+    checkPendingToken() {
+      let pendingToken = null;
+      try {
+        pendingToken = localStorage.getItem('pendingPushToken');
+      } catch (error) {
+        console.warn('Unable to read pending push token:', error);
+      }
+
+      if (!pendingToken) {
+        return;
+      }
+
+      console.log('Found pending token, attempting to send.');
+      this.theToken = pendingToken;
+      window.the_token = pendingToken;
+
+      if (typeof window.sendPushToken === 'function') {
+        window.sendPushToken(pendingToken);
+      } else {
+        this.uploadToken();
+      }
+    },
+  };
+
+  document.addEventListener(
+    'deviceready',
+    function () {
+      window.PushNotificationHandler.initPushNotifications();
+    },
+    false
+  );
+
+  document.addEventListener('DOMContentLoaded', function () {
+    window.PushNotificationHandler.checkPendingToken();
+  });
+})();
+>>>>>>> theirs
