@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="24px" viewBox="0 0 14 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Fill 1</title>
+    <desc>Created with Sketch.</desc>
+    <g id="App" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Detalle-de-procedimiento" transform="translate(-67.000000, -486.000000)" fill="#4B3348">
+            <g id="Pago" transform="translate(32.000000, 458.000000)">
+                <path d="M41,39 C38.339,39 37,37.371 37,35.5 C37,33.691 38.271,32 41,32 L41,39 Z M47,44.5 C47,46.309 45.729,48 43,48 L43,41 C45.661,41 47,42.629 47,44.5 Z M49,44.5 C49,41.732 46.976,39 43,39 L43,32 L45,32 C46.104,32 47,32.896 47,34 L49,34 C49,31.791 47.209,30 45,30 L43,30 L43,28 L41,28 L41,30 C37.042,30 35,32.723 35,35.5 C35,38.268 37.024,41 41,41 L41,48 L39,48 C37.896,48 37,47.104 37,46 L35,46 C35,48.209 36.791,50 39,50 L41,50 L41,52 L43,52 L43,50 C46.958,50 49,47.277 49,44.5 Z" id="Fill-1"></path>
+            </g>
+        </g>
+    </g>
+</svg>

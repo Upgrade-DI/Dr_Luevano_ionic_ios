@@ -1,0 +1,40 @@
+/* - - - - - - - - - - - - - - -
+CSS secundario
+Desarrollado por: Upgrade Diseño Interactivo
+Para:
+Fecha: 27/08/2020
+Ultima modificación por: Selene Herrrera
+Fecha:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ */
+
+
+.sk-three-bounce {
+  width: 50%;
+  top: 4%;
+}
+
+.payment-date {
+    padding: 5px 25px 5px 25px;
+}
+
+   
+.head-tittle{
+    padding: 40px 20px 20px 30px;
+}
+
+.profile-mail{
+    font-size: 0.9em;
+}
+
+
+
+input[type=range].range_ae {
+  width: 75%;
+  margin-left: 10px;
+}
+
+
+input[type=range].range_renew {
+  width: 75%;
+  margin-left: 10px;
+}

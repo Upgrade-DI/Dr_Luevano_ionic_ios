@@ -1,13 +1,7 @@
 {
   "appId": "com.armoniaesttica.app",
-  "appName": "Dr. Luevano",
-  "bundledWebRuntime": false,
-  "webDir": "src",
-  "plugins": {
-    "SplashScreen": {
-      "launchShowDuration": 2000
-    }
-  },
+  "appName": "Dr. Luévano",
+  "webDir": "dist",
   "server": {
     "androidScheme": "https",
     "iosScheme": "capacitor"
