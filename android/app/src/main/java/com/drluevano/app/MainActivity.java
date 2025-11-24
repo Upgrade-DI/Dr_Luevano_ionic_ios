@@ -1,4 +1,4 @@
-package com.armoniaesttica.app;
+package com.drluevano.app;
 
 import com.getcapacitor.BridgeActivity;
 
