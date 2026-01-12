@@ -268,9 +268,6 @@
                         <!-- BOX QR -->
                         <div class="box-emergent-qr bg-white" >  
                             <!-- imagen izquierda -->  
-                                <img src="./img/survey.png" style="width: 30%;">   
-                                <h3 class="tittle blue-account"> Código QR</h3>
-                                <span class="subtitle-blue "  style="font-size: 0.9em; "> Escanea el código QR</span>  
                                 <a class="btn_request" href="https://forms.monday.com/forms/af3b189adac214661e55cbd03147f595?r=use1" target="_blank">Contestar encuesta</a>
                         </div> <!-- end box 2 -->
 
@@ -1029,6 +1026,39 @@ var appDebug = false;
             
             console.log(data);
 
+            function normalizeImageUrl(imagePath) {
+                if (!imagePath) {
+                    return '';
+                }
+                if (/^https?:\/\//i.test(imagePath)) {
+                    return imagePath;
+                }
+                if (/^\/?_files\//i.test(imagePath)) {
+                    var baseWithSlash = rootPath.slice(-1) === '/' ? rootPath : rootPath + '/';
+                    return baseWithSlash + '_sudiv3/' + imagePath.replace(/^\//, '');
+                }
+                if (imagePath.charAt(0) === '/' && rootPath.slice(-1) === '/') {
+                    return rootPath + imagePath.slice(1);
+                }
+                if (imagePath.charAt(0) !== '/' && rootPath.slice(-1) !== '/') {
+                    return rootPath + '/' + imagePath;
+                }
+                return rootPath + imagePath;
+            }
+
+            if (!$('#prescription-image-overlay').length) {
+                $('body').append('<div id="prescription-image-overlay" class="prescription-image-overlay"><img id="prescription-image-overlay-img" src="" alt="Imagen de medicamento"></div>');
+            }
+            $(document).off('click', '.prescription-drug-image').on('click', '.prescription-drug-image', function() {
+                var imageSrc = $(this).data('full') || $(this).attr('src');
+                $('#prescription-image-overlay-img').attr('src', imageSrc);
+                $('#prescription-image-overlay').addClass('is-visible');
+            });
+            $(document).off('click', '#prescription-image-overlay').on('click', '#prescription-image-overlay', function() {
+                $(this).removeClass('is-visible');
+                $('#prescription-image-overlay-img').attr('src', '');
+            });
+
             
             $(".box-emergent-account-presdetail").append('<span class="purple" id="presdetail">'+data.arrayRecipesDetail[0].rec_date+' '+data.arrayRecipesDetail[0].rec_hour+'</span><div class="info-detail-r" style="display: flex; align-items: center; margin: 0px; justify-content: space-between; padding-top: 10px;">'+
                     '<h3 class="tittle blue-account">'+
@@ -1038,12 +1068,28 @@ var appDebug = false;
 
             // $(".presdetail").append(data.arrayRecipesDetail[0].rec_date);
         
-            if(data.arrayRecipesDetail[0].arrayDrugs == null){
+            if(!data.arrayRecipesDetail[0].arrayDrugs || data.arrayRecipesDetail[0].arrayDrugs.length === 0){
                 var  notes=  '<span class="hc_event_subtitle">Notas</span>'+
                             '<p class="hc_event_data">'+data.arrayRecipesDetail[0].notes+
                             '</p>';
 
-                            var prescriptiondetail = notes;
+                var images = '';
+                if (data.arrayRecipesDetail[0].rec_images && data.arrayRecipesDetail[0].rec_images.length) {
+                    for (var r = 0; r < data.arrayRecipesDetail[0].rec_images.length; r++) {
+                        var recImageUrl = normalizeImageUrl(data.arrayRecipesDetail[0].rec_images[r].drug_image);
+                        if (!recImageUrl) {
+                            continue;
+                        }
+                        images += '<span class="title-blue-l">'+data.arrayRecipesDetail[0].rec_images[r].drug_name+'</span>'+
+                                  '<div style="height: 5px;"></div>'+
+                                  '<div class="prescription-image-wrap">'+
+                                      '<img class="prescription-drug-image" src="'+recImageUrl+'" alt="Imagen de medicamento" data-full="'+recImageUrl+'">'+
+                                  '</div>'+
+                                  '<div style="height: 15px;"></div>';
+                    }
+                }
+
+                var prescriptiondetail = images + notes;
 
 $(".box-emergent-account-presdetail").append(prescriptiondetail);
             }else{
@@ -1059,15 +1105,24 @@ $(".box-emergent-account-presdetail").append(prescriptiondetail);
                             '</p>';
             }
 
-             
+            
                 if (data.arrayRecipesDetail[0].arrayDrugs[h].length == 0){
                 var drugs = '';
                 }else{
+                var drugImage = data.arrayRecipesDetail[0].arrayDrugs[h].drug_image;
+                var drugImageMarkup = '';
+                if (drugImage) {
+                    var drugImageUrl = normalizeImageUrl(drugImage);
+                    drugImageMarkup = '<div class="prescription-image-wrap">'+
+                        '<img class="prescription-drug-image" src="'+drugImageUrl+'" alt="Imagen de medicamento" data-full="'+drugImageUrl+'">'+
+                    '</div>';
+                }
                
                 var drugs = '<span class="title-blue-l">'+data.arrayRecipesDetail[0].arrayDrugs[h].drug+'</span>'+
                 '<div style="height: 5px;"></div>'+
 
                 '<span class="subtitle-blue" style="margin-bottom:20px;">'+data.arrayRecipesDetail[0].arrayDrugs[h].indications+'</span>'+
+                drugImageMarkup+
                 '<div style="height: 15px;"></div>';
                 }
 

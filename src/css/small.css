@@ -38,3 +38,41 @@ input[type=range].range_renew {
   width: 75%;
   margin-left: 10px;
 }
+
+.prescription-image-wrap {
+  margin: 8px 0px 5px;
+}
+
+.prescription-drug-image {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 10px;
+  display: block;
+}
+
+.prescription-image-overlay {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 16px;
+}
+
+.prescription-image-overlay.is-visible {
+  display: flex;
+}
+
+#prescription-image-overlay-img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+}
