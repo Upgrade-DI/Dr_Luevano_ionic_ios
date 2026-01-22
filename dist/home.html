@@ -265,12 +265,6 @@
             </div>
                     <section id="contain-rae" class="section-underline" >
 
-                        <!-- BOX QR -->
-                        <div class="box-emergent-qr bg-white" >  
-                            <!-- imagen izquierda -->  
-                                <a class="btn_request" href="https://forms.monday.com/forms/af3b189adac214661e55cbd03147f595?r=use1" target="_blank">Contestar encuesta</a>
-                        </div> <!-- end box 2 -->
-
                         <div id="account-box"></div>
 
                         <!-- BOX 3 -->
@@ -2347,6 +2341,7 @@ function getHomeae(){
             data: { getHomeae : true, patid : global_id },
             success: function(data){
             $("#contain-home-ae").html('');
+            $("#estetica .no-data-estetica").remove();
             
 
             console.log(data);
@@ -2356,34 +2351,37 @@ function getHomeae(){
             // console.log(data.arrayHomeae[0].arrayNextcons);
 
 
-             if ( data.arrayHomeae[0].arrayNextcons.length == 0 && data.arrayHomeae[0].arrayExams.length == 0 && data.arrayHomeae[0].arrayExams.length == 0 && data.arrayHomeae[0].arrayPayae.length == 0){ 
+            var homeaeList = Array.isArray(data.arrayHomeae) ? data.arrayHomeae : [];
+            var homeaeFirst = homeaeList[0] || {};
+            var nextConsList = Array.isArray(homeaeFirst.arrayNextcons)
+                ? homeaeFirst.arrayNextcons
+                : (Array.isArray(homeaeFirst.arrayNextcon) ? homeaeFirst.arrayNextcon : []);
 
+            if (nextConsList.length === 0) {
+                var NoDataEA = '<h4 class="no-data-estetica" style="margin-top: 50px; padding-left: 15px; color: #002130;">No hay citas programadas por el momento</h4>';
+                $("#estetica").append(NoDataEA);
+            }
 
-              var NoDataEA = '<h4 style="margin-top: 50px; padding-left: 15px; color: #002130;"> Por el momento no cuentas con información</h4>';
-
-              $("#contain-home-ae").append(NoDataEA);
-                    
-             }else{
-
-            for (var b = 0; b < data.arrayHomeae.length; b++) {
+            for (var b = 0; b < homeaeList.length; b++) {
 
 /*
 Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","Cons_hour":"11:00:00","Cons_hour_end":"11:30:00","Cons_proce":"0","Cons_status":"0","Cons_user_id":"2","Cons_user_edit":"2","Cons_user_fname":"Upgrade","Cons_user_lname":"Dise\u00f1o","Cons_user_photo":"_files\/_img\/_users\/122718-171233_upgrade.jpg"}]
 */
 
 
-                for (var i = 0; i < data.arrayHomeae[b].arrayNextcons.length; i++) {
+                var nextConsItems = Array.isArray(homeaeList[b].arrayNextcons) ? homeaeList[b].arrayNextcons : [];
+                for (var i = 0; i < nextConsItems.length; i++) {
            
                 var arrayStatusEA = ['en espera','confirmada','asistencia','inasistencia','reprogramada','cancelada'];
                 var arrayStatusColorEA = ['#f7f0ad','#e0f5eb','#e0f5eb','#ff584ce6','#f49136c2','#a7a39f'];
                 var arrayStatusNameEA = ['#dc953a','#71d3a1','#000000','#000000','#000000','#000000'];
 
                 /*   DIV EMPLEADO*/
-                   if (data.arrayHomeae[b].arrayNextcons[i].Cons_user_photo == null | '') {
+                   if (nextConsItems[i].Cons_user_photo == null | '') {
                                           $photo_user_homeae = '/img/logo-ae-3.png';
                    }else{
                                             
-                                          $photo_user_homeae = root_web+data.arrayHomeae[b].arrayNextcons[i].Cons_user_photo;
+                                          $photo_user_homeae = root_web+nextConsItems[i].Cons_user_photo;
                    }
 
 
@@ -2391,7 +2389,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                                             '<div class="sales-person">'+
                                                 '<img src="'+$photo_user_homeae+'" class="circle-purple photo_sales" >'+
                                                 '<span class="little" style="padding-left: 15px;">'+
-                                                data.arrayHomeae[b].arrayNextcons[i].Cons_user_fname+' '+ data.arrayHomeae[b].arrayNextcons[i].Cons_user_lname+
+                                                nextConsItems[i].Cons_user_fname+' '+ nextConsItems[i].Cons_user_lname+
                                                 '</span>'+
                                             '</div>'+
                                       '</div>';
@@ -2401,7 +2399,7 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
 
 
               //switch de cita 
-                                  switch(data.arrayHomeae[b].arrayNextcons[i].Cons_status){
+                                  switch(nextConsItems[i].Cons_status){
                         
                         //si la cita está como:
                         //en espera           CONFIRMAR CITA SI NO
@@ -2411,14 +2409,14 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
                                 '<div class="info-detail">'+
                                     '<h4 class="hour">'+
 
-                                       '<img src="img/reloj.svg" style="padding-right: 15px; width: 30px;">'+data.arrayHomeae[b].arrayNextcons[i].Cons_hour+' - '+data.arrayHomeae[b].arrayNextcons[i].Cons_hour_end+'</h4>'+
+                                       '<img src="img/reloj.svg" style="padding-right: 15px; width: 30px;">'+nextConsItems[i].Cons_hour+' - '+nextConsItems[i].Cons_hour_end+'</h4>'+
                                     
-                                    '<h5 class="status-new" style= "background-color:'+arrayStatusColorEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+'; color:'+arrayStatusNameEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+'; padding: 4px 8px 4px 8px;" data-status="'+data.arrayHomeae[b].arrayNextcons[i].Cons_status+'";>'+arrayStatusEA[data.arrayHomeae[b].arrayNextcons[i].Cons_status]+'</h5>'+
+                                    '<h5 class="status-new" style= "background-color:'+arrayStatusColorEA[nextConsItems[i].Cons_status]+'; color:'+arrayStatusNameEA[nextConsItems[i].Cons_status]+'; padding: 4px 8px 4px 8px;" data-status="'+nextConsItems[i].Cons_status+'";>'+arrayStatusEA[nextConsItems[i].Cons_status]+'</h5>'+
 
                                 '</div>'+
                                                 
                                 '<h3 class="tittle purple"></h3>'+
-                                '<span class="subtitle ">Recuerda que tu próxima de revisión de cita, será el día '+ data.arrayHomeae[b].arrayNextcons[i].Cons_date+
+                                '<span class="subtitle ">Recuerda que tu próxima de revisión de cita, será el día '+ nextConsItems[i].Cons_date+
                                 '</span>'+
 
                                 employee_ea+
