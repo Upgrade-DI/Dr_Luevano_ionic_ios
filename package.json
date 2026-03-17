@@ -8,7 +8,7 @@
     "mobile"
   ],
   "scripts": {
-    "sync:web": "rsync -a --delete --exclude='.DS_Store' src/ public/",
+    "sync:web": "node scripts/sync-web.mjs",
     "prestart": "npm run sync:web",
     "prebuild": "npm run sync:web",
     "start": "vite",
