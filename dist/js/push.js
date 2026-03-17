@@ -1,144 +1,158 @@
-var theToken = 'not_set';  
+var theToken = 'not_set';
 
-function onPushwooshInitialized(pushNotification) {
+(function () {
+  var IOS_APNS_TOKEN_REGEX = /^[A-Fa-f0-9]{64}$/;
+  var listenersRegistered = false;
 
-    //if you need push token at a later time you can always get it from Pushwoosh plugin
-    pushNotification.getPushToken(function(token) {
-      console.info('push token: ' + token);
-    }
-    );
-    
-    //and HWID if you want to communicate with Pushwoosh API
-    pushNotification.getPushwooshHWID(function(token) {
-      console.info('Pushwoosh HWID: ' + token);
-    }
-    ); 
-    
-    //settings tags
-    pushNotification.setTags({
-      tagName: "tagValue",
-      intTagName: 10
-    },
-    function(status) {
-     console.log('setTags success: ' + JSON.stringify(status));
-   },
-   function(status) {
-     console.log('setTags failed');
-   }
-   );
-    
-    pushNotification.getTags(function(status) {
-       console.log('getTags success: ' + JSON.stringify(status));
-     },
-     function(status) {
-       console.log('getTags failed');
-     }
-     );
-    
-    //start geo tracking.
-    //pushNotification.startLocationTracking();
+  function isLikelyApnsToken(token) {
+    return IOS_APNS_TOKEN_REGEX.test(token || '');
   }
 
-  function initPushwoosh() {
-    var pushNotification = cordova.require("pushwoosh-cordova-plugin.PushNotification");
-    
-    //set push notifications handler
-    document.addEventListener('push-notification',
-      function(event) {
-        var message = event.notification.message;
-        var userData = event.notification.userdata;
+  function getPlatform() {
+    if (typeof Capacitor !== 'undefined' && typeof Capacitor.getPlatform === 'function') {
+      return Capacitor.getPlatform();
+    }
 
-	  //dump custom data to the console if it exists
-	  if (typeof(userData) != "undefined") {
-		console.warn('user data: ' + JSON.stringify(userData));
-	  }
-	}
-	);
-    
-    //initialize Pushwoosh with projectid: "GOOGLE_PROJECT_ID", appid : "PUSHWOOSH_APP_ID". This will trigger all pending push notifications on start.
-    pushNotification.onDeviceReady({
-    	projectid: "578524963473",
-     	appid: "96698-47E03",
-     	serviceName: "dr-luevano-ios"
-   	});
-	  
-	  
-    //register for push notifications
-    pushNotification.registerDevice(
-      function(status) {
-		  
-		theToken = status.pushToken;
-		the_token = theToken;
-		 
-		// Registro de Token
-	//if( the_token != 'not_set' && token_sent == 0){
-    if(the_patient != null && the_token != 'not_set' && token_sent == 0){
+    if (typeof navigator !== 'undefined' && /android/i.test(navigator.userAgent || '')) {
+      return 'android';
+    }
 
-			uploadToken();
-		}else{
-			console.log('Token no enviado: '+token_sent)
-		}
-		  
-        //document.getElementById("pushToken").innerHTML = status.pushToken + "<p>";
-        onPushwooshInitialized(pushNotification);
-		  console.log(status.pushToken);
-      },
-      function(status) {
-        console.log("failed to register: " + status);
-        console.warn(JSON.stringify(['failed to register ', status]));
+    if (typeof navigator !== 'undefined' && /iphone|ipad|ipod/i.test(navigator.userAgent || '')) {
+      return 'ios';
+    }
+
+    return 'web';
+  }
+
+  function getPushNotificationsPlugin() {
+    if (typeof Capacitor === 'undefined') {
+      return null;
+    }
+
+    if (
+      typeof Capacitor.isPluginAvailable === 'function' &&
+      !Capacitor.isPluginAvailable('PushNotifications')
+    ) {
+      return null;
+    }
+
+    if (!Capacitor.Plugins || !Capacitor.Plugins.PushNotifications) {
+      return null;
+    }
+
+    return Capacitor.Plugins.PushNotifications;
+  }
+
+  function cacheToken(token) {
+    try {
+      localStorage.setItem('fcm_token', token);
+    } catch (error) {
+      console.warn('No se pudo guardar fcm_token en localStorage', error);
+    }
+  }
+
+  function hydrateCachedToken() {
+    try {
+      var cached = localStorage.getItem('fcm_token');
+      if (!cached || cached === 'not_set') {
+        return;
       }
-      );
+
+      theToken = cached;
+      window.the_token = cached;
+    } catch (error) {
+      console.warn('No se pudo leer fcm_token desde localStorage', error);
+    }
   }
 
-  var app = {
-    // Application Constructor
-    initialize: function() {
-      this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-      document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicity call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-      initPushwoosh();
-      app.receivedEvent('deviceready');
-		
-		/*universalLinks.subscribe('ul_feedEvent', function (eventData) {
-			// do some work
-			// in eventData you'll see url и and parsed url with schema, host, path and arguments
-			console.log('Did launch application from the link: ' + JSON.stringify(eventData));
-			alert('Did launch application from the link: ' + JSON.stringify(eventData));
-		});		
-		console.log('universal');
-		*/
-		
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-      "use strict";
-		/*var parentElement = document.getElementById(id);
-      	var listeningElement = parentElement.querySelector('.listening');
-      	var receivedElement = parentElement.querySelector('.received');
-
-      	listeningElement.setAttribute('style', 'display:none;');
-      	receivedElement.setAttribute('style', 'display:block;');
-
-      	console.log('Received Event: ' + id);*/
+  function syncTokenIfReady() {
+    if (typeof uploadToken === 'function') {
+      uploadToken('fcm');
+      return;
     }
-  };
 
-  app.initialize();
+    console.log('Token FCM listo, esperando contexto para sincronizar.');
+  }
 
-	$(document).on('click','#profile',function(){
-		console.log(theToken);
-    // ons.notification.toast({message: theToken, timeout: 3500});
+  async function onRegistration(token) {
+    var tokenValue = token && token.value ? token.value : '';
 
-		//alert("the_token" + theToken);
-	});
+    if (!tokenValue) {
+      console.warn('Token push vacio recibido del plugin.');
+      return;
+    }
+
+    if (getPlatform() === 'ios' && isLikelyApnsToken(tokenValue)) {
+      console.log('Token APNs detectado en iOS. Se ignora hasta recibir token FCM real.');
+      return;
+    }
+
+    theToken = tokenValue;
+    window.the_token = tokenValue;
+    cacheToken(tokenValue);
+    syncTokenIfReady();
+  }
+
+  function onRegistrationError(error) {
+    console.error('Error al registrar PushNotifications:', error);
+  }
+
+  function onPushNotificationReceived(notification) {
+    console.log('Push recibida:', notification);
+  }
+
+  function registerListeners(pushNotifications) {
+    if (listenersRegistered) {
+      return;
+    }
+
+    pushNotifications.addListener('registration', onRegistration);
+    pushNotifications.addListener('registrationError', onRegistrationError);
+    pushNotifications.addListener('pushNotificationReceived', onPushNotificationReceived);
+    listenersRegistered = true;
+  }
+
+  async function requestAndRegister(pushNotifications) {
+    try {
+      var permission = await pushNotifications.checkPermissions();
+      var receivePermission = permission && permission.receive ? permission.receive : 'prompt';
+
+      if (receivePermission !== 'granted') {
+        var requested = await pushNotifications.requestPermissions();
+        receivePermission = requested && requested.receive ? requested.receive : 'denied';
+      }
+
+      if (receivePermission !== 'granted') {
+        console.warn('Permiso de notificaciones no concedido.');
+        return;
+      }
+
+      await pushNotifications.register();
+    } catch (error) {
+      console.error('No se pudo completar el registro de notificaciones push', error);
+    }
+  }
+
+  async function initFcmPush() {
+    hydrateCachedToken();
+    syncTokenIfReady();
+
+    var pushNotifications = getPushNotificationsPlugin();
+
+    if (!pushNotifications) {
+      console.warn('PushNotifications no disponible en esta plataforma/contexto.');
+      return;
+    }
+
+    registerListeners(pushNotifications);
+    await requestAndRegister(pushNotifications);
+  }
+
+  document.addEventListener(
+    'deviceready',
+    function () {
+      initFcmPush();
+    },
+    false
+  );
+})();

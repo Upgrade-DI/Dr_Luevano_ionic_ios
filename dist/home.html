@@ -926,8 +926,20 @@
 
 var the_client = null;  
 var token_sent = 0;
-var the_token = null;
+var the_token = localStorage.getItem('fcm_token') || null;
 var appDebug = false;
+
+var FCM_API_ENDPOINT = 'https://armoniaestetica.com/_sudiv3/api/endpoints/_firebase_cloud_messaging/_get_fcm_token/exe_endpoint.php';
+var FCM_TOKEN_DEV = 'uS1eP9yQ7mB4hT6xC0lV2zR8fD5kN3j';
+var FCM_TOKEN_PROD = 'd4XqA2vfsM8pL1zF7rH0kW9bC5tY3nV';
+var FCM_USE_PROD_TOKEN = false;
+var FCM_ACCESS_TOKEN = FCM_USE_PROD_TOKEN ? FCM_TOKEN_PROD : FCM_TOKEN_DEV;
+var FCM_LAST_SYNCED_TOKEN_KEY = 'fcm_last_synced_token';
+var FCM_LAST_SYNCED_BUNDLE_KEY = 'fcm_last_synced_bundle';
+var FCM_SYNC_REQUIRED_KEY = 'fcm_sync_required';
+var FCM_DEVICE_ID_STORAGE_KEY = 'fcm_device_id';
+var IOS_APNS_TOKEN_REGEX = /^[A-Fa-f0-9]{64}$/;
+var FCM_RUNTIME_BUNDLE_ID = null;
 
 
 //variables del paciente
@@ -1063,9 +1075,13 @@ var appDebug = false;
             // $(".presdetail").append(data.arrayRecipesDetail[0].rec_date);
         
             if(!data.arrayRecipesDetail[0].arrayDrugs || data.arrayRecipesDetail[0].arrayDrugs.length === 0){
-                var  notes=  '<span class="hc_event_subtitle">Notas</span>'+
-                            '<p class="hc_event_data">'+data.arrayRecipesDetail[0].notes+
+                var notesText = data.arrayRecipesDetail[0].notes;
+                var notes = '';
+                if (notesText && String(notesText).trim() !== '') {
+                    notes = '<span class="hc_event_subtitle">Notas</span>'+
+                            '<p class="hc_event_data">'+notesText+
                             '</p>';
+                }
 
                 var images = '';
                 if (data.arrayRecipesDetail[0].rec_images && data.arrayRecipesDetail[0].rec_images.length) {
@@ -1089,14 +1105,12 @@ $(".box-emergent-account-presdetail").append(prescriptiondetail);
             }else{
         for (var h = 0; h < data.arrayRecipesDetail[0].arrayDrugs.length; h++) {
             
-            if(data.arrayRecipesDetail[0].notes == null) { 
-               var notes = '';
-                
-            }else{
-
-               var  notes=  '<span class="hc_event_subtitle">Notas</span>'+
-                            '<p class="hc_event_data">'+data.arrayRecipesDetail[0].notes+
-                            '</p>';
+            var notesText = data.arrayRecipesDetail[0].notes;
+            var notes = '';
+            if (notesText && String(notesText).trim() !== '') {
+                notes = '<span class="hc_event_subtitle">Notas</span>'+
+                        '<p class="hc_event_data">'+notesText+
+                        '</p>';
             }
 
             
@@ -1214,30 +1228,206 @@ $(".box-emergent-account-presdetail").append(prescriptiondetail);
 
 picPath = 'https://armoniaestetica.com/_sudiv3/';
 
+        function isLikelyApnsToken(token) {
+            return IOS_APNS_TOKEN_REGEX.test(token || '');
+        }
+
+        function getPushPlatform() {
+            if (typeof Capacitor !== 'undefined' && typeof Capacitor.getPlatform === 'function') {
+                return Capacitor.getPlatform();
+            }
+
+            var userAgent = navigator.userAgent || '';
+            if (/android/i.test(userAgent)) {
+                return 'android';
+            }
+
+            if (/iphone|ipad|ipod/i.test(userAgent)) {
+                return 'ios';
+            }
+
+            return 'web';
+        }
+
+        function getDeviceId() {
+            try {
+                var existingDeviceId = localStorage.getItem(FCM_DEVICE_ID_STORAGE_KEY);
+                if (existingDeviceId) {
+                    return existingDeviceId;
+                }
+
+                var generatedId = 'dev-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
+                localStorage.setItem(FCM_DEVICE_ID_STORAGE_KEY, generatedId);
+                return generatedId;
+            } catch (error) {
+                return 'dev-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
+            }
+        }
+
+        function getBundleId() {
+            if (FCM_RUNTIME_BUNDLE_ID) {
+                return FCM_RUNTIME_BUNDLE_ID;
+            }
+
+            if (getPushPlatform() === 'ios') {
+                return 'com.armoniaesttica.app';
+            }
+
+            if (typeof Capacitor !== 'undefined' && Capacitor.config && Capacitor.config.appId) {
+                return Capacitor.config.appId;
+            }
+
+            return 'com.drluevano.app';
+        }
+
+        function refreshRuntimeBundleId() {
+            if (
+                typeof Capacitor === 'undefined' ||
+                !Capacitor.Plugins ||
+                !Capacitor.Plugins.App ||
+                typeof Capacitor.Plugins.App.getInfo !== 'function'
+            ) {
+                return;
+            }
+
+            Capacitor.Plugins.App.getInfo().then(function(info) {
+                if (!info || !info.id) {
+                    return;
+                }
+
+                FCM_RUNTIME_BUNDLE_ID = info.id;
+                if (appDebug) {
+                    console.log('Bundle nativo detectado para FCM: ' + FCM_RUNTIME_BUNDLE_ID);
+                }
+            }).catch(function(error) {
+                if (appDebug) {
+                    console.warn('No se pudo leer bundle nativo para FCM', error);
+                }
+            });
+        }
+
+        function isTokenSyncRequired() {
+            return localStorage.getItem(FCM_SYNC_REQUIRED_KEY) !== '0';
+        }
+
 
 
         // @function - Upload Token Device  
             // Función que carga ID del dispositivo 
         function uploadToken(type=null){
-            // console.log("cargando token...");           
-            // AJAX - Load Records
+            if (!the_patient) {
+                return;
+            }
+
+            if (!the_token || the_token === 'not_set') {
+                if (appDebug) {
+                    console.log('FCM pendiente: no hay token disponible todavia.');
+                }
+                return;
+            }
+
+            var platform = getPushPlatform();
+            refreshRuntimeBundleId();
+            if (platform === 'ios' && isLikelyApnsToken(the_token)) {
+                console.log('Se ignora token APNs en iOS. Esperando token FCM real.');
+                return;
+            }
+
+            var bundleId = getBundleId();
+            var lastSyncedToken = localStorage.getItem(FCM_LAST_SYNCED_TOKEN_KEY);
+            var lastSyncedBundle = localStorage.getItem(FCM_LAST_SYNCED_BUNDLE_KEY);
+            if (!isTokenSyncRequired() && lastSyncedToken === the_token && lastSyncedBundle === bundleId) {
+                token_sent = 1;
+                return;
+            }
+
+            var deviceId = getDeviceId();
+            var payload = {
+                user_id: String(the_patient),
+                platform: platform,
+                token: the_token,
+                bundle_id: bundleId,
+                device_id: deviceId,
+                app_version: '1.0.3',
+                token_key: FCM_ACCESS_TOKEN
+            };
+
+            console.log('FCM payload (preview): ' + JSON.stringify({
+                user_id: payload.user_id,
+                platform: payload.platform,
+                bundle_id: payload.bundle_id,
+                device_id: payload.device_id,
+                app_version: payload.app_version,
+                token_preview: (payload.token || '').slice(0, 22) + '...'
+            }));
+
+            function onFcmSyncSuccess(data) {
+                token_sent = 1;
+                localStorage.setItem(FCM_LAST_SYNCED_TOKEN_KEY, the_token);
+                localStorage.setItem(FCM_LAST_SYNCED_BUNDLE_KEY, bundleId);
+                localStorage.setItem(FCM_SYNC_REQUIRED_KEY, '0');
+                console.log('FCM sincronizado correctamente. ' + JSON.stringify(data));
+            }
+
+            function onFcmSyncError(message) {
+                console.error('No se pudo sincronizar el token FCM. ' + message);
+            }
+
+            var canUseNativeHttp = (
+                (platform === 'android' || platform === 'ios') &&
+                typeof Capacitor !== 'undefined' &&
+                Capacitor.Plugins &&
+                Capacitor.Plugins.CapacitorHttp &&
+                typeof Capacitor.Plugins.CapacitorHttp.post === 'function'
+            );
+
+            if (canUseNativeHttp) {
+                Capacitor.Plugins.CapacitorHttp.post({
+                    url: FCM_API_ENDPOINT,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Token': FCM_ACCESS_TOKEN
+                    },
+                    data: payload,
+                    connectTimeout: 15000,
+                    readTimeout: 15000
+                }).then(function(response) {
+                    var status = response && response.status ? response.status : 0;
+                    var body = response && response.data ? response.data : null;
+
+                    if (status >= 200 && status < 300) {
+                        onFcmSyncSuccess(body || { ok: true });
+                        return;
+                    }
+
+                    onFcmSyncError('status=' + status + ' response=' + JSON.stringify(body));
+                }).catch(function(error) {
+                    onFcmSyncError('native_http_error=' + JSON.stringify(error));
+                });
+                return;
+            }
+
             $.ajax({
-                
-                beforeSend: function(){ 
-                    //Antes de enviar la solicitud
-                },
-
-                //dataType: 'json',
                 async: true,
-                url: rootPath+'/_sudiv3/ar_engine/token_device.php',
+                url: FCM_API_ENDPOINT,
                 type: 'POST',
-                data: {the_patient : the_patient, token : the_token }
+                contentType: 'application/json; charset=utf-8',
+                processData: false,
+                headers: {
+                    'Access-Token': FCM_ACCESS_TOKEN
+                },
+                data: JSON.stringify(payload)
                 }).done(function(data){
-                
-                    // console.log('resultado: ' + data);
-                    //ons.notification.toast({message: data, timeout: 5500});
-
-                    token_sent = 1;
+                    onFcmSyncSuccess(data);
+                }).fail(function(jqXHR, textStatus, errorThrown){
+                    var statusCode = jqXHR && jqXHR.status ? jqXHR.status : 'n/a';
+                    var responseText = jqXHR && jqXHR.responseText ? jqXHR.responseText : '';
+                    onFcmSyncError(
+                        'status=' + statusCode +
+                        ' textStatus=' + textStatus +
+                        ' error=' + (errorThrown || '') +
+                        ' response=' + responseText
+                    );
                 }); // AJAX - Load Records
     
     }
@@ -1294,7 +1484,7 @@ function getPatient(){
                     the_patient = data.patient[0].pat_id;
 
 // TOKEN
-                    if(the_patient != '' || the_patient != null){
+                    if(the_patient !== '' && the_patient != null){
                         
                     setTimeout(function(){      
                         uploadToken();
@@ -2691,9 +2881,8 @@ Cons_id":"5","Cons_pat_id":"506","Cons_title":"PRUEBA","Cons_date":"7-07-2020","
 
         }
             
-     }
         }  //cierre de success
-    });   //cierre de ajax                      
+    });   //cierre de ajax       
 } //cierre de function
 
 /////////////////////////////////////////  

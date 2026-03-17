@@ -1052,6 +1052,44 @@ background: linear-gradient(to top right, #ffa6a3 0%, #ffe175 100%); /* W3C, IE1
     border-radius: 15px;
   }
 
+.prescription-image-wrap {
+  margin: 10px 0px 5px;
+}
+
+.prescription-drug-image {
+  width: 100%;
+  height: auto;
+  max-height: 240px;
+  object-fit: contain;
+  border-radius: 10px;
+  display: block;
+}
+
+.prescription-image-overlay {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.prescription-image-overlay.is-visible {
+  display: flex;
+}
+
+#prescription-image-overlay-img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+}
+
   .box-emergent-account-pres{
     background: #FFF;
     position: relative;
@@ -3830,7 +3868,8 @@ input[type='checkbox']{
   margin: 20px 40px;
 }
 
-.box-emergent-account-presdetail p { margin: 0px; }/* - - - - - - - - - - - - - - -
+.box-emergent-account-presdetail p { margin: 0px; }
+/* - - - - - - - - - - - - - - -
 CSS secundario
 Desarrollado por: Upgrade Diseño Interactivo
 Para:
@@ -3870,6 +3909,45 @@ input[type=range].range_renew {
   width: 75%;
   margin-left: 10px;
 }
+
+.prescription-image-wrap {
+  margin: 8px 0px 5px;
+}
+
+.prescription-drug-image {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 10px;
+  display: block;
+}
+
+.prescription-image-overlay {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 16px;
+}
+
+.prescription-image-overlay.is-visible {
+  display: flex;
+}
+
+#prescription-image-overlay-img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+}
+
 .custom-ico{
       background-position: center;
       background-repeat: no-repeat;

@@ -71,6 +71,7 @@ function getLoginAcess(userCompanyData) {
     localStorage.getItem("mail_pat");
     localStorage.setItem("pass_pat", pass_pat);
     localStorage.getItem("pass_pat");
+    localStorage.setItem("fcm_sync_required", "1");
     setTimeout(function() {
       modal.hide();
     }, 2e3);
@@ -302,6 +303,7 @@ function do_logout() {
   localStorage.removeItem("id_pat");
   localStorage.removeItem("mail_pat");
   localStorage.removeItem("pass_pat");
+  localStorage.removeItem("fcm_sync_required");
   var request = $.ajax({
     url: phpValidate,
     type: "post",

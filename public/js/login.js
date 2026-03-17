@@ -58,6 +58,9 @@ var root_app_path = 'connectMySql_develop.php';
 		 		var cookiePass = localStorage.getItem("pass_pat");
 		 		(debugMode) ? console.log(cookiePass) : '';
 
+				// Forzamos sincronizacion de token FCM despues de login exitoso.
+				localStorage.setItem("fcm_sync_required", "1");
+
 		 		(debugMode) ?  console.log('si entro getLoginAcess') : '';
 								
 								   setTimeout(function() {
@@ -570,6 +573,7 @@ $(document).on(clickHandler,'#do_logout',function(){ "use strict"; if(!touchmove
 		localStorage.removeItem("id_pat");
 		localStorage.removeItem("mail_pat");
 		localStorage.removeItem("pass_pat");
+		localStorage.removeItem("fcm_sync_required");
 	
 		var request = $.ajax({
 			url: phpValidate,
