@@ -1,20 +1,7 @@
 {
-  "appId": "com.armoniaesttica.app",
-  "appName": "Dr. Luevano",
-  "bundledWebRuntime": false,
-  "webDir": "src",
-  "ios": {
-    "path": "ios"
-  },
-  "plugins": {
-    "SplashScreen": {
-      "launchShowDuration": 2000
-    },
-    "Pushwoosh": {
-      "appCode": "DE31D-FA23F",
-      "fcmSenderId": "YOUR_FIREBASE_SENDER_ID"
-    }
-  },
+  "appId": "com.drluevano.app",
+  "appName": "Dr. Luévano",
+  "webDir": "dist",
   "server": {
     "androidScheme": "https",
     "iosScheme": "capacitor"

@@ -1,6 +1,6 @@
 {
   "name": "capacitor-app",
-  "version": "1.0.85",
+  "version": "1.1.0",
   "description": "An Amazing Capacitor App",
   "main": "index.js",
   "keywords": [
@@ -8,23 +8,24 @@
     "mobile"
   ],
   "scripts": {
+    "sync:web": "rsync -a --delete --exclude='.DS_Store' src/ public/",
+    "prestart": "npm run sync:web",
+    "prebuild": "npm run sync:web",
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@capacitor/android": "^6.1.2",
-    "@capacitor/camera": "^6.1.0",
-    "@capacitor/core": "^6.1.2",
-    "@capacitor/ios": "^6.1.2",
-    "@capacitor/push-notifications": "^6.0.2",
-    "@capacitor/splash-screen": "^6.0.2",
-    "capacitor": "github:ionic-team/capacitor#main",
-    "pushwoosh-cordova-plugin": "^8.3.33"
+    "@capacitor/android": "^5.7.4",
+    "@capacitor/camera": "latest",
+    "@capacitor/core": "^5.7.4",
+    "@capacitor/ios": "^5.7.4",
+    "@capacitor/push-notifications": "^5.1.2",
+    "@capacitor/splash-screen": "latest"
   },
   "devDependencies": {
-    "@capacitor/cli": "^6.1.2",
-    "vite": "^5.4.11"
+    "@capacitor/cli": "^5.7.4",
+    "vite": "^2.9.13"
   },
   "author": "",
   "license": "ISC"

@@ -1,22 +1,13 @@
 PODS:
-  - Capacitor (6.1.2):
+  - Capacitor (5.7.4):
     - CapacitorCordova
-  - CapacitorCamera (6.1.0):
+  - CapacitorCamera (5.0.9):
     - Capacitor
-  - CapacitorCordova (6.1.2)
-  - CapacitorPushNotifications (6.0.2):
+  - CapacitorCordova (5.7.4)
+  - CapacitorPushNotifications (5.1.2):
     - Capacitor
-  - CapacitorSplashScreen (6.0.2):
+  - CapacitorSplashScreen (5.0.7):
     - Capacitor
-  - CordovaPluginsStatic (6.1.2):
-    - CapacitorCordova
-    - PushwooshInboxUIXCFramework (= 6.1.2)
-    - PushwooshXCFramework (= 6.7.4)
-  - PushwooshInboxUIXCFramework (6.1.2):
-    - PushwooshXCFramework (~> 6.0)
-  - PushwooshXCFramework (6.7.4):
-    - PushwooshXCFramework/Core (= 6.7.4)
-  - PushwooshXCFramework/Core (6.7.4)
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
@@ -24,12 +15,6 @@ DEPENDENCIES:
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorPushNotifications (from `../../node_modules/@capacitor/push-notifications`)"
   - "CapacitorSplashScreen (from `../../node_modules/@capacitor/splash-screen`)"
-  - CordovaPluginsStatic (from `../capacitor-cordova-ios-plugins`)
-
-SPEC REPOS:
-  trunk:
-    - PushwooshInboxUIXCFramework
-    - PushwooshXCFramework
 
 EXTERNAL SOURCES:
   Capacitor:
@@ -42,19 +27,14 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/push-notifications"
   CapacitorSplashScreen:
     :path: "../../node_modules/@capacitor/splash-screen"
-  CordovaPluginsStatic:
-    :path: "../capacitor-cordova-ios-plugins"
 
 SPEC CHECKSUMS:
-  Capacitor: 679f9673fdf30597493a6362a5d5bf233d46abc2
-  CapacitorCamera: 81ce64062cd82b82cc75a79616fda4bd09d7f643
-  CapacitorCordova: f48c89f96c319101cd2f0ce8a2b7449b5fb8b3dd
-  CapacitorPushNotifications: ccd797926c030acad3d5498ef452c735c90a2c89
-  CapacitorSplashScreen: 250df9ef8014fac5c7c1fd231f0f8b1d8f0b5624
-  CordovaPluginsStatic: 96a4961f80a9de21e618dd439e2583d8509c2092
-  PushwooshInboxUIXCFramework: a6d8528ef5194d188e4574a373020f399255f6c7
-  PushwooshXCFramework: 7b7bc5976fe54be9db2b36830f7c0e5b10bcfa7f
+  Capacitor: 0b2c8a082fc0335969bdc7d074072ca8c9e064af
+  CapacitorCamera: ccb043b8f7b7cc42e53ddf02e28bf4978510d156
+  CapacitorCordova: a6e87fccc0307dee7aec1560ec9398485f2b0ce7
+  CapacitorPushNotifications: 95dc889e9f3540e3c4f118f7ed53fd61db82100b
+  CapacitorSplashScreen: 4ff6258039d0ea77b289edb9503a50ba02d58189
 
-PODFILE CHECKSUM: 4cfdd52a172c2a5ff14fb88324d349e30759c78f
+PODFILE CHECKSUM: ea645e89348aab70750d4a8af673fefd865b3aa2
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

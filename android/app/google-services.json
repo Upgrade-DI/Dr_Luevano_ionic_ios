@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "630257429709",
+    "project_id": "udiappbase",
+    "storage_bucket": "udiappbase.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630257429709:android:30ce59c225573c60d4cd84",
+        "android_client_info": {
+          "package_name": "ai.sudi.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAieB0Hxl1DZTgttNNZZpPyAUw4Gksrk7I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630257429709:android:2762926b037848dfd4cd84",
+        "android_client_info": {
+          "package_name": "com.drluevano.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAieB0Hxl1DZTgttNNZZpPyAUw4Gksrk7I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
