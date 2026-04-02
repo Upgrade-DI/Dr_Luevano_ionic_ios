@@ -48,6 +48,8 @@ var small = "";
 var customico = "";
 var rootPath = "https://armoniaestetica.com/";
 var phpValidate = rootPath + "_sudiv3/ar_engine/login_validate_new_ios.php";
+var SESSION_COOKIE_DAYS = 30;
+var SESSION_COOKIE_KEYS = ["id_pat", "mail_pat", "pass_pat"];
 var clickHandler = "ontouchstart" in document.documentElement ? "touchend" : "click";
 var touchmoved;
 if ("ontouchstart" in document.documentElement) {
@@ -71,6 +73,11 @@ function getLoginAcess(userCompanyData) {
     localStorage.getItem("mail_pat");
     localStorage.setItem("pass_pat", pass_pat);
     localStorage.getItem("pass_pat");
+    persistSessionCookies({
+      id_pat,
+      mail_pat,
+      pass_pat
+    });
     localStorage.setItem("fcm_sync_required", "1");
     setTimeout(function() {
       modal.hide();
@@ -80,6 +87,28 @@ function getLoginAcess(userCompanyData) {
       window.location.replace(url);
     }, 500);
   }
+}
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1e3);
+  var expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + encodeURIComponent(cvalue || "") + ";" + expires + ";path=/;SameSite=Lax";
+}
+function deleteCookie(cname) {
+  document.cookie = cname + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;SameSite=Lax";
+}
+function persistSessionCookies(sessionData) {
+  SESSION_COOKIE_KEYS.forEach(function(key) {
+    if (!sessionData || sessionData[key] == null) {
+      return;
+    }
+    setCookie(key, String(sessionData[key]), SESSION_COOKIE_DAYS);
+  });
+}
+function clearSessionCookies() {
+  SESSION_COOKIE_KEYS.forEach(function(key) {
+    deleteCookie(key);
+  });
 }
 function getLogOut() {
   var modal2 = document.querySelector("ons-modal");
@@ -300,21 +329,34 @@ $(document).on(clickHandler, "#do_logout", function() {
   touchmoved = false;
 });
 function do_logout() {
-  localStorage.removeItem("id_pat");
-  localStorage.removeItem("mail_pat");
-  localStorage.removeItem("pass_pat");
-  localStorage.removeItem("fcm_sync_required");
+  var finalizeLogout = function() {
+    if (typeof window.token_sent !== "undefined") {
+      window.token_sent = 0;
+    }
+    localStorage.removeItem("id_pat");
+    localStorage.removeItem("mail_pat");
+    localStorage.removeItem("pass_pat");
+    localStorage.removeItem("fcm_sync_required");
+    localStorage.removeItem("fcm_last_synced_token");
+    localStorage.removeItem("fcm_last_synced_bundle");
+    clearSessionCookies();
+    getLogOut();
+  };
+  var syncPromise = typeof unregisterFcmDevice === "function" ? unregisterFcmDevice() : $.Deferred().resolve().promise();
   var request = $.ajax({
     url: phpValidate,
     type: "post",
     data: { method: "do_logout" }
   });
   request.done(function(data, textStatus, jqXHR) {
-    if (data == "successful") {
-      getLogOut();
-    }
+    $.when(syncPromise).always(function() {
+      finalizeLogout();
+    });
   });
   request.fail(function(jqXHR, textStatus, errorThrown) {
+    $.when(syncPromise).always(function() {
+      finalizeLogout();
+    });
   });
 }
 function showMsgError(target, message, color, timer) {

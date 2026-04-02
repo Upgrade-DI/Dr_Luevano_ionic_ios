@@ -930,6 +930,7 @@ var the_token = localStorage.getItem('fcm_token') || null;
 var appDebug = false;
 
 var FCM_API_ENDPOINT = 'https://armoniaestetica.com/_sudiv3/api/endpoints/_firebase_cloud_messaging/_get_fcm_token/exe_endpoint.php';
+var FCM_DELETE_API_ENDPOINT = FCM_API_ENDPOINT;
 var FCM_TOKEN_DEV = 'uS1eP9yQ7mB4hT6xC0lV2zR8fD5kN3j';
 var FCM_TOKEN_PROD = 'd4XqA2vfsM8pL1zF7rH0kW9bC5tY3nV';
 var FCM_USE_PROD_TOKEN = false;
@@ -1310,6 +1311,125 @@ picPath = 'https://armoniaestetica.com/_sudiv3/';
             return localStorage.getItem(FCM_SYNC_REQUIRED_KEY) !== '0';
         }
 
+        function buildFcmDevicePayload(userId, tokenValue) {
+            refreshRuntimeBundleId();
+
+            return {
+                user_id: String(userId || ''),
+                platform: getPushPlatform(),
+                token: tokenValue || the_token || '',
+                bundle_id: getBundleId(),
+                device_id: getDeviceId(),
+                app_version: '1.0.3',
+                hideField: 0,
+                token_key: FCM_ACCESS_TOKEN
+            };
+        }
+
+        function postJsonToEndpoint(url, payload) {
+            var deferred = $.Deferred();
+            var platform = getPushPlatform();
+            var canUseNativeHttp = (
+                (platform === 'android' || platform === 'ios') &&
+                typeof Capacitor !== 'undefined' &&
+                Capacitor.Plugins &&
+                Capacitor.Plugins.CapacitorHttp &&
+                typeof Capacitor.Plugins.CapacitorHttp.post === 'function'
+            );
+
+            if (canUseNativeHttp) {
+                Capacitor.Plugins.CapacitorHttp.post({
+                    url: url,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Token': FCM_ACCESS_TOKEN
+                    },
+                    data: payload,
+                    connectTimeout: 15000,
+                    readTimeout: 15000
+                }).then(function(response) {
+                    var status = response && response.status ? response.status : 0;
+                    var body = response && response.data ? response.data : null;
+
+                    if (status >= 200 && status < 300) {
+                        if (body && typeof body === 'object' && body.ok === false) {
+                            deferred.reject('status=' + status + ' response=' + JSON.stringify(body));
+                            return;
+                        }
+                        deferred.resolve(body || { ok: true });
+                        return;
+                    }
+
+                    deferred.reject('status=' + status + ' response=' + JSON.stringify(body));
+                }).catch(function(error) {
+                    deferred.reject('native_http_error=' + JSON.stringify(error));
+                });
+
+                return deferred.promise();
+            }
+
+            $.ajax({
+                async: true,
+                url: url,
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                processData: false,
+                headers: {
+                    'Access-Token': FCM_ACCESS_TOKEN
+                },
+                data: JSON.stringify(payload)
+            }).done(function(data) {
+                if (data && typeof data === 'object' && data.ok === false) {
+                    deferred.reject('status=200 response=' + JSON.stringify(data));
+                    return;
+                }
+                deferred.resolve(data);
+            }).fail(function(jqXHR, textStatus, errorThrown) {
+                var statusCode = jqXHR && jqXHR.status ? jqXHR.status : 'n/a';
+                var responseText = jqXHR && jqXHR.responseText ? jqXHR.responseText : '';
+                deferred.reject(
+                    'status=' + statusCode +
+                    ' textStatus=' + textStatus +
+                    ' error=' + (errorThrown || '') +
+                    ' response=' + responseText
+                );
+            });
+
+            return deferred.promise();
+        }
+
+        function unregisterFcmDevice() {
+            var userId = the_patient || localStorage.getItem('id_pat') || '';
+            var payload = buildFcmDevicePayload(userId, the_token);
+            payload.action = 'delete_device_token';
+            payload.hideField = 1;
+
+            if (!payload.user_id || !payload.device_id) {
+                return $.Deferred().resolve().promise();
+            }
+
+            if (!FCM_DELETE_API_ENDPOINT) {
+                console.log('FCM logout pendiente: falta endpoint de baja. Payload sugerido: ' + JSON.stringify({
+                    action: payload.action,
+                    user_id: payload.user_id,
+                    platform: payload.platform,
+                    bundle_id: payload.bundle_id,
+                    device_id: payload.device_id
+                }));
+                return $.Deferred().resolve().promise();
+            }
+
+            return postJsonToEndpoint(FCM_DELETE_API_ENDPOINT, payload)
+                .done(function(data) {
+                    console.log('FCM device removido correctamente. ' + JSON.stringify(data));
+                    localStorage.removeItem(FCM_LAST_SYNCED_TOKEN_KEY);
+                    localStorage.removeItem(FCM_LAST_SYNCED_BUNDLE_KEY);
+                })
+                .fail(function(errorMessage) {
+                    console.error('No se pudo eliminar el device FCM en logout. ' + errorMessage);
+                });
+        }
+
 
 
         // @function - Upload Token Device  
@@ -1327,13 +1447,13 @@ picPath = 'https://armoniaestetica.com/_sudiv3/';
             }
 
             var platform = getPushPlatform();
-            refreshRuntimeBundleId();
             if (platform === 'ios' && isLikelyApnsToken(the_token)) {
                 console.log('Se ignora token APNs en iOS. Esperando token FCM real.');
                 return;
             }
 
-            var bundleId = getBundleId();
+            var payload = buildFcmDevicePayload(the_patient, the_token);
+            var bundleId = payload.bundle_id;
             var lastSyncedToken = localStorage.getItem(FCM_LAST_SYNCED_TOKEN_KEY);
             var lastSyncedBundle = localStorage.getItem(FCM_LAST_SYNCED_BUNDLE_KEY);
             if (!isTokenSyncRequired() && lastSyncedToken === the_token && lastSyncedBundle === bundleId) {
@@ -1341,22 +1461,12 @@ picPath = 'https://armoniaestetica.com/_sudiv3/';
                 return;
             }
 
-            var deviceId = getDeviceId();
-            var payload = {
-                user_id: String(the_patient),
-                platform: platform,
-                token: the_token,
-                bundle_id: bundleId,
-                device_id: deviceId,
-                app_version: '1.0.3',
-                token_key: FCM_ACCESS_TOKEN
-            };
-
             console.log('FCM payload (preview): ' + JSON.stringify({
                 user_id: payload.user_id,
                 platform: payload.platform,
                 bundle_id: payload.bundle_id,
                 device_id: payload.device_id,
+                hideField: payload.hideField,
                 app_version: payload.app_version,
                 token_preview: (payload.token || '').slice(0, 22) + '...'
             }));
@@ -1373,62 +1483,13 @@ picPath = 'https://armoniaestetica.com/_sudiv3/';
                 console.error('No se pudo sincronizar el token FCM. ' + message);
             }
 
-            var canUseNativeHttp = (
-                (platform === 'android' || platform === 'ios') &&
-                typeof Capacitor !== 'undefined' &&
-                Capacitor.Plugins &&
-                Capacitor.Plugins.CapacitorHttp &&
-                typeof Capacitor.Plugins.CapacitorHttp.post === 'function'
-            );
-
-            if (canUseNativeHttp) {
-                Capacitor.Plugins.CapacitorHttp.post({
-                    url: FCM_API_ENDPOINT,
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Access-Token': FCM_ACCESS_TOKEN
-                    },
-                    data: payload,
-                    connectTimeout: 15000,
-                    readTimeout: 15000
-                }).then(function(response) {
-                    var status = response && response.status ? response.status : 0;
-                    var body = response && response.data ? response.data : null;
-
-                    if (status >= 200 && status < 300) {
-                        onFcmSyncSuccess(body || { ok: true });
-                        return;
-                    }
-
-                    onFcmSyncError('status=' + status + ' response=' + JSON.stringify(body));
-                }).catch(function(error) {
-                    onFcmSyncError('native_http_error=' + JSON.stringify(error));
-                });
-                return;
-            }
-
-            $.ajax({
-                async: true,
-                url: FCM_API_ENDPOINT,
-                type: 'POST',
-                contentType: 'application/json; charset=utf-8',
-                processData: false,
-                headers: {
-                    'Access-Token': FCM_ACCESS_TOKEN
-                },
-                data: JSON.stringify(payload)
-                }).done(function(data){
+            postJsonToEndpoint(FCM_API_ENDPOINT, payload)
+                .done(function(data) {
                     onFcmSyncSuccess(data);
-                }).fail(function(jqXHR, textStatus, errorThrown){
-                    var statusCode = jqXHR && jqXHR.status ? jqXHR.status : 'n/a';
-                    var responseText = jqXHR && jqXHR.responseText ? jqXHR.responseText : '';
-                    onFcmSyncError(
-                        'status=' + statusCode +
-                        ' textStatus=' + textStatus +
-                        ' error=' + (errorThrown || '') +
-                        ' response=' + responseText
-                    );
-                }); // AJAX - Load Records
+                })
+                .fail(function(errorMessage) {
+                    onFcmSyncError(errorMessage);
+                });
     
     }
 
@@ -2338,7 +2399,6 @@ function getHomer(){
                                         $photo_user_homerr = root_web+data.arrayHomer[0].arrayS[n].user_photo;
 
                                       }
-
                                       // '<span style="text-decoration: underline; font-size: 0.9em;">Ver detalles</span>'+
                                 if (sessions_done > 0) {
                                 var Session_made = '<!-- BOX 2 -->'+

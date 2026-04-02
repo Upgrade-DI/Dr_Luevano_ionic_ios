@@ -1,0 +1,7 @@
+{
+  "name": "Dr_Luevano_ionic_ios",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}

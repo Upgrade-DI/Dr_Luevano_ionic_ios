@@ -10,6 +10,9 @@ var rootPath = (serverSource === 'local') ? './' : 'https://armoniaestetica.com/
 var phpValidate = rootPath+'_sudiv3/ar_engine/login_validate_new_ios.php';
 
 var root_app_path = 'connectMySql_develop.php';
+var SESSION_COOKIE_DAYS = 30;
+var SESSION_COOKIE_KEYS = ['id_pat', 'mail_pat', 'pass_pat'];
+var HOME_PAGE_PATH = 'home.html';
 
 
 // Touch or Click Definimos si se usará click o Touch según disponibilidad // touchstart
@@ -54,12 +57,18 @@ var root_app_path = 'connectMySql_develop.php';
 		 		var cookieMail = localStorage.getItem("mail_pat");
 		 		(debugMode) ? console.log(cookieMail) : '';
 
-				localStorage.setItem("pass_pat", pass_pat);
-		 		var cookiePass = localStorage.getItem("pass_pat");
-		 		(debugMode) ? console.log(cookiePass) : '';
+					localStorage.setItem("pass_pat", pass_pat);
+			 		var cookiePass = localStorage.getItem("pass_pat");
+			 		(debugMode) ? console.log(cookiePass) : '';
 
-				// Forzamos sincronizacion de token FCM despues de login exitoso.
-				localStorage.setItem("fcm_sync_required", "1");
+					persistSessionCookies({
+						id_pat: id_pat,
+						mail_pat: mail_pat,
+						pass_pat: pass_pat
+					});
+
+					// Forzamos sincronizacion de token FCM despues de login exitoso.
+					localStorage.setItem("fcm_sync_required", "1");
 
 		 		(debugMode) ?  console.log('si entro getLoginAcess') : '';
 								
@@ -109,7 +118,86 @@ function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
   var expires = "expires="+ d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  document.cookie = cname + "=" + encodeURIComponent(cvalue || '') + ";" + expires + ";path=/;SameSite=Lax";
+}
+
+function deleteCookie(cname) {
+  document.cookie = cname + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;SameSite=Lax";
+}
+
+function persistSessionCookies(sessionData) {
+  SESSION_COOKIE_KEYS.forEach(function(key) {
+    if (!sessionData || sessionData[key] == null) {
+      return;
+    }
+
+    setCookie(key, String(sessionData[key]), SESSION_COOKIE_DAYS);
+  });
+}
+
+function clearSessionCookies() {
+  SESSION_COOKIE_KEYS.forEach(function(key) {
+    deleteCookie(key);
+  });
+}
+
+function getStoredSessionData() {
+  var sessionData = {
+    id_pat: normalizeStoredValue(localStorage.getItem("id_pat") || getCookie("id_pat")),
+    mail_pat: normalizeStoredValue(localStorage.getItem("mail_pat") || getCookie("mail_pat")),
+    pass_pat: normalizeStoredValue(localStorage.getItem("pass_pat") || getCookie("pass_pat"))
+  };
+
+  if (sessionData.id_pat) {
+    localStorage.setItem("id_pat", sessionData.id_pat);
+  }
+  if (sessionData.mail_pat) {
+    localStorage.setItem("mail_pat", sessionData.mail_pat);
+  }
+  if (sessionData.pass_pat) {
+    localStorage.setItem("pass_pat", sessionData.pass_pat);
+  }
+
+  return sessionData;
+}
+
+function normalizeStoredValue(value) {
+  if (
+    value == null ||
+    value === '' ||
+    value === 'null' ||
+    value === 'undefined'
+  ) {
+    return '';
+  }
+
+  return String(value);
+}
+
+function hasStoredSession(sessionData) {
+  return !!(
+    sessionData &&
+    normalizeStoredValue(sessionData.id_pat) &&
+    normalizeStoredValue(sessionData.mail_pat) &&
+    normalizeStoredValue(sessionData.pass_pat)
+  );
+}
+
+function redirectToStoredSession() {
+  var sessionData = getStoredSessionData();
+
+  if (!hasStoredSession(sessionData)) {
+    return false;
+  }
+
+  persistSessionCookies(sessionData);
+
+  if (window.location.pathname.indexOf(HOME_PAGE_PATH) !== -1) {
+    return true;
+  }
+
+  window.location.replace(HOME_PAGE_PATH);
+  return true;
 }
 
 
@@ -135,17 +223,21 @@ function setCookie(cname, cvalue, exdays) {
 
 // V A L I D A T E   S E S S I O N
 	// validamos si existe una sesión de usuario.
-	function validate_phpSession() {
-		if (debugMode) console.log("Revisando sesión...");
-	
-		var idPat = localStorage.getItem("id_pat");
-		var mailPat = localStorage.getItem("mail_pat");
-		var passPat = localStorage.getItem("pass_pat");
-	
-		if (!idPat) {
-			console.log('No hay sesión activa');
+		function validate_phpSession() {
+			if (debugMode) console.log("Revisando sesión...");
+
+			var sessionData = getStoredSessionData();
+			var idPat = sessionData.id_pat;
+			var mailPat = sessionData.mail_pat;
+			var passPat = sessionData.pass_pat;
+		
+			if (!idPat) {
+				console.log('No hay sesión activa');
 		} else {
 			console.log('Sí hay una sesión activa');
+			if (redirectToStoredSession()) {
+				return;
+			}
 			var dataToSend = 'autologin_user=' + mailPat + '&autologin_password=' + passPat;
 	
 			if (debugMode) console.log(dataToSend);
@@ -161,10 +253,12 @@ function setCookie(cname, cvalue, exdays) {
 						getLoginAcess(sessionResponse);
 					} else {
 						if (debugMode) console.log('No auto login client');
+						redirectToStoredSession();
 					}
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
 					if (debugMode) console.error("Errores: " + textStatus, errorThrown);
+					redirectToStoredSession();
 				}
 			});
 		}
@@ -567,32 +661,47 @@ $(document).on(clickHandler,'#do_logout',function(){ "use strict"; if(!touchmove
 	});
 
 
-	function do_logout() {
-		"use strict";
-		// [A] solicitamos la baja de la sesión
-		localStorage.removeItem("id_pat");
-		localStorage.removeItem("mail_pat");
-		localStorage.removeItem("pass_pat");
-		localStorage.removeItem("fcm_sync_required");
-	
-		var request = $.ajax({
-			url: phpValidate,
-			type: "post",
+		function do_logout() {
+			"use strict";
+			var finalizeLogout = function() {
+				if (typeof window.token_sent !== 'undefined') {
+					window.token_sent = 0;
+				}
+
+				localStorage.removeItem("id_pat");
+				localStorage.removeItem("mail_pat");
+				localStorage.removeItem("pass_pat");
+				localStorage.removeItem("fcm_sync_required");
+				localStorage.removeItem("fcm_last_synced_token");
+				localStorage.removeItem("fcm_last_synced_bundle");
+				clearSessionCookies();
+				getLogOut();
+			};
+
+			var syncPromise = (typeof unregisterFcmDevice === 'function')
+				? unregisterFcmDevice()
+				: $.Deferred().resolve().promise();
+		
+			var request = $.ajax({
+				url: phpValidate,
+				type: "post",
 			data: { method: 'do_logout' }
 		});
 	
-		request.done(function (data, textStatus, jqXHR) {
-			if (data == 'successful') {
-				// Si se cerró sesión completamente
-				(debugMode) ? console.log("sesión cerrada") : '';
-				getLogOut();
-			}
-		});
+			request.done(function (data, textStatus, jqXHR) {
+				$.when(syncPromise).always(function() {
+					(debugMode) ? console.log("sesión cerrada") : '';
+					finalizeLogout();
+				});
+			});
 	
-		request.fail(function (jqXHR, textStatus, errorThrown) {
-			(debugMode) ? console.error("Han ocurrido los siguientes errores: " + textStatus, errorThrown) : '';
-		});
-	}
+			request.fail(function (jqXHR, textStatus, errorThrown) {
+				(debugMode) ? console.error("Han ocurrido los siguientes errores: " + textStatus, errorThrown) : '';
+				$.when(syncPromise).always(function() {
+					finalizeLogout();
+				});
+			});
+		}
 
 
 	// Función "Mostrar Mensaje"
